@@ -136,7 +136,7 @@ button:hover {
   flex: 1; 
 }
 #goodsBtn:hover {
-  background: var(--secondary); /* #FF6584 */
+  background: var(--secondary);
   transform: scale(1.02);
 }
 .restart-row button { 
@@ -178,6 +178,16 @@ button:hover {
 .title {
   font-size: 1.5rem;
   font-weight: 700;
+}
+#resultText h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+#resultText p {
+  font-size: 1rem;
+  margin-bottom: 16px;
 }
   </style>
 </head>
@@ -409,26 +419,99 @@ button:hover {
       }
     }
 
-    function showResult() {
-      const totals = {};
-      questions.forEach((q, qi) => {
-        const sel = answers[qi];
-        if (sel != null) {
-          Object.entries(q.options[sel].points).forEach(([k, v]) => {
-            totals[k] = (totals[k] || 0) + v;
-          });
-        }
+    // 各調性の紹介文（既存、変更なし）
+const characterDescriptions = {
+  "C": `<span class="title">【C】正義感溢れる騎士</span><br>
+あなたは、どんな時も素直で、人としての信念を大切に生きる“正義感溢れる騎士”。目立つ言葉や派手な振る舞いに頼らずとも、あなたがそこにいるだけで、まるで北極星のように周囲に安心と信頼を与えます…`,
+  // 他の調性格（cm, C♯, ...）は省略（質問11と同一）
+};
+
+// 相性の良い調性格
+const compatibleKeys = {
+  "C": "G, am, E♭",
+  "cm": "E♭, gm, A♭",
+  "C♯": "A, f♯m, B",
+  "C♯m": "E, b, F♯",
+  "D": "A, B♭, em",
+  "dm": "F, b♭m, cm",
+  "E♭": "B♭, cm, A♭",
+  "e♭m": "A♭, fm, b♭m",
+  "E": "B, C♯m, f♯m",
+  "em": "G, B♭, D",
+  "F": "C, dm, B♭",
+  "fm": "A♭, cm, e♭m",
+  "F♯": "C♯, A, b",
+  "f♯m": "E, B, C♯m",
+  "G": "C, em, D",
+  "gm": "E♭, b♭m, cm",
+  "A♭": "E♭, fm, cm",
+  "a♭m": "E♭, f♯m, C♯m",
+  "A": "E, F♯, C♯",
+  "am": "C, F, G",
+  "B♭": "F, em, D",
+  "b♭m": "E♭, gm, dm",
+  "B": "F♯, C♯, E",
+  "b": "F♯, C♯m, A"
+};
+
+// 有名曲
+const famousSongs = {
+  "C": "ビートルズ - Let It Be",
+  "cm": "ショパン - ノクターン Op.9 No.2",
+  "C♯": "リスト - 愛の夢 第3番",
+  "C♯m": "ベートーヴェン - 月光ソナタ 第1楽章",
+  "D": "カーペンターズ - Top of the World",
+  "dm": "シューベルト - アヴェ・マリア",
+  "E♭": "モーツァルト - ピアノ協奏曲第21番",
+  "e♭m": "ラフマニノフ - 前奏曲 Op.3 No.2",
+  "E": "エルヴィス・プレスリー - Can't Help Falling in Love",
+  "em": "ニルヴァーナ - Where Did You Sleep Last Night",
+  "F": "ルイ・アームストロング - What a Wonderful World",
+  "fm": "ビル・ウィザース - Ain't No Sunshine",
+  "F♯": "フランク・シナトラ - My Way",
+  "f♯m": "バッハ - 前奏曲とフーガ BWV 846",
+  "G": "サイモン＆ガーファンクル - The Sound of Silence",
+  "gm": "アデル - Someone Like You",
+  "A♭": "ホイットニー・ヒューストン - I Will Always Love You",
+  "a♭m": "ドビュッシー - 夢想",
+  "A": "ボブ・ディラン - Blowin' in the Wind",
+  "am": "レディオヘッド - Creep",
+  "B♭": "ジャーニー - Don't Stop Believin'",
+  "b♭m": "マーラー - 交響曲第5番 アダージェット",
+  "B": "イーグルス - Hotel California",
+  "b": "ショスタコーヴィチ - ワルツ第2番"
+};
+
+function showResult() {
+  const totals = {};
+  questions.forEach((q, qi) => {
+    const sel = answers[qi];
+    if (sel != null) {
+      Object.entries(q.options[sel].points).forEach(([k, v]) => {
+        totals[k] = (totals[k] || 0) + v;
       });
-      const topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
-      document.getElementById('resultImage').innerHTML = `<img src="${topKey}.jpg" alt="${topKey}の画像">`;
-      resultTextDiv.innerHTML = characterDescriptions[topKey] || '診断結果が見つかりませんでした。';
-      showScreen(resultScreen);
-      document.getElementById('shareXBtn').onclick = () => {
-        window.open(
-          `https://twitter.com/intent/tweet?text=${encodeURIComponent(`私は「${topKey}」タイプ！24調性診断はこちら →`)}&url=${encodeURIComponent(location.href)}`,
-          '_blank'
-        );
-      };
+    }
+  });
+  const topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+  document.getElementById('resultImage').innerHTML = `<img src="${topKey}.jpg" alt="${topKey}の画像">`;
+  resultTextDiv.innerHTML = `
+    ${characterDescriptions[topKey] || '診断結果が見つかりませんでした。'}
+    <h3>あなたと相性の良い調性格</h3>
+    <p>${compatibleKeys[topKey] || '情報が見つかりませんでした。'}</p>
+    <h3>あなたの調性の有名曲</h3>
+    <p>${famousSongs[topKey] || '情報が見つかりませんでした。'}</p>
+  `;
+  showScreen(resultScreen);
+  document.getElementById('shareXBtn').onclick = () => {
+    window.open(
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(`私は「${topKey}」タイプ！24調性診断はこちら →`)}&url=${encodeURIComponent(location.href)}`,
+      '_blank'
+    );
+  };
+  document.getElementById('goodsBtn').onclick = () => {
+    window.open('https://example.com/official-goods', '_blank');
+  };
+}
       document.getElementById('goodsBtn').onclick = () => {
     window.open('https://example.com/official-goods', '_blank'); // 後で公式グッズのURLを挿入
       };
