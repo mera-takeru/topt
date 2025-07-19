@@ -25,7 +25,7 @@
     .options button{width:100%;text-align:left;background:#f9f9f9;color:var(--text);padding:12px;border:1px solid #ddd;border-radius:var(--radius);transition:background var(--transition),border-color var(--transition);}
     .options button:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
     .nav{display:flex;justify-content:space-between;}
-    .share-row{display:flex;gap:12px;margin-top:16px;margin-bottom:16px;}
+    .share-row{display: flex; margin-top: 16px; margin-bottom: 16px;}
     .share-row button{flex:1;}
     #shareXBtn{background:#1DA1F2;}
     #shareLineBtn{background:#00C300;}
@@ -61,7 +61,6 @@
       <div id="resultText"></div>
       <div class="share-row">
         <button id="shareXBtn">Xでシェア</button>
-        <button id="shareLineBtn">LINEでシェア</button>
       </div>
       <div class="restart-row"><button id="restartBtn">もう一度診断する</button></div>
     </div>
@@ -284,12 +283,6 @@
       document.getElementById('shareXBtn').onclick = () => {
         window.open(
           `https://twitter.com/intent/tweet?text=${encodeURIComponent(`私は「${topKey}」タイプ！24調性診断はこちら →`)}&url=${encodeURIComponent(location.href)}`,
-          '_blank'
-        );
-      };
-      document.getElementById('shareLineBtn').onclick = () => {
-        window.open(
-          `https://line.me/R/msg/text/?${encodeURIComponent(`私は「${topKey}」タイプ！24調性診断はこちら → ${location.href}`)}`,
           '_blank'
         );
       };
