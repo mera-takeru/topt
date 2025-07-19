@@ -45,7 +45,10 @@ h1 {
 }
 .title-topt {
   font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
   display: block;
+  margin-bottom: 8px;
 }
 .title-sub {
   font-size: 1.3rem;
@@ -187,13 +190,19 @@ button:hover {
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 8px;
-  text-align: center; /* 中央揃え */
-  display: block; /* 中央揃えを有効化 */
+  text-align: center;
+  display: block;
 }
 .result-description {
   font-size: 1rem;
-  margin-top: 8px; /* 見出しとの隙間 */
-  margin-bottom: 16px; /* 他の <p> と同じ */
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+.compatible-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 8px;
 }
 #resultScreen h3 {
   font-size: 1.2rem;
@@ -246,7 +255,7 @@ button:hover {
     </div>
   </div>
   <script>
-  const characterDescriptions = {
+    const characterDescriptions = {
   "B": `<span class="title">【B】反骨精神の剣闘士</span>
 <p class="result-description">逆境を軽やかに乗り越える“反骨精神の剣闘士”。粘り強さと自由な発想で困難をチャンスに変えます…</p>`,
   "C": `<span class="title">【C】正義感溢れる騎士</span>
@@ -295,6 +304,180 @@ button:hover {
 <p class="result-description">静かなまなざしで心に寄り添う“静寂の月の看護師”。優しさの光が深い癒しをもたらします…</p>`,
   "b": `<span class="title">【b】熟練の詠唱魔術師</span>
 <p class="result-description">言葉に魂を込め、真実を紡ぎ出す“熟練の詠唱魔術師”。覚悟と優しさが、闇を光へと変える詠唱を響かせます…</p>`
+};
+
+const compatibleKeys = {
+  "C": ["G", "am", "E♭"],
+  "cm": ["E♭", "gm", "A♭"],
+  "C♯": ["A", "f♯m", "B"],
+  "C♯m": ["E", "b", "F♯"],
+  "D": ["A", "B♭", "em"],
+  "dm": ["F", "b♭m", "cm"],
+  "E♭": ["B♭", "cm", "A♭"],
+  "e♭m": ["A♭", "fm", "b♭m"],
+  "E": ["B", "C♯m", "f♯m"],
+  "em": ["G", "B♭", "D"],
+  "F": ["C", "dm", "B♭"],
+  "fm": ["A♭", "cm", "e♭m"],
+  "F♯": ["C♯", "A", "b"],
+  "f♯m": ["E", "B", "C♯m"],
+  "G": ["C", "em", "D"],
+  "gm": ["E♭", "b♭m", "cm"],
+  "A♭": ["E♭", "fm", "cm"],
+  "a♭m": ["E♭", "f♯m", "C♯m"],
+  "A": ["E", "F♯", "C♯"],
+  "am": ["C", "F", "G"],
+  "B♭": ["F", "em", "D"],
+  "b♭m": ["E♭", "gm", "dm"],
+  "B": ["F♯", "C♯", "E"],
+  "b": ["F♯", "C♯m", "A"]
+};
+
+const famousSongs = {
+  "C": {
+    classic: "モーツァルト - アイネ・クライネ・ナハトムジーク",
+    showa: "山下達郎 - クリスマス・イブ",
+    heisei: "宇多田ヒカル - First Love",
+    reiwa: "YOASOBI - アイドル"
+  },
+  "cm": {
+    classic: "ショパン - ノクターン Op.9 No.2",
+    showa: "井上陽水 - 少年時代",
+    heisei: "Mr.Children - Tomorrow never knows",
+    reiwa: "Aimer - 残響散歌"
+  },
+  "C♯": {
+    classic: "リスト - 愛の夢 第3番",
+    showa: "松田聖子 - 赤いスイートピー",
+    heisei: "B'z - LOVE PHANTOM",
+    reiwa: "Ado - 新時代"
+  },
+  "C♯m": {
+    classic: "ベートーヴェン - 月光ソナタ 第1楽章",
+    showa: "オフコース - さよなら",
+    heisei: "スピッツ - ローテンダイヤモンド",
+    reiwa: "King Gnu - 一途"
+  },
+  "D": {
+    classic: "バッハ - G線上のアリア",
+    showa: "サザンオールスターズ - いとしのエリー",
+    heisei: "SMAP - 世界に一つだけの花",
+    reiwa: "Official髭男dism - ミックスナッツ"
+  },
+  "dm": {
+    classic: "シューベルト - アヴェ・マリア",
+    showa: "中島みゆき - 時代",
+    heisei: "DREAMS COME TRUE - LOVE LOVE LOVE",
+    reiwa: "YOASOBI - 群青"
+  },
+  "E♭": {
+    classic: "モーツァルト - ピアノ協奏曲第21番",
+    showa: "松任谷由実 - 卒業写真",
+    heisei: "安室奈美恵 - CAN YOU CELEBRATE?",
+    reiwa: "YOASOBI - ハルジオン"
+  },
+  "e♭m": {
+    classic: "ラフマニノフ - 前奏曲 Op.3 No.2",
+    showa: "井上陽水 - リバーサイドホテル",
+    heisei: "浜崎あゆみ - SEASONS",
+    reiwa: "藤井風 - きらり"
+  },
+  "E": {
+    classic: "ベートーヴェン - 交響曲第9番『歓喜の歌』",
+    showa: "エルヴィス・プレスリー - Can't Help Falling in Love",
+    heisei: "嵐 - Love so sweet",
+    reiwa: "Ado - うっせぇわ"
+  },
+  "em": {
+    classic: "バッハ - トッカータとフーガ",
+    showa: "沢田研二 - 勝手にしやがれ",
+    heisei: "ニルヴァーナ - Where Did You Sleep Last Night",
+    reiwa: "YOASOBI - 夜に駆ける"
+  },
+  "F": {
+    classic: "ヴィヴァルディ - 四季『春』",
+    showa: "ルイ・アームストロング - What a Wonderful World",
+    heisei: "MISIA - Everything",
+    reiwa: "Official髭男dism - I LOVE..."
+  },
+  "fm": {
+    classic: "ショパン - バラード第1番",
+    showa: "ビル・ウィザース - Ain't No Sunshine",
+    heisei: "コブクロ - 蕾",
+    reiwa: "藤井風 - 青春病"
+  },
+  "F♯": {
+    classic: "リスト - ラ・カンパネラ",
+    showa: "フランク・シナトラ - My Way",
+    heisei: "GReeeeN - キセキ",
+    reiwa: "YOASOBI - 怪物"
+  },
+  "f♯m": {
+    classic: "バッハ - 前奏曲とフーガ BWV 846",
+    showa: "松山千春 - 恋",
+    heisei: "RADWIMPS - スパークル",
+    reiwa: "Aimer - カタオモイ"
+  },
+  "G": {
+    classic: "ベートーヴェン - 交響曲第5番『運命』",
+    showa: "サイモン＆ガーファンクル - The Sound of Silence",
+    heisei: "いきものがかり - YELL",
+    reiwa: "Official髭男dism - Pretender"
+  },
+  "gm": {
+    classic: "モーツァルト - レクイエム",
+    showa: "加藤登紀子 - 知床旅情",
+    heisei: "アデル - Someone Like You",
+    reiwa: "YOASOBI - たぶん"
+  },
+  "A♭": {
+    classic: "ショパン - エチュード Op.10 No.3『別れの曲』",
+    showa: "ホイットニー・ヒューストン - I Will Always Love You",
+    heisei: "EXILE - Lovers Again",
+    reiwa: "藤井風 - まつり"
+  },
+  "a♭m": {
+    classic: "ドビュッシー - 夢想",
+    showa: "吉田拓郎 - 人生を語らず",
+    heisei: "YUI - CHE.R.RY",
+    reiwa: "Ado - 踊"
+  },
+  "A": {
+    classic: "バッハ - ブランデンブルク協奏曲第3番",
+    showa: "ボブ・ディラン - Blowin' in the Wind",
+    heisei: "ケミストリー - PIECES OF A DREAM",
+    reiwa: "King Gnu - 白日"
+  },
+  "am": {
+    classic: "シューベルト - 即興曲 Op.90 No.3",
+    showa: "井上陽水 - 心もよう",
+    heisei: "レディオヘッド - Creep",
+    reiwa: "YOASOBI - アンコール"
+  },
+  "B♭": {
+    classic: "ヴィヴァルディ - 四季『冬』",
+    showa: "ジャーニー - Don't Stop Believin'",
+    heisei: "AKB48 - 恋するフォーチュンクッキー",
+    reiwa: "Official髭男dism - 115万キロのフィルム"
+  },
+  "b♭m": {
+    classic: "マーラー - 交響曲第5番 アダージェット",
+    showa: "森山直太朗 - さくら（独唱）",
+    heisei: "back number - 高嶺の花子さん",
+    reiwa: "Aimer - 朝が来る"
+  },
+  "B": {
+    classic: "ベートーヴェン - ピアノソナタ第17番『テンペスト』",
+    showa: "イーグルス - Hotel California",
+    heisei: "SEKAI NO OWARI - RPG",
+    reiwa: "YOASOBI - ハルカ"
+  },
+  "b": {
+    classic: "ショスタコーヴィチ - ワルツ第2番",
+    showa: "山下達郎 - RIDE ON TIME",
+    heisei: "flumpool - 君に届け",
+    reiwa: "藤井風 - 何なんw"
+  }
 };
 
 const questions = [
@@ -397,7 +580,7 @@ const questions = [
 ];
 
 let current = 0;
-let topKey = null; // グローバル変数で topKey を管理
+let topKey = null;
 const answers = Array(questions.length).fill(null);
 const startBtn = document.getElementById('startBtn');
 const backBtn = document.getElementById('backBtn');
@@ -410,61 +593,12 @@ const optionsList = document.getElementById('optionsList');
 const progInner = document.getElementById('progInner');
 const resultTextDiv = document.getElementById('resultText');
 
-// 相性の良い調性格
-const compatibleKeys = {
-  "C": "G, am, E♭",
-  "cm": "E♭, gm, A♭",
-  "C♯": "A, f♯m, B",
-  "C♯m": "E, b, F♯",
-  "D": "A, B♭, em",
-  "dm": "F, b♭m, cm",
-  "E♭": "B♭, cm, A♭",
-  "e♭m": "A♭, fm, b♭m",
-  "E": "B, C♯m, f♯m",
-  "em": "G, B♭, D",
-  "F": "C, dm, B♭",
-  "fm": "A♭, cm, e♭m",
-  "F♯": "C♯, A, b",
-  "f♯m": "E, B, C♯m",
-  "G": "C, em, D",
-  "gm": "E♭, b♭m, cm",
-  "A♭": "E♭, fm, cm",
-  "a♭m": "E♭, f♯m, C♯m",
-  "A": "E, F♯, C♯",
-  "am": "C, F, G",
-  "B♭": "F, em, D",
-  "b♭m": "E♭, gm, dm",
-  "B": "F♯, C♯, E",
-  "b": "F♯, C♯m, A"
-};
-
-// 有名曲
-const famousSongs = {
-  "C": "ビートルズ - Let It Be",
-  "cm": "ショパン - ノクターン Op.9 No.2",
-  "C♯": "リスト - 愛の夢 第3番",
-  "C♯m": "ベートーヴェン - 月光ソナタ 第1楽章",
-  "D": "カーペンターズ - Top of the World",
-  "dm": "シューベルト - アヴェ・マリア",
-  "E♭": "モーツァルト - ピアノ協奏曲第21番",
-  "e♭m": "ラフマニノフ - 前奏曲 Op.3 No.2",
-  "E": "エルヴィス・プレスリー - Can't Help Falling in Love",
-  "em": "ニルヴァーナ - Where Did You Sleep Last Night",
-  "F": "ルイ・アームストロング - What a Wonderful World",
-  "fm": "ビル・ウィザース - Ain't No Sunshine",
-  "F♯": "フランク・シナトラ - My Way",
-  "f♯m": "バッハ - 前奏曲とフーガ BWV 846",
-  "G": "サイモン＆ガーファンクル - The Sound of Silence",
-  "gm": "アデル - Someone Like You",
-  "A♭": "ホイットニー・ヒューストン - I Will Always Love You",
-  "a♭m": "ドビュッシー - 夢想",
-  "A": "ボブ・ディラン - Blowin' in the Wind",
-  "am": "レディオヘッド - Creep",
-  "B♭": "ジャーニー - Don't Stop Believin'",
-  "b♭m": "マーラー - 交響曲第5番 アダージェット",
-  "B": "イーグルス - Hotel California",
-  "b": "ショスタコーヴィチ - ワルツ第2番"
-};
+function getCharacterTitle(key) {
+  const description = characterDescriptions[key];
+  if (!description) return key;
+  const match = description.match(/<span class="title">(.*?)<\/span>/);
+  return match ? match[1] : key;
+}
 
 function showScreen(screen) {
   [startScreen, questionScreen, resultScreen].forEach(s => s.classList.remove('active'));
@@ -483,7 +617,7 @@ function renderQuestion() {
     btn.textContent = opt.text;
     btn.onclick = () => {
       answers[current] = idx;
-      console.log(`Question ${current + 1}: Selected option ${idx}, Answers:`, answers); // デバッグ用
+      console.log(`Question ${current + 1}: Selected option ${idx}, Answers:`, answers);
       if (current < questions.length - 1) {
         current++;
         renderQuestion();
@@ -515,7 +649,6 @@ function showResult() {
     }
   });
 
-  // すべての質問に回答済みかチェック
   const allAnswered = answers.every(answer => answer != null);
   if (!allAnswered || Object.keys(totals).length === 0) {
     resultTextDiv.innerHTML = `
@@ -528,17 +661,34 @@ function showResult() {
 
   topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
   document.getElementById('resultImage').innerHTML = `<img src="${topKey}.jpg" alt="${topKey}の画像" onerror="this.src='placeholder.jpg'">`;
+
+  // 相性の良い調性格を改行して表示
+  const compatible = compatibleKeys[topKey] || [];
+  const compatibleHTML = compatible
+    .map(key => `<p class="compatible-title">${getCharacterTitle(key)}</p>`)
+    .join('');
+
+  // 有名曲をカテゴリごとに改行して表示
+  const songs = famousSongs[topKey] || {};
+  const songsHTML = songs.classic
+    ? `
+      <p>クラシック: ${songs.classic}</p>
+      <p>昭和: ${songs.showa}</p>
+      <p>平成: ${songs.heisei}</p>
+      <p>令和: ${songs.reiwa}</p>
+    `
+    : '<p>情報が見つかりませんでした。</p>';
+
   resultTextDiv.innerHTML = `
     ${characterDescriptions[topKey] || '診断結果が見つかりませんでした。'}
     <h3>あなたと相性の良い調性格</h3>
-    <p>${compatibleKeys[topKey] || '情報が見つかりませんでした。'}</p>
+    ${compatibleHTML || '<p>情報が見つかりませんでした。</p>'}
     <h3>あなたの調性の有名曲</h3>
-    <p>${famousSongs[topKey] || '情報が見つかりませんでした。'}</p>
+    ${songsHTML}
   `;
   showScreen(resultScreen);
 }
 
-// イベントハンドラを初期化時に設定
 document.getElementById('shareXBtn').addEventListener('click', () => {
   if (topKey) {
     window.open(
@@ -554,7 +704,7 @@ document.getElementById('goodsBtn').addEventListener('click', () => {
 });
 
 startBtn.onclick = () => {
-  console.log('startBtn clicked, current:', current, 'answers:', answers); // デバッグ用
+  console.log('startBtn clicked, current:', current, 'answers:', answers);
   current = 0;
   answers.fill(null);
   renderQuestion();
@@ -564,11 +714,11 @@ startBtn.onclick = () => {
 backBtn.onclick = prevQuestion;
 
 restartBtn.onclick = () => {
-  console.log('restartBtn clicked'); // デバッグ用
+  console.log('restartBtn clicked');
   current = 0;
   answers.fill(null);
-  topKey = null; // topKey をリセット
-  resultTextDiv.innerHTML = ''; // 結果画面の内容をクリア
+  topKey = null;
+  resultTextDiv.innerHTML = '';
   showScreen(startScreen);
 };
 
