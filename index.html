@@ -7,203 +7,210 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root { 
-      --primary: #6C63FF; 
-      --secondary: #FF6584; 
-      --bg: #F9FAFB; 
-      --text: #333; 
-      --radius: 12px; 
-      --transition: .3s; 
-    }
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-    }
-    body { 
-      font-family: 'Inter', sans-serif; 
-      background: var(--bg); 
-      color: var(--text); 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      min-height: 100vh; 
-      padding: 16px; 
-    }
-    .container { 
-      width: 100%; 
-      max-width: 600px; 
-      background: #fff; 
-      border-radius: var(--radius); 
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
-      padding: 24px; 
-    }
-    h1 { 
-      text-align: center; 
-      font-weight: 700; 
-      margin-bottom: 16px; 
-      color: var(--primary); 
-    }
-    .title-topt {
-      font-size: 1.5rem;
-      display: block;
-    }
-    .title-sub {
-      font-size: 1rem;
-      display: block;
-    }
-    .screen { 
-      display: none; 
-    }
-    .screen.active { 
-      display: block; 
-    }
-    button { 
-      font: inherit; 
-      font-size: 1rem; 
-      padding: 12px 20px; 
-      border: none; 
-      border-radius: var(--radius); 
-      background: var(--primary); 
-      color: #fff; 
-      cursor: pointer; 
-      transition: background var(--transition), transform var(--transition); 
-    }
-    button:hover { 
-      background: var(--secondary); 
-      transform: scale(1.02); 
-    }
-    #startBtn { 
-      width: 100%; 
-      margin-top: 12px; 
-    }
-    .progress-bar { 
-      height: 8px; 
-      background: #eee; 
-      border-radius: 4px; 
-      overflow: hidden; 
-      margin-bottom: 16px; 
-    }
-    .progress-inner { 
-      height: 100%; 
-      background: var(--primary); 
-      width: 0%; 
-      transition: width var(--transition); 
-    }
-    .question h2 { 
-      font-size: 1.25rem; 
-      margin-bottom: 16px; 
-    }
-    .options { 
-      list-style: none; 
-      padding: 0; 
-      margin-bottom: 24px; 
-    }
-    .options li { 
-      margin-bottom: 12px; 
-    }
-    .options li.selected button { 
-      background: var(--secondary); 
-      color: #fff; 
-    }
-    .options button { 
-      width: 100%; 
-      text-align: left; 
-      background: #f9f9f9; 
-      color: var(--text); 
-      padding: 12px; 
-      border: 1px solid #ddd; 
-      border-radius: var(--radius); 
-      transition: background var(--transition), border-color var(--transition); 
-    }
-    .options button:hover { 
-      background: var(--primary); 
-      color: #fff; 
-      border-color: var(--primary); 
-    }
-    .nav { 
-      display: flex; 
-      justify-content: space-between; 
-    }
-    .share-row, .goods-row, .restart-row {
-      display: flex;
-      width: 100%;
-      margin-top: 16px;
-      margin-bottom: 16px;
-      flex-wrap: nowrap;
-    }
-    .share-row button, .goods-row button, .restart-row button {
-      flex: 1;
-    }
-    #shareXBtn { 
-      background: #1DA1F2; 
-    }
-    #goodsBtn { 
-      background: var(--primary); 
-      color: #fff; 
-      flex: 1; 
-    }
-    #goodsBtn:hover {
-      background: var(--secondary);
-      transform: scale(1.02);
-    }
-    .restart-row button { 
-      flex: 1; 
-      background: #fff; 
-      color: var(--primary); 
-      border: 1px solid var(--primary); 
-    }
-    .start-image, .result-image {
-      width: 100%;
-      background: #ecebff;
-      border-radius: var(--radius);
-      margin-bottom: 16px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .start-image {
-      height: auto;
-      aspect-ratio: 3 / 2;
-    }
-    .start-image img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-    .result-image {
-      height: 200px;
-    }
-    .result-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    #startScreen p {
-      text-align: center;
-    }
-    .title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-top: 0;
-      margin-bottom: 8px;
-    }
-    #resultScreen h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-top: 16px;
-      margin-bottom: 8px;
-    }
-    #resultText h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-top: 16px;
-      margin-bottom: 8px;
-    }
-    #resultText p {
-      font-size: 1rem;
-      margin-bottom: 16px;
-    }
+  --primary: #6C63FF; 
+  --secondary: #FF6584; 
+  --bg: #F9FAFB; 
+  --text: #333; 
+  --radius: 12px; 
+  --transition: .3s; 
+}
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+body { 
+  font-family: 'Inter', sans-serif; 
+  background: var(--bg); 
+  color: var(--text); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  min-height: 100vh; 
+  padding: 16px; 
+}
+.container { 
+  width: 100%; 
+  max-width: 600px; 
+  background: #fff; 
+  border-radius: var(--radius); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
+  padding: 24px; 
+}
+h1 { 
+  text-align: center; 
+  font-weight: 700; 
+  margin-bottom: 16px; 
+  color: var(--primary); 
+}
+.title-topt {
+  font-size: 1.5rem;
+  display: block;
+}
+.title-sub {
+  font-size: 1.3rem;
+  display: block;
+}
+.screen { 
+  display: none; 
+}
+.screen.active { 
+  display: block; 
+}
+button { 
+  font: inherit; 
+  font-size: 1rem; 
+  padding: 12px 20px; 
+  border: none; 
+  border-radius: var(--radius); 
+  background: var(--primary); 
+  color: #fff; 
+  cursor: pointer; 
+  transition: background var(--transition), transform var(--transition); 
+}
+button:hover { 
+  background: var(--secondary); 
+  transform: scale(1.02); 
+}
+#startBtn { 
+  width: 100%; 
+  margin-top: 12px; 
+}
+.progress-bar { 
+  height: 8px; 
+  background: #eee; 
+  border-radius: 4px; 
+  overflow: hidden; 
+  margin-bottom: 16px; 
+}
+.progress-inner { 
+  height: 100%; 
+  background: var(--primary); 
+  width: 0%; 
+  transition: width var(--transition); 
+}
+.question h2 { 
+  font-size: 1.25rem; 
+  margin-bottom: 16px; 
+}
+.options { 
+  list-style: none; 
+  padding: 0; 
+  margin-bottom: 24px; 
+}
+.options li { 
+  margin-bottom: 12px; 
+}
+.options li.selected button { 
+  background: var(--secondary); 
+  color: #fff; 
+}
+.options button { 
+  width: 100%; 
+  text-align: left; 
+  background: #f9f9f9; 
+  color: var(--text); 
+  padding: 12px; 
+  border: 1px solid #ddd; 
+  border-radius: var(--radius); 
+  transition: background var(--transition), border-color var(--transition); 
+}
+.options button:hover { 
+  background: var(--primary); 
+  color: #fff; 
+  border-color: var(--primary); 
+}
+.nav { 
+  display: flex; 
+  justify-content: space-between; 
+}
+.share-row, .goods-row, .restart-row {
+  display: flex;
+  width: 100%;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  flex-wrap: nowrap;
+}
+.share-row button, .goods-row button, .restart-row button {
+  flex: 1;
+}
+#shareXBtn { 
+  background: #1DA1F2; 
+}
+#goodsBtn { 
+  background: var(--primary); 
+  color: #fff; 
+  flex: 1; 
+}
+#goodsBtn:hover {
+  background: var(--secondary);
+  transform: scale(1.02);
+}
+.restart-row button { 
+  flex: 1; 
+  background: #fff; 
+  color: var(--primary); 
+  border: 1px solid var(--primary); 
+}
+.start-image, .result-image {
+  width: 100%;
+  background: #ecebff;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.start-image {
+  height: auto;
+  aspect-ratio: 3 / 2;
+}
+.start-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.result-image {
+  height: 200px;
+}
+.result-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#startScreen p {
+  text-align: center;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 8px;
+  text-align: center; /* 中央揃え */
+  display: block; /* 中央揃えを有効化 */
+}
+.result-description {
+  font-size: 1rem;
+  margin-top: 8px; /* 見出しとの隙間 */
+  margin-bottom: 16px; /* 他の <p> と同じ */
+}
+#resultScreen h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+#resultText h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+#resultText p {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
   </style>
 </head>
 <body>
@@ -239,55 +246,55 @@
     </div>
   </div>
   <script>
-    const characterDescriptions = {
-  "C": `<span class="title">【C】正義感溢れる騎士</span><br>
-あなたは、どんな時も素直で、人としての信念を大切に生きる“正義感溢れる騎士”。目立つ言葉や派手な振る舞いに頼らずとも、あなたがそこにいるだけで、まるで北極星のように周囲に安心と信頼を与えます…`,
-  "cm": `<span class="title">【cm】内なる炎の刀鍛冶</span><br>
-静寂の中でひそかに創造の火を灯し続ける“内なる炎の刀鍛冶”。誠実に自分と向き合い、一振りごとに魂を込めて刀を鍛えるあなたの姿は、見る者の心に深い安心と信頼を刻みます…`,
-  "C♯": `<span class="title">【C♯】真実を知る思想家</span><br>
-物事の本質を見つめ、静かに真理を紡ぎ続ける“真実を知る思想家”。深海に差す光のように、目に見えぬ価値をとらえ、問いを投げかけながら世界をよりよく理解しようとする知性派です…`,
-  "C♯m": `<span class="title">【C♯m】深淵の観察者</span><br>
-表面的なことに惑わされず、物事の核心を洞察する“深淵の観察者”。静かな知性と鋭い目線で周囲を見つめ、一言で新たな気づきを与える賢者のような存在です…`,
-  "D": `<span class="title">【D】未来を掴む冒険家</span><br>
-理想の光を胸に掲げ、勇気と行動力で未知の世界を切り拓く“未来を掴む冒険家”。あなたの熱い情熱は周囲を鼓舞し、新たな可能性への扉を開きます…`,
-  "dm": `<span class="title">【dm】心を読み解く司書</span><br>
-感情の揺らぎを丁寧に読み取り、言葉に結晶化する“心を読み解く司書”。その穏やかなまなざしと温かな語り口は、人々に深い共感と安心をもたらします…`,
-  "E♭": `<span class="title">【E♭】調和の森の大賢者</span><br>
-静けさの中に深い知恵を宿し、すべてを調和へと導く“調和の森の大賢者”。自然のように包み込み、対立を超えて道を示す存在です…`,
-  "e♭m": `<span class="title">【e♭m】調和を彩る美術家</span><br>
-静寂の中で色彩を紡ぎ出し、心の奥を美しく表現する“調和を彩る美術家”。繊細な感性で見えない揺らぎに光を当てるアーティストです…`,
-  "E": `<span class="title">【E】光を奏でる音楽家</span><br>
-心の歓びを音に乗せて世界に響かせる“光を奏でる音楽家”。その明るさと深い思いやりが、人々の心にポジティブな調べを描き出します…`,
-  "em": `<span class="title">【em】奔放な風の遊牧民</span><br>
-広い世界を風のように駆ける“奔放な風の遊牧民”。自由と優しさを両手に、心の赴くままに旅し続けるあなたは、出会う人々に新たな息吹をもたらします…`,
-  "F": `<span class="title">【F】空想の天才発明家</span><br>
-誰も見たことのないアイデアを軽やかに形にする“空想の天才発明家”。遊び心と知性を併せ持ち、日常に驚きとインスピレーションを生み出します…`,
-  "fm": `<span class="title">【fm】歴史を紡ぐ小説家</span><br>
-時の細かな記憶を言葉に昇華する“歴史を紡ぐ小説家”。深い共感力で過去と未来をつなぎ、物語という贈り物を紡ぎ出します…`,
-  "F♯": `<span class="title">【F♯】天空の一級建築士</span><br>
-高みから世界を設計し、理想の調和を描き出す“天空の一級建築士”。精緻な構造と美意識が息づく空間を築きます…`,
-  "f♯m": `<span class="title">【f♯m】一匹狼の錬金術師</span><br>
-孤高に真理を追い求め、唯一無二の価値を生み出す“一匹狼の錬金術師”。静かなる情熱が、深淵から光を紡ぎます…`,
-  "G": `<span class="title">【G】伝説の時空の射手</span><br>
-未来を信じて矢を放つ“伝説の時空の射手”。的確な決断力と優しさで、希望の方向へ道を射抜きます…`,
-  "gm": `<span class="title">【gm】闇を照らす名探偵</span><br>
-闇夜に真実を探し続ける“闇を照らす名探偵”。静かな洞察力で隠された真実を導き出します…`,
-  "A♭": `<span class="title">【A♭】優雅に踊る舞踏家</span><br>
-気品ある所作で場を整え、調和を生む“優雅に踊る舞踏家”。静かな魔法で空気を彩ります…`,
-  "a♭m": `<span class="title">【a♭m】孤高の芸術収集家</span><br>
-希少な美を拾い集める“孤高の芸術収集家”。静けさの中に潜む詩を、魂のコレクションとして守ります…`,
-  "A": `<span class="title">【A】知と情熱の参謀長</span><br>
-知性と熱意で人々を導く“知と情熱の参謀長”。戦略と想いを融合させ、光の道筋を描きます…`,
-  "am": `<span class="title">【am】夕暮れを紡ぐ詩人</span><br>
-情景を優しく言葉に編み出す“夕暮れを紡ぐ詩人”。儚さの中に希望の光を宿す詩を奏でます…`,
-  "B♭": `<span class="title">【B♭】流星の旅先案内人</span><br>
-見えない流れを感じ取り、未知へと導く“流星の旅先案内人”。直感的な判断が希望の道を照らします…`,
-  "b♭m": `<span class="title">【b♭m】静寂の月の看護師</span><br>
-静かなまなざしで心に寄り添う“静寂の月の看護師”。優しさの光が深い癒しをもたらします…`,
-  "B": `<span class="title">【B】反骨精神の剣闘士</span><br>
-逆境を軽やかに乗り越える“反骨精神の剣闘士”。粘り強さと自由な発想で困難をチャンスに変えます…`,
-  "b": `<span class="title">【b】熟練の詠唱魔術師</span><br>
-言葉に魂を込め、真実を紡ぎ出す“熟練の詠唱魔術師”。覚悟と優しさが、闇を光へと変える詠唱を響かせます…`
+  const characterDescriptions = {
+  "B": `<span class="title">【B】反骨精神の剣闘士</span>
+<p class="result-description">逆境を軽やかに乗り越える“反骨精神の剣闘士”。粘り強さと自由な発想で困難をチャンスに変えます…</p>`,
+  "C": `<span class="title">【C】正義感溢れる騎士</span>
+<p class="result-description">あなたは、どんな時も素直で、人としての信念を大切に生きる“正義感溢れる騎士”。目立つ言葉や派手な振る舞いに頼らずとも、あなたがそこにいるだけで、まるで北極星のように周囲に安心と信頼を与えます…</p>`,
+  "cm": `<span class="title">【cm】内なる炎の刀鍛冶</span>
+<p class="result-description">静寂の中でひそかに創造の火を灯し続ける“内なる炎の刀鍛冶”。誠実に自分と向き合い、一振りごとに魂を込めて刀を鍛えるあなたの姿は、見る者の心に深い安心と信頼を刻みます…</p>`,
+  "C♯": `<span class="title">【C♯】真実を知る思想家</span>
+<p class="result-description">物事の本質を見つめ、静かに真理を紡ぎ続ける“真実を知る思想家”。深海に差す光のように、目に見えぬ価値をとらえ、問いを投げかけながら世界をよりよく理解しようとする知性派です…</p>`,
+  "C♯m": `<span class="title">【C♯m】深淵の観察者</span>
+<p class="result-description">表面的なことに惑わされず、物事の核心を洞察する“深淵の観察者”。静かな知性と鋭い目線で周囲を見つめ、一言で新たな気づきを与える賢者のような存在です…</p>`,
+  "D": `<span class="title">【D】未来を掴む冒険家</span>
+<p class="result-description">理想の光を胸に掲げ、勇気と行動力で未知の世界を切り拓く“未来を掴む冒険家”。あなたの熱い情熱は周囲を鼓舞し、新たな可能性への扉を開きます…</p>`,
+  "dm": `<span class="title">【dm】心を読み解く司書</span>
+<p class="result-description">感情の揺らぎを丁寧に読み取り、言葉に結晶化する“心を読み解く司書”。その穏やかなまなざしと温かな語り口は、人々に深い共感と安心をもたらします…</p>`,
+  "E♭": `<span class="title">【E♭】調和の森の大賢者</span>
+<p class="result-description">静けさの中に深い知恵を宿し、すべてを調和へと導く“調和の森の大賢者”。自然のように包み込み、対立を超えて道を示す存在です…</p>`,
+  "e♭m": `<span class="title">【e♭m】調和を彩る美術家</span>
+<p class="result-description">静寂の中で色彩を紡ぎ出し、心の奥を美しく表現する“調和を彩る美術家”。繊細な感性で見えない揺らぎに光を当てるアーティストです…</p>`,
+  "E": `<span class="title">【E】光を奏でる音楽家</span>
+<p class="result-description">心の歓びを音に乗せて世界に響かせる“光を奏でる音楽家”。その明るさと深い思いやりが、人々の心にポジティブな調べを描き出します…</p>`,
+  "em": `<span class="title">【em】奔放な風の遊牧民</span>
+<p class="result-description">広い世界を風のように駆ける“奔放な風の遊牧民”。自由と優しさを両手に、心の赴くままに旅し続けるあなたは、出会う人々に新たな息吹をもたらします…</p>`,
+  "F": `<span class="title">【F】空想の天才発明家</span>
+<p class="result-description">誰も見たことのないアイデアを軽やかに形にする“空想の天才発明家”。遊び心と知性を併せ持ち、日常に驚きとインスピレーションを生み出します…</p>`,
+  "fm": `<span class="title">【fm】歴史を紡ぐ小説家</span>
+<p class="result-description">時の細かな記憶を言葉に昇華する“歴史を紡ぐ小説家”。深い共感力で過去と未来をつなぎ、物語という贈り物を紡ぎ出します…</p>`,
+  "F♯": `<span class="title">【F♯】天空の一級建築士</span>
+<p class="result-description">高みから世界を設計し、理想の調和を描き出す“天空の一級建築士”。精緻な構造と美意識が息づく空間を築きます…</p>`,
+  "f♯m": `<span class="title">【f♯m】一匹狼の錬金術師</span>
+<p class="result-description">孤高に真理を追い求め、唯一無二の価値を生み出す“一匹狼の錬金術師”。静かなる情熱が、深淵から光を紡ぎます…</p>`,
+  "G": `<span class="title">【G】伝説の時空の射手</span>
+<p class="result-description">未来を信じて矢を放つ“伝説の時空の射手”。的確な決断力と優しさで、希望の方向へ道を射抜きます…</p>`,
+  "gm": `<span class="title">【gm】闇を照らす名探偵</span>
+<p class="result-description">闇夜に真実を探し続ける“闇を照らす名探偵”。静かな洞察力で隠された真実を導き出します…</p>`,
+  "A♭": `<span class="title">【A♭】優雅に踊る舞踏家</span>
+<p class="result-description">気品ある所作で場を整え、調和を生む“優雅に踊る舞踏家”。静かな魔法で空気を彩ります…</p>`,
+  "a♭m": `<span class="title">【a♭m】孤高の芸術収集家</span>
+<p class="result-description">希少な美を拾い集める“孤高の芸術収集家”。静けさの中に潜む詩を、魂のコレクションとして守ります…</p>`,
+  "A": `<span class="title">【A】知と情熱の参謀長</span>
+<p class="result-description">知性と熱意で人々を導く“知と情熱の参謀長”。戦略と想いを融合させ、光の道筋を描きます…</p>`,
+  "am": `<span class="title">【am】夕暮れを紡ぐ詩人</span>
+<p class="result-description">情景を優しく言葉に編み出す“夕暮れを紡ぐ詩人”。儚さの中に希望の光を宿す詩を奏でます…</p>`,
+  "B♭": `<span class="title">【B♭】流星の旅先案内人</span>
+<p class="result-description">見えない流れを感じ取り、未知へと導く“流星の旅先案内人”。直感的な判断が希望の道を照らします…</p>`,
+  "b♭m": `<span class="title">【b♭m】静寂の月の看護師</span>
+<p class="result-description">静かなまなざしで心に寄り添う“静寂の月の看護師”。優しさの光が深い癒しをもたらします…</p>`,
+  "b": `<span class="title">【b】熟練の詠唱魔術師</span>
+<p class="result-description">言葉に魂を込め、真実を紡ぎ出す“熟練の詠唱魔術師”。覚悟と優しさが、闇を光へと変える詠唱を響かせます…</p>`
 };
 
 const questions = [
