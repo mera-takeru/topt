@@ -25,13 +25,18 @@
   .options button { width: 100%; text-align: left; background: #f9f9f9; color: var(--text); padding: 12px; border: 1px solid #ddd; border-radius: var(--radius); transition: background var(--transition), border-color var(--transition); }
   .options button:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
   .nav { display: flex; justify-content: space-between; }
-  .share-row { display: flex; margin-top: 16px; margin-bottom: 16px; }
-  .share-row button { flex: 1; }
+  .share-row, .goods-row, .restart-row {
+    display: flex;
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    flex-wrap: nowrap;
+  }
+  .share-row button, .goods-row button, .restart-row button {
+    flex: 1;
+  }
   #shareXBtn { background: #1DA1F2; }
-  .goods-row { display: flex; margin-top: 16px; margin-bottom: 16px; }
-  .goods-row button { flex: 1; }
-  #goodsBtn { background: var(--primary); color: #fff; }
-  .restart-row { display: flex; }
+  #goodsBtn { background: var(--primary); color: #fff; flex: 1; }
   .restart-row button { flex: 1; background: #fff; color: var(--primary); border: 1px solid var(--primary); }
   .start-image, .result-image {
     width: 100%;
