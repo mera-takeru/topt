@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>24調性性格診断</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary:#6C63FF; --secondary:#FF6584; --bg:#F9FAFB; --text:#333; --radius:12px; --transition:.3s; }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:16px;}
+    .container{width:100%;max-width:600px;background:#fff;border-radius:var(--radius);box-shadow:0 4px 12px rgba(0,0,0,0.05);padding:24px;}
+    h1{text-align:center;font-size:1.5rem;font-weight:700;margin-bottom:16px;color:var(--primary);}
+    .screen{display:none;}
+    .screen.active{display:block;}
+    button{font:inherit;font-size:1rem;padding:12px 20px;border:none;border-radius:var(--radius);background:var(--primary);color:#fff;cursor:pointer;transition:background var(--transition),transform var(--transition);}
+    button:hover{background:var(--secondary);transform:scale(1.02);}
+    #startBtn{width:100%;margin-top:12px;}
+    .progress-bar{height:8px;background:#eee;border-radius:4px;overflow:hidden;margin-bottom:16px;}
+    .progress-inner{height:100%;background:var(--primary);width:0%;transition:width var(--transition);}
+    .question h2{font-size:1.25rem;margin-bottom:16px;}
+    .options{list-style:none;padding:0;margin-bottom:24px;}
+    .options li{margin-bottom:12px;}
+    .options li.selected button{background:var(--secondary);color:#fff;}
+    .options button{width:100%;text-align:left;background:#f9f9f9;color:var(--text);padding:12px;border:1px solid #ddd;border-radius:var(--radius);transition:background var(--transition),border-color var(--transition);}
+    .options button:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
+    .nav{display:flex;justify-content:space-between;}
+    .share-row{display:flex;gap:12px;margin-top:16px;margin-bottom:16px;}
+    .share-row button{flex:1;}
+    #shareXBtn{background:#1DA1F2;}
+    #shareLineBtn{background:#00C300;}
+    .restart-row{display:flex;}
+    .restart-row button{flex:1;background:#fff;color:var(--primary);border:1px solid var(--primary);}
+    .start-image, .result-image { width:100%; height:200px; background:#ecebff; border-radius:var(--radius); margin-bottom:16px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+    .start-image img, .result-image img { width:100%; height:100%; object-fit:cover; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>24調性 性格診断</h1>
+    <div id="startScreen" class="screen active">
+      <div id="startImage" class="start-image"></div>
+      <p>ようこそ！診断を始めましょう。</p>
+      <button id="startBtn">診断をスタートする</button>
+    </div>
+    <div id="questionScreen" class="screen">
+      <div class="progress-bar"><div id="progInner" class="progress-inner"></div></div>
+      <div class="question"><h2 id="questionText"></h2></div>
+      <ul id="optionsList" class="options"></ul>
+      <div class="nav"><button id="backBtn">← 前へ</button></div>
+    </div>
+    <div id="resultScreen" class="screen">
+      <div id="resultImage" class="result-image"></div>
+      <h2>診断結果</h2>
+      <div id="resultText"></div>
+      <div class="share-row">
+        <button id="shareXBtn">Xでシェア</button>
+        <button id="shareLineBtn">LINEでシェア</button>
+      </div>
+      <div class="restart-row"><button id="restartBtn">もう一度診断する</button></div>
+    </div>
+  </div>
+  <script>
+    // 各調性の紹介文
+    const characterDescriptions = {
+      "C": `【C】正義感溢れる騎士<br>
+あなたは、どんな時も素直で、人としての信念を大切に生きる“正義感溢れる騎士”。目立つ言葉や派手な振る舞いに頼らずとも、あなたがそこにいるだけで、まるで北極星のように周囲に安心と信頼を与えます…`,
+      "cm": `【cm】内なる炎の刀鍛冶<br>
+静寂の中でひそかに創造の火を灯し続ける“内なる炎の刀鍛冶”。誠実に自分と向き合い、一振りごとに魂を込めて刀を鍛えるあなたの姿は、見る者の心に深い安心と信頼を刻みます…`,
+      "C♯": `【C♯】真実を知る思想家<br>
+物事の本質を見つめ、静かに真理を紡ぎ続ける“真実を知る思想家”。深海に差す光のように、目に見えぬ価値をとらえ、問いを投げかけながら世界をよりよく理解しようとする知性派です…`,
+      "C♯m": `【C♯m】深淵の観察者<br>
+表面的なことに惑わされず、物事の核心を洞察する“深淵の観察者”。静かな知性と鋭い目線で周囲を見つめ、一言で新たな気づきを与える賢者のような存在です…`,
+      "D": `【D】未来を掴む冒険家<br>
+理想の光を胸に掲げ、勇気と行動力で未知の世界を切り拓く“未来を掴む冒険家”。あなたの熱い情熱は周囲を鼓舞し、新たな可能性への扉を開きます…`,
+      "dm": `【dm】心を読み解く司書<br>
+感情の揺らぎを丁寧に読み取り、言葉に結晶化する“心を読み解く司書”。その穏やかなまなざしと温かな語り口は、人々に深い共感と安心をもたらします…`,
+      "E♭": `【E♭】調和の森の大賢者<br>
+静けさの中に深い知恵を宿し、すべてを調和へと導く“調和の森の大賢者”。自然のように包み込み、対立を超えて道を示す存在です…`,
+      "e♭m": `【e♭m】調和を彩る美術家<br>
+静寂の中で色彩を紡ぎ出し、心の奥を美しく表現する“調和を彩る美術家”。繊細な感性で見えない揺らぎに光を当てるアーティストです…`,
+      "E": `【E】光を奏でる音楽家<br>
+心の歓びを音に乗せて世界に響かせる“光を奏でる音楽家”。その明るさと深い思いやりが、人々の心にポジティブな調べを描き出します…`,
+      "em": `【em】奔放な風の遊牧民<br>
+広い世界を風のように駆ける“奔放な風の遊牧民”。自由と優しさを両手に、心の赴くままに旅し続けるあなたは、出会う人々に新たな息吹をもたらします…`,
+      "F": `【F】空想の天才発明家<br>
+誰も見たことのないアイデアを軽やかに形にする“空想の天才発明家”。遊び心と知性を併せ持ち、日常に驚きとインスピレーションを生み出します…`,
+      "fm": `【fm】歴史を紡ぐ小説家<br>
+時の細かな記憶を言葉に昇華する“歴史を紡ぐ小説家”。深い共感力で過去と未来をつなぎ、物語という贈り物を紡ぎ出します…`,
+      "F♯": `【F♯】天空の一級建築士<br>
+高みから世界を設計し、理想の調和を描き出す“天空の一級建築士”。精緻な構造と美意識が息づく空間を築きます…`,
+      "f♯m": `【f♯m】一匹狼の錬金術師<br>
+孤高に真理を追い求め、唯一無二の価値を生み出す“一匹狼の錬金術師”。静かなる情熱が、深淵から光を紡ぎます…`,
+      "G": `【G】伝説の時空の射手<br>
+未来を信じて矢を放つ“伝説の時空の射手”。的確な決断力と優しさで、希望の方向へ道を射抜きます…`,
+      "gm": `【gm】闇を照らす名探偵<br>
+闇夜に真実を探し続ける“闇を照らす名探偵”。静かな洞察力で隠された真実を導き出します…`,
+      "A♭": `【A♭】優雅に踊る舞踏家<br>
+気品ある所作で場を整え、調和を生む“優雅に踊る舞踏家”。静かな魔法で空気を彩ります…`,
+      "a♭m": `【a♭m】孤高の芸術収集家<br>
+希少な美を拾い集める“孤高の芸術収集家”。静けさの中に潜む詩を、魂のコレクションとして守ります…`,
+      "A": `【A】知と情熱の参謀長<br>
+知性と熱意で人々を導く“知と情熱の参謀長”。戦略と想いを融合させ、光の道筋を描きます…`,
+      "am": `【am】夕暮れを紡ぐ詩人<br>
+情景を優しく言葉に編み出す“夕暮れを紡ぐ詩人”。儚さの中に希望の光を宿す詩を奏でます…`,
+      "B♭": `【B♭】流星の旅先案内人<br>
+見えない流れを感じ取り、未知へと導く“流星の旅先案内人”。直感的な判断が希望の道を照らします…`,
+      "b♭m": `【b♭m】静寂の月の看護師<br>
+静かなまなざしで心に寄り添う“静寂の月の看護師”。優しさの光が深い癒しをもたらします…`,
+      "B": `【B】反骨精神の剣闘士<br>
+逆境を軽やかに乗り越える“反骨精神の剣闘士”。粘り強さと自由な発想で困難をチャンスに変えます…`,
+      "b": `【b】熟練の詠唱魔術師<br>
+言葉に魂を込め、真実を紡ぎ出す“熟練の詠唱魔術師”。覚悟と優しさが、闇を光へと変える詠唱を響かせます…`
+    };
+    const questions = [
+      {"id":"Q1","text":"Q1. あなたの部屋ってどんな感じ？","options":[
+        {"text":"整ったお気に入りの棚","points":{"F♯":3,"B":2,"A":1}},
+        {"text":"気分で配置を変える","points":{"em":3,"F":2,"B♭":1}},
+        {"text":"静かで余白が多い","points":{"E♭":3,"gm":2,"cm":1}},
+        {"text":"モノが多くて落ち着く","points":{"fm":3,"b":2,"dm":1}},
+        {"text":"最小限ですっきり","points":{"C":3,"G":2,"f♯m":1}},
+        {"text":"趣味で埋め尽くす","points":{"a♭m":3,"e♭m":2,"am":1}}
+      ]},
+      {"id":"Q2","text":"Q2. 子どもの頃、よく言われたことは？","options":[
+        {"text":"落ち着いてるね","points":{"gm":3,"E♭":2,"dm":1}},
+        {"text":"自由すぎる！","points":{"em":3,"F":2,"B♭":1}},
+        {"text":"なんでそんな細かいの？","points":{"F♯":3,"B":2,"f♯m":1}},
+        {"text":"ちょっと変わってるね","points":{"c♯m":3,"F":2,"a♭m":1}},
+        {"text":"やさしい子だね","points":{"am":3,"e♭m":2,"b♭m":1}},
+        {"text":"しっかりしてるね","points":{"C":3,"A":2,"G":1}}
+      ]},
+      {"id":"Q3","text":"Q3. 何かを作るとき、大事にしてることは？","options":[
+        {"text":"世界観や美しさ","points":{"a♭m":3,"e♭m":2,"F":1}},
+        {"text":"意味やストーリー性","points":{"fm":3,"b":2,"am":1}},
+        {"text":"構成や仕上がりの精度","points":{"F♯":3,"B":2,"C♯":1}},
+        {"text":"とにかく直感とノリ","points":{"em":3,"B♭":2,"c♯m":1}},
+        {"text":"誰かに届くこと","points":{"E":3,"A":2,"E♭":1}},
+        {"text":"自分の気持ちを込める","points":{"cm":3,"dm":2,"gm":1}}
+      ]},
+      {"id":"Q4","text":"Q4. チームで動くとき、どんなタイプ？","options":[
+        {"text":"指示や進行を任されがち","points":{"A":3,"C":2,"G":1}},
+        {"text":"アイデア係として盛り上げる","points":{"F":3,"em":2,"c♯m":1}},
+        {"text":"裏方で支えるのが得意","points":{"dm":3,"b♭m":2,"cm":1}},
+        {"text":"流れを読んで調整する役","points":{"E♭":3,"gm":2,"am":1}},
+        {"text":"ちょっと離れて様子を見る","points":{"f♯m":3,"F♯":2,"a♭m":1}},
+        {"text":"好きに動いて巻き込むタイプ","points":{"B♭":3,"B":2,"D":1}}
+      ]},
+      {"id":"Q5","text":"Q5. 予定が急にキャンセルされたら？","options":[
+        {"text":"すぐ予定を入れ直す","points":{"C":3,"A":2,"F♯":1}},
+        {"text":"ぼーっとして回復時間に","points":{"cm":3,"dm":2,"b♭m":1}},
+        {"text":"ひとり時間を楽しむ","points":{"f♯m":3,"a♭m":2,"fm":1}},
+        {"text":"気にせずすぐ別行動へ","points":{"em":3,"B♭":2,"F":1}},
+        {"text":"意味を考えて整理する","points":{"gm":3,"E♭":2,"b":1}},
+        {"text":"逆にチャンスと感じる","points":{"B":3,"c♯m":2,"E":1}}
+      ]},
+      {"id":"Q6","text":"Q6. つい、やってしまう自分のクセって？","options":[
+        {"text":"頭の中で全部シミュレーション","points":{"F♯":3,"C♯":2,"A":1}},
+        {"text":"話さず黙って考え込む","points":{"f♯m":3,"cm":2,"b":1}},
+        {"text":"空想や妄想が止まらない","points":{"c♯m":3,"a♭m":2,"F":1}},
+        {"text":"ついツッコミたくなる","points":{"B":3,"em":2,"D":1}},
+        {"text":"気づくと人に合わせてる","points":{"am":3,"e♭m":2,"dm":1}},
+        {"text":"細かいところが気になる","points":{"b":3,"fm":2,"gm":1}}
+      ]},
+      {"id":"Q7","text":"Q7. 理想のリーダーって、どんな人？","options":[
+        {"text":"正直で信念がある人","points":{"C":3,"A":2,"G":1}},
+        {"text":"柔らかくて話を聞く人","points":{"E♭":3,"am":2,"dm":1}},
+        {"text":"先を見て指示が的確な人","points":{"A":3,"F♯":2,"C♯":1}},
+        {"text":"面白くて自由な雰囲気の人","points":{"F":3,"em":2,"B♭":1}},
+        {"text":"個性を認めてくれる人","points":{"e♭m":3,"a♭m":2,"f♯m":1}},
+        {"text":"実力があって背中で見せる人","points":{"B":3,"b":2,"gm":1}}
+      ]},
+      {"id":"Q8","text":"Q8. 大きな決断をするときに重視するのは？","options":[
+        {"text":"信じてる価値や信念","points":{"C":3,"am":2,"A":1}},
+        {"text":"周りの気持ちや影響","points":{"dm":3,"e♭m":2,"E♭":1}},
+        {"text":"自分の感覚や直感","points":{"em":3,"B♭":2,"F":1}},
+        {"text":"目的や未来のビジョン","points":{"D":3,"G":2,"B":1}},
+        {"text":"情報や条件を比較","points":{"F♯":3,"C♯":2,"b":1}},
+        {"text":"一度立ち止まって内省","points":{"cm":3,"f♯m":2,"gm":1}}
+      ]},
+      {"id":"Q9","text":"Q9. 朝の過ごし方は？","options":[
+        {"text":"すぐに動き出す","points":{"D":3,"A":2,"B":1}},
+        {"text":"ベッドでしばらくぼーっと","points":{"cm":3,"dm":2,"b♭m":1}},
+        {"text":"お気に入りの習慣をこなす","points":{"C":3,"G":2,"F♯":1}},
+        {"text":"気分で変わる","points":{"B♭":3,"em":2,"f♯m":1}},
+        {"text":"小さな楽しみを見つける","points":{"F":3,"am":2,"E":1}},
+        {"text":"空想で1日が始まる","points":{"c♯m":3,"a♭m":2,"fm":1}}
+      ]},
+      {"id":"Q10","text":"Q10. 理想の休日の過ごし方は？","options":[
+        {"text":"自然の中でぼんやり","points":{"dm":3,"cm":2,"gm":1}},
+        {"text":"趣味に没頭","points":{"a♭m":3,"f♯m":2,"e♭m":1}},
+        {"text":"旅に出て刺激を得る","points":{"B":3,"D":2,"b":1}},
+        {"text":"人と会って話す","points":{"A":3,"C":2,"F":1}},
+        {"text":"その日の気分で決めたい","points":{"B♭":3,"em":2,"c♯m":1}},
+        {"text":"予定を細かく立てる","points":{"F♯":3,"C♯":2,"fm":1}}
+      ]},
+      {"id":"Q11","text":"Q11. プレッシャーのかかる場面での自分は？","options":[
+        {"text":"冷静に状況を分析する","points":{"F♯":3,"C♯":2,"b":1}},
+        {"text":"緊張するけど集中できる","points":{"C":3,"A":2,"G":1}},
+        {"text":"一旦静かに考え直す","points":{"cm":3,"f♯m":2,"gm":1}},
+        {"text":"気づくと体が動いてる","points":{"B":3,"em":2,"D":1}},
+        {"text":"不安だけど周りを優先する","points":{"am":3,"dm":2,"e♭m":1}},
+        {"text":"自分らしさで乗りきる","points":{"F":3,"B♭":2,"a♭m":1}}
+      ]},
+      {"id":"Q12","text":"Q12. 無人島に1つだけ持っていくなら？","options":[
+        {"text":"地図やコンパス","points":{"G":3,"C":2,"F♯":1}},
+        {"text":"スケッチブックや日記帳","points":{"am":3,"fm":2,"cm":1}},
+        {"text":"サバイバルナイフ","points":{"B":3,"D":2,"b":1}},
+        {"text":"音楽プレイヤー","points":{"E":3,"F":2,"em":1}},
+        {"text":"大切な誰かの写真","points":{"dm":3,"e♭m":2,"b♭m":1}},
+        {"text":"自作のオリジナルゲーム","points":{"c♯m":3,"a♭m":2,"f♯m":1}}
+      ]}
+    ];
+    let current = 0;
+    const answers = Array(questions.length).fill(null);
+    const startBtn = document.getElementById('startBtn');
+    const backBtn = document.getElementById('backBtn');
+    const restartBtn = document.getElementById('restartBtn');
+    const startScreen = document.getElementById('startScreen');
+    const questionScreen = document.getElementById('questionScreen');
+    const resultScreen = document.getElementById('resultScreen');
+    const questionText = document.getElementById('questionText');
+    const optionsList = document.getElementById('optionsList');
+    const progInner = document.getElementById('progInner');
+    const resultTextDiv = document.getElementById('resultText');
+
+    function showScreen(screen) {
+      [startScreen, questionScreen, resultScreen].forEach(s => s.classList.remove('active'));
+      screen.classList.add('active');
+    }
+
+    function renderQuestion() {
+      const q = questions[current];
+      questionText.textContent = q.text;
+      progInner.style.width = `${current / questions.length * 100}%`;
+      optionsList.innerHTML = '';
+      q.options.forEach((opt, idx) => {
+        const li = document.createElement('li');
+        if (answers[current] === idx) li.classList.add('selected');
+        const btn = document.createElement('button');
+        btn.textContent = opt.text;
+        btn.onclick = () => {
+          answers[current] = idx;
+          if (current < questions.length - 1) {
+            current++;
+            renderQuestion();
+          } else {
+            showResult();
+          }
+        };
+        li.appendChild(btn);
+        optionsList.appendChild(li);
+      });
+      backBtn.style.display = current > 0 ? 'inline-block' : 'none';
+    }
+
+    function prevQuestion() {
+      if (current > 0) {
+        current--;
+        renderQuestion();
+      }
+    }
+
+    function showResult() {
+      const totals = {};
+      questions.forEach((q, qi) => {
+        const sel = answers[qi];
+        if (sel != null) {
+          Object.entries(q.options[sel].points).forEach(([k, v]) => {
+            totals[k] = (totals[k] || 0) + v;
+          });
+        }
+      });
+      const topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+      document.getElementById('resultImage').innerHTML = `<img src="${topKey}.jpg" alt="${topKey}の画像">`;
+      resultTextDiv.innerHTML = characterDescriptions[topKey] || '診断結果が見つかりませんでした。';
+      showScreen(resultScreen);
+      // シェアボタン設定
+      document.getElementById('shareXBtn').onclick = () => {
+        window.open(
+          `https://twitter.com/intent/tweet?text=${encodeURIComponent(`私は「${topKey}」タイプ！24調性診断はこちら →`)}&url=${encodeURIComponent(location.href)}`,
+          '_blank'
+        );
+      };
+      document.getElementById('shareLineBtn').onclick = () => {
+        window.open(
+          `https://line.me/R/msg/text/?${encodeURIComponent(`私は「${topKey}」タイプ！24調性診断はこちら → ${location.href}`)}`,
+          '_blank'
+        );
+      };
+    }
+
+    startBtn.onclick = () => { current = 0; answers.fill(null); renderQuestion(); showScreen(questionScreen); };
+    backBtn.onclick = prevQuestion;
+    restartBtn.onclick = () => showScreen(startScreen);
+    
+    
+    showScreen(startScreen);
+  </script>
+</body>
+</html>
