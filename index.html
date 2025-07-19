@@ -371,6 +371,7 @@ const questions = [
 ];
 
 let current = 0;
+let topKey = null; // グローバル変数で topKey を管理
 const answers = Array(questions.length).fill(null);
 const startBtn = document.getElementById('startBtn');
 const backBtn = document.getElementById('backBtn');
@@ -456,7 +457,7 @@ function renderQuestion() {
     btn.textContent = opt.text;
     btn.onclick = () => {
       answers[current] = idx;
-      console ítems. log(`Question ${current + 1}: Selected option ${idx}, Answers:`, answers); // デバッグ用
+      console.log(`Question ${current + 1}: Selected option ${idx}, Answers:`, answers); // デバッグ用
       if (current < questions.length - 1) {
         current++;
         renderQuestion();
@@ -499,7 +500,7 @@ function showResult() {
     return;
   }
 
-  const topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+  topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
   document.getElementById('resultImage').innerHTML = `<img src="${topKey}.jpg" alt="${topKey}の画像" onerror="this.src='placeholder.jpg'">`;
   resultTextDiv.innerHTML = `
     ${characterDescriptions[topKey] || '診断結果が見つかりませんでした。'}
@@ -509,26 +510,41 @@ function showResult() {
     <p>${famousSongs[topKey] || '情報が見つかりませんでした。'}</p>
   `;
   showScreen(resultScreen);
-  document.getElementById('shareXBtn').onclick = () => {
+}
+
+// イベントハンドラを初期化時に設定
+document.getElementById('shareXBtn').addEventListener('click', () => {
+  if (topKey) {
     window.open(
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(`私は「${topKey}」タイプ！24調性診断はこちら →`)}&url=${encodeURIComponent(location.href)}`,
       '_blank'
     );
-  };
-  document.getElementById('goodsBtn').onclick = () => {
-    window.open('https://example.com/official-goods', '_blank');
-  };
-}
+  } else {
+    console.warn('topKey is not set yet.');
+  }
+});
+document.getElementById('goodsBtn').addEventListener('click', () => {
+  window.open('https://example.com/official-goods', '_blank');
+});
 
 startBtn.onclick = () => {
-  console.log('startBtn clicked'); // デバッグ用
+  console.log('startBtn clicked, current:', current, 'answers:', answers); // デバッグ用
   current = 0;
   answers.fill(null);
   renderQuestion();
   showScreen(questionScreen);
 };
+
 backBtn.onclick = prevQuestion;
-restartBtn.onclick = () => showScreen(startScreen);
+
+restartBtn.onclick = () => {
+  console.log('restartBtn clicked'); // デバッグ用
+  current = 0;
+  answers.fill(null);
+  topKey = null; // topKey をリセット
+  resultTextDiv.innerHTML = ''; // 結果画面の内容をクリア
+  showScreen(startScreen);
+};
 
 showScreen(startScreen);
   </script>
