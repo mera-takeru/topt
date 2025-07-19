@@ -200,8 +200,8 @@ button:hover {
 }
 .compatible-title {
   font-size: 1.5rem;
-  font-weight: 700;
-  text-align: center;
+  font-weight: 400; /* 通常のフォントウェイト */
+  text-align: left; /* 左揃え */
   margin-bottom: 8px;
 }
 #resultScreen h3 {
@@ -577,7 +577,7 @@ const questions = [
     {"text":"大切な誰かの写真","points":{"dm":3,"e♭m":2,"b♭m":1}},
     {"text":"自作のオリジナルゲーム","points":{"c♯m":3,"a♭m":2,"f♯m":1}}
   ]}
-];
+};
 
 let current = 0;
 let topKey = null;
@@ -668,14 +668,14 @@ function showResult() {
     .map(key => `<p class="compatible-title">${getCharacterTitle(key)}</p>`)
     .join('');
 
-  // 有名曲をカテゴリごとに改行して表示
+  // 有名曲をカテゴリ名なしで改行して表示
   const songs = famousSongs[topKey] || {};
   const songsHTML = songs.classic
     ? `
-      <p>クラシック: ${songs.classic}</p>
-      <p>昭和: ${songs.showa}</p>
-      <p>平成: ${songs.heisei}</p>
-      <p>令和: ${songs.reiwa}</p>
+      <p>${songs.classic}</p>
+      <p>${songs.showa}</p>
+      <p>${songs.heisei}</p>
+      <p>${songs.reiwa}</p>
     `
     : '<p>情報が見つかりませんでした。</p>';
 
