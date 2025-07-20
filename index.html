@@ -263,7 +263,7 @@
 <p class="result-description">あなたは、どんな時も素直で、人としての信念を大切に生きる“正義感溢れる騎士”。目立つ言葉や派手な振る舞いに頼らずとも、あなたがそこにいるだけで、まるで北極星のように周囲に安心と信頼を与えます…</p>`,
         "cm": `<span class="title">【cm】内なる炎の刀鍛冶</span>
 <p class="result-description">静寂の中でひそかに創造の火を灯し続ける“内なる炎の刀鍛冶”。誠実に自分と向き合い、一振りごとに魂を込めて刀を鍛えるあなたの姿は、見る者の心に深い安心と信頼を刻みます…</p>`,
-        "C♯": `<span class="title">【C♯】真実を知る思想家</span>
+        "D♭": `<span class="title">【D♭】真実を知る思想家</span>
 <p class="result-description">物事の本質を見つめ、静かに真理を紡ぎ続ける“真実を知る思想家”。深海に差す光のように、目に見えぬ価値をとらえ、問いを投げかけながら世界をよりよく理解しようとする知性派です…</p>`,
         "c♯m": `<span class="title">【c♯m】深淵の観察者</span>
 <p class="result-description">表面的なことに惑わされず、物事の核心を洞察する“深淵の観察者”。静かな知性と鋭い目線で周囲を見つめ、一言で新たな気づきを与える賢者のような存在です…</p>`,
@@ -294,7 +294,7 @@
         "A♭": `<span class="title">【A♭】優雅に踊る舞踏家</span>
 <p class="result-description">気品ある所作で場を整え、調和を生む“優雅に踊る舞踏家”。静かな魔法で空気を彩ります…</p>`,
         "g♯m": `<span class="title">【g♯m】孤高の芸術収集家</span>
-<p class="result-description">希少な美を拾い集める“孤高の芸術収集家”。静けさの中に潜む詩を、魂のコレクションとして守ります…</p>`,
+<p class="result-desc ription">希少な美を拾い集める“孤高の芸術収集家”。静けさの中に潜む詩を、魂のコレクションとして守ります…</p>`,
         "A": `<span class="title">【A】知と情熱の参謀長</span>
 <p class="result-description">知性と熱意で人々を導く“知と情熱の参謀長”。戦略と想いを融合させ、光の道筋を描きます…</p>`,
         "am": `<span class="title">【am】夕暮れを紡ぐ詩人</span>
@@ -310,8 +310,8 @@
       const compatibleKeys = {
         "C": ["cm", "am", "G", "F"],
         "cm": ["C", "E♭", "gm", "fm"],
-        "C♯": ["c♯m", "g♯m", "A", "F♯"],
-        "c♯m": ["C♯", "E", "g♯m", "fm"],
+        "D♭": ["c♯m", "g♯m", "A", "F♯"],
+        "c♯m": ["D♭", "E", "g♯m", "fm"],
         "D": ["dm", "bm", "A", "G"],
         "dm": ["D", "F", "am", "b♭m"],
         "E♭": ["e♭m", "cm", "B♭", "A♭"],
@@ -320,16 +320,16 @@
         "em": ["E", "G", "bm", "am"],
         "F": ["fm", "dm", "C", "B♭"],
         "fm": ["F", "A♭", "cm", "g♯m"],
-        "F♯": ["f♯m", "g♯m", "C♯", "B"],
+        "F♯": ["f♯m", "g♯m", "D♭", "B"],
         "f♯m": ["F♯", "A", "c♯m", "cm"],
         "G": ["gm", "em", "D", "C"],
         "gm": ["G", "B♭", "dm", "cm"],
-        "A♭": ["g♯m", "fm", "E♭", "C♯"],
+        "A♭": ["g♯m", "fm", "E♭", "D♭"],
         "g♯m": ["A♭", "B", "e♭m", "em"],
         "A": ["am", "f♯m", "E", "D"],
         "am": ["A", "C", "em", "dm"],
         "B♭": ["b♭m", "gm", "F", "E♭"],
-        "b♭m": ["B♭", "C♯", "fm", "am"],
+        "b♭m": ["B♭", "D♭", "fm", "am"],
         "B": ["bm", "g♯m", "F♯", "A"],
         "bm": ["B", "D", "f♯m", "gm"]
       };
@@ -347,7 +347,7 @@
           heisei: "Mr.Children - Tomorrow never knows",
           reiwa: "Aimer - 残響散歌"
         },
-        "C♯": {
+        "D♭": {
           classic: "リスト - 愛の夢 第3番",
           showa: "松田聖子 - 赤いスイートピー",
           heisei: "B'z - LOVE PHANTOM",
@@ -475,6 +475,34 @@
         }
       };
 
+      // 調性ごとの画像URLを定義
+      const imageUrls = {
+        "B": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "C": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "cm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "D♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "c♯m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "D": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "dm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "E♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "e♭m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "E": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "em": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "F": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "fm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "F♯": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "f♯m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "G": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "gm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "A♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "g♯m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "A": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "am": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "B♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "b♭m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+        "bm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4"
+      };
+
       const questions = [
         {"id":"Q1","text":"Q1. あなたの部屋ってどんな感じ？","options":[
           {"text":"整ったお気に入りの棚","points":{"F♯":3,"B":2,"A":1}},
@@ -495,7 +523,7 @@
         {"id":"Q3","text":"Q3. 何かを作るとき、大事にしてることは？","options":[
           {"text":"世界観や美しさ","points":{"g♯m":3,"e♭m":2,"F":1}},
           {"text":"意味やストーリー性","points":{"fm":3,"bm":2,"am":1}},
-          {"text":"構成や仕上がりの精度","points":{"F♯":3,"B":2,"C♯":1}},
+          {"text":"構成や仕上がりの精度","points":{"F♯":3,"B":2,"D♭":1}},
           {"text":"とにかく直感とノリ","points":{"em":3,"B♭":2,"c♯m":1}},
           {"text":"誰かに届くこと","points":{"E":3,"A":2,"E♭":1}},
           {"text":"自分の気持ちを込める","points":{"cm":3,"dm":2,"gm":1}}
@@ -517,7 +545,7 @@
           {"text":"逆にチャンスと感じる","points":{"B":3,"c♯m":2,"E":1}}
         ]},
         {"id":"Q6","text":"Q6. つい、やってしまう自分のクセって？","options":[
-          {"text":"頭の中で全部シミュレーション","points":{"F♯":3,"C♯":2,"A":1}},
+          {"text":"頭の中で全部シミュレーション","points":{"F♯":3,"D♭":2,"A":1}},
           {"text":"話さず黙って考え込む","points":{"f♯m":3,"cm":2,"bm":1}},
           {"text":"空想や妄想が止まらない","points":{"c♯m":3,"g♯m":2,"F":1}},
           {"text":"ついツッコミたくなる","points":{"B":3,"em":2,"D":1}},
@@ -527,7 +555,7 @@
         {"id":"Q7","text":"Q7. 理想のリーダーって、どんな人？","options":[
           {"text":"正直で信念がある人","points":{"C":3,"A":2,"G":1}},
           {"text":"柔らかくて話を聞く人","points":{"E♭":3,"am":2,"dm":1}},
-          {"text":"先を見て指示が的確な人","points":{"A":3,"F♯":2,"C♯":1}},
+          {"text":"先を見て指示が的確な人","points":{"A":3,"F♯":2,"D♭":1}},
           {"text":"面白くて自由な雰囲気の人","points":{"F":3,"em":2,"B♭":1}},
           {"text":"個性を認めてくれる人","points":{"e♭m":3,"g♯m":2,"f♯m":1}},
           {"text":"実力があって背中で見せる人","points":{"B":3,"bm":2,"gm":1}}
@@ -537,7 +565,7 @@
           {"text":"周りの気持ちや影響","points":{"dm":3,"e♭m":2,"E♭":1}},
           {"text":"自分の感覚や直感","points":{"em":3,"B♭":2,"F":1}},
           {"text":"目的や未来のビジョン","points":{"D":3,"G":2,"B":1}},
-          {"text":"情報や条件を比較","points":{"F♯":3,"C♯":2,"bm":1}},
+          {"text":"情報や条件を比較","points":{"F♯":3,"D♭":2,"bm":1}},
           {"text":"一度立ち止まって内省","points":{"cm":3,"f♯m":2,"gm":1}}
         ]},
         {"id":"Q9","text":"Q9. 朝の過ごし方は？","options":[
@@ -554,10 +582,10 @@
           {"text":"旅に出て刺激を得る","points":{"B":3,"D":2,"bm":1}},
           {"text":"人と会って話す","points":{"A":3,"C":2,"F":1}},
           {"text":"その日の気分で決めたい","points":{"B♭":3,"em":2,"c♯m":1}},
-          {"text":"予定を細かく立てる","points":{"F♯":3,"C♯":2,"fm":1}}
+          {"text":"予定を細かく立てる","points":{"F♯":3,"D♭":2,"fm":1}}
         ]},
         {"id":"Q11","text":"Q11. プレッシャーのかかる場面での自分は？","options":[
-          {"text":"冷静に状況を分析する","points":{"F♯":3,"C♯":2,"bm":1}},
+          {"text":"冷静に状況を分析する","points":{"F♯":3,"D♭":2,"bm":1}},
           {"text":"緊張するけど集中できる","points":{"C":3,"A":2,"G":1}},
           {"text":"一旦静かに考え直す","points":{"cm":3,"f♯m":2,"gm":1}},
           {"text":"気づくと体が動いてる","points":{"B":3,"em":2,"D":1}},
@@ -671,7 +699,9 @@
         }
 
         topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
-        document.getElementById('resultImage').innerHTML = `<img src="${topKey}.jpg" alt="${topKey}の画像" onerror="this.src='placeholder.jpg'">`;
+        // imageUrls から対応する画像URLを取得
+        const imageUrl = imageUrls[topKey] || 'placeholder.jpg';
+        document.getElementById('resultImage').innerHTML = `<img src="${imageUrl}" alt="${topKey}の画像" onerror="this.src='placeholder.jpg'">`;
 
         const compatible = compatibleKeys[topKey] || [];
         const compatibleHTML = compatible
