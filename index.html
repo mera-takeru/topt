@@ -232,7 +232,7 @@
       <div id="startImage" class="start-image">
         <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4" alt="メイン画像">
       </div>
-      <p>たった12個の質問に答えるだけで<br>あなたの「調性格（パートナル）」がわかります。</p>
+      <p>たった12個の質問に答えるだけで<br>あなたの「調性格（パートナル）」がわかります。<br>6つの選択肢の中から<br>最もあなたらしい回答を選んでください。</p>
       <button id="startBtn">診断をはじめる</button>
     </div>
     <div id="questionScreen" class="screen">
@@ -504,29 +504,29 @@
       };
 
       const questions = [
-        {"id":"Q1","text":"Q1. あなたの部屋ってどんな感じ？","options":[
-          {"text":"整ったお気に入りの棚","points":{"F♯":3,"B":2,"A":1}},
+        {"id":"Q1","text":"Q1. 「あなたの部屋」を表す言葉は？","options":[
+          {"text":"整理整頓されている","points":{"F♯":3,"B":2,"A":1}},
           {"text":"気分で配置を変える","points":{"em":3,"F":2,"B♭":1}},
-          {"text":"静かで余白が多い","points":{"E♭":3,"gm":2,"cm":1}},
-          {"text":"モノが多くて落ち着く","points":{"fm":3,"bm":2,"dm":1}},
-          {"text":"最小限ですっきり","points":{"C":3,"G":2,"f♯m":1}},
-          {"text":"趣味で埋め尽くす","points":{"g♯m":3,"e♭m":2,"am":1}}
+          {"text":"静かで落ち着く空間","points":{"E♭":3,"gm":2,"cm":1}},
+          {"text":"汚いけど安心できる","points":{"fm":3,"bm":2,"dm":1}},
+          {"text":"最小限でスッキリと","points":{"C":3,"G":2,"f♯m":1}},
+          {"text":"好きな物でいっぱい","points":{"g♯m":3,"e♭m":2,"am":1}}
         ]},
-        {"id":"Q2","text":"Q2. 子どもの頃、よく言われたことは？","options":[
-          {"text":"落ち着いてるね","points":{"gm":3,"E♭":2,"dm":1}},
-          {"text":"自由すぎる！","points":{"em":3,"F":2,"B♭":1}},
-          {"text":"なんでそんな細かいの？","points":{"F♯":3,"B":2,"f♯m":1}},
-          {"text":"ちょっと変わってるね","points":{"c♯m":3,"F":2,"g♯m":1}},
-          {"text":"やさしい子だね","points":{"am":3,"e♭m":2,"b♭m":1}},
-          {"text":"しっかりしてるね","points":{"C":3,"A":2,"G":1}}
+        {"id":"Q2","text":"Q2. 子どもの頃、よく言われた台詞は？","options":[
+          {"text":"「落ち着いてるよね」","points":{"gm":3,"E♭":2,"dm":1}},
+          {"text":"「自由すぎる子だね」","points":{"em":3,"F":2,"B♭":1}},
+          {"text":"「頭の回転が早いね」","points":{"F♯":3,"B":2,"f♯m":1}},
+          {"text":"「少し変わってるね」","points":{"c♯m":3,"F":2,"g♯m":1}},
+          {"text":"「とっても親切だね」","points":{"am":3,"e♭m":2,"b♭m":1}},
+          {"text":"「しっかりしてるね」","points":{"C":3,"A":2,"G":1}}
         ]},
-        {"id":"Q3","text":"Q3. 何かを作るとき、大事にしてることは？","options":[
-          {"text":"世界観や美しさ","points":{"g♯m":3,"e♭m":2,"F":1}},
-          {"text":"意味やストーリー性","points":{"fm":3,"bm":2,"am":1}},
-          {"text":"構成や仕上がりの精度","points":{"F♯":3,"B":2,"D♭":1}},
-          {"text":"とにかく直感とノリ","points":{"em":3,"B♭":2,"c♯m":1}},
-          {"text":"誰かに届くこと","points":{"E":3,"A":2,"E♭":1}},
-          {"text":"自分の気持ちを込める","points":{"cm":3,"dm":2,"gm":1}}
+        {"id":"Q3","text":"Q3. 何かを作る時に大事なことは？","options":[
+          {"text":"雰囲気の良さ","points":{"g♯m":3,"e♭m":2,"F":1}},
+          {"text":"ストーリー性","points":{"fm":3,"bm":2,"am":1}},
+          {"text":"構成と完成度","points":{"F♯":3,"B":2,"D♭":1}},
+          {"text":"勘とスピード","points":{"em":3,"B♭":2,"c♯m":1}},
+          {"text":"誰かに届ける","points":{"E":3,"A":2,"E♭":1}},
+          {"text":"思いを込める","points":{"cm":3,"dm":2,"gm":1}}
         ]},
         {"id":"Q4","text":"Q4. チームで動くとき、どんなタイプ？","options":[
           {"text":"指示や進行を任されがち","points":{"A":3,"C":2,"G":1}},
