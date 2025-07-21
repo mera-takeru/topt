@@ -29,9 +29,9 @@ body {
   background: var(--bg);
   color: var(--text);
   display: flex;
-  flex-direction: column; /* 子要素を垂直に並べる */
-  align-items: center; /* 水平中央揃え */
-  justify-content: flex-start; /* 垂直方向は上から開始 */
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   min-height: 100vh;
   padding: 16px;
 }
@@ -44,17 +44,14 @@ body {
   border-radius: var(--radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   padding: 24px;
-  margin: 16px auto; /* 上下マージン追加、水平中央揃え */
+  margin: 16px auto;
 }
 
-/* ヘッダー：画面幅全体、トップに固定 */
+/* ヘッダー：固定解除、画面幅全体 */
 header {
   background: #fff;
   padding: 16px;
   border-bottom: 1px solid #ddd;
-  position: sticky;
-  top: 0;
-  z-index: 100;
   width: 100%;
   text-align: center;
   box-sizing: border-box;
