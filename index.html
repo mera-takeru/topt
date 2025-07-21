@@ -6,267 +6,336 @@
   <title>【pertonal -パートナル-】</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { 
-      --primary: #6C63FF; 
-      --secondary: #FF6584; 
-      --bg: #F9FAFB; 
-      --text: #333; 
-      --radius: 12px; 
-      --transition: .3s; 
-    }
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-    }
-    body { 
-      font-family: 'Inter', sans-serif; 
-      background: var(--bg); 
-      color: var(--text); 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      min-height: 100vh; 
-      padding: 16px; 
-    }
-    .container { 
-      width: 100%; 
-      max-width: 600px; 
-      background: #fff; 
-      border-radius: var(--radius); 
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
-      padding: 24px; 
-    }
-    h1 { 
-      text-align: center; 
-      font-weight: 700; 
-      margin-bottom: 16px; 
-      color: var(--primary); 
-    }
-    .title-topt {
-      font-size: 1.5rem;
-      font-weight: 700;
-      text-align: center;
-      display: block;
-      margin-bottom: 8px;
-    }
-    .title-sub {
-      font-size: 1.3rem;
-      display: block;
-    }
-    .screen { 
-      display: none; 
-    }
-    .screen.active { 
-      display: block; 
-    }
-    button { 
-      font: inherit; 
-      font-size: 1rem; 
-      padding: 12px 20px; 
-      border: none; 
-      border-radius: var(--radius); 
-      background: var(--primary); 
-      color: #fff; 
-      cursor: pointer; 
-      transition: background var(--transition), transform var(--transition); 
-    }
-    button:hover { 
-      background: var(--secondary); 
-      transform: scale(1.02); 
-    }
-    #startBtn { 
-      width: 100%; 
-      margin-top: 12px; 
-    }
-    .progress-bar { 
-      height: 8px; 
-      background: #eee; 
-      border-radius: 4px; 
-      overflow: hidden; 
-      margin-bottom: 16px; 
-    }
-    .progress-inner { 
-      height: 100%; 
-      background: var(--primary); 
-      width: 0%; 
-      transition: width var(--transition); 
-    }
-    .question h2 { 
-      font-size: 1.25rem; 
-      margin-bottom: 16px; 
-    }
-    .options { 
-      list-style: none; 
-      padding: 0; 
-      margin-bottom: 24px; 
-    }
-    .options li { 
-      margin-bottom: 12px; 
-    }
-    .options li.selected button { 
-      background: var(--secondary); 
-      color: #fff; 
-    }
-    .options button { 
-      width: 100%; 
-      text-align: left; 
-      background: #f9f9f9; 
-      color: var(--text); 
-      padding: 12px; 
-      border: 1px solid #ddd; 
-      border-radius: var(--radius); 
-      transition: background var(--transition), border-color var(--transition); 
-    }
-    .options button:hover { 
-      background: var(--primary); 
-      color: #fff; 
-      border-color: var(--primary); 
-    }
-    .nav { 
-      display: flex; 
-      justify-content: space-between; 
-    }
-    .share-row, .goods-row, .restart-row {
-      display: flex;
-      width: 100%;
-      margin-top: 16px;
-      margin-bottom: 16px;
-      flex-wrap: nowrap;
-    }
-    .share-row button, .goods-row button, .restart-row button {
-      flex: 1;
-    }
-    #shareXBtn { 
-      background: #1DA1F2; 
-    }
-    #goodsBtn { 
-      background: var(--primary); 
-      color: #fff; 
-      flex: 1; 
-    }
-    #goodsBtn:hover {
-      background: var(--secondary);
-      transform: scale(1.02);
-    }
-    .restart-row button { 
-      flex: 1; 
-      background: #fff; 
-      color: var(--primary); 
-      border: 1px solid var(--primary); 
-    }
-    .start-image, .result-image {
-      width: 100%;
-      background: #ecebff;
-      border-radius: var(--radius);
-      margin-bottom: 16px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .start-image {
-      height: auto;
-      aspect-ratio: 3 / 2;
-    }
-    .start-image img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-    .result-image {
-      height: 200px;
-    }
-    .result-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    #startScreen p {
-      text-align: center;
-    }
-    .title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-top: 0;
-      margin-bottom: 8px;
-      text-align: left;
-      display: block;
-    }
-    .result-description {
-      font-size: 1rem;
-      margin-top: 8px;
-      margin-bottom: 16px;
-    }
-    .compatible-title {
-      font-size: 1.5rem;
-      font-weight: 400;
-      text-align: left;
-      margin-bottom: 8px;
-    }
-    #resultScreen h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-top: 16px;
-      margin-bottom: 8px;
-    }
-    #resultText h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-top: 16px;
-      margin-bottom: 8px;
-    }
-    #resultText p {
-      font-size: 1rem;
-      margin-bottom: 16px;
-    }
-    header {
-      background: #fff;
-      padding: 16px;
-      border-bottom: 1px solid #ddd;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      width: 100%;
-      text-align: center;
-    }
-    .header-nav {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-    }
-    .header-nav a {
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 1rem;
-      transition: color var(--transition);
-    }
-    .header-nav a:hover {
-      color: var(--secondary);
-    }
-    footer {
-      background: #fff;
-      padding: 16px;
-      border-top: 1px solid #ddd;
-      text-align: center;
-      width: 100%;
-    }
-    .footer-nav {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-    }
-    .footer-nav a {
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 1rem;
-      transition: color var(--transition);
-    }
-    .footer-nav a:hover {
-      color: var(--secondary);
-    }
+    /* ルート変数 */
+:root {
+  --primary: #6C63FF;
+  --secondary: #FF6584;
+  --bg: #F9FAFB;
+  --text: #333;
+  --radius: 12px;
+  --transition: .3s;
+}
+
+/* グローバルリセット */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ボディのスタイル：垂直方向のFlexレイアウトで上下配置を確保 */
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column; /* 子要素を垂直に並べる */
+  align-items: center; /* 水平中央揃え */
+  justify-content: flex-start; /* 垂直方向は上から開始 */
+  min-height: 100vh;
+  padding: 16px;
+}
+
+/* コンテナ：中央に配置、幅を制限 */
+.container {
+  width: 100%;
+  max-width: 600px;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  margin: 16px auto; /* 上下マージン追加、水平中央揃え */
+}
+
+/* ヘッダー：画面幅全体、トップに固定 */
+header {
+  background: #fff;
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* ヘッダーナビ：リンクを中央に配置 */
+.header-nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+/* ヘッダーリンクのスタイル */
+.header-nav a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color var(--transition);
+}
+
+.header-nav a:hover {
+  color: var(--secondary);
+}
+
+/* フッター：画面幅全体、最下部に配置 */
+footer {
+  background: #fff;
+  padding: 16px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* フッターナビ：リンクを中央に配置 */
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+/* フッターリンクのスタイル */
+.footer-nav a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color var(--transition);
+}
+
+.footer-nav a:hover {
+  color: var(--secondary);
+}
+
+/* 既存のスタイル（以下は変更なし） */
+h1 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--primary);
+}
+
+.title-topt {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.title-sub {
+  font-size: 1.3rem;
+  display: block;
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+button {
+  font: inherit;
+  font-size: 1rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+button:hover {
+  background: var(--secondary);
+  transform: scale(1.02);
+}
+
+#startBtn {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.progress-inner {
+  height: 100%;
+  background: var(--primary);
+  width: 0%;
+  transition: width var(--transition);
+}
+
+.question h2 {
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+}
+
+.options {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.options li {
+  margin-bottom: 12px;
+}
+
+.options li.selected button {
+  background: var(--secondary);
+  color: #fff;
+}
+
+.options button {
+  width: 100%;
+  text-align: left;
+  background: #f9f9f9;
+  color: var(--text);
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.options button:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.share-row, .goods-row, .restart-row {
+  display: flex;
+  width: 100%;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  flex-wrap: nowrap;
+}
+
+.share-row button, .goods-row button, .restart-row button {
+  flex: 1;
+}
+
+#shareXBtn {
+  background: #1DA1F2;
+}
+
+#goodsBtn {
+  background: var(--primary);
+  color: #fff;
+  flex: 1;
+}
+
+#goodsBtn:hover {
+  background: var(--secondary);
+  transform: scale(1.02);
+}
+
+.restart-row button {
+  flex: 1;
+  background: #fff;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.start-image, .result-image {
+  width: 100%;
+  background: #ecebff;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-image {
+  height: auto;
+  aspect-ratio: 3 / 2;
+}
+
+.start-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.result-image {
+  height: 200px;
+}
+
+.result-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#startScreen p {
+  text-align: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 8px;
+  text-align: left;
+  display: block;
+}
+
+.result-description {
+  font-size: 1rem;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.compatible-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+#resultScreen h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+#resultText h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+#resultText p {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+/* モバイル対応：小さな画面でナビを縦に */
+@media (max-width: 600px) {
+  .header-nav, .footer-nav {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
   </style>
 </head>
 <body>
