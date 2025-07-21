@@ -344,6 +344,11 @@
       padding: 2px 8px;
       border-radius: 4px;
     }
+    hr {
+  border: 0;
+  border-top: 1px solid #ddd; /* 薄いグレーの区切り線 */
+  margin: 16px 0; /* 上下に余白 */
+}
   </style>
 </head>
 <body>
@@ -1150,9 +1155,12 @@
 
     resultTextDiv.innerHTML = `
       ${characterDescriptions[topKey] || '診断結果が見つかりませんでした。'}
+      <hr>
       ${colorHTML}
+      <hr>
       <h3>あなたと相性の良いパートナル</h3>
       ${compatibleHTML || '<p>情報が見つかりませんでした。</p>'}
+      <hr>
       <h3>あなたのパートナルの有名な曲</h3>
       ${songsHTML}
     `;
