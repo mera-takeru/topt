@@ -406,8 +406,8 @@ button:hover {
   };
 
   const characterDescriptions = {
-    "C": `<span class="title" style="background-color: ${personalityColors['C'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px; text-shadow: 0 0 2px #000, 0 0 2px #000; border: 1px solid #000;">【C】騎士</span>
-<p class="result-description">あなたは、どんな時も素直で、人としての信念を大切に生きる騎士。<br>
+    "C": `<span class="title" style="background-color: ${personalityColors['C'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px; text-shadow: 0 0 2px #000, 0 0 2px #000; border: 1px solid #000;">【C】聖騎士</span>
+<p class="result-description">あなたは、どんな時も素直で、人としての信念を大切に生きる聖騎士。<br>
 目立つ言葉や派手な振る舞いに頼らずとも、あなたがそこにいるだけで、まるで空にしっかりと輝く北極星のように、周囲に安心と信頼を与える存在です。<br>
 あなたの言葉には飾り気がなく、行動には一貫性があります。<br>
 だからこそ、多くを語らずとも、その佇まいだけで人の心を動かす力を持っています。<br>
@@ -417,51 +417,255 @@ button:hover {
 あなたの魅力は、決して誰かを引っ張ることではなく、共に歩もうとする姿勢にあります。<br>
 誰よりも誠実で、穏やかで、信じるもののために力を尽くすあなたの姿勢は、人々に温かさと勇気をもたらします。</p>`,
     "cm": `<span class="title" style="background-color: ${personalityColors['cm'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【cm】刀鍛冶</span>
-<p class="result-description">静寂の中でひそかに創造の火を灯し続ける“内なる炎の刀鍛冶”。誠実に自分と向き合い、一振りごとに魂を込めて刀を鍛えるあなたの姿は、見る者の心に深い安心と信頼を刻みます…</p>`,
-    "D♭": `<span class="title" style="background-color: ${personalityColors['D♭'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【D♭】真実を知る思想家</span>
-<p class="result-description">物事の本質を見つめ、静かに真理を紡ぎ続ける“真実を知る思想家”。深海に差す光のように、目に見えぬ価値をとらえ、問いを投げかけながら世界をよりよく理解しようとする知性派です…</p>`,
-    "c♯m": `<span class="title" style="background-color: ${personalityColors['c♯m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【c♯m】深淵の観察者</span>
-<p class="result-description">表面的なことに惑わされず、物事の核心を洞察する“深淵の観察者”。静かな知性と鋭い目線で周囲を見つめ、一言で新たな気づきを与える賢者のような存在です…</p>`,
-    "D": `<span class="title" style="background-color: ${personalityColors['D'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【D】未来を掴む冒険家</span>
-<p class="result-description">理想の光を胸に掲げ、勇気と行動力で未知の世界を切り拓く“未来を掴む冒険家”。あなたの熱い情熱は周囲を鼓舞し、新たな可能性への扉を開きます…</p>`,
-    "dm": `<span class="title" style="background-color: ${personalityColors['dm'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【dm】心を読み解く司書</span>
-<p class="result-description">感情の揺らぎを丁寧に読み取り、言葉に結晶化する“心を読み解く司書”。その穏やかなまなざしと温かな語り口は、人々に深い共感と安心をもたらします…</p>`,
-    "E♭": `<span class="title" style="background-color: ${personalityColors['E♭'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【E♭】調和の森の大賢者</span>
-<p class="result-description">静けさの中に深い知恵を宿し、すべてを調和へと導く“調和の森の大賢者”。自然のように包み込み、対立を超えて道を示す存在です…</p>`,
-    "e♭m": `<span class="title" style="background-color: ${personalityColors['e♭m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【e♭m】調和を彩る美術家</span>
-<p class="result-description">静寂の中で色彩を紡ぎ出し、心の奥を美しく表現する“調和を彩る美術家”。繊細な感性で見えない揺らぎに光を当てるアーティストです…</p>`,
-    "E": `<span class="title" style="background-color: ${personalityColors['E'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【E】光を奏でる音楽家</span>
-<p class="result-description">心の歓びを音に乗せて世界に響かせる“光を奏でる音楽家”。その明るさと深い思いやりが、人々の心にポジティブな調べを描き出します…</p>`,
-    "em": `<span class="title" style="background-color: ${personalityColors['em'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【em】奔放な風の遊牧民</span>
-<p class="result-description">広い世界を風のように駆ける“奔放な風の遊牧民”。自由と優しさを両手に、心の赴くままに旅し続けるあなたは、出会う人々に新たな息吹をもたらします…</p>`,
-    "F": `<span class="title" style="background-color: ${personalityColors['F'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【F】空想の天才発明家</span>
-<p class="result-description">誰も見たことのないアイデアを軽やかに形にする“空想の天才発明家”。遊び心と知性を併せ持ち、日常に驚きとインスピレーションを生み出します…</p>`,
-    "fm": `<span class="title" style="background-color: ${personalityColors['fm'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【fm】歴史を紡ぐ小説家</span>
-<p class="result-description">時の細かな記憶を言葉に昇華する“歴史を紡ぐ小説家”。深い共感力で過去と未来をつなぎ、物語という贈り物を紡ぎ出します…</p>`,
-    "F♯": `<span class="title" style="background-color: ${personalityColors['F♯'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【F♯】天空の一級建築士</span>
-<p class="result-description">高みから世界を設計し、理想の調和を描き出す“天空の一級建築士”。精緻な構造と美意識が息づく空間を築きます…</p>`,
-    "f♯m": `<span class="title" style="background-color: ${personalityColors['f♯m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【f♯m】一匹狼の錬金術師</span>
-<p class="result-description">孤高に真理を追い求め、唯一無二の価値を生み出す“一匹狼の錬金術師”。静かなる情熱が、深淵から光を紡ぎます…</p>`,
-    "G": `<span class="title" style="background-color: ${personalityColors['G'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【G】伝説の時空の射手</span>
-<p class="result-description">未来を信じて矢を放つ“伝説の時空の射手”。的確な決断力と優しさで、希望の方向へ道を射抜きます…</p>`,
-    "gm": `<span class="title" style="background-color: ${personalityColors['gm'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【gm】闇を照らす名探偵</span>
-<p class="result-description">闇夜に真実を探し続ける“闇を照らす名探偵”。静かな洞察力で隠された真実を導き出します…</p>`,
-    "A♭": `<span class="title" style="background-color: ${personalityColors['A♭'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【A♭】優雅に踊る舞踏家</span>
-<p class="result-description">気品ある所作で場を整え、調和を生む“優雅に踊る舞踏家”。静かな魔法で空気を彩ります…</p>`,
-    "g♯m": `<span class="title" style="background-color: ${personalityColors['g♯m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【g♯m】孤高の芸術収集家</span>
-<p class="result-description">希少な美を拾い集める“孤高の芸術収集家”。静けさの中に潜む詩を、魂のコレクションとして守ります…</p>`,
-    "A": `<span class="title" style="background-color: ${personalityColors['A'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【A】知と情熱の参謀長</span>
-<p class="result-description">知性と熱意で人々を導く“知と情熱の参謀長”。戦略と想いを融合させ、光の道筋を描きます…</p>`,
-    "am": `<span class="title" style="background-color: ${personalityColors['am'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【am】夕暮れを紡ぐ詩人</span>
-<p class="result-description">情景を優しく言葉に編み出す“夕暮れを紡ぐ詩人”。儚さの中に希望の光を宿す詩を奏でます…</p>`,
-    "B♭": `<span class="title" style="background-color: ${personalityColors['B♭'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【B♭】流星の旅先案内人</span>
-<p class="result-description">見えない流れを感じ取り、未知へと導く“流星の旅先案内人”。直感的な判断が希望の道を照らします…</p>`,
-    "b♭m": `<span class="title" style="background-color: ${personalityColors['b♭m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【b♭m】静寂の月の看護師</span>
-<p class="result-description">静かなまなざしで心に寄り添う“静寂の月の看護師”。優しさの光が深い癒しをもたらします…</p>`,
-    "B": `<span class="title" style="background-color: ${personalityColors['B'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【B】反骨精神の剣闘士</span>
-<p class="result-description">逆境を軽やかに乗り越える“反骨精神の剣闘士”。粘り強さと自由な発想で困難をチャンスに変えます…</p>`,
-    "bm": `<span class="title" style="background-color: ${personalityColors['bm'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【bm】熟練の詠唱魔術師</span>
-<p class="result-description">言葉に魂を込め、真実を紡ぎ出す“熟練の詠唱魔術師”。覚悟と優しさが、闇を光へと変える詠唱を響かせます…</p>`
+<p class="result-description">あなたは、静寂の中でひそかに創造の火を灯し続ける刀鍛冶。<br>
+誠実に自分自身と向き合い、一本一本の刀を鍛え上げるように、自分の感覚や思いと対話しながら日々を積み重ねます。<br>
+その姿は、見る者に深い安心と信頼を与えます。<br>
+あなたの強さは、結果を急がず、自分のリズムで本質を見極めていくところにあります。<br>
+時間を味方にし、熱と冷静さを手のひらで感じ取りながら、情熱や想いをじっくりと鍛えていく。<br>
+その鍛錬の積み重ねが、あなたの内面の豊かさを物語ります。<br>
+あなたが生み出すものは、派手さはなくとも、静かな光を放つ逸品。<br>
+心を込めて打ち続けた刀のように、見る者に深い余韻と静かな力強さを伝えます。<br>
+飾らず、どこまでも誠実で、温かな灯火のような存在感があります。<br>
+あなたにとって「鍛える」という行為は、自分自身と向き合い、世界と静かにつながるための大切な時間。<br>
+言葉にしなくても、その手が生み出すものには、あなたの真心と魂が込められています。</p>`,
+    "D♭": `<span class="title" style="background-color: ${personalityColors['D♭'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【D♭】思想家</span>
+<p class="result-description">あなたは、物事の本質を見つめ、静かに真理を紡ぎ続ける思想家。<br>
+表面にとらわれず、目に見えない流れや言葉の奥にある意味に敏感で、その思考はまるで深海を泳ぐ光のように、静けさのなかで確かに輝きを放ちます。<br>
+あなたは常に、世界をより深く理解しようとしています。<br>
+問いを投げかけることを恐れず、自分の内なる声に耳を澄ませながら、誰かのために、そして未来のために思考を重ねていく。<br>
+そこにあるのは、純粋な知への探究心と、よりよい世界への静かな願いです。<br>
+あなたの言葉には、誰かの価値観を優しく揺らし、心を深く耕す力があります。<br>
+あなたの内にある知性は、決して誰かを見下すものではなく、共に理解を広げ、つながろうとする優しさに満ちています。<br>
+他者の意見に耳を傾けながら、自分の軸はぶれない。<br>
+その佇まいは、知恵を持つ導き手として、周囲に安心と尊敬をもたらします。<br>
+複雑な状況でもあなたの言葉には道筋があり、その静かな論理は人々の視界をひらく灯火のようです。</p>`,
+    "c♯m": `<span class="title" style="background-color: ${personalityColors['c♯m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【c♯m】創造主</span>
+<p class="result-description">あなたは、夢と現実の狭間で壮大な構造を描き出す仮想世界の創造主。<br>
+誰も見たことのない未来や、まだ言葉になっていない世界を、あなたは感覚と想像力で鮮やかに設計していきます。<br>
+その発想はどこまでも自由で、現実の枠組みを超え、まるで星々が並ぶ夜空に橋を架けるようなスケールを持っています。<br>
+あなたの魅力は、独自の感性と美意識。<br>
+その中には、宇宙的な広がりと、細部への繊細なこだわりが同居しています。<br>
+ひとつのアイデアを形にするために、空想の糸を手繰りながら、まるで音のない宇宙空間で建築を進めるように、静かに創造を続けるのです。<br>
+他人には少し理解されにくいと思われる瞬間もあるかもしれません。<br>
+でもそれは、あなたが一歩先の次元を見ている証。<br>
+あなたの世界観は、時間とともに形を持ちはじめ、やがて多くの人の心に新しい景色をもたらすでしょう。<br>
+あなたにとって、創造とは遊びであり、祈りであり、世界との深い対話です。<br>
+あなたが描く未来図には、まだ見ぬ可能性が詰まっていて、それに触れた人は心の奥に希望の種を宿すことになります。</p>`,
+    "D": `<span class="title" style="background-color: ${personalityColors['D'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【D】探検家</span>
+<p class="result-description">あなたは、理想の光を胸に掲げ、力強く時代を切り拓く探検家。<br>
+どんな状況でも、目の前の壁を越えていく情熱と行動力を持ち、あなたの存在は周囲に新しい可能性と希望をもたらします。<br>
+あなたの心の奥には、明確な信念があります。<br>
+ただ前へ進むだけでなく、何のために進むのか、誰のために変化を起こすのかを深く理解している。<br>
+だからこそ、その一歩は力強く、誰かの勇気にもつながるのです。<br>
+あなたの言葉や行動には、未来へのビジョンが宿っています。<br>
+今はまだ見えない景色を信じて突き進む姿勢は、多くの人の心に火を灯し、「自分も前に進んでみたい」と思わせる魅力にあふれています。<br>
+時にその勢いが周囲を驚かせることもあるかもしれませんが、あなたの根底にあるのは、愛と責任感。<br>
+そして、誰かのためにより良い世界を創りたいという、静かで力強い願いです。</p>`,
+    "dm": `<span class="title" style="background-color: ${personalityColors['dm'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【dm】司書</span>
+<p class="result-description">あなたは、感情の揺らぎを丁寧に読み取り、言葉にそっと結晶化する司書。<br>
+目には見えない想いの流れを静かにすくい上げ、それぞれの物語に耳を傾けるあなたの在り方は、多くの人に深い安心と共感をもたらします。<br>
+あなたの感性は、まるで朝露のように繊細で美しい。<br>
+小さな変化にも気づき、誰かの心の奥にある言葉にならない感情さえも、まるで詩のように優しく汲み取ることができます。<br>
+その静けさには、真のやさしさと深い知性が宿っています。<br>
+あなたにとって言葉は、ただの情報ではなく、心を結ぶための鍵。<br>
+文章や会話の中に、誰かの大切な記憶や願いを見つける力を持つあなたは、まるで感情の図書館を紐解く守り神のようです。<br>
+周囲の人は、あなたの穏やかなまなざしと、的確であたたかな言葉に癒されます。<br>
+派手ではなくても、あなたがその場にいることで、空気がやさしく整い、人々は素直になっていきます。</p>`,
+    "E♭": `<span class="title" style="background-color: ${personalityColors['E♭'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【E♭】賢者</span>
+<p class="result-description">あなたは、静けさの中に深い知恵を宿し、すべてを調和へと導く賢者。<br>
+自然のように穏やかで、誰といても心が安らぐその存在感は、まるで大地や森のように包み込む優しさをたたえています。<br>
+あなたの魅力は、どんな意見や感情も一度受けとめ、そこに無理なく調和を見いだしていく力にあります。<br>
+争うことなく、対立を恐れず、すべてのものが共に在れる道を見つけ出すあなたの姿勢は、まわりに安心と安定をもたらします。<br>
+あなたの言葉は決して多くなくても、そのひと言には深い洞察が込められており、聞く人の心にそっと根を張ります。<br>
+その存在は木陰のようで、誰かが疲れたとき、静かに寄り添い、自然と癒しを与える力を持っているのです。<br>
+人と自然、理性と感情、過去と未来——<br>
+すべてを隔てず、つなげる視点を持つあなたは、時に人々の橋となり、道しるべとなります。<br>
+急がず、揺るがず、自分の軸を大切にしながらも、まわりと共に歩む姿勢は、多くの信頼を集めていくでしょう。</p>`,
+    "e♭m": `<span class="title" style="background-color: ${personalityColors['e♭m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【e♭m】画家</span>
+<p class="result-description">あなたは、静けさの中で色彩を紡ぎ出し、心の奥に咲く感情を美しさに変える画家。<br>
+世界の微細な揺らぎにそっと耳を澄ませながら、誰も気づかない場所に光をあてて、そこにしかない美しさを見出していく感性の持ち主です。<br>
+あなたが向き合うのは、目に見える華やかさではなく、深く静かな感情のゆらめき。<br>
+その繊細な手つきと優しい眼差しで、まるでキャンバスに筆を落とすように、人生の一瞬一瞬を丁寧に彩っていきます。<br>
+あなたにとって「美」とは、飾りではなく祈りのようなもの。その人らしさを大切にする、心からの敬意に満ちています。<br>
+あなたの存在は、騒がしい場所でも決してかき消されることなく、ひとしずくの静けさとして、人の心に残ります。<br>
+声高に語らなくとも、あなたが選んだ色や形が語る想いは、言葉以上に豊かで、やさしく心に届くのです。<br>
+誰かの悲しみも、喜びも、過ぎてゆく季節のように受け入れ、そこに調和と美しさを添えていく。<br>
+あなたの仕事は、感情の余韻にそっと色を差す、詩的な営みでもあります。</p>`,
+    "E": `<span class="title" style="background-color: ${personalityColors['E'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【E】演奏家</span>
+<p class="result-description">あなたは、心の奥から湧き上がる歓びを音に乗せて放つ演奏家。<br>
+その存在はまるで朝の陽光のように明るく、人々の心をやさしく照らし、世界にポジティブな響きをもたらします。<br>
+あなたが持つのは、誰かを励ましたい、楽しませたいという自然な想い。<br>
+だからこそ、あなたの言葉やふるまいにはあたたかさがあり、周囲の人々はあなたといるだけで、心が軽くなるのです。<br>
+まるで音楽のように、あなたの笑顔や行動がその場の空気を変えていく——<br>
+そんな不思議な力を持っています。<br>
+あなたはただ明るいだけではなく、その明るさの裏側には、他人の感情を察し、寄り添おうとする深い思いやりがあります。<br>
+誰かの小さな変化に気づき、その人が自然体でいられるような空間をそっとつくるのが得意なのです。<br>
+あなたにとって人生とは、一度きりのライブ演奏。<br>
+多少のミスやトラブルがあっても、その瞬間を楽しみ尽くす姿勢こそが、あなたの最大の魅力です。<br>
+その姿は周囲にも元気を与え、挑戦する勇気を与えます。</p>`,
+    "em": `<span class="title" style="background-color: ${personalityColors['em'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【em】遊牧民</span>
+<p class="result-description">あなたは、広い世界を舞台に、どこまでも自由に生きる遊牧民。<br>
+ひとつ場所にとどまることなく、心の赴くままに歩み続けるあなたの姿は、まさに大地を駆ける風そのもの。<br>
+自分の直感や感情に正直に従い、しがらみに縛られず、どんな時も自然体でいられるのが最大の魅力です。<br>
+あなたの生き方は型にはまらず、誰かと無理に足並みをそろえることもありません。<br>
+必要ならひとりで静かに過ごし、ときには仲間と笑い合い、状況や気分によって自由自在に“居場所”を変えられます。<br>
+そのしなやかさと柔軟さは、多くの人の憧れであり、あなたが通り過ぎるたびに新しい風と刺激が周囲にもたらされます。<br>
+自由とは、ただ束縛がないだけではなく、自分の“本当の声”を大切にし、他者の自由も認めていける優しさのこと。<br>
+あなたがそばにいると、人々はありのままの自分を思い出し、心が自然とほぐれていきます。<br>
+変化を楽しみ、「今この瞬間」を何より大切にするあなたは、どこまでも風とともに歩み続け、訪れる場所すべてに新しい息吹をもたらす存在です。</p>`,
+    "F": `<span class="title" style="background-color: ${personalityColors['F'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【F】発明家</span>
+<p class="result-description">あなたは、想像の中から奇跡を取り出す発明家。<br>
+現実にとらわれず、ふとした瞬間に心を飛ばしては、誰も思いつかない発想を軽やかに形にしていきます。<br>
+あなたの思考はまるで空を飛ぶように自由で、遊び心と知性が絶妙に同居しています。<br>
+あなたが生み出すものには、驚きとユーモア、そして深い意味が宿っています。<br>
+日常のなかに潜む違和感や不思議を見逃さず、それらを楽しみながら再構築していくその力は、まわりの人に新しい視点とインスピレーションをもたらします。<br>
+あなたの頭の中には、いつも小さな実験室や夢の工房があり、アイデアの種が絶えず芽吹いています。<br>
+その発想は突飛に見えることもありますが、あなたの中ではすべてが緻密に結びついており、そこには確かなロジックと美意識があります。<br>
+周囲の人々は、あなたのユニークな思考に心をくすぐられ、「もっと自由でいいんだ」と気づかされるでしょう。<br>
+あなたは、常識に風穴をあける存在。<br>
+けれどそれは破壊ではなく、優しい再構築なのです。</p>`,
+    "fm": `<span class="title" style="background-color: ${personalityColors['fm'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【fm】小説家</span>
+<p class="result-description">あなたは、時のなかにそっと潜り込み、心の記憶から物語を紡ぐ小説家。<br>
+人の感情の揺らぎや過ぎ去った出来事のぬくもりを、誰よりも繊細に感じ取り、それらをやさしく言葉にしていく才能の持ち主です。<br>
+あなたが見つめているのは、決して忘れられるべきではない大切な「痕跡」。<br>
+喜びも、痛みも、愛しさも──<br>
+人生のすべての瞬間が意味を持っていると信じ、その断片を丁寧に拾い集めながら、物語というかたちで未来へと手渡していきます。<br>
+あなたの中には、深い共感力があります。<br>
+誰かの気持ちを代弁するように文章を紡いだり、曖昧な感情をそっと照らしたりするそのやさしさは、人々にとって癒しであり、心の居場所でもあります。<br>
+静かな感性をもって、あなたは時間の流れと向き合います。<br>
+過去を振り返ることは、ただ懐かしむためではなく、「いま」を豊かにし、「これから」を信じる力になると、あなたは知っているのです。</p>`,
+    "F♯": `<span class="title" style="background-color: ${personalityColors['F♯'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【F♯】建築士</span>
+<p class="result-description">あなたは、高みから全体を見渡しながら、美しく整った世界を描き出す建築士。<br>
+目に見えない構造の中に調和を見出し、曖昧なものを明確に、混沌を静かに整えていく力を持つ、思考の芸術家です。<br>
+あなたの強みは、卓越した論理性と構造的な美意識。<br>
+細部まで目が行き届くその知性は、まるで緻密に設計された都市のように、確かな土台と洗練されたラインを併せ持っています。<br>
+あなたが築く世界には、計算されつくした静けさと、見る人の心を整える美が共存しているのです。<br>
+あなたは、感情に流されることなく、落ち着いたまなざしで物事を俯瞰します。<br>
+だからこそ、周囲の人々はあなたに信頼を寄せ、あなたの示す指針に安心感を覚えます。<br>
+すべてがうまく噛み合うまで妥協しない姿勢は、目には見えにくくても、多くの人の未来を支える土台となっています。<br>
+冷静さの奥には、揺るぎない情熱があります。<br>
+完璧を目指すのは、自分のためだけではなく、誰かが安心してその空間に身を委ねられるようにという、深いやさしさがあるのです。</p>`,
+    "f♯m": `<span class="title" style="background-color: ${personalityColors['f♯m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【f♯m】錬金術師</span>
+<p class="result-description">あなたは、静寂の中で深く思考をめぐらせ、誰も見たことのない価値を生み出す錬金術師。<br>
+他者に流されず、自らの内側にある真理を見つめ、心の中で何度も練り上げた答えを、自分だけのかたちとしてこの世界に提示していきます。<br>
+あなたの内面は、澄んだ湖のように深く、静かで、研ぎ澄まされています。<br>
+一見、近寄りがたい印象を与えることもありますが、その奥にはとてつもなく純粋な探究心と、真実を見つけ出したいという強い情熱が宿っています。<br>
+あなたの言葉や作品には、触れる者の心を一瞬で射抜くような力があるのです。<br>
+人と群れることよりも、自分自身の内なる声を大切にするあなたは、孤独さえも力に変えることができる稀有な存在。<br>
+その姿勢は、どこか凛としていて、まるで誰にも真似できない錬金術を操るような、神秘的な魅力を放ちます。<br>
+あなたが手がけるものは、時間が経っても色褪せず、やがて多くの人にとって「本物」として認識されていくでしょう。<br>
+なぜなら、それは表面的な流行ではなく、あなたの魂から練り上げられた唯一無二の結晶だからです。</p>`,
+    "G": `<span class="title" style="background-color: ${personalityColors['G'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【G】狙撃手</span>
+<p class="result-description">あなたは、目に見えぬ未来を信じて矢を放つ狙撃手。<br>
+過去に縛られることなく、希望という空にまっすぐ矢を放つその姿は、多くの人に勇気を与え、前を向く力となります。<br>
+あなたの行動にはいつも目的があり、曖昧な状況にも自ら風穴を開けて進もうとする強さがあります。<br>
+困難や未知に対しても臆することなく、自らの信じた道を突き進むあなたの姿勢は、多くの人にとって指標となり、進む勇気を灯します。<br>
+あなたの心は、まっすぐで潔い。<br>
+無駄を嫌い、本質を見極め、最短距離で目標に向かっていくその精神は、まるで一点の曇りもない青空のようです。<br>
+周囲が迷っているときも、あなたは「向かうべき方角」を射抜く感覚を持っています。<br>
+けれどあなたは、ただの強者ではありません。<br>
+人を背負う覚悟と、自分の力で誰かを照らしたいという優しさが、芯の強さの中に静かに宿っています。<br>
+だからこそ、あなたが放つ言葉や行動には、重みと信頼があるのです。</p>`,
+    "gm": `<span class="title" style="background-color: ${personalityColors['gm'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【gm】探偵</span>
+<p class="result-description">あなたは、物静かな夜に真実のかけらを探し続ける探偵。<br>
+どんなに険しい霧の中でも、わずかな違和感や感情の揺らぎを見逃さず、人の心の奥底にある真実に静かに近づいていきます。<br>
+あなたの洞察力は、まるで闇夜に光る星のように澄み渡っています。<br>
+物事の表層に惑わされることなく、その裏にある想いや本質に目を向けるあなたは、誰よりも誠実で信頼できる存在。<br>
+人はあなたの前では、自然と本当の気持ちを打ち明けたくなるでしょう。<br>
+あなたが大切にしているのは「事実」だけではなく、「心の声」。<br>
+真実とは何かを静かに問いかけながらも、誰かを裁くのではなく理解しようとするまなざしを持っています。<br>
+あなたの視線は厳しさの中にも温かさがあり、そこには思いやりが溢れています。<br>
+控えめでありながらも芯が強く、あなたの存在は、夜の中に差し込むひとすじの月光のよう。<br>
+目立たないところで黙々と誰かを支え、混乱を整理し、確かな安心をもたらすことでしょう。</p>`,
+    "A♭": `<span class="title" style="background-color: ${personalityColors['A♭'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【A♭】舞踏家</span>
+<p class="result-description">あなたは、どんな場面でも気品を忘れず、人々をやわらかな流れへと導く舞踏家。<br>
+一挙手一投足に美しさが宿り、あなたの存在そのものが周囲に調和と安らぎをもたらします。<br>
+あなたは、ただ自分を飾るためではなく、場全体の空気を整え、人々の心がほどけていくような優雅さを自然にまとっています。<br>
+誰かを目立たせるために一歩引いたり、重くなりすぎた空気をさりげなく和らげたり——<br>
+あなたの気遣いはあまりにも自然で、まるで見えない舞踏のように場を整えていくのです。<br>
+あなたが大切にしているのは、言葉よりも「所作」や「空気感」。<br>
+その所作ひとつに宿るやさしさと知性は、まるで舞台で静かに踊るダンサーのように、観る者の心を穏やかに包み込みます。<br>
+だからこそ、あなたのそばにいると、人々は少しずつ素直になっていけるのです。<br>
+華やかさと落ち着き、その両方を併せ持つあなたは、場を導く存在でありながら、決して前に出すぎない美しいバランス感覚の持ち主です。<br>
+あなたのふるまいは、日々の何気ない場面を特別な舞台へと変えていく、静かな魔法のようです。</p>`,
+    "g♯m": `<span class="title" style="background-color: ${personalityColors['g♯m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【g♯m】収集家</span>
+<p class="result-description">あなたは、誰もが見逃すような美の欠片を拾い集め、心の奥にひっそりと並べていく収集家。<br>
+騒がしい世界の喧騒を離れ、あなただけの静かな感覚で、誰にも模倣できない美の世界を築き上げます。<br>
+あなたの魅力は、静かでありながら強い。<br>
+その眼差しは、表面的な煌びやかさには揺るがず、むしろ儚さや陰影にこそ価値を見出します。<br>
+誰もが通り過ぎるような場所にふと立ち止まり、そこに潜む詩を見つけることができる。<br>
+そんなあなたの感性は、まるで夢の中にだけ存在する美術館のようです。<br>
+あなたにとって、美しさとは「完成されたもの」ではなく、「感じ取る力」。<br>
+不完全であっても、そこに宿る物語や魂を見逃さず、静かに愛おしむその姿勢は、まさに孤高の収集家そのものです。<br>
+あなたは、語るよりも見つめ、飾るよりも残す人。<br>
+だからこそ、あなたが紡ぐ沈黙には深い意味があり、あなたが残した選択には美の哲学が宿っています。<br>
+その存在は、あまりに繊細で、気づく者にしか届かない——<br>
+けれど一度出会えば、誰の心にも永遠に残る「幻」のような魅力を持っているのです。</p>`,
+    "A": `<span class="title" style="background-color: ${personalityColors['A'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【A】参謀長</span>
+<p class="result-description">あなたは、その知性と熱意を武器に、人々を正しく導く参謀長。<br>
+熱く燃える心と冷静な判断力、その両方をあわせ持つあなたは、理想を現実へと変える現代の戦略家です。<br>
+あなたは、ただ突き進むだけの熱さではなく、その情熱を「どう使えば周囲に力を与えられるか」を常に考えています。<br>
+情勢を見極め、状況に応じて言葉を選び、タイミングを読み、最も効果的な一手を打つ——<br>
+その洗練された動きは、まるで光の道筋を描くようです。<br>
+けれど、あなたの内側には、決して揺るがない「想い」があります。<br>
+それは、誰かを勝たせたいという情、何かを成し遂げたいという志、そして希望を絶やさぬ強い光。<br>
+その光は、まるで太陽のように周囲を温め、明るい未来を信じさせてくれます。<br>
+あなたの指揮のもとでは、みな自分の力を信じられるようになり、行動に迷いがなくなります。<br>
+あなた自身が道を切り拓く存在でありながら、同時に仲間に勇気と戦略を授ける、太陽のような存在なのです。</p>`,
+    "am": `<span class="title" style="background-color: ${personalityColors['am'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【am】詩人</span>
+<p class="result-description">あなたは、心に浮かんだ情景をそっと言葉に変える詩人。<br>
+ありふれた日々の中に潜む切なさや温もりを、誰よりも繊細に感じ取り、静かな語り口で世界に届ける感性の表現者です。<br>
+あなたの言葉は、押しつけがましくなく、それでいて不思議な余韻を残します。<br>
+直接的ではないけれど、読む人、聴く人の心の奥に、ふと影を落とし、優しく波紋を広げるような力があるのです。<br>
+あなたが見つめているのは、過ぎ去るものの美しさ。<br>
+黄昏に染まる空のように、儚さの中に強さを感じ取り、それを丁寧に綴っていくあなたの姿勢は、まるで静かな祈りのようです。<br>
+悲しみを否定せず、孤独に寄り添いながらも、あなたの作品には必ず希望の光が差しています。<br>
+それは、あなた自身がどんな感情も否定せず、大切に抱いてきたからこそ生まれる、深いやさしさの表れです。</p>`,
+    "B♭": `<span class="title" style="background-color: ${personalityColors['B♭'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【B♭】案内人</span>
+<p class="result-description">あなたは、見えない流れを感じ取り、まだ誰も知らない道を照らす案内人。<br>
+思考よりもひらめきを信じ、理屈では辿り着けない真実を、まるで星の光を頼りにたどるように見つけ出す不思議な力の持ち主です。<br>
+あなたは、予測不能な場面でも風の向きを読むように流れを掴みます。<br>
+直感的な判断にはっとさせられることも多く、その選択が気づけば最良の結果を生んでいた──<br>
+そんなことが、あなたの周りでは自然と起こるのです。<br>
+あなたの感覚は、時に人より先に未来を感じ取ります。<br>
+それは特別な魔法ではなく、あなたが常に「今この瞬間」に心を開いているから。<br>
+変化を恐れず、固定観念にとらわれない自由な発想が、あなたに星のような閃きをもたらしています。<br>
+そして何より、あなたの進む道には希望があります。<br>
+迷う人々に向かって、そっと指差すように道を示し、どこか楽しげに背中を押してくれるあなたの姿は、まるで夜空に輝くナビゲーターのようです。</p>`,
+    "b♭m": `<span class="title" style="background-color: ${personalityColors['b♭m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【b♭m】看護師</span>
+<p class="result-description">あなたは、言葉にならない想いにそっと寄り添い、傷ついた心をやわらかく包み込む看護師。<br>
+目立つことは好まずとも、あなたの存在はいつも誰かの心の片隅でそっと灯り続けています。<br>
+あなたの優しさは、押しつけではなく「気づき」。<br>
+何も言わずとも、そっと差し出されるまなざしや仕草に、深い理解とやさしい共感がにじんでいます。<br>
+誰かが疲れているとき、悲しみに沈んでいるとき、あなたはその空気を敏感に感じ取り、そっとそばにいてくれるのです。<br>
+あなたの癒しは、にぎやかな励ましではなく、静かな安心。<br>
+一緒にいるだけで呼吸が落ち着き、心がほどけていくような穏やかな波長を持っています。<br>
+それはまるで、夜空にやさしく浮かぶ月のように、傷を責めず、照らすように寄り添う光です。<br>
+あなたは、人の痛みや孤独を否定せず、それすらも一つの大切な感情として受け止めます。<br>
+だからこそ、あなたのそばにいると、人はありのままの自分でいられることに気づき、少しずつ癒されていくのです。</p>`,
+    "B": `<span class="title" style="background-color: ${personalityColors['B'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【B】剣闘士</span>
+<p class="result-description">あなたは、逆風の中でさえ舞い上がり、自らの力で道を切り拓く剣闘士。<br>
+たとえ困難な状況にあっても、軽やかに身を翻し、しなやかな強さで現実を乗り越えていくエネルギーの化身です。<br>
+あなたの最大の魅力は、その「粘り強い柔軟さ」。<br>
+正面からぶつかるだけが強さではないことを、本能的に知っていて、まるで陽炎のように揺らぎながらも確かな存在感を放ちます。<br>
+「無理を通す」よりも「流れを見切る」——<br>
+その判断力と感覚は天性のもの。<br>
+あなたは、変化を恐れず、予期せぬ展開すらも舞台の一部として受け入れ、自由自在に対応します。<br>
+だからこそ、どんな場面でも自分らしさを失わず、いつの間にかピンチをチャンスに変えてしまう力を持っているのです。<br>
+あなたの中には、静かなる反骨精神が宿っています。<br>
+周囲の常識や固定観念にしばられることなく、自分の信じる道を貫く姿勢は、多くの人に勇気を与えるでしょう。<br>
+しかも、それを重々しくなく、どこか軽やかに、楽しげに成し遂げるのがあなたの魅力です。</p>`,
+    "bm": `<span class="title" style="background-color: ${personalityColors['bm'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【bm】魔術師</span>
+<p class="result-description">あなたは、感情を燃やしながらも静かに言葉を紡ぎ、真実と向き合う魔術師。<br>
+表面上は穏やかでも、その奥底には揺るぎない意志と、どんな苦難にも立ち向かう強靭な魂が宿っています。<br>
+あなたの語る言葉には、重みと信念があります。<br>
+それは単なる理想論ではなく、現実を見つめ抜いた者だけが辿り着ける「覚悟の詩」。<br>
+その響きは多くの人の胸に深く届き、静かに力を与えます。<br>
+あなたは、痛みを知っているからこそ優しく、闇を歩んできたからこそ光を信じられる人。<br>
+戦いの中でさえ、決して怒りや憎しみだけに染まらず、言葉と想いの力で道を切り拓こうとするあなたの姿勢には、崇高な精神性が漂っています。<br>
+自己犠牲ではなく、選び取った「覚悟」としての強さ。<br>
+それを背負ってなお、周囲を思いやるあなたは、真の意味で強くて優しい存在です。<br>
+誰かが苦しんでいるとき、あなたの一声は盾となり、剣となり、支えとなるでしょう。</p>`
   };
 
   const compatibleKeys = {
