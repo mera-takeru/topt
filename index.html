@@ -6,7 +6,7 @@
   <title>【pertonal -パートナル-】</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-   /* ルート変数 */
+    /* ルート変数 */
 :root {
   --primary: #6C63FF;
   --secondary: #FF6584;
@@ -50,7 +50,7 @@ body {
 /* ヘッダー：画面幅全体、固定解除 */
 header {
   background: #fff;
-  padding: 16px;
+  padding: 12px;
   border-bottom: 1px solid #ddd;
   width: 100%;
   text-align: center;
@@ -62,7 +62,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 /* ヘッダーリンクのスタイル */
@@ -70,8 +70,8 @@ header {
   text-decoration: none;
   color: var(--primary);
   font-weight: 600;
-  font-size: 1rem;
-  padding: 0 8px;
+  font-size: 0.95rem;
+  padding: 0 6px;
   transition: color var(--transition);
 }
 
@@ -82,13 +82,13 @@ header {
 /* ヘッダーの区切り線 */
 .header-nav .divider {
   color: #ccc;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 /* フッター：画面幅全体、最下部に配置 */
 footer {
   background: #fff;
-  padding: 16px;
+  padding: 12px;
   border-top: 1px solid #ddd;
   text-align: center;
   width: 100%;
@@ -100,7 +100,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 /* フッターリンクのスタイル */
@@ -108,8 +108,8 @@ footer {
   text-decoration: none;
   color: var(--primary);
   font-weight: 600;
-  font-size: 1rem;
-  padding: 0 8px;
+  font-size: 0.95rem;
+  padding: 0 6px;
   transition: color var(--transition);
 }
 
@@ -120,7 +120,7 @@ footer {
 /* フッターの区切り線 */
 .footer-nav .divider {
   color: #ccc;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 /* 既存のスタイル（変更なし） */
@@ -340,17 +340,6 @@ button:hover {
 #resultText p {
   font-size: 1rem;
   margin-bottom: 16px;
-}
-
-/* モバイル対応：小さな画面でリンクを縦に、区切り線を非表示 */
-@media (max-width: 600px) {
-  .header-nav, .footer-nav {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .header-nav .divider, .footer-nav .divider {
-    display: none;
-  }
 }
   </style>
 </head>
