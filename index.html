@@ -220,9 +220,62 @@
       font-size: 1rem;
       margin-bottom: 16px;
     }
+    header {
+      background: #fff;
+      padding: 16px;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      text-align: center;
+    }
+    .header-nav {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+    .header-nav a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color var(--transition);
+    }
+    .header-nav a:hover {
+      color: var(--secondary);
+    }
+    footer {
+      background: #fff;
+      padding: 16px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      width: 100%;
+    }
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+    .footer-nav a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color var(--transition);
+    }
+    .footer-nav a:hover {
+      color: var(--secondary);
+    }
   </style>
 </head>
 <body>
+  <header>
+    <nav class="header-nav">
+      <a href="">ABOUT</a>
+      <a href="">CONTACT</a>
+    </nav>
+  </header>
   <div class="container">
     <h1>
       <span class="title-topt">【pertonal -パートナル-】</span>
@@ -765,5 +818,12 @@
       showScreen(startScreen);
     });
   </script>
+   </div>
+  <footer>
+    <nav class="footer-nav">
+      <a href="">利用規約</a>
+      <a href="">プライバシーポリシー</a>
+    </nav>
+  </footer>
 </body>
 </html>
