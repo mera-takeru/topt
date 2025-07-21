@@ -6,350 +6,333 @@
   <title>pertonal -パートナル-</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ルート変数 */
     :root {
-      --primary: #6C63FF;
-      --secondary: #FF6584;
-      --bg: #F9FAFB;
-      --text: #333;
-      --radius: 12px;
-      --transition: .3s;
-    }
+  --primary: #6C63FF;
+  --secondary: #FF6584;
+  --bg: #F9FAFB;
+  --text: #333;
+  --radius: 12px;
+  --transition: .3s;
+}
 
-    /* グローバルリセット */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    /* ボディのスタイル：垂直方向のFlexレイアウトで上下配置を確保 */
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      padding: 16px;
-    }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 16px;
+}
 
-    /* コンテナ：中央に配置、幅を制限 */
-    .container {
-      width: 100%;
-      max-width: 600px;
-      background: #fff;
-      border-radius: var(--radius);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      padding: 24px;
-      margin: 16px auto;
-    }
+.container {
+  width: 100%;
+  max-width: 600px;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  margin: 16px auto;
+}
 
-    /* ヘッダー：画面幅全体、固定解除 */
-    header {
-      background: #fff;
-      padding: 12px;
-      border-bottom: 1px solid #ddd;
-      width: 100%;
-      text-align: center;
-      box-sizing: border-box;
-    }
+header {
+  background: #fff;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
 
-    /* ヘッダーナビ：リンクと区切り線を均等配置 */
-    .header-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-    }
+.header-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
 
-    /* ヘッダーリンクのスタイル */
-    .header-nav a {
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 0 6px;
-      transition: color var(--transition);
-    }
+.header-nav a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0 6px;
+  transition: color var(--transition);
+}
 
-    .header-nav a:hover {
-      color: var(--secondary);
-    }
+.header-nav a:hover {
+  color: var(--secondary);
+}
 
-    /* ヘッダーの区切り線 */
-    .header-nav .divider {
-      color: #ccc;
-      font-size: 0.95rem;
-    }
+.header-nav .divider {
+  color: #ccc;
+  font-size: 0.95rem;
+}
 
-    /* フッター：画面幅全体、最下部に配置 */
-    footer {
-      background: #fff;
-      padding: 12px;
-      border-top: 1px solid #ddd;
-      text-align: center;
-      width: 100%;
-      box-sizing: border-box;
-    }
+footer {
+  background: #fff;
+  padding: 12px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-    /* フッターナビ：リンクと区切り線を均等配置 */
-    .footer-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-    }
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
 
-    /* フッターリンクのスタイル */
-    .footer-nav a {
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 0 6px;
-      transition: color var(--transition);
-    }
+.footer-nav a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0 6px;
+  transition: color var(--transition);
+}
 
-    .footer-nav a:hover {
-      color: var(--secondary);
-    }
+.footer-nav a:hover {
+  color: var(--secondary);
+}
 
-    /* フッターの区切り線 */
-    .footer-nav .divider {
-      color: #ccc;
-      font-size: 0.95rem;
-    }
+.footer-nav .divider {
+  color: #ccc;
+  font-size: 0.95rem;
+}
 
-    /* 既存のスタイル */
-    h1 {
-      text-align: center;
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: var(--primary);
-    }
+h1 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--primary);
+}
 
-    .title-topt {
-      font-size: 1.75rem;
-      font-weight: 700;
-      text-align: center;
-      display: block;
-      margin-bottom: 8px;
-      color: var(--secondary); /* ピンク色 (#FF6584) */
-    }
+.title-topt {
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  display: block;
+  margin-bottom: 8px;
+  color: var(--secondary);
+}
 
-    .title-sub {
-      font-size: 1.25rem;
-      display: block;
-    }
+.title-sub {
+  font-size: 1.25rem;
+  display: block;
+}
 
-    .screen {
-      display: none;
-    }
+.screen {
+  display: none;
+}
 
-    .screen.active {
-      display: block;
-    }
+.screen.active {
+  display: block;
+}
 
-    button {
-      font: inherit;
-      font-size: 1rem;
-      padding: 12px 20px;
-      border: none;
-      border-radius: var(--radius);
-      background: var(--primary);
-      color: #fff;
-      cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
-    }
+button {
+  font: inherit;
+  font-size: 1rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
 
-    button:hover {
-      background: var(--secondary);
-      transform: scale(1.02);
-    }
+button:hover {
+  background: var(--secondary);
+  transform: scale(1.02);
+}
 
-    #startBtn {
-      width: 100%;
-      margin-top: 12px;
-    }
+#startBtn {
+  width: 100%;
+  margin-top: 12px;
+}
 
-    .progress-bar {
-      height: 8px;
-      background: #eee;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 16px;
-    }
+.progress-bar {
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
 
-    .progress-inner {
-      height: 100%;
-      background: var(--primary);
-      width: 0%;
-      transition: width var(--transition);
-    }
+.progress-inner {
+  height: 100%;
+  background: var(--primary);
+  width: 0%;
+  transition: width var(--transition);
+}
 
-    .question h2 {
-      font-size: 1.25rem;
-      margin-bottom: 16px;
-    }
+.question h2 {
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+}
 
-    .options {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 24px;
-    }
+.options {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 24px;
+}
 
-    .options li {
-      margin-bottom: 12px;
-    }
+.options li {
+  margin-bottom: 12px;
+}
 
-    .options li.selected button {
-      background: var(--secondary);
-      color: #fff;
-    }
+.options li.selected button {
+  background: var(--secondary);
+  color: #fff;
+}
 
-    .options button {
-      width: 100%;
-      text-align: left;
-      background: #f9f9f9;
-      color: var(--text);
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: var(--radius);
-      transition: background var(--transition), border-color var(--transition);
-    }
+.options button {
+  width: 100%;
+  text-align: left;
+  background: #f9f9f9;
+  color: var(--text);
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  transition: background var(--transition), border-color var(--transition);
+}
 
-    .options button:hover {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-    }
+.options button:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
 
-    .nav {
-      display: flex;
-      justify-content: space-between;
-    }
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
 
-    .share-row, .goods-row, .restart-row {
-      display: flex;
-      width: 100%;
-      margin-top: 16px;
-      margin-bottom: 16px;
-      flex-wrap: nowrap;
-    }
+.share-row, .goods-row, .restart-row {
+  display: flex;
+  width: 100%;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  flex-wrap: nowrap;
+}
 
-    .share-row button, .goods-row button, .restart-row button {
-      flex: 1;
-    }
+.share-row button, .goods-row button, .restart-row button {
+  flex: 1;
+}
 
-    #shareXBtn {
-      background: #1DA1F2;
-    }
+#shareXBtn {
+  background: #1DA1F2;
+}
 
-    #goodsBtn {
-      background: var(--primary);
-      color: #fff;
-      flex: 1;
-    }
+#goodsBtn {
+  background: var(--primary);
+  color: #fff;
+  flex: 1;
+}
 
-    #goodsBtn:hover {
-      background: var(--secondary);
-      transform: scale(1.02);
-    }
+#goodsBtn:hover {
+  background: var(--secondary);
+  transform: scale(1.02);
+}
 
-    .restart-row button {
-      flex: 1;
-      background: #fff;
-      color: var(--primary);
-      border: 1px solid var(--primary);
-    }
+.restart-row button {
+  flex: 1;
+  background: #fff;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
 
-    .start-image, .result-image {
-      width: 100%;
-      background: #ecebff;
-      border-radius: var(--radius);
-      margin-bottom: 16px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.start-image, .result-image {
+  width: 100%;
+  background: #ecebff;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .start-image {
-      height: auto;
-      aspect-ratio: 3 / 2;
-    }
+.start-image {
+  height: auto;
+  aspect-ratio: 3 / 2;
+}
 
-    .start-image img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
+.start-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 
-    .result-image {
-      height: 200px;
-    }
+.result-image {
+  height: 200px;
+}
 
-    .result-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+.result-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    #startScreen p {
-      text-align: center;
-    }
+#startScreen p {
+  text-align: center;
+}
 
-    .title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-top: 0;
-      margin-bottom: 8px;
-      text-align: left;
-      display: block;
-      text-shadow: 0 0 2px #000, 0 0 2px #000; /* 黒い縁取りを追加 */
-    }
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 8px;
+  text-align: left;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
 
-    .result-description {
-      font-size: 1rem;
-      margin-top: 8px;
-      margin-bottom: 16px;
-    }
+.compatible-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 8px;
+  color: var(--text); /* 黒文字 (#333) */
+}
 
-    .compatible-title {
-      font-size: 1.5rem;
-      font-weight: 400;
-      text-align: left;
-      margin-bottom: 8px;
-      text-shadow: 0 0 2px #000, 0 0 2px #000; /* 相性肩書きにも黒い縁取りを追加 */
-    }
+#resultScreen h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
 
-    #resultScreen h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-top: 16px;
-      margin-bottom: 8px;
-    }
+#resultText h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
 
-    #resultText h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-top: 16px;
-      margin-bottom: 8px;
-    }
+#resultText p {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
 
-    #resultText p {
-      font-size: 1rem;
-      margin-bottom: 16px;
-    }
-
-    /* パートナルカラーのスタイル */
-    .color-name {
-      font-weight: 600;
-      border: 1px solid #ddd;
-    }
+.color-name {
+  font-weight: 600;
+  border: 1px solid #ddd;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
   </style>
 </head>
 <body>
@@ -395,600 +378,600 @@
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const personalityColors = {
-        "C": { name: "ピュアホワイト", code: "#FFFFFF" },
-        "cm": { name: "チェスナットブラウン", code: "#5C4033" },
-        "D♭": { name: "ピンクライラック", code: "#E4B7D2" },
-        "c♯m": { name: "ミッドナイトパープル", code: "#2E003E" },
-        "D": { name: "ライムイエロー", code: "#E4FF1A" },
-        "dm": { name: "オリーブグリーン", code: "#708238" },
-        "E♭": { name: "アプリコットオレンジ", code: "#FFB86F" },
-        "e♭m": { name: "アッシュグレー", code: "#8A8C8E" },
-        "E": { name: "サンシャインゴールド", code: "#FFD700" },
-        "em": { name: "フォレストグリーン", code: "#228B22" },
-        "F": { name: "ベイビーブルー", code: "#A7D3F0" },
-        "fm": { name: "スモーキーワイン", code: "#723248" },
-        "F♯": { name: "エメラルドグリーン", code: "#00C28C" },
-        "f♯m": { name: "シャドウブルー", code: "#36454F" },
-        "G": { name: "スカイブルー", code: "#87CEEB" },
-        "gm": { name: "ボルドーレッド", code: "#800020" },
-        "A♭": { name: "ローズピンク", code: "#F4C2C2" },
-        "g♯m": { name: "ダークモスグリーン", code: "#384D48" },
-        "A": { name: "トパーズオレンジ", code: "#FFA500" },
-        "am": { name: "テラコッタ", code: "#E2725B" },
-        "B♭": { name: "スパークリングレッド", code: "#DC143C" },
-        "b♭m": { name: "スレートグレー", code: "#59666C" },
-        "B": { name: "ブルージーン", code: "#1E90FF" },
-        "bm": { name: "インディゴブルー", code: "#4B0082" }
-      };
+  const personalityColors = {
+    "C": { name: "ピュアホワイト", code: "#FFFFFF" },
+    "cm": { name: "チェスナットブラウン", code: "#5C4033" },
+    "D♭": { name: "ピンクライラック", code: "#E4B7D2" },
+    "c♯m": { name: "ミッドナイトパープル", code: "#2E003E" },
+    "D": { name: "ライムイエロー", code: "#E4FF1A" },
+    "dm": { name: "オリーブグリーン", code: "#708238" },
+    "E♭": { name: "アプリコットオレンジ", code: "#FFB86F" },
+    "e♭m": { name: "アッシュグレー", code: "#8A8C8E" },
+    "E": { name: "サンシャインゴールド", code: "#FFD700" },
+    "em": { name: "フォレストグリーン", code: "#228B22" },
+    "F": { name: "ベイビーブルー", code: "#A7D3F0" },
+    "fm": { name: "スモーキーワイン", code: "#723248" },
+    "F♯": { name: "エメラルドグリーン", code: "#00C28C" },
+    "f♯m": { name: "シャドウブルー", code: "#36454F" },
+    "G": { name: "スカイブルー", code: "#87CEEB" },
+    "gm": { name: "ボルドーレッド", code: "#800020" },
+    "A♭": { name: "ローズピンク", code: "#F4C2C2" },
+    "g♯m": { name: "ダークモスグリーン", code: "#384D48" },
+    "A": { name: "トパーズオレンジ", code: "#FFA500" },
+    "am": { name: "テラコッタ", code: "#E2725B" },
+    "B♭": { name: "スパークリングレッド", code: "#DC143C" },
+    "b♭m": { name: "スレートグレー", code: "#59666C" },
+    "B": { name: "ブルージーン", code: "#1E90FF" },
+    "bm": { name: "インディゴブルー", code: "#4B0082" }
+  };
 
-      const characterDescriptions = {
-        "C": `<span class="title" style="color: ${personalityColors['C'].code};">【C】正義感溢れる騎士</span>
+  const characterDescriptions = {
+    "C": `<span class="title" style="background-color: ${personalityColors['C'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px; text-shadow: 0 0 2px #000, 0 0 2px #000;">【C】正義感溢れる騎士</span>
 <p class="result-description">あなたは、どんな時も素直で、人としての信念を大切に生きる“正義感溢れる騎士”。目立つ言葉や派手な振る舞いに頼らずとも、あなたがそこにいるだけで、まるで北極星のように周囲に安心と信頼を与えます…</p>`,
-        "cm": `<span class="title" style="color: ${personalityColors['cm'].code};">【cm】内なる炎の刀鍛冶</span>
+    "cm": `<span class="title" style="background-color: ${personalityColors['cm'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【cm】内なる炎の刀鍛冶</span>
 <p class="result-description">静寂の中でひそかに創造の火を灯し続ける“内なる炎の刀鍛冶”。誠実に自分と向き合い、一振りごとに魂を込めて刀を鍛えるあなたの姿は、見る者の心に深い安心と信頼を刻みます…</p>`,
-        "D♭": `<span class="title" style="color: ${personalityColors['D♭'].code};">【D♭】真実を知る思想家</span>
+    "D♭": `<span class="title" style="background-color: ${personalityColors['D♭'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【D♭】真実を知る思想家</span>
 <p class="result-description">物事の本質を見つめ、静かに真理を紡ぎ続ける“真実を知る思想家”。深海に差す光のように、目に見えぬ価値をとらえ、問いを投げかけながら世界をよりよく理解しようとする知性派です…</p>`,
-        "c♯m": `<span class="title" style="color: ${personalityColors['c♯m'].code};">【c♯m】深淵の観察者</span>
+    "c♯m": `<span class="title" style="background-color: ${personalityColors['c♯m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【c♯m】深淵の観察者</span>
 <p class="result-description">表面的なことに惑わされず、物事の核心を洞察する“深淵の観察者”。静かな知性と鋭い目線で周囲を見つめ、一言で新たな気づきを与える賢者のような存在です…</p>`,
-        "D": `<span class="title" style="color: ${personalityColors['D'].code};">【D】未来を掴む冒険家</span>
+    "D": `<span class="title" style="background-color: ${personalityColors['D'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【D】未来を掴む冒険家</span>
 <p class="result-description">理想の光を胸に掲げ、勇気と行動力で未知の世界を切り拓く“未来を掴む冒険家”。あなたの熱い情熱は周囲を鼓舞し、新たな可能性への扉を開きます…</p>`,
-        "dm": `<span class="title" style="color: ${personalityColors['dm'].code};">【dm】心を読み解く司書</span>
+    "dm": `<span class="title" style="background-color: ${personalityColors['dm'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【dm】心を読み解く司書</span>
 <p class="result-description">感情の揺らぎを丁寧に読み取り、言葉に結晶化する“心を読み解く司書”。その穏やかなまなざしと温かな語り口は、人々に深い共感と安心をもたらします…</p>`,
-        "E♭": `<span class="title" style="color: ${personalityColors['E♭'].code};">【E♭】調和の森の大賢者</span>
+    "E♭": `<span class="title" style="background-color: ${personalityColors['E♭'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【E♭】調和の森の大賢者</span>
 <p class="result-description">静けさの中に深い知恵を宿し、すべてを調和へと導く“調和の森の大賢者”。自然のように包み込み、対立を超えて道を示す存在です…</p>`,
-        "e♭m": `<span class="title" style="color: ${personalityColors['e♭m'].code};">【e♭m】調和を彩る美術家</span>
+    "e♭m": `<span class="title" style="background-color: ${personalityColors['e♭m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【e♭m】調和を彩る美術家</span>
 <p class="result-description">静寂の中で色彩を紡ぎ出し、心の奥を美しく表現する“調和を彩る美術家”。繊細な感性で見えない揺らぎに光を当てるアーティストです…</p>`,
-        "E": `<span class="title" style="color: ${personalityColors['E'].code};">【E】光を奏でる音楽家</span>
+    "E": `<span class="title" style="background-color: ${personalityColors['E'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【E】光を奏でる音楽家</span>
 <p class="result-description">心の歓びを音に乗せて世界に響かせる“光を奏でる音楽家”。その明るさと深い思いやりが、人々の心にポジティブな調べを描き出します…</p>`,
-        "em": `<span class="title" style="color: ${personalityColors['em'].code};">【em】奔放な風の遊牧民</span>
+    "em": `<span class="title" style="background-color: ${personalityColors['em'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【em】奔放な風の遊牧民</span>
 <p class="result-description">広い世界を風のように駆ける“奔放な風の遊牧民”。自由と優しさを両手に、心の赴くままに旅し続けるあなたは、出会う人々に新たな息吹をもたらします…</p>`,
-        "F": `<span class="title" style="color: ${personalityColors['F'].code};">【F】空想の天才発明家</span>
+    "F": `<span class="title" style="background-color: ${personalityColors['F'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【F】空想の天才発明家</span>
 <p class="result-description">誰も見たことのないアイデアを軽やかに形にする“空想の天才発明家”。遊び心と知性を併せ持ち、日常に驚きとインスピレーションを生み出します…</p>`,
-        "fm": `<span class="title" style="color: ${personalityColors['fm'].code};">【fm】歴史を紡ぐ小説家</span>
+    "fm": `<span class="title" style="background-color: ${personalityColors['fm'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【fm】歴史を紡ぐ小説家</span>
 <p class="result-description">時の細かな記憶を言葉に昇華する“歴史を紡ぐ小説家”。深い共感力で過去と未来をつなぎ、物語という贈り物を紡ぎ出します…</p>`,
-        "F♯": `<span class="title" style="color: ${personalityColors['F♯'].code};">【F♯】天空の一級建築士</span>
+    "F♯": `<span class="title" style="background-color: ${personalityColors['F♯'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【F♯】天空の一級建築士</span>
 <p class="result-description">高みから世界を設計し、理想の調和を描き出す“天空の一級建築士”。精緻な構造と美意識が息づく空間を築きます…</p>`,
-        "f♯m": `<span class="title" style="color: ${personalityColors['f♯m'].code};">【f♯m】一匹狼の錬金術師</span>
+    "f♯m": `<span class="title" style="background-color: ${personalityColors['f♯m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【f♯m】一匹狼の錬金術師</span>
 <p class="result-description">孤高に真理を追い求め、唯一無二の価値を生み出す“一匹狼の錬金術師”。静かなる情熱が、深淵から光を紡ぎます…</p>`,
-        "G": `<span class="title" style="color: ${personalityColors['G'].code};">【G】伝説の時空の射手</span>
+    "G": `<span class="title" style="background-color: ${personalityColors['G'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【G】伝説の時空の射手</span>
 <p class="result-description">未来を信じて矢を放つ“伝説の時空の射手”。的確な決断力と優しさで、希望の方向へ道を射抜きます…</p>`,
-        "gm": `<span class="title" style="color: ${personalityColors['gm'].code};">【gm】闇を照らす名探偵</span>
+    "gm": `<span class="title" style="background-color: ${personalityColors['gm'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【gm】闇を照らす名探偵</span>
 <p class="result-description">闇夜に真実を探し続ける“闇を照らす名探偵”。静かな洞察力で隠された真実を導き出します…</p>`,
-        "A♭": `<span class="title" style="color: ${personalityColors['A♭'].code};">【A♭】優雅に踊る舞踏家</span>
+    "A♭": `<span class="title" style="background-color: ${personalityColors['A♭'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【A♭】優雅に踊る舞踏家</span>
 <p class="result-description">気品ある所作で場を整え、調和を生む“優雅に踊る舞踏家”。静かな魔法で空気を彩ります…</p>`,
-        "g♯m": `<span class="title" style="color: ${personalityColors['g♯m'].code};">【g♯m】孤高の芸術収集家</span>
+    "g♯m": `<span class="title" style="background-color: ${personalityColors['g♯m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【g♯m】孤高の芸術収集家</span>
 <p class="result-description">希少な美を拾い集める“孤高の芸術収集家”。静けさの中に潜む詩を、魂のコレクションとして守ります…</p>`,
-        "A": `<span class="title" style="color: ${personalityColors['A'].code};">【A】知と情熱の参謀長</span>
+    "A": `<span class="title" style="background-color: ${personalityColors['A'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【A】知と情熱の参謀長</span>
 <p class="result-description">知性と熱意で人々を導く“知と情熱の参謀長”。戦略と想いを融合させ、光の道筋を描きます…</p>`,
-        "am": `<span class="title" style="color: ${personalityColors['am'].code};">【am】夕暮れを紡ぐ詩人</span>
+    "am": `<span class="title" style="background-color: ${personalityColors['am'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【am】夕暮れを紡ぐ詩人</span>
 <p class="result-description">情景を優しく言葉に編み出す“夕暮れを紡ぐ詩人”。儚さの中に希望の光を宿す詩を奏でます…</p>`,
-        "B♭": `<span class="title" style="color: ${personalityColors['B♭'].code};">【B♭】流星の旅先案内人</span>
+    "B♭": `<span class="title" style="background-color: ${personalityColors['B♭'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【B♭】流星の旅先案内人</span>
 <p class="result-description">見えない流れを感じ取り、未知へと導く“流星の旅先案内人”。直感的な判断が希望の道を照らします…</p>`,
-        "b♭m": `<span class="title" style="color: ${personalityColors['b♭m'].code};">【b♭m】静寂の月の看護師</span>
+    "b♭m": `<span class="title" style="background-color: ${personalityColors['b♭m'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【b♭m】静寂の月の看護師</span>
 <p class="result-description">静かなまなざしで心に寄り添う“静寂の月の看護師”。優しさの光が深い癒しをもたらします…</p>`,
-        "B": `<span class="title" style="color: ${personalityColors['B'].code};">【B】反骨精神の剣闘士</span>
+    "B": `<span class="title" style="background-color: ${personalityColors['B'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【B】反骨精神の剣闘士</span>
 <p class="result-description">逆境を軽やかに乗り越える“反骨精神の剣闘士”。粘り強さと自由な発想で困難をチャンスに変えます…</p>`,
-        "bm": `<span class="title" style="color: ${personalityColors['bm'].code};">【bm】熟練の詠唱魔術師</span>
+    "bm": `<span class="title" style="background-color: ${personalityColors['bm'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【bm】熟練の詠唱魔術師</span>
 <p class="result-description">言葉に魂を込め、真実を紡ぎ出す“熟練の詠唱魔術師”。覚悟と優しさが、闇を光へと変える詠唱を響かせます…</p>`
-      };
+  };
 
-      const compatibleKeys = {
-        "C": ["cm", "am", "G", "F"],
-        "cm": ["C", "E♭", "gm", "fm"],
-        "D♭": ["c♯m", "g♯m", "A♭", "F♯"],
-        "c♯m": ["D♭", "E", "g♯m", "f♯m"],
-        "D": ["dm", "bm", "A", "G"],
-        "dm": ["D", "F", "am", "gm"],
-        "E♭": ["e♭m", "cm", "B♭", "A♭"],
-        "e♭m": ["E♭", "F♯", "b♭m", "g♯m"],
-        "E": ["em", "c♯m", "B", "A"],
-        "em": ["E", "G", "bm", "am"],
-        "F": ["fm", "dm", "C", "B♭"],
-        "fm": ["F", "A♭", "cm", "b♭m"],
-        "F♯": ["f♯m", "e♭m", "D♭", "B"],
-        "f♯m": ["F♯", "A", "c♯m", "bm"],
-        "G": ["gm", "em", "D", "C"],
-        "gm": ["G", "B♭", "dm", "cm"],
-        "A♭": ["g♯m", "fm", "E♭", "D♭"],
-        "g♯m": ["A♭", "B", "e♭m", "c♯m"],
-        "A": ["am", "f♯m", "E", "D"],
-        "am": ["A", "C", "em", "dm"],
-        "B♭": ["b♭m", "gm", "F", "E♭"],
-        "b♭m": ["B♭", "D♭", "fm", "e♭m"],
-        "B": ["bm", "g♯m", "F♯", "E"],
-        "bm": ["B", "D", "f♯m", "em"]
-      };
+  const compatibleKeys = {
+    "C": ["cm", "am", "G", "F"],
+    "cm": ["C", "E♭", "gm", "fm"],
+    "D♭": ["c♯m", "g♯m", "A♭", "F♯"],
+    "c♯m": ["D♭", "E", "g♯m", "f♯m"],
+    "D": ["dm", "bm", "A", "G"],
+    "dm": ["D", "F", "am", "gm"],
+    "E♭": ["e♭m", "cm", "B♭", "A♭"],
+    "e♭m": ["E♭", "F♯", "b♭m", "g♯m"],
+    "E": ["em", "c♯m", "B", "A"],
+    "em": ["E", "G", "bm", "am"],
+    "F": ["fm", "dm", "C", "B♭"],
+    "fm": ["F", "A♭", "cm", "b♭m"],
+    "F♯": ["f♯m", "e♭m", "D♭", "B"],
+    "f♯m": ["F♯", "A", "c♯m", "bm"],
+    "G": ["gm", "em", "D", "C"],
+    "gm": ["G", "B♭", "dm", "cm"],
+    "A♭": ["g♯m", "fm", "E♭", "D♭"],
+    "g♯m": ["A♭", "B", "e♭m", "c♯m"],
+    "A": ["am", "f♯m", "E", "D"],
+    "am": ["A", "C", "em", "dm"],
+    "B♭": ["b♭m", "gm", "F", "E♭"],
+    "b♭m": ["B♭", "D♭", "fm", "e♭m"],
+    "B": ["bm", "g♯m", "F♯", "E"],
+    "bm": ["B", "D", "f♯m", "em"]
+  };
 
-      const famousSongs = {
-        "C": {
-          classic: "モーツァルト - アイネ・クライネ・ナハトムジーク",
-          showa: "山下達郎 - クリスマス・イブ",
-          heisei: "宇多田ヒカル - First Love",
-          reiwa: "YOASOBI - アイドル"
-        },
-        "cm": {
-          classic: "ショパン - ノクターン Op.9 No.2",
-          showa: "井上陽水 - 少年時代",
-          heisei: "Mr.Children - Tomorrow never knows",
-          reiwa: "Aimer - 残響散歌"
-        },
-        "D♭": {
-          classic: "リスト - 愛の夢 第3番",
-          showa: "松田聖子 - 赤いスイートピー",
-          heisei: "B'z - LOVE PHANTOM",
-          reiwa: "Ado - 新時代"
-        },
-        "c♯m": {
-          classic: "ベートーヴェン - 月光ソナタ 第1楽章",
-          showa: "オフコース - さよなら",
-          heisei: "スピッツ - ローテンダイヤモンド",
-          reiwa: "King Gnu - 一途"
-        },
-        "D": {
-          classic: "バッハ - G線上のアリア",
-          showa: "サザンオールスターズ - いとしのエリー",
-          heisei: "SMAP - 世界に一つだけの花",
-          reiwa: "Official髭男dism - ミックスナッツ"
-        },
-        "dm": {
-          classic: "シューベルト - アヴェ・マリア",
-          showa: "中島みゆき - 時代",
-          heisei: "DREAMS COME TRUE - LOVE LOVE LOVE",
-          reiwa: "YOASOBI - 群青"
-        },
-        "E♭": {
-          classic: "モーツァルト - ピアノ協奏曲第21番",
-          showa: "松任谷由実 - 卒業写真",
-          heisei: "安室奈美恵 - CAN YOU CELEBRATE?",
-          reiwa: "YOASOBI - ハルジオン"
-        },
-        "e♭m": {
-          classic: "ラフマニノフ - 前奏曲 Op.3 No.2",
-          showa: "井上陽水 - リバーサイドホテル",
-          heisei: "浜崎あゆみ - SEASONS",
-          reiwa: "藤井風 - きらり"
-        },
-        "E": {
-          classic: "ベートーヴェン - 交響曲第9番『歓喜の歌』",
-          showa: "エルヴィス・プレスリー - Can't Help Falling in Love",
-          heisei: "嵐 - Love so sweet",
-          reiwa: "Ado - うっせぇわ"
-        },
-        "em": {
-          classic: "バッハ - トッカータとフーガ",
-          showa: "沢田研二 - 勝手にしやがれ",
-          heisei: "ニルヴァーナ - Where Did You Sleep Last Night",
-          reiwa: "YOASOBI - 夜に駆ける"
-        },
-        "F": {
-          classic: "ヴィヴァルディ - 四季『春』",
-          showa: "ルイ・アームストロング - What a Wonderful World",
-          heisei: "MISIA - Everything",
-          reiwa: "Official髭男dism - I LOVE..."
-        },
-        "fm": {
-          classic: "ショパン - バラード第1番",
-          showa: "ビル・ウィザース - Ain't No Sunshine",
-          heisei: "コブクロ - 蕾",
-          reiwa: "藤井風 - 青春病"
-        },
-        "F♯": {
-          classic: "リスト - ラ・カンパネラ",
-          showa: "フランク・シナトラ - My Way",
-          heisei: "GReeeeN - キセキ",
-          reiwa: "YOASOBI - 怪物"
-        },
-        "f♯m": {
-          classic: "バッハ - 前奏曲とフーガ BWV 846",
-          showa: "松山千春 - 恋",
-          heisei: "RADWIMPS - スパークル",
-          reiwa: "Aimer - カタオモイ"
-        },
-        "G": {
-          classic: "ベートーヴェン - 交響曲第5番『運命』",
-          showa: "サイモン＆ガーファンクル - The Sound of Silence",
-          heisei: "いきものがかり - YELL",
-          reiwa: "Official髭男dism - Pretender"
-        },
-        "gm": {
-          classic: "モーツァルト - レクイエム",
-          showa: "加藤登紀子 - 知床旅情",
-          heisei: "アデル - Someone Like You",
-          reiwa: "YOASOBI - たぶん"
-        },
-        "A♭": {
-          classic: "ショパン - エチュード Op.10 No.3『別れの曲』",
-          showa: "ホイットニー・ヒューストン - I Will Always Love You",
-          heisei: "EXILE - Lovers Again",
-          reiwa: "藤井風 - まつり"
-        },
-        "g♯m": {
-          classic: "ドビュッシー - 夢想",
-          showa: "吉田拓郎 - 人生を語らず",
-          heisei: "YUI - CHE.R.RY",
-          reiwa: "Ado - 踊"
-        },
-        "A": {
-          classic: "バッハ - ブランデンブルク協奏曲第3番",
-          showa: "ボブ・ディラン - Blowin' in the Wind",
-          heisei: "ケミストリー - PIECES OF A DREAM",
-          reiwa: "King Gnu - 白日"
-        },
-        "am": {
-          classic: "シューベルト - 即興曲 Op.90 No.3",
-          showa: "井上陽水 - 心もよう",
-          heisei: "レディオヘッド - Creep",
-          reiwa: "YOASOBI - アンコール"
-        },
-        "B♭": {
-          classic: "ヴィヴァルディ - 四季『冬』",
-          showa: "ジャーニー - Don't Stop Believin'",
-          heisei: "AKB48 - 恋するフォーチュンクッキー",
-          reiwa: "Official髭男dism - 115万キロのフィルム"
-        },
-        "b♭m": {
-          classic: "マーラー - 交響曲第5番 アダージェット",
-          showa: "森山直太朗 - さくら（独唱）",
-          heisei: "back number - 高嶺の花子さん",
-          reiwa: "Aimer - 朝が来る"
-        },
-        "B": {
-          classic: "ベートーヴェン - 交響曲第7番",
-          showa: "クイーン - Bohemian Rhapsody",
-          heisei: "福山雅治 - 桜坂",
-          reiwa: "YOASOBI - 勇者"
-        },
-        "bm": {
-          classic: "ショスタコーヴィチ - ワルツ第2番",
-          showa: "山下達郎 - RIDE ON TIME",
-          heisei: "flumpool - 君に届け",
-          reiwa: "藤井風 - 何なんw"
-        }
-      };
+  const famousSongs = {
+    "C": {
+      classic: "モーツァルト - アイネ・クライネ・ナハトムジーク",
+      showa: "山下達郎 - クリスマス・イブ",
+      heisei: "宇多田ヒカル - First Love",
+      reiwa: "YOASOBI - アイドル"
+    },
+    "cm": {
+      classic: "ショパン - ノクターン Op.9 No.2",
+      showa: "井上陽水 - 少年時代",
+      heisei: "Mr.Children - Tomorrow never knows",
+      reiwa: "Aimer - 残響散歌"
+    },
+    "D♭": {
+      classic: "リスト - 愛の夢 第3番",
+      showa: "松田聖子 - 赤いスイートピー",
+      heisei: "B'z - LOVE PHANTOM",
+      reiwa: "Ado - 新時代"
+    },
+    "c♯m": {
+      classic: "ベートーヴェン - 月光ソナタ 第1楽章",
+      showa: "オフコース - さよなら",
+      heisei: "スピッツ - ローテンダイヤモンド",
+      reiwa: "King Gnu - 一途"
+    },
+    "D": {
+      classic: "バッハ - G線上のアリア",
+      showa: "サザンオールスターズ - いとしのエリー",
+      heisei: "SMAP - 世界に一つだけの花",
+      reiwa: "Official髭男dism - ミックスナッツ"
+    },
+    "dm": {
+      classic: "シューベルト - アヴェ・マリア",
+      showa: "中島みゆき - 時代",
+      heisei: "DREAMS COME TRUE - LOVE LOVE LOVE",
+      reiwa: "YOASOBI - 群青"
+    },
+    "E♭": {
+      classic: "モーツァルト - ピアノ協奏曲第21番",
+      showa: "松任谷由実 - 卒業写真",
+      heisei: "安室奈美恵 - CAN YOU CELEBRATE?",
+      reiwa: "YOASOBI - ハルジオン"
+    },
+    "e♭m": {
+      classic: "ラフマニノフ - 前奏曲 Op.3 No.2",
+      showa: "井上陽水 - リバーサイドホテル",
+      heisei: "浜崎あゆみ - SEASONS",
+      reiwa: "藤井風 - きらり"
+    },
+    "E": {
+      classic: "ベートーヴェン - 交響曲第9番『歓喜の歌』",
+      showa: "エルヴィス・プレスリー - Can't Help Falling in Love",
+      heisei: "嵐 - Love so sweet",
+      reiwa: "Ado - うっせぇわ"
+    },
+    "em": {
+      classic: "バッハ - トッカータとフーガ",
+      showa: "沢田研二 - 勝手にしやがれ",
+      heisei: "ニルヴァーナ - Where Did You Sleep Last Night",
+      reiwa: "YOASOBI - 夜に駆ける"
+    },
+    "F": {
+      classic: "ヴィヴァルディ - 四季『春』",
+      showa: "ルイ・アームストロング - What a Wonderful World",
+      heisei: "MISIA - Everything",
+      reiwa: "Official髭男dism - I LOVE..."
+    },
+    "fm": {
+      classic: "ショパン - バラード第1番",
+      showa: "ビル・ウィザース - Ain't No Sunshine",
+      heisei: "コブクロ - 蕾",
+      reiwa: "藤井風 - 青春病"
+    },
+    "F♯": {
+      classic: "リスト - ラ・カンパネラ",
+      showa: "フランク・シナトラ - My Way",
+      heisei: "GReeeeN - キセキ",
+      reiwa: "YOASOBI - 怪物"
+    },
+    "f♯m": {
+      classic: "バッハ - 前奏曲とフーガ BWV 846",
+      showa: "松山千春 - 恋",
+      heisei: "RADWIMPS - スパークル",
+      reiwa: "Aimer - カタオモイ"
+    },
+    "G": {
+      classic: "ベートーヴェン - 交響曲第5番『運命』",
+      showa: "サイモン＆ガーファンクル - The Sound of Silence",
+      heisei: "いきものがかり - YELL",
+      reiwa: "Official髭男dism - Pretender"
+    },
+    "gm": {
+      classic: "モーツァルト - レクイエム",
+      showa: "加藤登紀子 - 知床旅情",
+      heisei: "アデル - Someone Like You",
+      reiwa: "YOASOBI - たぶん"
+    },
+    "A♭": {
+      classic: "ショパン - エチュード Op.10 No.3『別れの曲』",
+      showa: "ホイットニー・ヒューストン - I Will Always Love You",
+      heisei: "EXILE - Lovers Again",
+      reiwa: "藤井風 - まつり"
+    },
+    "g♯m": {
+      classic: "ドビュッシー - 夢想",
+      showa: "吉田拓郎 - 人生を語らず",
+      heisei: "YUI - CHE.R.RY",
+      reiwa: "Ado - 踊"
+    },
+    "A": {
+      classic: "バッハ - ブランデンブルク協奏曲第3番",
+      showa: "ボブ・ディラン - Blowin' in the Wind",
+      heisei: "ケミストリー - PIECES OF A DREAM",
+      reiwa: "King Gnu - 白日"
+    },
+    "am": {
+      classic: "シューベルト - 即興曲 Op.90 No.3",
+      showa: "井上陽水 - 心もよう",
+      heisei: "レディオヘッド - Creep",
+      reiwa: "YOASOBI - アンコール"
+    },
+    "B♭": {
+      classic: "ヴィヴァルディ - 四季『冬』",
+      showa: "ジャーニー - Don't Stop Believin'",
+      heisei: "AKB48 - 恋するフォーチュンクッキー",
+      reiwa: "Official髭男dism - 115万キロのフィルム"
+    },
+    "b♭m": {
+      classic: "マーラー - 交響曲第5番 アダージェット",
+      showa: "森山直太朗 - さくら（独唱）",
+      heisei: "back number - 高嶺の花子さん",
+      reiwa: "Aimer - 朝が来る"
+    },
+    "B": {
+      classic: "ベートーヴェン - 交響曲第7番",
+      showa: "クイーン - Bohemian Rhapsody",
+      heisei: "福山雅治 - 桜坂",
+      reiwa: "YOASOBI - 勇者"
+    },
+    "bm": {
+      classic: "ショスタコーヴィチ - ワルツ第2番",
+      showa: "山下達郎 - RIDE ON TIME",
+      heisei: "flumpool - 君に届け",
+      reiwa: "藤井風 - 何なんw"
+    }
+  };
 
-      const imageUrls = {
-        "C": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "cm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "D♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "c♯m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "D": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "dm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "E♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "e♭m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "E": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "em": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "F": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "fm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "F♯": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "f♯m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "G": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "gm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "A♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "g♯m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "A": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "am": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "B♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "b♭m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "B": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
-        "bm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4"
-      };
+  const imageUrls = {
+    "C": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "cm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "D♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "c♯m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "D": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "dm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "E♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "e♭m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "E": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "em": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "F": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "fm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "F♯": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "f♯m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "G": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "gm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "A♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "g♯m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "A": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "am": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "B♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "b♭m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "B": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
+    "bm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4"
+  };
 
-      const questions = [
-        {
-          "id": "Q1",
-          "text": "Q1. 「あなたの部屋」を表す言葉は？",
-          "options": [
-            {"text": "整理整頓されている", "points": {"F♯": 3, "B": 2, "A": 1}},
-            {"text": "気分で配置を変える", "points": {"em": 3, "F": 2, "B♭": 1}},
-            {"text": "静かで落ち着く空間", "points": {"E♭": 3, "gm": 2, "cm": 1}},
-            {"text": "汚いけど安心できる", "points": {"fm": 3, "bm": 2, "dm": 1}},
-            {"text": "最小限でスッキリと", "points": {"C": 3, "G": 2, "f♯m": 1}},
-            {"text": "好きな物でいっぱい", "points": {"g♯m": 3, "e♭m": 2, "am": 1}}
-          ]
-        },
-        {
-          "id": "Q2",
-          "text": "Q2. 子どもの頃、よく言われた台詞は？",
-          "options": [
-            {"text": "「落ち着いてるよね」", "points": {"gm": 3, "E♭": 2, "dm": 1}},
-            {"text": "「自由すぎる子だね」", "points": {"em": 3, "F": 2, "B♭": 1}},
-            {"text": "「頭の回転が早いね」", "points": {"F♯": 3, "B": 2, "f♯m": 1}},
-            {"text": "「少し変わってるね」", "points": {"c♯m": 3, "F": 2, "g♯m": 1}},
-            {"text": "「とっても親切だね」", "points": {"am": 3, "e♭m": 2, "b♭m": 1}},
-            {"text": "「しっかりしてるね」", "points": {"C": 3, "A": 2, "G": 1}}
-          ]
-        },
-        {
-          "id": "Q3",
-          "text": "Q3. 何かを作る際に大切にしたい事は？",
-          "options": [
-            {"text": "雰囲気の良さ", "points": {"g♯m": 3, "e♭m": 2, "F": 1}},
-            {"text": "ストーリー性", "points": {"fm": 3, "bm": 2, "am": 1}},
-            {"text": "構成と完成度", "points": {"F♯": 3, "B": 2, "D♭": 1}},
-            {"text": "勘とスピード", "points": {"em": 3, "B♭": 2, "c♯m": 1}},
-            {"text": "誰かに届ける", "points": {"E": 3, "A": 2, "E♭": 1}},
-            {"text": "思いを込める", "points": {"cm": 3, "dm": 2, "gm": 1}}
-          ]
-        },
-        {
-          "id": "Q4",
-          "text": "Q4. チームで動く時の役割は？",
-          "options": [
-            {"text": "指示役や進行役を担う", "points": {"A": 3, "C": 2, "G": 1}},
-            {"text": "アイデアで盛り上げる", "points": {"F": 3, "em": 2, "c♯m": 1}},
-            {"text": "裏方でみんなを支える", "points": {"dm": 3, "b♭m": 2, "cm": 1}},
-            {"text": "流れを読んで調整する", "points": {"E♭": 3, "gm": 2, "am": 1}},
-            {"text": "少し離れて様子を見る", "points": {"f♯m": 3, "F♯": 2, "g♯m": 1}},
-            {"text": "好きに動いて巻き込む", "points": {"B♭": 3, "B": 2, "D": 1}}
-          ]
-        },
-        {
-          "id": "Q5",
-          "text": "Q5. 急に予定がキャンセルになったら？",
-          "options": [
-            {"text": "新しい予定を入れ直す", "points": {"C": 3, "A": 2, "F♯": 1}},
-            {"text": "ぼーっとして休憩する", "points": {"cm": 3, "dm": 2, "b♭m": 1}},
-            {"text": "ひとりの時間を楽しむ", "points": {"f♯m": 3, "g♯m": 2, "fm": 1}},
-            {"text": "すぐに別の行動をとる", "points": {"em": 3, "B♭": 2, "F": 1}},
-            {"text": "理由を考えて整理する", "points": {"gm": 3, "E♭": 2, "bm": 1}},
-            {"text": "逆にチャンスと感じる", "points": {"B": 3, "c♯m": 2, "E": 1}}
-          ]
-        },
-        {
-          "id": "Q6",
-          "text": "Q6. 思わずやってしまうクセは？",
-          "options": [
-            {"text": "先のことばかり考える", "points": {"F♯": 3, "D♭": 2, "A": 1}},
-            {"text": "悩みや不安を抱え込む", "points": {"f♯m": 3, "cm": 2, "bm": 1}},
-            {"text": "空想や妄想が尽きない", "points": {"c♯m": 3, "g♯m": 2, "F": 1}},
-            {"text": "すぐに何かを指摘する", "points": {"B": 3, "em": 2, "D": 1}},
-            {"text": "周りの意見に流される", "points": {"am": 3, "e♭m": 2, "dm": 1}},
-            {"text": "細かい部分を気にする", "points": {"bm": 3, "fm": 2, "gm": 1}}
-          ]
-        },
-        {
-          "id": "Q7",
-          "text": "Q7. 「理想のリーダー」とは？",
-          "options": [
-            {"text": "正直で信念を持っている人", "points": {"C": 3, "A": 2, "G": 1}},
-            {"text": "温かく話を聞いてくれる人", "points": {"E♭": 3, "am": 2, "dm": 1}},
-            {"text": "常に的確な指示が出せる人", "points": {"A": 3, "F♯": 2, "D♭": 1}},
-            {"text": "面白くて自由な雰囲気の人", "points": {"F": 3, "em": 2, "B♭": 1}},
-            {"text": "個性を受け止めてくれる人", "points": {"e♭m": 3, "g♯m": 2, "f♯m": 1}},
-            {"text": "実力があって背中で語る人", "points": {"B": 3, "bm": 2, "gm": 1}}
-          ]
-        },
-        {
-          "id": "Q8",
-          "text": "Q8. 大きな決断の時に重視するのは？",
-          "options": [
-            {"text": "信じている価値観", "points": {"C": 3, "am": 2, "A": 1}},
-            {"text": "周囲の感情や影響", "points": {"dm": 3, "e♭m": 2, "E♭": 1}},
-            {"text": "自分の感覚や直感", "points": {"em": 3, "B♭": 2, "F": 1}},
-            {"text": "目的や未来の展望", "points": {"D": 3, "G": 2, "B": 1}},
-            {"text": "情報や条件の比較", "points": {"F♯": 3, "D♭": 2, "bm": 1}},
-            {"text": "自分自身との対話", "points": {"cm": 3, "f♯m": 2, "gm": 1}}
-          ]
-        },
-        {
-          "id": "Q9",
-          "text": "Q9. いつもの朝の過ごし方は？",
-          "options": [
-            {"text": "起きたらすぐに動き出す", "points": {"D": 3, "A": 2, "B": 1}},
-            {"text": "しばらく気持ちを整える", "points": {"cm": 3, "dm": 2, "b♭m": 1}},
-            {"text": "ルーティンを淡々と行う", "points": {"C": 3, "G": 2, "F♯": 1}},
-            {"text": "その日の気持ちで変わる", "points": {"B♭": 3, "em": 2, "f♯m": 1}},
-            {"text": "新しい楽しみを見つける", "points": {"F": 3, "am": 2, "E": 1}},
-            {"text": "色々とアイデアを考える", "points": {"c♯m": 3, "g♯m": 2, "fm": 1}}
-          ]
-        },
-        {
-          "id": "Q10",
-          "text": "Q10. 理想の休日の過ごし方は？",
-          "options": [
-            {"text": "自然の中でのんびりする", "points": {"dm": 3, "cm": 2, "gm": 1}},
-            {"text": "とにかく趣味に没頭する", "points": {"g♯m": 3, "f♯m": 2, "e♭m": 1}},
-            {"text": "やりたかった挑戦をする", "points": {"B": 3, "D": 2, "bm": 1}},
-            {"text": "友人や恋人と会って話す", "points": {"A": 3, "C": 2, "F": 1}},
-            {"text": "気分次第で自由に決める", "points": {"B♭": 3, "em": 2, "c♯m": 1}},
-            {"text": "計画をしっかりと立てる", "points": {"F♯": 3, "D♭": 2, "fm": 1}}
-          ]
-        },
-        {
-          "id": "Q11",
-          "text": "Q11. 自宅にいる時に地震が起きたら？",
-          "options": [
-            {"text": "ニュースで状況を把握", "points": {"F♯": 3, "D♭": 2, "bm": 1}},
-            {"text": "動揺しながらも深呼吸", "points": {"C": 3, "A": 2, "G": 1}},
-            {"text": "落ち着いてよく考える", "points": {"cm": 3, "f♯m": 2, "gm": 1}},
-            {"text": "すぐに机の下に隠れる", "points": {"B": 3, "em": 2, "D": 1}},
-            {"text": "家族の安否を確認する", "points": {"am": 3, "dm": 2, "e♭m": 1}},
-            {"text": "マイペースに行動する", "points": {"F": 3, "B♭": 2, "g♯m": 1}}
-          ]
-        },
-        {
-          "id": "Q12",
-          "text": "Q12. 地球最後の日に何をする？",
-          "options": [
-            {"text": "誰かにメッセージを遺す", "points": {"G": 3, "C": 2, "F♯": 1}},
-            {"text": "今までの人生を振り返る", "points": {"am": 3, "fm": 2, "cm": 1}},
-            {"text": "生き残る為の方法を探す", "points": {"B": 3, "D": 2, "bm": 1}},
-            {"text": "お気に入りの音楽を聴く", "points": {"E": 3, "F": 2, "em": 1}},
-            {"text": "大切な人と楽しく過ごす", "points": {"dm": 3, "e♭m": 2, "b♭m": 1}},
-            {"text": "好きなだけ気ままに遊ぶ", "points": {"c♯m": 3, "g♯m": 2, "f♯m": 1}}
-          ]
-        }
-      ];
+  const questions = [
+    {
+      "id": "Q1",
+      "text": "Q1. 「あなたの部屋」を表す言葉は？",
+      "options": [
+        {"text": "整理整頓されている", "points": {"F♯": 3, "B": 2, "A": 1}},
+        {"text": "気分で配置を変える", "points": {"em": 3, "F": 2, "B♭": 1}},
+        {"text": "静かで落ち着く空間", "points": {"E♭": 3, "gm": 2, "cm": 1}},
+        {"text": "汚いけど安心できる", "points": {"fm": 3, "bm": 2, "dm": 1}},
+        {"text": "最小限でスッキリと", "points": {"C": 3, "G": 2, "f♯m": 1}},
+        {"text": "好きな物でいっぱい", "points": {"g♯m": 3, "e♭m": 2, "am": 1}}
+      ]
+    },
+    {
+      "id": "Q2",
+      "text": "Q2. 子どもの頃、よく言われた台詞は？",
+      "options": [
+        {"text": "「落ち着いてるよね」", "points": {"gm": 3, "E♭": 2, "dm": 1}},
+        {"text": "「自由すぎる子だね」", "points": {"em": 3, "F": 2, "B♭": 1}},
+        {"text": "「頭の回転が早いね」", "points": {"F♯": 3, "B": 2, "f♯m": 1}},
+        {"text": "「少し変わってるね」", "points": {"c♯m": 3, "F": 2, "g♯m": 1}},
+        {"text": "「とっても親切だね」", "points": {"am": 3, "e♭m": 2, "b♭m": 1}},
+        {"text": "「しっかりしてるね」", "points": {"C": 3, "A": 2, "G": 1}}
+      ]
+    },
+    {
+      "id": "Q3",
+      "text": "Q3. 何かを作る際に大切にしたい事は？",
+      "options": [
+        {"text": "雰囲気の良さ", "points": {"g♯m": 3, "e♭m": 2, "F": 1}},
+        {"text": "ストーリー性", "points": {"fm": 3, "bm": 2, "am": 1}},
+        {"text": "構成と完成度", "points": {"F♯": 3, "B": 2, "D♭": 1}},
+        {"text": "勘とスピード", "points": {"em": 3, "B♭": 2, "c♯m": 1}},
+        {"text": "誰かに届ける", "points": {"E": 3, "A": 2, "E♭": 1}},
+        {"text": "思いを込める", "points": {"cm": 3, "dm": 2, "gm": 1}}
+      ]
+    },
+    {
+      "id": "Q4",
+      "text": "Q4. チームで動く時の役割は？",
+      "options": [
+        {"text": "指示役や進行役を担う", "points": {"A": 3, "C": 2, "G": 1}},
+        {"text": "アイデアで盛り上げる", "points": {"F": 3, "em": 2, "c♯m": 1}},
+        {"text": "裏方でみんなを支える", "points": {"dm": 3, "b♭m": 2, "cm": 1}},
+        {"text": "流れを読んで調整する", "points": {"E♭": 3, "gm": 2, "am": 1}},
+        {"text": "少し離れて様子を見る", "points": {"f♯m": 3, "F♯": 2, "g♯m": 1}},
+        {"text": "好きに動いて巻き込む", "points": {"B♭": 3, "B": 2, "D": 1}}
+      ]
+    },
+    {
+      "id": "Q5",
+      "text": "Q5. 急に予定がキャンセルになったら？",
+      "options": [
+        {"text": "新しい予定を入れ直す", "points": {"C": 3, "A": 2, "F♯": 1}},
+        {"text": "ぼーっとして休憩する", "points": {"cm": 3, "dm": 2, "b♭m": 1}},
+        {"text": "ひとりの時間を楽しむ", "points": {"f♯m": 3, "g♯m": 2, "fm": 1}},
+        {"text": "すぐに別の行動をとる", "points": {"em": 3, "B♭": 2, "F": 1}},
+        {"text": "理由を考えて整理する", "points": {"gm": 3, "E♭": 2, "bm": 1}},
+        {"text": "逆にチャンスと感じる", "points": {"B": 3, "c♯m": 2, "E": 1}}
+      ]
+    },
+    {
+      "id": "Q6",
+      "text": "Q6. 思わずやってしまうクセは？",
+      "options": [
+        {"text": "先のことばかり考える", "points": {"F♯": 3, "D♭": 2, "A": 1}},
+        {"text": "悩みや不安を抱え込む", "points": {"f♯m": 3, "cm": 2, "bm": 1}},
+        {"text": "空想や妄想が尽きない", "points": {"c♯m": 3, "g♯m": 2, "F": 1}},
+        {"text": "すぐに何かを指摘する", "points": {"B": 3, "em": 2, "D": 1}},
+        {"text": "周りの意見に流される", "points": {"am": 3, "e♭m": 2, "dm": 1}},
+        {"text": "細かい部分を気にする", "points": {"bm": 3, "fm": 2, "gm": 1}}
+      ]
+    },
+    {
+      "id": "Q7",
+      "text": "Q7. 「理想のリーダー」とは？",
+      "options": [
+        {"text": "正直で信念を持っている人", "points": {"C": 3, "A": 2, "G": 1}},
+        {"text": "温かく話を聞いてくれる人", "points": {"E♭": 3, "am": 2, "dm": 1}},
+        {"text": "常に的確な指示が出せる人", "points": {"A": 3, "F♯": 2, "D♭": 1}},
+        {"text": "面白くて自由な雰囲気の人", "points": {"F": 3, "em": 2, "B♭": 1}},
+        {"text": "個性を受け止めてくれる人", "points": {"e♭m": 3, "g♯m": 2, "f♯m": 1}},
+        {"text": "実力があって背中で語る人", "points": {"B": 3, "bm": 2, "gm": 1}}
+      ]
+    },
+    {
+      "id": "Q8",
+      "text": "Q8. 大きな決断の時に重視するのは？",
+      "options": [
+        {"text": "信じている価値観", "points": {"C": 3, "am": 2, "A": 1}},
+        {"text": "周囲の感情や影響", "points": {"dm": 3, "e♭m": 2, "E♭": 1}},
+        {"text": "自分の感覚や直感", "points": {"em": 3, "B♭": 2, "F": 1}},
+        {"text": "目的や未来の展望", "points": {"D": 3, "G": 2, "B": 1}},
+        {"text": "情報や条件の比較", "points": {"F♯": 3, "D♭": 2, "bm": 1}},
+        {"text": "自分自身との対話", "points": {"cm": 3, "f♯m": 2, "gm": 1}}
+      ]
+    },
+    {
+      "id": "Q9",
+      "text": "Q9. いつもの朝の過ごし方は？",
+      "options": [
+        {"text": "起きたらすぐに動き出す", "points": {"D": 3, "A": 2, "B": 1}},
+        {"text": "しばらく気持ちを整える", "points": {"cm": 3, "dm": 2, "b♭m": 1}},
+        {"text": "ルーティンを淡々と行う", "points": {"C": 3, "G": 2, "F♯": 1}},
+        {"text": "その日の気持ちで変わる", "points": {"B♭": 3, "em": 2, "f♯m": 1}},
+        {"text": "新しい楽しみを見つける", "points": {"F": 3, "am": 2, "E": 1}},
+        {"text": "色々とアイデアを考える", "points": {"c♯m": 3, "g♯m": 2, "fm": 1}}
+      ]
+    },
+    {
+      "id": "Q10",
+      "text": "Q10. 理想の休日の過ごし方は？",
+      "options": [
+        {"text": "自然の中でのんびりする", "points": {"dm": 3, "cm": 2, "gm": 1}},
+        {"text": "とにかく趣味に没頭する", "points": {"g♯m": 3, "f♯m": 2, "e♭m": 1}},
+        {"text": "やりたかった挑戦をする", "points": {"B": 3, "D": 2, "bm": 1}},
+        {"text": "友人や恋人と会って話す", "points": {"A": 3, "C": 2, "F": 1}},
+        {"text": "気分次第で自由に決める", "points": {"B♭": 3, "em": 2, "c♯m": 1}},
+        {"text": "計画をしっかりと立てる", "points": {"F♯": 3, "D♭": 2, "fm": 1}}
+      ]
+    },
+    {
+      "id": "Q11",
+      "text": "Q11. 自宅にいる時に地震が起きたら？",
+      "options": [
+        {"text": "ニュースで状況を把握", "points": {"F♯": 3, "D♭": 2, "bm": 1}},
+        {"text": "動揺しながらも深呼吸", "points": {"C": 3, "A": 2, "G": 1}},
+        {"text": "落ち着いてよく考える", "points": {"cm": 3, "f♯m": 2, "gm": 1}},
+        {"text": "すぐに机の下に隠れる", "points": {"B": 3, "em": 2, "D": 1}},
+        {"text": "家族の安否を確認する", "points": {"am": 3, "dm": 2, "e♭m": 1}},
+        {"text": "マイペースに行動する", "points": {"F": 3, "B♭": 2, "g♯m": 1}}
+      ]
+    },
+    {
+      "id": "Q12",
+      "text": "Q12. 地球最後の日に何をする？",
+      "options": [
+        {"text": "誰かにメッセージを遺す", "points": {"G": 3, "C": 2, "F♯": 1}},
+        {"text": "今までの人生を振り返る", "points": {"am": 3, "fm": 2, "cm": 1}},
+        {"text": "生き残る為の方法を探す", "points": {"B": 3, "D": 2, "bm": 1}},
+        {"text": "お気に入りの音楽を聴く", "points": {"E": 3, "F": 2, "em": 1}},
+        {"text": "大切な人と楽しく過ごす", "points": {"dm": 3, "e♭m": 2, "b♭m": 1}},
+        {"text": "好きなだけ気ままに遊ぶ", "points": {"c♯m": 3, "g♯m": 2, "f♯m": 1}}
+      ]
+    }
+  ];
 
-      let current = 0;
-      let topKey = null;
-      const answers = Array(questions.length).fill(null);
-      const startBtn = document.getElementById('startBtn');
-      const backBtn = document.getElementById('backBtn');
-      const restartBtn = document.getElementById('restartBtn');
-      const startScreen = document.getElementById('startScreen');
-      const questionScreen = document.getElementById('questionScreen');
-      const resultScreen = document.getElementById('resultScreen');
-      const questionText = document.getElementById('questionText');
-      const optionsList = document.getElementById('optionsList');
-      const progInner = document.getElementById('progInner');
-      const resultTextDiv = document.getElementById('resultText');
+  let current = 0;
+  let topKey = null;
+  const answers = Array(questions.length).fill(null);
+  const startBtn = document.getElementById('startBtn');
+  const backBtn = document.getElementById('backBtn');
+  const restartBtn = document.getElementById('restartBtn');
+  const startScreen = document.getElementById('startScreen');
+  const questionScreen = document.getElementById('questionScreen');
+  const resultScreen = document.getElementById('resultScreen');
+  const questionText = document.getElementById('questionText');
+  const optionsList = document.getElementById('optionsList');
+  const progInner = document.getElementById('progInner');
+  const resultTextDiv = document.getElementById('resultText');
 
-      if (!startBtn || !questionScreen || !startScreen) {
-        console.error('必要なDOM要素が見つかりません:', {
-          startBtn: !!startBtn,
-          questionScreen: !!questionScreen,
-          startScreen: !!startScreen
-        });
-        return;
-      }
-
-      function getCharacterTitle(key) {
-        const description = characterDescriptions[key];
-        if (!description) return key;
-        const match = description.match(/<span class="title" style="color: [^>]+>(.*?)<\/span>/);
-        return match ? match[1] : key;
-      }
-
-      function showScreen(screen) {
-        [startScreen, questionScreen, resultScreen].forEach(s => {
-          if (s) s.classList.remove('active');
-        });
-        if (screen) screen.classList.add('active');
-        else console.error('showScreen: screen引数がnullです');
-      }
-
-      function renderQuestion() {
-        const q = questions[current];
-        if (!q) {
-          console.error('質問データが見つかりません: current =', current);
-          return;
-        }
-        questionText.textContent = q.text;
-        progInner.style.width = `${(current / questions.length) * 100}%`;
-        optionsList.innerHTML = '';
-        q.options.forEach((opt, idx) => {
-          const li = document.createElement('li');
-          if (answers[current] === idx) li.classList.add('selected');
-          const btn = document.createElement('button');
-          btn.textContent = opt.text;
-          btn.onclick = () => {
-            answers[current] = idx;
-            console.log(`Question ${current + 1}: Selected option ${idx}, Answers:`, answers);
-            if (current < questions.length - 1) {
-              current++;
-              renderQuestion();
-            } else {
-              showResult();
-            }
-          };
-          li.appendChild(btn);
-          optionsList.appendChild(li);
-        });
-        backBtn.style.display = current > 0 ? 'inline-block' : 'none';
-      }
-
-      function prevQuestion() {
-        if (current > 0) {
-          current--;
-          renderQuestion();
-        }
-      }
-
-      function showResult() {
-        const totals = {};
-        questions.forEach((q, qi) => {
-          const sel = answers[qi];
-          if (sel != null) {
-            Object.entries(q.options[sel].points).forEach(([k, v]) => {
-              totals[k] = (totals[k] || 0) + v;
-            });
-          }
-        });
-
-        const allAnswered = answers.every(answer => answer != null);
-        if (!allAnswered || Object.keys(totals).length === 0) {
-          resultTextDiv.innerHTML = `
-            <p>エラー：すべての質問に回答してください。</p>
-            <p>もう一度最初から診断を始めるか、前の質問に戻って回答してください。</p>
-          `;
-          showScreen(resultScreen);
-          return;
-        }
-
-        topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
-        const imageUrl = imageUrls[topKey] || 'placeholder.jpg';
-        document.getElementById('resultImage').innerHTML = `<img src="${imageUrl}" alt="${topKey}の画像" onerror="this.src='placeholder.jpg'">`;
-
-        const compatible = compatibleKeys[topKey] || [];
-        const compatibleHTML = compatible
-          .map(key => `<p class="compatible-title" style="color: ${personalityColors[key].code};">${getCharacterTitle(key)}</p>`)
-          .join('');
-
-        const songs = famousSongs[topKey] || {};
-        const songsHTML = songs.classic
-          ? `
-            <p>${songs.classic}</p>
-            <p>${songs.showa}</p>
-            <p>${songs.heisei}</p>
-            <p>${songs.reiwa}</p>
-          `
-          : '<p>情報が見つかりませんでした。</p>';
-
-        const colorInfo = personalityColors[topKey] || { name: "不明", code: "#000000" };
-        const colorHTML = `
-          <h3>あなたのパートナルカラー</h3>
-          <p><span class="color-name" style="background-color: ${colorInfo.code}; padding: 2px 8px; border-radius: 4px; color: ${colorInfo.code === '#FFFFFF' ? '#000' : '#FFF'}; display: inline-block;">${colorInfo.name}</span> (${colorInfo.code})</p>
-        `;
-
-        resultTextDiv.innerHTML = `
-          ${characterDescriptions[topKey] || '診断結果が見つかりませんでした。'}
-          ${colorHTML}
-          <h3>あなたと相性の良いパートナル</h3>
-          ${compatibleHTML || '<p>情報が見つかりませんでした。</p>'}
-          <h3>あなたのパートナルの有名曲</h3>
-          ${songsHTML}
-        `;
-        showScreen(resultScreen);
-      }
-
-      document.getElementById('shareXBtn').addEventListener('click', () => {
-        if (topKey) {
-          window.open(
-            `https://twitter.com/intent/tweet?text=${encodeURIComponent(`私は「${topKey}」タイプ！24調性診断はこちら →`)}&url=${encodeURIComponent(location.href)}`,
-            '_blank'
-          );
-        } else {
-          console.warn('topKey is not set yet.');
-        }
-      });
-
-      document.getElementById('goodsBtn').addEventListener('click', () => {
-        window.open('https://example.com/official-goods', '_blank');
-      });
-
-      startBtn.onclick = () => {
-        console.log('startBtn clicked, current:', current, 'answers:', answers);
-        current = 0;
-        answers.fill(null);
-        renderQuestion();
-        showScreen(questionScreen);
-      };
-
-      backBtn.onclick = prevQuestion;
-
-      restartBtn.onclick = () => {
-        console.log('restartBtn clicked');
-        current = 0;
-        answers.fill(null);
-        topKey = null;
-        resultTextDiv.innerHTML = '';
-        showScreen(startScreen);
-      };
-
-      showScreen(startScreen);
+  if (!startBtn || !questionScreen || !startScreen) {
+    console.error('必要なDOM要素が見つかりません:', {
+      startBtn: !!startBtn,
+      questionScreen: !!questionScreen,
+      startScreen: !!startScreen
     });
+    return;
+  }
+
+  function getCharacterTitle(key) {
+    const description = characterDescriptions[key];
+    if (!description) return key;
+    const match = description.match(/<span class="title"[^>]*>(.*?)<\/span>/);
+    return match ? match[1] : key;
+  }
+
+  function showScreen(screen) {
+    [startScreen, questionScreen, resultScreen].forEach(s => {
+      if (s) s.classList.remove('active');
+    });
+    if (screen) screen.classList.add('active');
+    else console.error('showScreen: screen引数がnullです');
+  }
+
+  function renderQuestion() {
+    const q = questions[current];
+    if (!q) {
+      console.error('質問データが見つかりません: current =', current);
+      return;
+    }
+    questionText.textContent = q.text;
+    progInner.style.width = `${(current / questions.length) * 100}%`;
+    optionsList.innerHTML = '';
+    q.options.forEach((opt, idx) => {
+      const li = document.createElement('li');
+      if (answers[current] === idx) li.classList.add('selected');
+      const btn = document.createElement('button');
+      btn.textContent = opt.text;
+      btn.onclick = () => {
+        answers[current] = idx;
+        console.log(`Question ${current + 1}: Selected option ${idx}, Answers:`, answers);
+        if (current < questions.length - 1) {
+          current++;
+          renderQuestion();
+        } else {
+          showResult();
+        }
+      };
+      li.appendChild(btn);
+      optionsList.appendChild(li);
+    });
+    backBtn.style.display = current > 0 ? 'inline-block' : 'none';
+  }
+
+  function prevQuestion() {
+    if (current > 0) {
+      current--;
+      renderQuestion();
+    }
+  }
+
+  function showResult() {
+    const totals = {};
+    questions.forEach((q, qi) => {
+      const sel = answers[qi];
+      if (sel != null) {
+        Object.entries(q.options[sel].points).forEach(([k, v]) => {
+          totals[k] = (totals[k] || 0) + v;
+        });
+      }
+    });
+
+    const allAnswered = answers.every(answer => answer != null);
+    if (!allAnswered || Object.keys(totals).length === 0) {
+      resultTextDiv.innerHTML = `
+        <p>エラー：すべての質問に回答してください。</p>
+        <p>もう一度最初から診断を始めるか、前の質問に戻って回答してください。</p>
+      `;
+      showScreen(resultScreen);
+      return;
+    }
+
+    topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+    const imageUrl = imageUrls[topKey] || 'placeholder.jpg';
+    document.getElementById('resultImage').innerHTML = `<img src="${imageUrl}" alt="${topKey}の画像" onerror="this.src='placeholder.jpg'">`;
+
+    const compatible = compatibleKeys[topKey] || [];
+    const compatibleHTML = compatible
+      .map(key => `<p class="compatible-title">${getCharacterTitle(key)}</p>`)
+      .join('');
+
+    const songs = famousSongs[topKey] || {};
+    const songsHTML = songs.classic
+      ? `
+        <p>${songs.classic}</p>
+        <p>${songs.showa}</p>
+        <p>${songs.heisei}</p>
+        <p>${songs.reiwa}</p>
+      `
+      : '<p>情報が見つかりませんでした。</p>';
+
+    const colorInfo = personalityColors[topKey] || { name: "不明", code: "#000000" };
+    const colorHTML = `
+      <h3>あなたのパートナルカラー</h3>
+      <p><span class="color-name" style="background-color: ${colorInfo.code}; padding: 2px 8px; border-radius: 4px; color: ${colorInfo.code === '#FFFFFF' ? '#000' : '#FFF'}; display: inline-block;">${colorInfo.name}</span> (${colorInfo.code})</p>
+    `;
+
+    resultTextDiv.innerHTML = `
+      ${characterDescriptions[topKey] || '診断結果が見つかりませんでした。'}
+      ${colorHTML}
+      <h3>あなたと相性の良いパートナル</h3>
+      ${compatibleHTML || '<p>情報が見つかりませんでした。</p>'}
+      <h3>あなたのパートナルの有名曲</h3>
+      ${songsHTML}
+    `;
+    showScreen(resultScreen);
+  }
+
+  document.getElementById('shareXBtn').addEventListener('click', () => {
+    if (topKey) {
+      window.open(
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(`私は「${topKey}」タイプ！24調性診断はこちら →`)}&url=${encodeURIComponent(location.href)}`,
+        '_blank'
+      );
+    } else {
+      console.warn('topKey is not set yet.');
+    }
+  });
+
+  document.getElementById('goodsBtn').addEventListener('click', () => {
+    window.open('https://example.com/official-goods', '_blank');
+  });
+
+  startBtn.onclick = () => {
+    console.log('startBtn clicked, current:', current, 'answers:', answers);
+    current = 0;
+    answers.fill(null);
+    renderQuestion();
+    showScreen(questionScreen);
+  };
+
+  backBtn.onclick = prevQuestion;
+
+  restartBtn.onclick = () => {
+    console.log('restartBtn clicked');
+    current = 0;
+    answers.fill(null);
+    topKey = null;
+    resultTextDiv.innerHTML = '';
+    showScreen(startScreen);
+  };
+
+  showScreen(startScreen);
+});
   </script>
   <footer>
     <nav class="footer-nav">
