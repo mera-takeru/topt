@@ -6,7 +6,7 @@
   <title>【pertonal -パートナル-】</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ルート変数 */
+   /* ルート変数 */
 :root {
   --primary: #6C63FF;
   --secondary: #FF6584;
@@ -47,7 +47,7 @@ body {
   margin: 16px auto;
 }
 
-/* ヘッダー：固定解除、画面幅全体 */
+/* ヘッダー：画面幅全体、固定解除 */
 header {
   background: #fff;
   padding: 16px;
@@ -57,11 +57,12 @@ header {
   box-sizing: border-box;
 }
 
-/* ヘッダーナビ：リンクを中央に配置 */
+/* ヘッダーナビ：リンクと区切り線を均等配置 */
 .header-nav {
   display: flex;
   justify-content: center;
-  gap: 24px;
+  align-items: center;
+  gap: 16px;
 }
 
 /* ヘッダーリンクのスタイル */
@@ -70,11 +71,18 @@ header {
   color: var(--primary);
   font-weight: 600;
   font-size: 1rem;
+  padding: 0 8px;
   transition: color var(--transition);
 }
 
 .header-nav a:hover {
   color: var(--secondary);
+}
+
+/* ヘッダーの区切り線 */
+.header-nav .divider {
+  color: #ccc;
+  font-size: 1rem;
 }
 
 /* フッター：画面幅全体、最下部に配置 */
@@ -87,11 +95,12 @@ footer {
   box-sizing: border-box;
 }
 
-/* フッターナビ：リンクを中央に配置 */
+/* フッターナビ：リンクと区切り線を均等配置 */
 .footer-nav {
   display: flex;
   justify-content: center;
-  gap: 24px;
+  align-items: center;
+  gap: 16px;
 }
 
 /* フッターリンクのスタイル */
@@ -100,6 +109,7 @@ footer {
   color: var(--primary);
   font-weight: 600;
   font-size: 1rem;
+  padding: 0 8px;
   transition: color var(--transition);
 }
 
@@ -107,7 +117,13 @@ footer {
   color: var(--secondary);
 }
 
-/* 既存のスタイル（以下は変更なし） */
+/* フッターの区切り線 */
+.footer-nav .divider {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+/* 既存のスタイル（変更なし） */
 h1 {
   text-align: center;
   font-weight: 700;
@@ -326,22 +342,28 @@ button:hover {
   margin-bottom: 16px;
 }
 
-/* モバイル対応：小さな画面でナビを縦に */
+/* モバイル対応：小さな画面でリンクを縦に、区切り線を非表示 */
 @media (max-width: 600px) {
   .header-nav, .footer-nav {
     flex-direction: column;
     gap: 12px;
+  }
+  .header-nav .divider, .footer-nav .divider {
+    display: none;
   }
 }
   </style>
 </head>
 <body>
   <header>
-    <nav class="header-nav">
-      <a href="">ABOUT</a>
-      <a href="">CONTACT</a>
-    </nav>
-  </header>
+  <nav class="header-nav">
+    <a href="">ABOUT</a>
+    <span class="divider">|</span>
+    <a href="">FAQ</a>
+    <span class="divider">|</span>
+    <a href="">CONTACT</a>
+  </nav>
+</header>
   <div class="container">
     <h1>
       <span class="title-topt">【pertonal -パートナル-】</span>
@@ -886,10 +908,13 @@ button:hover {
   </script>
    </div>
   <footer>
-    <nav class="footer-nav">
-      <a href="">利用規約</a>
-      <a href="">プライバシーポリシー</a>
-    </nav>
-  </footer>
+  <nav class="footer-nav">
+    <a href="">利用規約</a>
+    <span class="divider">|</span>
+    <a href="">プライバシーポリシー</a>
+    <span class="divider">|</span>
+    <a href="">運営者情報</a>
+  </nav>
+</footer>
 </body>
 </html>
