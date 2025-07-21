@@ -422,7 +422,7 @@
   };
 
   const characterDescriptions = {
-    "C": `<span class="title" style="background-color: ${personalityColors['C'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px; text-shadow: 0 0 2px #000, 0 0 2px #000; border: 1px solid #000;">【C】聖騎士</span>
+    "C": `<span class="title" style="background-color: ${personalityColors['C'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【C】聖騎士</span>
 <p class="result-description">あなたは、どんな時も素直で、人としての信念を大切に生きる聖騎士。<br>
 目立つ言葉や派手な振る舞いに頼らずとも、あなたがそこにいるだけで、まるで空にしっかりと輝く北極星のように、周囲に安心と信頼を与える存在です。<br>
 あなたの言葉には飾り気がなく、行動には一貫性があります。<br>
@@ -1149,9 +1149,9 @@
 
     const colorInfo = personalityColors[topKey] || { name: "不明", code: "#000000" };
     const colorHTML = `
-      <h3>あなたのパートナルカラー</h3>
-      <p><span class="color-name" style="background-color: ${colorInfo.code}; padding: 2px 8px; border-radius: 4px; color: ${colorInfo.code === '#FFFFFF' ? '#000' : '#FFF'}; display: inline-block;">${colorInfo.name}</span> (${colorInfo.code})</p>
-    `;
+  <h3>あなたのパートナルカラー</h3>
+  <p><span class="color-name" style="background-color: ${colorInfo.code}; padding: 2px 8px; border-radius: 4px; color: #FFF; display: inline-block;">${colorInfo.name}</span> (${colorInfo.code})</p>
+`;
 
     resultTextDiv.innerHTML = `
       ${characterDescriptions[topKey] || '診断結果が見つかりませんでした。'}
