@@ -1175,7 +1175,7 @@ hr {
     const colorInfo = personalityColors[topKey] || { name: "不明", code: "#000000" };
   const colorHTML = `
   <h3>あなたのパートナルカラー</h3>
-  <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span> カラーコード：${colorInfo.code}</p>
+  <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span> カラーコード「${colorInfo.code}」</p>
 `;
 
     resultTextDiv.innerHTML = `
