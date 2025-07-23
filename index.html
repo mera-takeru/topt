@@ -551,7 +551,7 @@ hr {
 あなたの生き方は型にはまらず、誰かと無理に足並みをそろえることもありません。<br>
 必要ならひとりで静かに過ごし、ときには仲間と笑い合い、状況や気分によって自由自在に“居場所”を変えられます。<br>
 そのしなやかさと柔軟さは、多くの人の憧れであり、あなたが通り過ぎるたびに新しい風と刺激が周囲にもたらされます。<br>
-自由とは、ただ束縛がないだけではなく、自分の“本当の声”を大切にし、他者の自由も認めていける優しさのこと。<br>
+自由とは、ただ束縛がないだけではなく、自分の「本当の声」を大切にし、他者の自由も認めていける優しさのこと。<br>
 あなたがそばにいると、人々はありのままの自分を思い出し、心が自然とほぐれていきます。<br>
 変化を楽しみ、「今この瞬間」を何より大切にするあなたは、どこまでも風とともに歩み続け、訪れる場所すべてに新しい息吹をもたらす存在です。</p>`,
     "F": `<span class="title" style="background-color: ${personalityColors['F'].code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">【F】発明家</span>
@@ -1173,9 +1173,9 @@ hr {
       : '<p>情報が見つかりませんでした。</p>';
 
     const colorInfo = personalityColors[topKey] || { name: "不明", code: "#000000" };
-    const colorHTML = `
+  const colorHTML = `
   <h3>あなたのパートナルカラー</h3>
-  <p><span class="color-name" style="background-color: ${colorInfo.code}; padding: 2px 8px; border-radius: 4px; color: #FFF; display: inline-block;">${colorInfo.name}</span> (${colorInfo.code})</p>
+  <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span> カラーコード：${colorInfo.code}</p>
 `;
 
     resultTextDiv.innerHTML = `
