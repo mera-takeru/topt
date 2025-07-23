@@ -1175,7 +1175,7 @@ hr {
     const colorInfo = personalityColors[topKey] || { name: "不明", code: "#000000" };
   const colorHTML = `
   <h3>あなたのパートナルカラー</h3>
-  <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span>${colorInfo.code}</p>
+  <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span> ${colorInfo.code}</p>
 `;
 
     resultTextDiv.innerHTML = `
@@ -1195,7 +1195,7 @@ hr {
   document.getElementById('shareXBtn').addEventListener('click', () => {
     if (topKey) {
       window.open(
-        `https://twitter.com/intent/tweet?text=${encodeURIComponent(`私は「${topKey}」タイプ！24調性診断はこちら →`)}&url=${encodeURIComponent(location.href)}`,
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(`私は「${topKey}型」です！<br>MBTIの次はコレ！<br>音楽理論と色彩学を組み合わせた新感覚の性格診断「パートナル」！<br>あなたは何型？<br>今すぐ相性をチェック！<br> →`)}&url=${encodeURIComponent(location.href)}`,
         '_blank'
       );
     } else {
