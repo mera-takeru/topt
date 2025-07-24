@@ -316,25 +316,6 @@
       object-fit: cover;
     }
 
-    #startScreen p {
-      text-align: center;
-    }
-
-    .start-text-container {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .start-sub-image {
-      width: 96px;
-      height: 96px;
-      object-fit: cover;
-      border-radius: 8px;
-      background: #ecebff;
-    }
-
     .title {
       font-size: 1.5rem;
       font-weight: 700;
@@ -405,12 +386,11 @@
       <span class="title-sub">音楽理論 × 色彩学 × 性格診断</span>
     </h1>
     <div id="startScreen" class="screen active">
-      <div id="startImage" class="start-image">
+      <div class="start-image">
         <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreicuerv3fp4zdmpvuc6rvcfn65su53lbvjfz2ekdj4qurwomub4hmy" alt="メイン画像">
       </div>
-      <div class="start-text-container">
-        <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4" alt="サブ画像" class="start-sub-image">
-        <p>たった12個の質問に答えるだけで<br>あなたの「調性格（パートナル）」がわかります。<br>6つの選択肢の中から最も共感できる回答を選んでください。</p>
+      <div class="start-image">
+        <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4" alt="サブ画像">
       </div>
       <button id="startBtn">診断をはじめる</button>
     </div>
