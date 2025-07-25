@@ -300,10 +300,17 @@
       aspect-ratio: 3 / 2;
     }
 
-    .start-image img {
+    .start-image picture, .start-image img {
       width: 100%;
       height: auto;
       object-fit: contain;
+    }
+
+    @media (max-width: 600px) {
+      .start-image {
+        max-width: 100%;
+        margin-bottom: 12px;
+      }
     }
 
     .result-image {
@@ -387,7 +394,11 @@
     </h1>
     <div id="startScreen" class="screen active">
       <div class="start-image">
-        <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeiaif7mivapyfgoftbmkkgljs6z3xofwpzo2u2ox3qb5migl5ksjm4" alt="メイン画像">
+        <picture>
+          <source media="(max-width: 600px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeib4e3lacyko5hvbxn4bqsglsnxffzezfvt263q2ylb2gf45gqjbdq">
+          <source media="(min-width: 601px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeidws4sw73qx62to6uf3b5m5lnvzjxr4ofe4neniww2d6okdjrdm6a">
+          <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeidws4sw73qx62to6uf3b5m5lnvzjxr4ofe4neniww2d6okdjrdm6a" alt="メイン画像" loading="lazy">
+        </picture>
       </div>
       <button id="startBtn">診断をはじめる</button>
     </div>
