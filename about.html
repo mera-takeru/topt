@@ -185,6 +185,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      aspect-ratio: 3/1; /* 縦を半分に */
     }
 
     .start-image picture, .start-image img {
@@ -201,6 +202,25 @@
       text-align: center;
     }
 
+    button.back-btn {
+      font: inherit;
+      font-size: 1rem;
+      padding: 12px 20px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    button.back-btn:hover {
+      background: var(--secondary);
+      transform: scale(1.02);
+    }
+
     @media (max-width: 600px) {
       .container {
         padding: 16px;
@@ -211,6 +231,10 @@
       }
       .content p {
         font-size: 0.875rem;
+      }
+      button.back-btn {
+        font-size: 0.875rem;
+        padding: 10px 16px;
       }
     }
   </style>
@@ -235,10 +259,11 @@
         <picture>
           <source media="(max-width: 600px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeidoeksyoll7ojyblhzwx4ogytvi6ku2fa7gwc35ynjrdipjmuycqy">
           <source media="(min-width: 601px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeig3huiqdm47sgnpkrlabhpn6rhl7vaehb3ofxbd7lrafpc3bddedi">
-          <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeig3huiqdm47sgnpkrlabhpn6rhl7vaehb3ofxbd7lrafpc3bddedi" alt="パートナルとは" loading="lazy">
+          <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeig3huiqdm47sgnpkrlabhpn6rhl7vaehb3ofxbd7lrafpc3bddedi" alt="パートナルとは：音と色の性格診断" loading="lazy">
         </picture>
       </div>
-      <p>パートナルは、音楽の調と色彩であなたの個性を発見する性格診断サービスです。</p>
+      <p>パートナルとは、音楽の調と色彩であなたの個性を発見する診断です。</p>
+      <button class="back-btn" onclick="location.href='./index.html'">診断をはじめる</button>
     </div>
   </div>
   <footer>
