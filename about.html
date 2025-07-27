@@ -185,7 +185,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      aspect-ratio: 3/1; /* 縦を半分に */
+      aspect-ratio: 3/1;
     }
 
     .start-image picture, .start-image img {
@@ -194,12 +194,38 @@
       object-fit: contain;
     }
 
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .content h2::before {
+      font-size: 1.75rem;
+    }
+
     .content p {
       font-size: 1rem;
       line-height: 1.6;
-      margin-bottom: 16px;
       color: var(--text);
-      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .content ul {
+      list-style: disc;
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    .content li {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 8px;
     }
 
     button.back-btn {
@@ -229,7 +255,10 @@
         max-width: 100%;
         margin-bottom: 12px;
       }
-      .content p {
+      .content h2 {
+        font-size: 1.25rem;
+      }
+      .content p, .content li {
         font-size: 0.875rem;
       }
       button.back-btn {
@@ -262,7 +291,35 @@
           <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeig3huiqdm47sgnpkrlabhpn6rhl7vaehb3ofxbd7lrafpc3bddedi" alt="パートナルとは：音と色の性格診断" loading="lazy">
         </picture>
       </div>
-      <p>パートナルとは、音楽の調と色彩であなたの個性を発見する診断です。</p>
+      <p>── 音と色と性格が、あなたの“響き”を教えてくれる。</p>
+      <p>「MBTIはもうやった。でも、なんか覚えにくいし、ピンとこなかった」<br>そんなあなたにこそ体験してほしいのが、新感覚の性格診断『pertonal（パートナル）』です。</p>
+      <p>パートナルは、「音楽」と「色彩」から自分を読み解く、ちょっと不思議でとても感覚的な診断サービス。<br>たった12問の質問に答えるだけで、あなたを表す“調性”と“色”が分かります。</p>
+      <h2>🎼 例えば、あなたはこんな人かもしれません</h2>
+      <p>Cメジャー型（レッド）：情熱的で頼られるリーダータイプ</p>
+      <p>Aマイナー型（ディープピンク）：繊細で感受性豊かなアーティストタイプ</p>
+      <p>F#メジャー型（ライトブルー）：理知的でちょっとクールな戦略家タイプ</p>
+      <p>24種類の「パートナル」には、それぞれ性格傾向・イメージカラー・キャラクターが設定されています。<br>診断結果はまるでRPGのキャラクター診断のように、ワクワクするビジュアルとともに表示されます。</p>
+      <h2>🎨 音楽と色の“重なり”で性格をとらえる</h2>
+      <p>パートナルの特徴は、西洋音楽の調性理論（全24キー）と、色彩心理学を組み合わせている点にあります。<br>「Cメジャー」と「Gメジャー」は音楽的に親和性が高いように、診断結果でもその“つながり”が性格の相性として機能します。</p>
+      <p>また、音の響きと色の印象が視覚的に一致するように設計されているので、<br>「この色って、なんか“自分っぽい”」という感覚も自然と得られるはずです。</p>
+      <h2>🧠 パートナルは、数値ではなく“印象”で見る性格診断</h2>
+      <p>MBTIのように「内向型／外向型」といった指標ではなく、<br>パートナルは「あなたが何色で、どんな響きを持つか？」を中心に設計されています。</p>
+      <p>自分を“音”や“色”で表すことで、<br>論理よりも感性で自分を理解する、新しい自己発見のかたちを提供します。</p>
+      <h2>💬 どんな人におすすめ？</h2>
+      <ul>
+        <li>MBTIやエニアグラムをやってみたけど、しっくりこなかった人</li>
+        <li>「私はこういうタイプです」と伝えるときに、もっと感覚的な表現を求めている人</li>
+        <li>自分をもっと好きになりたい人</li>
+        <li>友達・恋人・家族との相性を知りたい人</li>
+      </ul>
+      <p>診断は無料・所要時間2分程度。キャラ診断として楽しんでもよし、深く自己分析してもよし。<br>どんな入り口でも、あなたのパートナルが、きっと“今のあなた”を映し出してくれます。</p>
+      <h2>🧭 さらに楽しむための使い方</h2>
+      <ul>
+        <li>診断結果をX（旧Twitter）でシェアして、友達と比べてみよう</li>
+        <li>あなたの「パートナルキャラクター」のグッズを身につけてみよう</li>
+        <li>相性診断で、気になるあの人との関係性をチェックしてみよう</li>
+        <li>推しキャラを探すように、全24タイプをコレクションしてみよう！</li>
+      </ul>
       <button class="back-btn" onclick="location.href='./index.html'">診断をはじめる</button>
     </div>
   </div>
