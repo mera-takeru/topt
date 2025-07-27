@@ -1,1 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>運営者情報 | pertonal -パートナル-</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6C63FF;
+      --secondary: #FF6584;
+      --bg: #F9FAFB;
+      --text: #333;
+      --radius: 12px;
+      --transition: .3s;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: inherit !important;
+      text-decoration: none;
+    }
+    a:visited, a:link, a:active {
+      color: inherit !important;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(
+        45deg,
+        rgba(255, 99, 71, 0.1),
+        rgba(255, 165, 0, 0.1),
+        rgba(255, 255, 0, 0.1),
+        rgba(50, 205, 50, 0.1),
+        rgba(0, 191, 255, 0.1),
+        rgba(75, 0, 130, 0.1),
+        rgba(238, 130, 238, 0.1)
+      );
+      background-size: 400%;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 16px;
+      animation: rainbow 8s ease infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+      margin: 16px auto;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .header-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    header .header-nav a {
+      text-decoration: none;
+      color: #000000 !important;
+      font-weight: 400;
+      font-size: 1rem;
+      padding: 0 6px;
+      transition: color var(--transition);
+    }
+
+    header .header-nav a:hover {
+      color: var(--secondary);
+    }
+
+    header .header-nav a.active {
+      color: var(--secondary);
+    }
+
+    header .header-nav .divider {
+      color: #000000 !important;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    footer {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    footer .footer-nav a {
+      text-decoration: none;
+      color: #000000 !important;
+      font-weight: 400;
+      font-size: 1rem;
+      padding: 0 6px;
+      transition: color var(--transition);
+    }
+
+    footer .footer-nav a:hover {
+      color: var(--secondary);
+    }
+
+    footer .footer-nav .divider {
+      color: #000000 !important;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .copyright {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #000000;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+
+    .title-topt {
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-align: center;
+      display: block;
+      margin-bottom: 8px;
+      color: var(--secondary);
+      text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.3),
+        0 0 4px rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.5px;
+    }
+
+    .title-sub {
+      font-size: 1rem;
+      display: block;
+    }
+
+    .start-image {
+      width: 100%;
+      background: #ecebff;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 3/1;
+    }
+
+    .start-image picture, .start-image img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .content h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      margin-top: 24px;
+    }
+
+    .content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .content ul {
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    .content li {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .content dl {
+      margin-bottom: 16px;
+    }
+
+    .content dt {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-bottom: 4px;
+    }
+
+    .content dd {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 12px;
+      margin-left: 20px;
+    }
+
+    .content a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .content a:hover {
+      color: var(--secondary);
+    }
+
+    button.back-btn {
+      font: inherit;
+      font-size: 1rem;
+      padding: 12px 20px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    button.back-btn:hover {
+      background: var(--secondary);
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 16px;
+      }
+      .start-image {
+        max-width: 100%;
+        margin-bottom: 12px;
+      }
+      .content h2 {
+        font-size: 1rem;
+      }
+      .content p, .content li, .content dt, .content dd {
+        font-size: 0.875rem;
+      }
+      button.back-btn {
+        font-size: 0.875rem;
+        padding: 10px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="./about.html">パートナルとは</a>
+      <span class="divider">|</span>
+      <a href="./faq.html">よくある質問</a>
+      <span class="divider">|</span>
+      <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>
+      <span class="title-topt">pertonal -パートナル-</span>
+      <span class="title-sub">「音」×「色」＝ New「性格診断」</span>
+    </h1>
+    <div class="content">
+      <div class="start-image">
+        <picture>
+          <source media="(max-width: 600px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeieatdveqt7yit7apaeddxbb4ghx34soq67bgl6fc6nld6go35lj24">
+          <source media="(min-width: 601px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeieatdveqt7yit7apaeddxbb4ghx34soq67bgl6fc6nld6go35lj24">
+          <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeieatdveqt7yit7apaeddxbb4ghx34soq67bgl6fc6nld6go35lj24" alt="運営者情報：パートナルの運営者について" loading="lazy">
+        </picture>
+      </div>
+      <p>「pertonal - パートナル -」は、アーティスト・メラ タケルが個人で開発・運営しているWebサービスです。</p>
+      <h2>運営者について</h2>
+      <dl>
+        <dt>名前</dt>
+        <dd>メラ タケル</dd>
+        <dt>活動拠点</dt>
+        <dd>静岡県藤枝市</dd>
+        <dt>肩書き</dt>
+        <dd>クリプトアーティスト／サービス開発者</dd>
+        <dt>メールアドレス</dt>
+        <dd><a href="mailto:pertonal.jp@gmail.com">pertonal.jp@gmail.com</a></dd>
+        <dt>公式X（旧Twitter）</dt>
+        <dd><a href="https://x.com/pertonal_jp">@pertonal_jp</a></dd>
+      </dl>
+      <h2>ごあいさつ</h2>
+      <p>はじめまして。メラ タケルと申します。</p>
+      <p>本サービス「pertonal - パートナル -」は、音楽理論（調性）と色彩心理学というふたつの感性科学をもとに、「性格をもっと直感的に、もっと美しく理解する」ことを目指して開発した診断コンテンツです。</p>
+      <p>私は音楽系の大学を卒業し、現在はNFTやデジタルアートの世界で作品を発表しています。音や色に日常的に触れる中で、「自分の感性や性格にも“調”や“色”があるのではないか？」という発想に至ったことが、本サービスの出発点です。</p>
+      <p>MBTIのように話題になるだけでなく、日々の生活に役立つ診断ツールとして、多くの方に親しんでいただけることを願っています。</p>
+      <h2>運営方針</h2>
+      <p>pertonalは、以下の理念を大切にしながら運営しています：</p>
+      <ul>
+        <li>感性に基づく新しい自己理解の提供</li>
+        <li>エンタメと学術の中間をめざす誠実な設計</li>
+        <li>直感的で美しいユーザー体験の追求</li>
+        <li>個人開発だからこその、柔軟で遊び心ある展開</li>
+      </ul>
+      <p>今後も、キャラクター展開やグッズ販売、書籍化やWeb3連携など、さまざまな可能性を広げていく予定です。どうぞお楽しみに。</p>
+      <p>※お問い合わせは、上記連絡先または<a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせフォーム</a>よりお気軽にご連絡ください。</p>
+      <button class="back-btn" onclick="location.href='./index.html'">トップに戻る</button>
+    </div>
+  </div>
+  <footer>
+    <nav class="footer-nav">
+      <a href="./terms.html">利用規約</a>
+      <span class="divider">|</span>
+      <a href="./privacy.html">プライバシーポリシー</a>
+      <span class="divider">|</span>
+      <a href="./meratakeru.html" class="active">運営者情報</a>
+    </nav>
+    <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
+  </footer>
+</body>
+</html>
