@@ -1,1 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>プライバシーポリシー | pertonal -パートナル-</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6C63FF;
+      --secondary: #FF6584;
+      --bg: #F9FAFB;
+      --text: #333;
+      --radius: 12px;
+      --transition: .3s;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: inherit !important;
+      text-decoration: none;
+    }
+    a:visited, a:link, a:active {
+      color: inherit !important;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(
+        45deg,
+        rgba(255, 99, 71, 0.1),
+        rgba(255, 165, 0, 0.1),
+        rgba(255, 255, 0, 0.1),
+        rgba(50, 205, 50, 0.1),
+        rgba(0, 191, 255, 0.1),
+        rgba(75, 0, 130, 0.1),
+        rgba(238, 130, 238, 0.1)
+      );
+      background-size: 400%;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 16px;
+      animation: rainbow 8s ease infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+      margin: 16px auto;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .header-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    header .header-nav a {
+      text-decoration: none;
+      color: #000000 !important;
+      font-weight: 400;
+      font-size: 1rem;
+      padding: 0 6px;
+      transition: color var(--transition);
+    }
+
+    header .header-nav a:hover {
+      color: var(--secondary);
+    }
+
+    header .header-nav a.active {
+      color: var(--secondary);
+    }
+
+    header .header-nav .divider {
+      color: #000000 !important;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    footer {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    footer .footer-nav a {
+      text-decoration: none;
+      color: #000000 !important;
+      font-weight: 400;
+      font-size: 1rem;
+      padding: 0 6px;
+      transition: color var(--transition);
+    }
+
+    footer .footer-nav a:hover {
+      color: var(--secondary);
+    }
+
+    footer .footer-nav .divider {
+      color: #000000 !important;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .copyright {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #000000;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+
+    .title-topt {
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-align: center;
+      display: block;
+      margin-bottom: 8px;
+      color: var(--secondary);
+      text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.3),
+        0 0 4px rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.5px;
+    }
+
+    .start-image {
+      width: 100%;
+      background: #ecebff;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 3/1;
+    }
+
+    .start-image picture, .start-image img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .content h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      margin-top: 24px;
+    }
+
+    .content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .content ul, .content ol {
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    .content li {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .content .last-updated {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--secondary);
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .content a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .content a:hover {
+      color: var(--secondary);
+    }
+
+    button.back-btn {
+      font: inherit;
+      font-size: 1rem;
+      padding: 12px 20px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    button.back-btn:hover {
+      background: var(--secondary);
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 16px;
+      }
+      .start-image {
+        max-width: 100%;
+        margin-bottom: 12px;
+      }
+      .content h2 {
+        font-size: 1rem;
+      }
+      .content p, .content li {
+        font-size: 0.875rem;
+      }
+      button.back-btn {
+        font-size: 0.875rem;
+        padding: 10px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="./about.html">パートナルとは</a>
+      <span class="divider">|</span>
+      <a href="./faq.html">よくある質問</a>
+      <span class="divider">|</span>
+      <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>
+      <span class="title-topt">pertonal -パートナル-</span>
+    </h1>
+    <div class="content">
+      <div class="start-image">
+        <picture>
+          <source media="(max-width: 600px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeidzcpqtrhq3eiywspe3hdmrsl6i4wujotgjwwcjdwyj6jcx6nljci">
+          <source media="(min-width: 601px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeidzcpqtrhq3eiywspe3hdmrsl6i4wujotgjwwcjdwyj6jcx6nljci">
+          <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeidzcpqtrhq3eiywspe3hdmrsl6i4wujotgjwwcjdwyj6jcx6nljci" alt="プライバシーポリシー：パートナルの個人情報保護方針" loading="lazy">
+        </picture>
+      </div>
+      <p>メラ タケル（以下「当方」といいます）は、提供するWebサービス『pertonal -パートナル-』（以下「本サービス」といいます）において、利用者のプライバシーを尊重し、個人情報の適切な管理と保護に努めます。本ポリシーでは、本サービスにおけるユーザー情報の取扱い方針を以下のとおり定めます。</p>
+      <h2>第1条（取得する情報）</h2>
+      <p>本サービスでは、以下の情報を取得する場合があります：</p>
+      <ul>
+        <li>お問い合わせフォームから取得する氏名（任意）、メールアドレス、お問い合わせ内容</li>
+        <li>キャンペーン応募や特典配布時に入力されるSNSアカウント名やメールアドレス（任意）</li>
+        <li>アクセス解析のために自動取得される端末情報、ブラウザ情報、アクセス履歴、IPアドレス等（Cookieを利用）</li>
+        <li>その他、利用者が自発的に提供する情報</li>
+      </ul>
+      <h2>第2条（利用目的）</h2>
+      <p>取得した情報は、以下の目的のために利用いたします：</p>
+      <ul>
+        <li>本サービスの提供および運営のため</li>
+        <li>ユーザーからの問い合わせ対応や本人確認のため</li>
+        <li>キャンペーンの抽選・当選通知・特典配布のため</li>
+        <li>不正行為の防止・調査のため</li>
+        <li>サービス改善や新機能の企画・実装に向けた分析のため</li>
+        <li>法令に基づく対応が必要な場合</li>
+      </ul>
+      <h2>第3条（情報の第三者提供）</h2>
+      <p>当方は、次の場合を除き、個人情報を第三者に提供・開示することはありません：</p>
+      <ul>
+        <li>ユーザー本人の同意がある場合</li>
+        <li>法令に基づく場合</li>
+        <li>人の生命、身体、財産の保護のために必要であり、本人の同意が困難である場合</li>
+        <li>業務委託先（例：抽選代行サービス、グッズ配送サービス等）に必要最小限の範囲で提供する場合</li>
+      </ul>
+      <h2>第4条（情報の管理）</h2>
+      <p>当方は、個人情報への不正アクセス、漏洩、紛失、改ざんなどを防ぐため、合理的な安全対策を講じ、適切に管理します。</p>
+      <h2>第5条（Google Analyticsの利用）</h2>
+      <p>本サービスでは、サービスの利用状況を把握するため、Google LLCが提供する「Google Analytics」を使用しています。Google社によるデータの取り扱いについては、<a href="https://policies.google.com/privacy">Googleのプライバシーポリシー</a>をご確認ください。</p>
+      <h2>第6条（ユーザーの権利）</h2>
+      <p>ユーザーは、ご自身の個人情報について以下の請求が可能です：</p>
+      <ul>
+        <li>開示、訂正、削除の請求</li>
+        <li>利用停止または第三者提供の停止の請求</li>
+      </ul>
+      <p>請求を希望される方は、下記の【お問い合わせ先】までご連絡ください。</p>
+      <h2>第7条（未成年者の利用）</h2>
+      <p>未成年の方は、必ず保護者の同意を得た上で本サービスをご利用ください。</p>
+      <h2>第8条（プライバシーポリシーの変更）</h2>
+      <p>本ポリシーの内容は、予告なく変更する場合があります。重要な変更がある場合には、Webサイト上で告知いたします。</p>
+      <h2>【お問い合わせ先】</h2>
+      <p>開発・運営：メラ タケル<br>E-mail：<a href="mailto:pertonal.jp@gmail.com">pertonal.jp@gmail.com</a><br>公式X（旧Twitter）：<a href="https://x.com/pertonal_jp">@pertonal_jp</a></p>
+      <p class="last-updated">【最終更新日】2025年7月25日</p>
+      <button class="back-btn" onclick="location.href='./index.html'">トップに戻る</button>
+    </div>
+  </div>
+  <footer>
+    <nav class="footer-nav">
+      <a href="./terms.html">利用規約</a>
+      <span class="divider">|</span>
+      <a href="./privacy.html" class="active">プライバシーポリシー</a>
+      <span class="divider">|</span>
+      <a href="./meratakeru.html">運営者情報</a>
+    </nav>
+    <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
+  </footer>
+</body>
+</html>
