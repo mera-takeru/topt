@@ -1,1 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>利用規約 | pertonal -パートナル-</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6C63FF;
+      --secondary: #FF6584;
+      --bg: #F9FAFB;
+      --text: #333;
+      --radius: 12px;
+      --transition: .3s;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: inherit !important;
+      text-decoration: none;
+    }
+    a:visited, a:link, a:active {
+      color: inherit !important;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(
+        45deg,
+        rgba(255, 99, 71, 0.1),
+        rgba(255, 165, 0, 0.1),
+        rgba(255, 255, 0, 0.1),
+        rgba(50, 205, 50, 0.1),
+        rgba(0, 191, 255, 0.1),
+        rgba(75, 0, 130, 0.1),
+        rgba(238, 130, 238, 0.1)
+      );
+      background-size: 400%;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 16px;
+      animation: rainbow 8s ease infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+      margin: 16px auto;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .header-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    header .header-nav a {
+      text-decoration: none;
+      color: #000000 !important;
+      font-weight: 400;
+      font-size: 1rem; /* Updated to match About page */
+      padding: 0 6px;
+      transition: color var(--transition);
+    }
+
+    header .header-nav a:hover {
+      color: var(--secondary);
+    }
+
+    header .header-nav a.active {
+      color: var(--secondary);
+    }
+
+    header .header-nav .divider {
+      color: #000000 !important;
+      font-size: 1rem; /* Updated to match About page */
+      font-weight: 400;
+    }
+
+    footer {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    footer .footer-nav a {
+      text-decoration: none;
+      color: #000000 !important;
+      font-weight: 400;
+      font-size: 1rem; /* Updated to match About page */
+      padding: 0 6px;
+      transition: color var(--transition);
+    }
+
+    footer .footer-nav a:hover {
+      color: var(--secondary);
+    }
+
+    footer .footer-nav .divider {
+      color: #000000 !important;
+      font-size: 1rem; /* Updated to match About page */
+      font-weight: 400;
+    }
+
+    .copyright {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem; /* Updated to match About page */
+      font-weight: 400;
+      color: #000000;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+
+    .title-topt {
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-align: center;
+      display: block;
+      margin-bottom: 8px;
+      color: var(--secondary);
+      text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.3),
+        0 0 4px rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.5px;
+    }
+
+    .title-sub {
+      font-size: 1rem;
+      display: block;
+    }
+
+    .content h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      margin-top: 24px;
+    }
+
+    .content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .content ul {
+      list-style: disc;
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    .content li {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .content .last-updated {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--secondary);
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    button.back-btn {
+      font: inherit;
+      font-size: 1rem;
+      padding: 12px 20px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    button.back-btn:hover {
+      background: var(--secondary);
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 16px;
+      }
+      .content h2 {
+        font-size: 1rem;
+      }
+      .content p, .content li {
+        font-size: 0.875rem;
+      }
+      button.back-btn {
+        font-size: 0.875rem;
+        padding: 10px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="./about.html">パートナルとは</a>
+      <span class="divider">|</span>
+      <a href="./faq.html">よくある質問</a>
+      <span class="divider">|</span>
+      <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>
+      <span class="title-topt">pertonal -パートナル-</span>
+      <span class="title-sub">利用規約</span>
+    </h1>
+    <div class="content">
+      <p>この利用規約（以下「本規約」といいます）は、メラ タケル（以下「当方」といいます）が提供するWebサービス「pertonal -パートナル-」（以下「本サービス」といいます）に関する条件を定めるものです。本サービスを利用されるすべての方（以下「ユーザー」といいます）は、本規約の内容をよくお読みいただき、同意のうえご利用ください。</p>
+      <h2>第1条（適用範囲）</h2>
+      <ol>
+        <li>本規約は、ユーザーと当方との間のすべての利用に適用されます。</li>
+        <li>当方が本サービスに関連して別途定めたガイドライン、プライバシーポリシー等は、本規約の一部を構成するものとします。</li>
+      </ol>
+      <h2>第2条（禁止事項）</h2>
+      <p>ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。</p>
+      <ul>
+        <li>法令または公序良俗に違反する行為</li>
+        <li>他者の権利や利益を侵害する行為（著作権、プライバシー等の侵害）</li>
+        <li>本サービスの運営を妨げる行為または当方の信用を毀損する行為</li>
+        <li>不正アクセスや自動化ツールを用いたデータの取得・解析行為</li>
+        <li>その他、当方が不適切と判断する行為</li>
+      </ul>
+      <h2>第3条（サービスの変更・中止）</h2>
+      <ol>
+        <li>当方は、ユーザーに事前に通知することなく、本サービスの内容の全部または一部を変更・中断・終了することがあります。</li>
+        <li>本サービスの提供中止によりユーザーに生じた損害について、当方は一切の責任を負いません。</li>
+      </ol>
+      <h2>第4条（知的財産権）</h2>
+      <ol>
+        <li>本サービスに関するすべてのコンテンツ（文章・画像・キャラクター・ロゴ等）の著作権および知的財産権は、当方または正当な権利を有する第三者に帰属します。</li>
+        <li>ユーザーは、当方の許諾を得ずに、これらのコンテンツを転載・複製・販売・配布等してはなりません。</li>
+      </ol>
+      <h2>第5条（免責事項）</h2>
+      <ol>
+        <li>本サービスはエンターテインメント目的で提供されており、診断結果はあくまで参考情報です。医学的・心理学的な診断や専門的助言を提供するものではありません。</li>
+        <li>本サービスの利用または利用不能によってユーザーまたは第三者に生じた損害について、当方は一切責任を負いません。</li>
+      </ol>
+      <h2>第6条（個人情報の取扱い）</h2>
+      <p>当方は、ユーザーの個人情報を別途定める「プライバシーポリシー」に従って適切に取り扱います。</p>
+      <h2>第7条（利用制限・アカウント停止）</h2>
+      <p>ユーザーが本規約に違反した場合、当方は当該ユーザーに対して事前の通知なくサービスの利用を制限・停止することができます。</p>
+      <h2>第8条（規約の変更）</h2>
+      <ol>
+        <li>当方は、必要に応じて本規約を改定できるものとします。</li>
+        <li>改定後の規約は、Webサイト上に掲示した時点で効力を生じるものとし、以後のサービス利用には変更後の規約が適用されます。</li>
+      </ol>
+      <h2>第9条（準拠法・裁判管轄）</h2>
+      <p>本規約は日本法を準拠法とし、本サービスに関して生じる一切の紛争については、静岡地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+      <p class="last-updated">【最終更新日】2025年7月25日</p>
+      <button class="back-btn" onclick="location.href='./index.html'">トップに戻る</button>
+    </div>
+  </div>
+  <footer>
+    <nav class="footer-nav">
+      <a href="./terms.html" class="active">利用規約</a>
+      <span class="divider">|</span>
+      <a href="./privacy.html">プライバシーポリシー</a>
+      <span class="divider">|</span>
+      <a href="./meratakeru.html">運営者情報</a>
+    </nav>
+    <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
+  </footer>
+</body>
+</html>
