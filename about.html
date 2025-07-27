@@ -176,12 +176,21 @@
       display: block;
     }
 
-    .content h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
+    .start-image {
+      width: 100%;
+      background: #ecebff;
+      border-radius: var(--radius);
       margin-bottom: 16px;
-      color: var(--primary);
-      text-align: center;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .start-image picture, .start-image img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
     }
 
     .content p {
@@ -189,14 +198,16 @@
       line-height: 1.6;
       margin-bottom: 16px;
       color: var(--text);
+      text-align: center;
     }
 
     @media (max-width: 600px) {
       .container {
         padding: 16px;
       }
-      .content h2 {
-        font-size: 1.25rem;
+      .start-image {
+        max-width: 100%;
+        margin-bottom: 12px;
       }
       .content p {
         font-size: 0.875rem;
@@ -220,10 +231,14 @@
       <span class="title-sub">「音」×「色」＝ New「性格診断」</span>
     </h1>
     <div class="content">
-      <h2>パートナルとは</h2>
-      <p>パートナルは、音楽の調と色彩を組み合わせた独自の性格診断サービスです。12の質問を通じて、あなたの内面を「調性格（パートナル）」として表現します。ブライトレッドやディープグリーンなど、鮮やかなカラーと音楽で、あなただけの個性を発見できます。</p>
-      <p>私たちの目的は、従来の性格診断（例：MBTI）を超え、音と色の新しい視点で自己理解を深めること。無料で手軽に診断でき、結果はXでシェアして友達と楽しめます。あなたのパートナルカラーと相性の良いタイプ、有名な曲もチェックして、新たな自分を見つけましょう！</p>
-      <p>さあ、今すぐ「診断をはじめる」ボタンから、あなたのパートナルを探してみませんか？</p>
+      <div class="start-image">
+        <picture>
+          <source media="(max-width: 600px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeidoeksyoll7ojyblhzwx4ogytvi6ku2fa7gwc35ynjrdipjmuycqy">
+          <source media="(min-width: 601px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeig3huiqdm47sgnpkrlabhpn6rhl7vaehb3ofxbd7lrafpc3bddedi">
+          <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeig3huiqdm47sgnpkrlabhpn6rhl7vaehb3ofxbd7lrafpc3bddedi" alt="パートナルとは" loading="lazy">
+        </picture>
+      </div>
+      <p>パートナルは、音楽の調と色彩であなたの個性を発見する性格診断サービスです。</p>
     </div>
   </div>
   <footer>
