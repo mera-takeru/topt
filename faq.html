@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>よくある質問 | pertonal -パートナル-</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6C63FF;
+      --secondary: #FF6584;
+      --bg: #F9FAFB;
+      --text: #333;
+      --radius: 12px;
+      --transition: .3s;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: inherit !important;
+      text-decoration: none;
+    }
+    a:visited, a:link, a:active {
+      color: inherit !important;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(
+        45deg,
+        rgba(255, 99, 71, 0.1),
+        rgba(255, 165, 0, 0.1),
+        rgba(255, 255, 0, 0.1),
+        rgba(50, 205, 50, 0.1),
+        rgba(0, 191, 255, 0.1),
+        rgba(75, 0, 130, 0.1),
+        rgba(238, 130, 238, 0.1)
+      );
+      background-size: 400%;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 16px;
+      animation: rainbow 8s ease infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+      margin: 16px auto;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .header-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    header .header-nav a {
+      text-decoration: none;
+      color: #000000 !important;
+      font-weight: 400;
+      font-size: 0.75rem;
+      padding: 0 6px;
+      transition: color var(--transition);
+    }
+
+    header .header-nav a:hover {
+      color: var(--secondary);
+    }
+
+    header .header-nav a.active {
+      color: var(--secondary);
+    }
+
+    header .header-nav .divider {
+      color: #000000 !important;
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+
+    footer {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    footer .footer-nav a {
+      text-decoration: none;
+      color: #000000 !important;
+      font-weight: 400;
+      font-size: 0.75rem;
+      padding: 0 6px;
+      transition: color var(--transition);
+    }
+
+    footer .footer-nav a:hover {
+      color: var(--secondary);
+    }
+
+    footer .footer-nav .divider {
+      color: #000000 !important;
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+
+    .copyright {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: #000000;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+
+    .title-topt {
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-align: center;
+      display: block;
+      margin-bottom: 8px;
+      color: var(--secondary);
+      text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.3),
+        0 0 4px rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.5px;
+    }
+
+    .title-sub {
+      font-size: 1rem;
+      display: block;
+    }
+
+    .start-image {
+      width: 100%;
+      background: #ecebff;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 3/1;
+    }
+
+    .start-image picture, .start-image img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .content h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .content .answer-label {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    .content p a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .content p a:hover {
+      color: var(--secondary);
+    }
+
+    button.back-btn {
+      font: inherit;
+      font-size: 1rem;
+      padding: 12px 20px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    button.back-btn:hover {
+      background: var(--secondary);
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 16px;
+      }
+      .start-image {
+        max-width: 100%;
+        margin-bottom: 12px;
+      }
+      .content h2 {
+        font-size: 1rem;
+      }
+      .content p {
+        font-size: 0.875rem;
+      }
+      button.back-btn {
+        font-size: 0.875rem;
+        padding: 10px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="./about.html">パートナルとは</a>
+      <span class="divider">|</span>
+      <a href="./faq.html" class="active">よくある質問</a>
+      <span class="divider">|</span>
+      <a href="./contact.html">お問い合わせ</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>
+      <span class="title-topt">pertonal -パートナル-</span>
+      <span class="title-sub">「音」×「色」＝ New「性格診断」</span>
+    </h1>
+    <div class="content">
+      <div class="start-image">
+        <picture>
+          <source media="(max-width: 600px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeidoeksyoll7ojyblhzwx4ogytvi6ku2fa7gwc35ynjrdipjmuycqy">
+          <source media="(min-width: 601px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeig3huiqdm47sgnpkrlabhpn6rhl7vaehb3ofxbd7lrafpc3bddedi">
+          <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeig3huiqdm47sgnpkrlabhpn6rhl7vaehb3ofxbd7lrafpc3bddedi" alt="よくある質問：パートナルのQ&A" loading="lazy">
+        </picture>
+      </div>
+      <h2>Q1. 「パートナル」って何？</h2>
+      <p><span class="answer-label">A.</span> 音楽の「調性（キー）」と、色彩心理学を組み合わせた世界初の性格診断です。<br>たった12問に答えるだけで、あなたの性格を音と色で表現した“パートナル”が分かります。詳しくは<a href="./about.html">こちら</a>をご覧ください。</p>
+      <h2>Q2. MBTIやエニアグラムと何が違うの？</h2>
+      <p><span class="answer-label">A.</span> MBTIやエニアグラムは論理的・分類的な性格分析が中心ですが、パートナルは感性・印象・芸術性を重視した診断です。<br>「自分ってどんな“響き”？」「どんな“色”？」という視点から、直感的に自分を理解できるのが特徴です。</p>
+      <h2>Q3. なんで24種類なんですか？</h2>
+      <p><span class="answer-label">A.</span> 西洋音楽の理論に基づく「全24調（12の長調＋12の短調）」をベースにしているからです。<br>音楽には、それぞれの調性ごとに独特の雰囲気や心理的響きがあり、それをそのまま性格に応用しています。</p>
+      <h2>Q4. 診断にかかる時間はどのくらい？</h2>
+      <p><span class="answer-label">A.</span> 2分程度で完了します。<br>12問の6択式なので、サクッと気軽に楽しめます。</p>
+      <h2>Q5. 結果はSNSでシェアできますか？</h2>
+      <p><span class="answer-label">A.</span> はい、できます！診断後の画面にシェアボタンがあります。<br>シェアしてくれた方には抽選でプレゼントが当たるキャンペーンも開催中です。</p>
+      <h2>Q6. 自分のパートナルのグッズはありますか？</h2>
+      <p><span class="answer-label">A.</span> あります！全24タイプそれぞれのキャラクターを使ったグッズを<a href="https://suzuri.jp/pertonal">SUZURI</a>で販売しています。<br>キーホルダーやTシャツなど、日常使いできるアイテムが揃っています。</p>
+      <h2>Q7. 相性診断はありますか？</h2>
+      <p><span class="answer-label">A.</span> はい、あなたのパートナルと“近親調”にあたる他のパートナルとの相性が自動で表示されます。<br>これは音楽理論に基づいた設計で、仲良くなりやすい関係性が視覚的に分かるようになっています。</p>
+      <h2>Q8. 診断の根拠はあるの？</h2>
+      <p><span class="answer-label">A.</span> はい、音楽理論（五度圏・近親調）と色彩心理学に基づいて設計されています。<br>また、各パートナルの色は色相環との対応関係を持たせており、視覚と聴覚の印象が自然に重なるよう工夫されています。</p>
+      <h2>Q9. 登録や個人情報の入力は必要ですか？</h2>
+      <p><span class="answer-label">A.</span> いいえ、診断にあたって名前やメールアドレスの入力は必要ありません。<br>完全無料・匿名で楽しめますので、ご安心ください。</p>
+      <h2>Q10. 子どもや高齢者でも使えますか？</h2>
+      <p><span class="answer-label">A.</span> はい、どなたでも楽しめます。質問は直感的な6択式で、小学生でも答えられる内容になっています。<br>親子や家族で一緒に診断してみるのもおすすめです。</p>
+      <h2>Q11. 何度でも診断できますか？</h2>
+      <p><span class="answer-label">A.</span> もちろん何度でもOKです。気分が変わった時に再チャレンジしてみても良いですし、他の結果を見て比較するのも楽しいですよ。</p>
+      <h2>Q12. 公式キャラに名前はあるの？</h2>
+      <p><span class="answer-label">A.</span> はい、それぞれのパートナルには職業や性格、イメージカラーに合わせたキャラクターが登場します。<br>今後、ユーザー参加型のキャラクター名募集イベントも予定していますので、ぜひご参加ください！</p>
+      <h2>Q13. このサービスは誰が作ったの？</h2>
+      <p><span class="answer-label">A.</span> アーティストのメラ タケルが企画・開発・デザインを一貫して担当しています。<br>音楽大学出身であり、世界的なクリプトアーティストとしても活動している彼の感性が詰まったプロジェクトです。</p>
+      <h2>Q14. 取材やコラボの相談はできますか？</h2>
+      <p><span class="answer-label">A.</span> もちろん、大歓迎です！<br>インタビューやイベント出演、学校や企業での導入、IP展開、出版、ゲーム化、Web3活用など、可能性は無限大です。<br>まずは<a href="./contact.html">お問い合わせフォーム</a>または公式X（<a href="https://x.com/pertonal_jp">@pertonal_jp</a>）までお気軽にご連絡ください。</p>
+      <button class="back-btn" onclick="location.href='./index.html'">診断をはじめる</button>
+    </div>
+  </div>
+  <footer>
+    <nav class="footer-nav">
+      <a href="./terms.html">利用規約</a>
+      <span class="divider">|</span>
+      <a href="./privacy.html">プライバシーポリシー</a>
+      <span class="divider">|</span>
+      <a href="./meratakeru.html">運営者情報</a>
+    </nav>
+    <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
+  </footer>
+</body>
+</html>
