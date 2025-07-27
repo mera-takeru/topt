@@ -1,1 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>パートナルとは | pertonal -パートナル-</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6C63FF;
+      --secondary: #FF6584;
+      --bg: #F9FAFB;
+      --text: #333;
+      --radius: 12px;
+      --transition: .3s;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: inherit !important;
+      text-decoration: none;
+    }
+    a:visited, a:link, a:active {
+      color: inherit !important;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(
+        45deg,
+        rgba(255, 99, 71, 0.1),
+        rgba(255, 165, 0, 0.1),
+        rgba(255, 255, 0, 0.1),
+        rgba(50, 205, 50, 0.1),
+        rgba(0, 191, 255, 0.1),
+        rgba(75, 0, 130, 0.1),
+        rgba(238, 130, 238, 0.1)
+      );
+      background-size: 400%;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 16px;
+      animation: rainbow 8s ease infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+      margin: 16px auto;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .header-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    header .header-nav a {
+      text-decoration: none;
+      color: #000000 !important;
+      font-weight: 400;
+      font-size: 0.75rem;
+      padding: 0 6px;
+      transition: color var(--transition);
+    }
+
+    header .header-nav a:hover {
+      color: var(--secondary);
+    }
+
+    header .header-nav a.active {
+      color: var(--secondary);
+    }
+
+    header .header-nav .divider {
+      color: #000000 !important;
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+
+    footer {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    footer .footer-nav a {
+      text-decoration: none;
+      color: #000000 !important;
+      font-weight: 400;
+      font-size: 0.75rem;
+      padding: 0 6px;
+      transition: color var(--transition);
+    }
+
+    footer .footer-nav a:hover {
+      color: var(--secondary);
+    }
+
+    footer .footer-nav .divider {
+      color: #000000 !important;
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+
+    .copyright {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: #000000;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+
+    .title-topt {
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-align: center;
+      display: block;
+      margin-bottom: 8px;
+      color: var(--secondary);
+      text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.3),
+        0 0 4px rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.5px;
+    }
+
+    .title-sub {
+      font-size: 1rem;
+      display: block;
+    }
+
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--primary);
+      text-align: center;
+    }
+
+    .content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 16px;
+      }
+      .content h2 {
+        font-size: 1.25rem;
+      }
+      .content p {
+        font-size: 0.875rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="./about.html" class="active">パートナルとは</a>
+      <span class="divider">|</span>
+      <a href="./faq.html">よくある質問</a>
+      <span class="divider">|</span>
+      <a href="./contact.html">お問い合わせ</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>
+      <span class="title-topt">pertonal -パートナル-</span>
+      <span class="title-sub">「音」×「色」＝ New「性格診断」</span>
+    </h1>
+    <div class="content">
+      <h2>パートナルとは</h2>
+      <p>パートナルは、音楽の調と色彩を組み合わせた独自の性格診断サービスです。12の質問を通じて、あなたの内面を「調性格（パートナル）」として表現します。ブライトレッドやディープグリーンなど、鮮やかなカラーと音楽で、あなただけの個性を発見できます。</p>
+      <p>私たちの目的は、従来の性格診断（例：MBTI）を超え、音と色の新しい視点で自己理解を深めること。無料で手軽に診断でき、結果はXでシェアして友達と楽しめます。あなたのパートナルカラーと相性の良いタイプ、有名な曲もチェックして、新たな自分を見つけましょう！</p>
+      <p>さあ、今すぐ「診断をはじめる」ボタンから、あなたのパートナルを探してみませんか？</p>
+    </div>
+  </div>
+  <footer>
+    <nav class="footer-nav">
+      <a href="./terms.html">利用規約</a>
+      <span class="divider">|</span>
+      <a href="./privacy.html">プライバシーポリシー</a>
+      <span class="divider">|</span>
+      <a href="./operator.html">運営者情報</a>
+    </nav>
+    <p class="copyright">&copy; 2025 pertonal. All rights reserved.</p>
+  </footer>
+</body>
+</html>
