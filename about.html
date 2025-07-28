@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>パートナルとは | pertonal -パートナル-</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
+    <style>
     :root {
       --primary: #6C63FF;
       --secondary: #FF6584;
@@ -194,6 +194,24 @@
       object-fit: contain;
     }
 
+    .type-image {
+      width: 100%;
+      background: #ecebff;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 4/3;
+    }
+
+    .type-image picture, .type-image img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
     .content h2 {
       font-size: 1.25rem;
       font-weight: 700;
@@ -255,6 +273,10 @@
         max-width: 100%;
         margin-bottom: 12px;
       }
+      .type-image {
+        max-width: 100%;
+        margin-bottom: 12px;
+      }
       .content h2 {
         font-size: 1.25rem;
       }
@@ -301,6 +323,13 @@
       <h2>🎼 あなたはどのタイプ？</h2>
       <br><br>
       <p><span class="title" style="background-color: #FF3232; color: #FFFFFF; padding: 2px 8px; border-radius: 4px; font-size: 1.25rem;">【C型】騎士</span><br>素直な心とまっすぐな信念を持つ。</p><br>
+      <div class="type-image">
+        <picture>
+          <source media="(max-width: 600px)" srcset="https://via.placeholder.com/800x600">
+          <source media="(min-width: 601px)" srcset="https://via.placeholder.com/800x600">
+          <img src="https://via.placeholder.com/800x600" alt="C型 騎士のイメージ" loading="lazy">
+        </picture>
+      </div>
       <p><span class="title" style="background-color: #3298FF; color: #FFFFFF; padding: 2px 8px; border-radius: 4px; font-size: 1.25rem;">【D♭型】思想家</span><br>静かな場所で「本質」を見つめる。</p><br>
       <p><span class="title" style="background-color: #009900; color: #FFFFFF; padding: 2px 8px; border-radius: 4px; font-size: 1.25rem;">【em型】遊牧民</span><br>形にとらわれずに風のように自由に生きる。</p>
       <p>各パートナルには、性格傾向やイメージカラー、相性の良いパートナルなどが設定されています。<br>
