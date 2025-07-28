@@ -88,7 +88,7 @@
       text-decoration: none;
       color: #000000 !important;
       font-weight: 400;
-      font-size: 0.75rem;
+      font-size: 1rem;
       padding: 0 6px;
       transition: color var(--transition);
     }
@@ -103,7 +103,7 @@
 
     header .header-nav .divider {
       color: #000000 !important;
-      font-size: 0.75rem;
+      font-size: 1rem;
       font-weight: 400;
     }
 
@@ -127,7 +127,7 @@
       text-decoration: none;
       color: #000000 !important;
       font-weight: 400;
-      font-size: 0.75rem;
+      font-size: 1rem;
       padding: 0 6px;
       transition: color var(--transition);
     }
@@ -138,13 +138,13 @@
 
     footer .footer-nav .divider {
       color: #000000 !important;
-      font-size: 0.75rem;
+      font-size: 1rem;
       font-weight: 400;
     }
 
     .copyright {
       font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
+      font-size: 1rem;
       font-weight: 400;
       color: #000000;
       text-align: center;
@@ -199,7 +199,8 @@
       font-weight: 700;
       color: var(--primary);
       margin-bottom: 12px;
-      cursor: pointer; /* Make it look clickable */
+      margin-top: 16px;
+      cursor: pointer;
       padding: 12px;
       border-radius: var(--radius);
       transition: background var(--transition);
@@ -209,7 +210,7 @@
     }
 
     .content h2:hover {
-      background: rgba(108, 99, 255, 0.1); /* Subtle hover effect */
+      background: rgba(108, 99, 255, 0.1);
     }
 
     .content h2::after {
@@ -219,18 +220,18 @@
     }
 
     .content h2.active::after {
-      transform: rotate(180deg); /* Rotate arrow when active */
+      transform: rotate(180deg);
     }
 
     .content .accordion-content {
       max-height: 0;
       overflow: hidden;
       transition: max-height var(--transition) ease-out;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .content .accordion-content.open {
-      max-height: 500px; /* Adjust based on content size */
+      max-height: 500px;
     }
 
     .content p {
