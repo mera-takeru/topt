@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>パートナルとは | pertonal -パートナル-</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <style>
     :root {
       --primary: #6C63FF;
       --secondary: #FF6584;
@@ -85,10 +85,9 @@
     }
 
     header .header-nav a {
-      text-decoration: none;
-      color: #000000 !important;
-      font-weight: 400;
-      font-size: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
       padding: 0 6px;
       transition: color var(--transition);
     }
@@ -102,8 +101,8 @@
     }
 
     header .header-nav .divider {
-      color: #000000 !important;
-      font-size: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
       font-weight: 400;
     }
 
@@ -124,10 +123,9 @@
     }
 
     footer .footer-nav a {
-      text-decoration: none;
-      color: #000000 !important;
-      font-weight: 400;
-      font-size: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
       padding: 0 6px;
       transition: color var(--transition);
     }
@@ -137,14 +135,14 @@
     }
 
     footer .footer-nav .divider {
-      color: #000000 !important;
-      font-size: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
       font-weight: 400;
     }
 
     .copyright {
       font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
+      font-size: 0.875rem;
       font-weight: 400;
       color: #000000;
       text-align: center;
@@ -152,14 +150,16 @@
     }
 
     h1 {
-      text-align: center;
+      font-family: 'Poppins', sans-serif;
       font-weight: 700;
+      text-align: center;
       margin-bottom: 16px;
       color: var(--primary);
     }
 
     .title-topt {
-      font-size: 1.75rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
       font-weight: 700;
       text-align: center;
       display: block;
@@ -172,7 +172,9 @@
     }
 
     .title-sub {
-      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 500;
       display: block;
     }
 
@@ -213,13 +215,15 @@
     }
 
     .content h2 {
-      font-size: 1.25rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.375rem;
       font-weight: 700;
-      color: var(--primary); /* #6C63FF */
+      color: var(--primary);
       margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 8px;
+      letter-spacing: 0.5px;
     }
 
     .content h2::before {
@@ -227,7 +231,9 @@
     }
 
     .content p {
+      font-family: 'Inter', sans-serif;
       font-size: 1rem;
+      font-weight: 400;
       line-height: 1.6;
       color: var(--text);
       margin-bottom: 16px;
@@ -240,15 +246,18 @@
     }
 
     .content li {
+      font-family: 'Inter', sans-serif;
       font-size: 1rem;
+      font-weight: 400;
       line-height: 1.6;
       color: var(--text);
       margin-bottom: 8px;
     }
 
     button.back-btn {
-      font: inherit;
+      font-family: 'Inter', sans-serif;
       font-size: 1rem;
+      font-weight: 600;
       padding: 12px 20px;
       border: none;
       border-radius: var(--radius);
@@ -263,6 +272,12 @@
     button.back-btn:hover {
       background: var(--secondary);
       transform: scale(1.02);
+    }
+
+    .title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
 
     @media (max-width: 600px) {
@@ -286,6 +301,12 @@
       button.back-btn {
         font-size: 1rem;
         padding: 10px 16px;
+      }
+      .title-topt {
+        font-size: 1.75rem;
+      }
+      .title-sub {
+        font-size: 1rem;
       }
     }
   </style>
@@ -356,7 +377,7 @@
       調の持つ印象を研究した音楽家マッテゾンやシューバルトの思想。<br><br>
       音に特定の色を感じたとされる音楽家スクリャービンの調性理論。<br><br>
       これらをヒントに「五度圏」と「色相環」が自然にリンクするように設計されています。</p>
-        <div class="type-image">
+      <div class="type-image">
         <picture>
           <source media="(max-width: 600px)" srcset="https://via.placeholder.com/800x600">
           <source media="(min-width: 601px)" srcset="https://via.placeholder.com/800x600">
