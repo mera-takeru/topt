@@ -1,431 +1,478 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>パートナルとは | pertonal -パートナル-</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #6C63FF;
-      --secondary: #FF6584;
-      --bg: #F9FAFB;
-      --text: #333;
-      --radius: 12px;
-      --transition: .3s;
-    }
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>パートナルとは | pertonal -パートナル-</title>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+ <style>
+ :root {
+ --primary: #6C63FF;
+ --secondary: #FF2D55; /* Brighter pink for Gen Z */
+ --bg: #F9FAFB;
+ --text: #333;
+ --radius: 12px;
+ --transition: .3s;
+ }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+ * {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+ }
 
-    a {
-      color: inherit !important;
-      text-decoration: none;
-    }
-    a:visited, a:link, a:active {
-      color: inherit !important;
-    }
+ a {
+ color: inherit !important;
+ text-decoration: none;
+ }
+ a:visited, a:link, a:active {
+ color: inherit !important;
+ }
 
-    body {
-      font-family: 'Nunito', sans-serif;
-      background: linear-gradient(
-        45deg,
-        rgba(255, 99, 71, 0.1),
-        rgba(255, 165, 0, 0.1),
-        rgba(255, 255, 0, 0.1),
-        rgba(50, 205, 50, 0.1),
-        rgba(0, 191, 255, 0.1),
-        rgba(75, 0, 130, 0.1),
-        rgba(238, 130, 238, 0.1)
-      );
-      background-size: 400%;
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      padding: 16px;
-      animation: rainbow 8s ease infinite;
-    }
+ body {
+ font-family: 'Inter', sans-serif;
+ background: linear-gradient(
+ 45deg,
+ rgba(255, 99, 71, 0.2),
+ rgba(255, 165, 0, 0.2),
+ rgba(255, 255, 0, 0.2),
+ rgba(50, 205, 50, 0.2),
+ rgba(0, 191, 255, 0.2),
+ rgba(75, 0, 130, 0.2),
+ rgba(238, 130, 238, 0.2)
+ );
+ background-size: 400%;
+ color: var(--text);
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: flex-start;
+ min-height: 100vh;
+ padding: 16px;
+ animation: rainbow 8s ease infinite;
+ }
 
-    @keyframes rainbow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+ @keyframes rainbow {
+ 0% { background-position: 0% 50%; }
+ 50% { background-position: 100% 50%; }
+ 100% { background-position: 0% 50%; }
+ }
 
-    .container {
-      width: 100%;
-      max-width: 600px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: var(--radius);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      padding: 24px;
-      margin: 16px auto;
-    }
+ @keyframes bounce {
+ 0%, 100% { transform: translateY(0); }
+ 50% { transform: translateY(-5px); }
+ }
 
-    header {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 12px;
-      border-bottom: 1px solid #ddd;
-      width: 100%;
-      text-align: center;
-      box-sizing: border-box;
-    }
+ .container {
+ width: 100%;
+ max-width: 600px;
+ background: rgba(255, 255, 255, 0.95);
+ border-radius: var(--radius);
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+ padding: 24px;
+ margin: 16px auto;
+ }
 
-    .header-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-    }
+ header {
+ background: rgba(255, 255, 255, 0.95);
+ padding: 12px;
+ border-bottom: 1px solid #ddd;
+ width: 100%;
+ text-align: center;
+ box-sizing: border-box;
+ }
 
-    header .header-nav a {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 600;
-      font-size: 0.875rem;
-      padding: 0 6px;
-      transition: color var(--transition);
-    }
+ .header-nav {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 12px;
+ }
 
-    header .header-nav a:hover {
-      color: var(--secondary);
-    }
+ header .header-nav a {
+ font-family: 'Inter', sans-serif;
+ font-weight: 600;
+ font-size: 0.875rem;
+ padding: 0 6px;
+ transition: color var(--transition);
+ }
 
-    header .header-nav a.active {
-      color: var(--secondary);
-    }
+ header .header-nav a:hover {
+ color: var(--secondary);
+ }
 
-    header .header-nav .divider {
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 400;
-    }
+ header .header-nav a.active {
+ color: var(--secondary);
+ }
 
-    footer {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 12px;
-      border-top: 1px solid #ddd;
-      text-align: center;
-      width: 100%;
-      box-sizing: border-box;
-    }
+ header .header-nav .divider {
+ font-family: 'Inter', sans-serif;
+ font-size: 0.875rem;
+ font-weight: 400;
+ }
 
-    .footer-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-    }
+ footer {
+ background: rgba(255, 255, 255, 0.95);
+ padding: 12px;
+ border-top: 1px solid #ddd;
+ text-align: center;
+ width: 100%;
+ box-sizing: border-box;
+ }
 
-    footer .footer-nav a {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 600;
-      font-size: 0.875rem;
-      padding: 0 6px;
-      transition: color var(--transition);
-    }
+ .footer-nav {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 12px;
+ }
 
-    footer .footer-nav a:hover {
-      color: var(--secondary);
-    }
+ footer .footer-nav a {
+ font-family: 'Inter', sans-serif;
+ font-weight: 600;
+ font-size: 0.875rem;
+ padding: 0 6px;
+ transition: color var(--transition);
+ }
 
-    footer .footer-nav .divider {
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 400;
-    }
+ footer .footer-nav a:hover {
+ color: var(--secondary);
+ }
 
-    .copyright {
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 400;
-      color: #000000;
-      text-align: center;
-      margin-top: 8px;
-    }
+ footer .footer-nav .divider {
+ font-family: 'Inter', sans-serif;
+ font-size: 0.875rem;
+ font-weight: 400;
+ }
 
-    h1 {
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 16px;
-      color: var(--primary);
-    }
+ .copyright {
+ font-family: 'Inter', sans-serif;
+ font-size: 0.875rem;
+ font-weight: 400;
+ color: #000000;
+ text-align: center;
+ margin-top: 8px;
+ }
 
-    .title-topt {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      text-align: center;
-      display: block;
-      margin-bottom: 8px;
-      color: var(--secondary);
-      text-shadow: 
-        1px 1px 2px rgba(0, 0, 0, 0.3),
-        0 0 4px rgba(255, 255, 255, 0.5);
-      letter-spacing: 0.5px;
-    }
+ h1 {
+ font-family: 'Poppins', sans-serif;
+ font-weight: 700;
+ text-align: center;
+ margin-bottom: 16px;
+ color: var(--primary);
+ }
 
-    .title-sub {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.125rem;
-      font-weight: 500;
-      display: block;
-    }
+ .title-topt {
+ font-family: 'Poppins', sans-serif;
+ font-size: 2rem;
+ font-weight: 700;
+ text-align: center;
+ display: block;
+ margin-bottom: 8px;
+ color: var(--secondary);
+ text-shadow: 
+ 1px 1px 2px rgba(0, 0, 0, 0.3),
+ 0 0 4px rgba(255, 255, 255, 0.5);
+ letter-spacing: 1px;
+ }
 
-    .start-image {
-      width: 100%;
-      background: #ecebff;
-      border-radius: var(--radius);
-      margin-bottom: 16px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      aspect-ratio: 3/1;
-    }
+ .title-sub {
+ font-family: 'Poppins', sans-serif;
+ font-size: 1.125rem;
+ font-weight: 500;
+ display: block;
+ }
 
-    .start-image picture, .start-image img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
+ .start-image {
+ width: 100%;
+ background: #ecebff;
+ border: 2px solid var(--secondary); /* Gen Z colorful border */
+ border-radius: var(--radius);
+ margin-bottom: 16px;
+ overflow: hidden;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ aspect-ratio: 3/1;
+ }
 
-    .type-image {
-      width: 100%;
-      background: #ecebff;
-      border-radius: var(--radius);
-      margin-bottom: 16px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      aspect-ratio: 4/3;
-    }
+ .start-image picture, .start-image img {
+ width: 100%;
+ height: auto;
+ object-fit: contain;
+ }
 
-    .type-image picture, .type-image img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
+ .type-image {
+ width: 100%;
+ background: #ecebff;
+ border: 2px solid var(--secondary); /* Gen Z colorful border */
+ border-radius: var(--radius);
+ margin-bottom: 16px;
+ overflow: hidden;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ aspect-ratio: 4/3;
+ }
 
-    .content h2 {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.375rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      letter-spacing: 0.5px;
-    }
+ .type-image picture, .type-image img {
+ width: 100%;
+ height: auto;
+ object-fit: contain;
+ }
 
-    .content h2::before {
-      font-size: 1.5rem;
-    }
+ .content h2 {
+ font-family: 'Poppins', sans-serif;
+ font-size: 1.375rem;
+ font-weight: 700;
+ color: var(--primary);
+ margin-bottom: 12px;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ letter-spacing: 0.5px;
+ }
 
-    .content p {
-      font-family: 'Nunito', sans-serif;
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
+ .content h2::before {
+ font-size: 1.5rem;
+ }
 
-    .content ul {
-      list-style: disc;
-      margin-left: 20px;
-      margin-bottom: 16px;
-    }
+ .content p {
+ font-family: 'Inter', sans-serif;
+ font-size: 1rem;
+ font-weight: 400;
+ line-height: 1.6;
+ color: var(--text);
+ margin-bottom: 16px;
+ }
 
-    .content li {
-      font-family: 'Nunito', sans-serif;
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
+ .content ul {
+ list-style: disc;
+ margin-left: 20px;
+ margin-bottom: 16px;
+ }
 
-    button.back-btn {
-      font-family: 'Nunito', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      padding: 12px 20px;
-      border: none;
-      border-radius: var(--radius);
-      background: var(--primary);
-      color: #fff;
-      cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
-      width: 100%;
-      margin-top: 16px;
-    }
+ .content li {
+ font-family: 'Inter', sans-serif;
+ font-size: 1rem;
+ font-weight: 400;
+ line-height: 1.6;
+ color: var(--text);
+ margin-bottom: 8px;
+ }
 
-    button.back-btn:hover {
-      background: var(--secondary);
-      transform: scale(1.02);
-    }
+ button.back-btn {
+ font-family: 'Inter', sans-serif;
+ font-size: 1rem;
+ font-weight: 600;
+ padding: 12px 20px;
+ border: none;
+ border-radius: var(--radius);
+ background: var(--primary);
+ color: #fff;
+ cursor: pointer;
+ transition: background var(--transition), transform var(--transition);
+ width: 100%;
+ margin-top: 16px;
+ }
 
-    .title {
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
+ button.back-btn:hover {
+ background: var(--secondary);
+ transform: scale(1.02);
+ animation: bounce 0.3s ease;
+ }
 
-    @media (max-width: 600px) {
-      .container {
-        padding: 16px;
-      }
-      .start-image {
-        max-width: 100%;
-        margin-bottom: 12px;
-      }
-      .type-image {
-        max-width: 100%;
-        margin-bottom: 12px;
-      }
-      .content h2 {
-        font-size: 1.25rem;
-      }
-      .content p, .content li {
-        font-size: 1rem;
-      }
-      button.back-btn {
-        font-size: 1rem;
-        padding: 10px 16px;
-      }
-      .title-topt {
-        font-size: 1.75rem;
-      }
-      .title-sub {
-        font-size: 1rem;
-      }
-    }
-  </style>
+ .title {
+ font-family: 'Poppins', sans-serif;
+ font-weight: 700;
+ letter-spacing: 0.5px;
+ cursor: pointer;
+ transition: box-shadow var(--transition);
+ }
+
+ .title:hover {
+ box-shadow: 0 0 8px rgba(255, 45, 85, 0.5); /* Neon glow on hover */
+ animation: bounce 0.3s ease;
+ }
+
+ .hidden-details {
+ display: none;
+ font-family: 'Inter', sans-serif;
+ font-size: 0.875rem;
+ color: var(--text);
+ background: rgba(236, 235, 255, 0.8);
+ padding: 8px;
+ margin-top: 8px;
+ border-radius: 4px;
+ }
+
+ .hidden-details.show {
+ display: block;
+ }
+
+ @media (max-width: 600px) {
+ .container {
+ padding: 16px;
+ }
+ .start-image {
+ max-width: 100%;
+ margin-bottom: 12px;
+ }
+ .type-image {
+ max-width: 100%;
+ margin-bottom: 12px;
+ }
+ .content h2 {
+ font-size: 1.25rem;
+ }
+ .content p, .content li {
+ font-size: 1rem;
+ }
+ button.back-btn {
+ font-size: 1rem;
+ padding: 10px 16px;
+ }
+ .title-topt {
+ font-size: 1.75rem;
+ }
+ .title-sub {
+ font-size: 1rem;
+ }
+ }
+ </style>
 </head>
 <body>
-  <header>
-    <nav class="header-nav">
-      <a href="./about.html" class="active">パートナルとは</a>
-      <span class="divider">|</span>
-      <a href="./faq.html">よくある質問</a>
-      <span class="divider">|</span>
-      <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
-    </nav>
-  </header>
-  <div class="container">
-    <h1>
-      <span class="title-topt">pertonal -パートナル-</span>
-      <span class="title-sub">「音」×「色」＝ New「性格診断」</span>
-    </h1>
-    <div class="content">
-      <div class="start-image">
-        <picture>
-          <source media="(max-width: 600px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeiht253zu7navn3ulitou3xt3r45uzthvtzytunmj4xir52shudraq">
-          <source media="(min-width: 601px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeiht253zu7navn3ulitou3xt3r45uzthvtzytunmj4xir52shudraq">
-          <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeiht253zu7navn3ulitou3xt3r45uzthvtzytunmj4xir52shudraq" alt="パートナルとは：音と色の性格診断" loading="lazy">
-        </picture>
-      </div>
-      <br><br>
-      <p><strong>「自分って本当はどんな人間なんだろう」<br><br>「他人と上手く関われるようになりたい」<br><br>「MBTIは飽きたので新しい診断をしたい」</strong><br><br><br>
-      そんなあなたにオススメなのが、この<strong>「pertonal -パートナル-」</strong>です。
-      <br><br>
-      パートナルは、「音」と「色」で現代人の性格を24種類に分類する無料のWeb診断。<br><br>
-      12個の６択の質問に答えるだけで、あなたの「調性格（パートナル）」が分かります。</p>
-      <br><br>
-      <h2>🎼 あなたはどんなタイプ？</h2>
-      <br><br>
-      <p><span class="title" style="background-color: #FF3232; color: #FFFFFF; padding: 2px 8px; border-radius: 4px; font-size: 1.25rem;">【C型】騎士</span><br>素直な心とまっすぐな信念を持つ。</p>
-      <div class="type-image">
-        <picture>
-          <source media="(max-width: 600px)" srcset="https://via.placeholder.com/800x600">
-          <source media="(min-width: 601px)" srcset="https://via.placeholder.com/800x600">
-          <img src="https://via.placeholder.com/800x600" alt="C型 騎士のイメージ" loading="lazy">
-        </picture>
-      </div>
-      <p><span class="title" style="background-color: #3298FF; color: #FFFFFF; padding: 2px 8px; border-radius: 4px; font-size: 1.25rem;">【D♭型】思想家</span><br>静かな場所で「本質」を見つめる。</p>
-      <div class="type-image">
-        <picture>
-          <source media="(max-width: 600px)" srcset="https://via.placeholder.com/800x600">
-          <source media="(min-width: 601px)" srcset="https://via.placeholder.com/800x600">
-          <img src="https://via.placeholder.com/800x600" alt="D♭型 思想家のイメージ" loading="lazy">
-        </picture>
-      </div>
-      <p><span class="title" style="background-color: #009900; color: #FFFFFF; padding: 2px 8px; border-radius: 4px; font-size: 1.25rem;">【em型】遊牧民</span><br>決まった形にとらわれずに自由に生きる。</p>
-      <div class="type-image">
-        <picture>
-          <source media="(max-width: 600px)" srcset="https://via.placeholder.com/800x600">
-          <source media="(min-width: 601px)" srcset="https://via.placeholder.com/800x600">
-          <img src="https://via.placeholder.com/800x600" alt="em型 遊牧民のイメージ" loading="lazy">
-        </picture>
-      </div>
-      <p>各パートナルには、性格傾向やイメージカラーなどが設定されています。<br><br>
-      診断結果は、RPGのキャラクターのようなワクワクするイラストとともに表示されます。</p>
-      <br><br>
-      <h2>🎨 音と色の重なりで相性を定義</h2>
-      <br><br>
-      <p>パートナルの特長は、音楽的な要素と美術的な要素を組み合わせている点にあります。<br><br>
-      「ハ長調」と「ト長調」の相性が良いように、その関係がそのまま反映されています。<br><br>
-      調の持つ印象を研究した音楽家マッテゾンやシューバルトの思想。<br><br>
-      音に特定の色を感じたとされる音楽家スクリャービンの調性理論。<br><br>
-      これらをヒントに「五度圏」と「色相環」が自然にリンクするように設計されています。</p>
-      <div class="type-image">
-        <picture>
-          <source media="(max-width: 600px)" srcset="https://via.placeholder.com/800x600">
-          <source media="(min-width: 601px)" srcset="https://via.placeholder.com/800x600">
-          <img src="https://via.placeholder.com/800x600" alt="五度圏と色相環のイメージ" loading="lazy">
-        </picture>
-      </div>
-      <br><br>
-      <h2>🧠 数値ではなく「印象」で測る</h2>
-      <br><br>
-      <p>MBTIのような「内向型／外向型」といった数値的な指標はありません。<br><br>
-      パートナルでは「あなたの性格がどんなトーンを持っているか」を大切にしています。<br><br>
-      自分を音や色で表現することで、データよりも「感覚的」に理解する。<br><br>
-      そんな新しい自己発見のスタイルをパートナルは提供いたします。</p>
-      <br><br>
-      <h2>💬 こんな人にオススメです</h2>
-      <br><br>
-      <ul>
-        <li>MBTIや他の心理テストが好きな人</li>
-        <li>感覚的に自分自身を理解したい人</li>
-        <li>音楽やゲーム、イラストが好きな人</li>
-        <li>友達や恋人との相性を知りたい人</li>
-      </ul>
-      <br><br>
-      <h2>🧑‍⚕️ 無料で診断・所要時間は２分</h2>
-      <br><br>
-      カジュアルに楽しむのもよし、じっくりと自己分析してみるのもよし。<br><br>
-      どんな入り口でもパートナルは、きっと「今のあなた」を映し出してくれます。</p>
-      <br><br>
-      <h2>🧭 もっと楽しむためには・・・</h2>
-      <br><br>
-      <ul>
-        <li>診断結果をXでシェアして他の人と比べる</li>
-        <li>あなたのパートナルのグッズを身につける</li>
-        <li>気になるあの人との関係性をチェックする</li>
-        <li>全24種のパートナルをコンプリートする</li>
-      </ul>
-      <button class="back-btn" onclick="location.href='./index.html'">トップページに戻る</button>
-    </div>
-  </div>
-  <footer>
-    <nav class="footer-nav">
-      <a href="./terms.html">利用規約</a>
-      <span class="divider">|</span>
-      <a href="./privacy.html">プライバシーポリシー</a>
-      <span class="divider">|</span>
-      <a href="./operator.html">運営者情報</a>
-    </nav>
-    <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
-  </footer>
+ <header>
+ <nav class="header-nav">
+ <a href="./about.html" class="active">パートナルとは</a>
+ <span class="divider">|</span>
+ <a href="./faq.html">よくある質問</a>
+ <span class="divider">|</span>
+ <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
+ </nav>
+ </header>
+ <div class="container">
+ <h1>
+ <span class="title-topt">pertonal -パートナル-</span>
+ <span class="title-sub">「音」×「色」＝ New「性格診断」</span>
+ </h1>
+ <div class="content">
+ <div class="start-image">
+ <picture>
+ <source media="(max-width: 600px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeiht253zu7navn3ulitou3xt3r45uzthvtzytunmj4xir52shudraq">
+ <source media="(min-width: 601px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeiht253zu7navn3ulitou3xt3r45uzthvtzytunmj4xir52shudraq">
+ <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeiht253zu7navn3ulitou3xt3r45uzthvtzytunmj4xir52shudraq" alt="パートナルとは：音と色の性格診断" loading="lazy">
+ </picture>
+ </div>
+ <br><br>
+ <p><strong>「自分って本当はどんな人間なんだろう」<br><br>「他人と上手く関われるようになりたい」<br><br>「MBTIは飽きたので新しい診断をしたい」</strong><br><br><br>
+ そんなあなたにオススメなのが、この<strong>「pertonal -パートナル-」</strong>です。
+ <br><br>
+ パートナルは、「音」と「色」で現代人の性格を24種類に分類する無料のWeb診断。<br><br>
+ 12個の６択の質問に答えるだけで、あなたの「調性格（パートナル）」が分かります。</p>
+ <br><br>
+ <h2>🎼 あなたはどんなタイプ？</h2>
+ <br><br>
+ <p><span class="title" style="background-color: #FF3232; color: #FFFFFF; padding: 2px 8px; border-radius: 4px; font-size: 1.25rem;" data-target="knight-details">【C型】騎士</span><br>素直な心とまっすぐな信念を持つ。
+ <div id="knight-details" class="hidden-details">C型 騎士は誠実で信頼されるリーダー。どんな困難も正義感で乗り越えます！</div>
+ </p>
+ <div class="type-image">
+ <picture>
+ <source media="(max-width: 600px)" srcset="https://via.placeholder.com/800x600">
+ <source media="(min-width: 601px)" srcset="https://via.placeholder.com/800x600">
+ <img src="https://via.placeholder.com/800x600" alt="C型 騎士のイメージ" loading="lazy">
+ </picture>
+ </div>
+ <p><span class="title" style="background-color: #3298FF; color: #FFFFFF; padding: 2px 8px; border-radius: 4px; font-size: 1.25rem;" data-target="thinker-details">【D♭型】思想家</span><br>静かな場所で「本質」を見つめる。
+ <div id="thinker-details" class="hidden-details">D♭型 思想家は深い洞察力で物事の本質を見抜く哲学者。静寂を愛します。</div>
+ </p>
+ <div class="type-image">
+ <picture>
+ <source media="(max-width: 600px)" srcset="https://via.placeholder.com/800x600">
+ <source media="(min-width: 601px)" srcset="https://via.placeholder.com/800x600">
+ <img src="https://via.placeholder.com/800x600" alt="D♭型 思想家のイメージ" loading="lazy">
+ </picture>
+ </div>
+ <p><span class="title" style="background-color: #009900; color: #FFFFFF; padding: 2px 8px; border-radius: 4px; font-size: 1.25rem;" data-target="nomad-details">【em型】遊牧民</span><br>決まった形にとらわれずに自由に生きる。
+ <div id="nomad-details" class="hidden-details">em型 遊牧民は自由奔放で冒険心旺盛。新しい地平を常に探求します！</div>
+ </p>
+ <div class="type-image">
+ <picture>
+ <source media="(max-width: 600px)" srcset="https://via.placeholder.com/800x600">
+ <source media="(min-width: 601px)" srcset="https://via.placeholder.com/800x600">
+ <img src="https://via.placeholder.com/800x600" alt="em型 遊牧民のイメージ" loading="lazy">
+ </picture>
+ </div>
+ <p>各パートナルには、性格傾向やイメージカラーなどが設定されています。<br><br>
+ 診断結果は、RPGのキャラクターのようなワクワクするイラストとともに表示されます。</p>
+ <br><br>
+ <h2>🎨 音と色の重なりで相性を定義</h2>
+ <br><br>
+ <p>パートナルの特長は、音楽 的な要素と美術的な要素を組み合わせている点にあります。<br><br>
+ 「ハ長調」と「ト長調」の相性が良いように、その関係がそのまま反映されています。<br><br>
+ 調の持つ印象を研究した音楽家マッテゾンやシューバルトの思想。<br><br>
+ 音に特定の色を感じたとされる音楽家スクリャービンの調性理論。<br><br>
+ これらをヒントに「五度圏」と「色相環」が自然にリンクするように設計されています。</p>
+ <div class="type-image">
+ <picture>
+ <source media="(max-width: 600px)" srcset="https://via.placeholder.com/800x600">
+ <source media="(min-width: 601px)" srcset="https://via.placeholder.com/800x600">
+ <img src="https://via.placeholder.com/800x600" alt="五度圏と色相環のイメージ" loading="lazy">
+ </picture>
+ </div>
+ <br><br>
+ <h2>🧠 数値ではなく「印象」で測る</h2>
+ <br><br>
+ <p>MBTIのような「内向型／外向型」といった数値的な指標はありません。<br><br>
+ パートナルでは「あなたの性格がどんなトーンを持っているか」を大切にしています。<br><br>
+ 自分を音や色で表現することで、データよりも「感覚的」に理解する。<br><br>
+ そんな新しい自己発見のスタイルをパートナルは提供いたします。</p>
+ <br><br>
+ <h2>💬 こんな人にオススメです</h2>
+ <br><br>
+ <ul>
+ <li>MBTIや他の心理テストが好きな人</li>
+ <li>感覚的に自分自身を理解したい人</li>
+ <li>音楽やゲーム、イラストが好きな人</li>
+ <li>友達や恋人との相性を知りたい人</li>
+ </ul>
+ <br><br>
+ <h2>🧑‍⚕️ 無料で診断・所要時間は２分</h2>
+ <br><br>
+ カジュアルに楽しむのもよし、じっくりと自己分析してみるのもよし。<br><br>
+ どんな入り口でもパートナルは、きっと「今のあなた」を映し出してくれます。</p>
+ <br><br>
+ <h2>🧭 もっと楽しむためには・・・</h2>
+ <br><br>
+ <ul>
+ <li>診断結果をXでシェアして他の人と比べる</li>
+ <li>あなたのパートナルのグッズを身につける</li>
+ <li>気になるあの人との関係性をチェックする</li>
+ <li>全24種のパートナルをコンプリートする</li>
+ </ul>
+ <button class="back-btn" onclick="location.href='./index.html'">トップページに戻る ✨</button>
+ </div>
+ </div>
+ <footer>
+ <nav class="footer-nav">
+ <a href="./terms.html">利用規約</a>
+ <span class="divider">|</span>
+ <a href="./privacy.html">プライバシーポリシー</a>
+ <span class="divider">|</span>
+ <a href="./operator.html">運営者情報</a>
+ </nav>
+ <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
+ </footer>
+ <script>
+ document.querySelectorAll('.title').forEach(title => {
+ title.addEventListener('click', () => {
+ const targetId = title.getAttribute('data-target');
+ const details = document.getElementById(targetId);
+ if (details) {
+ details.classList.toggle('show');
+ }
+ });
+ });
+ </script>
 </body>
 </html>
