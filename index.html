@@ -167,15 +167,14 @@
     }
 
     .title-english {
-      font-size: 2rem; /* アルファベットを大きく */
+      font-size: 2rem;
       font-weight: 700;
     }
 
     .title-japanese {
-      font-size: 1.25rem; /* カタカナを小さく */
+      font-size: 1.25rem;
       font-weight: 700;
     }
-
 
     .title-sub {
       font-size: 1rem;
@@ -312,11 +311,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .start-image {
-      height: auto;
-      aspect-ratio: 3 / 2;
+      aspect-ratio: 3 / 2; /* PCでは3:2 */
     }
 
     .start-image picture, .start-image img {
@@ -329,12 +324,13 @@
       .start-image {
         max-width: 100%;
         margin-bottom: 12px;
+        aspect-ratio: 1 / 1;
       }
       .title-english {
-        font-size: 2rem; /* モバイルで英語を小さく */
+        font-size: 2rem;
       }
       .title-japanese {
-        font-size: 1.25rem; /* モバイルで日本語を同じ比率に */
+        font-size: 1.25rem;
       }
     }
 
@@ -423,9 +419,15 @@
     <div id="startScreen" class="screen active">
       <div class="start-image">
         <picture>
-          <source media="(max-width: 600px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeidoeksyoll7ojyblhzwx4ogytvi6ku2fa7gwc35ynjrdipjmuycqy">
-          <source media="(min-width: 601px)" srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeig3huiqdm47sgnpkrlabhpn6rhl7vaehb3ofxbd7lrafpc3bddedi">
-          <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeig3huiqdm47sgnpkrlabhpn6rhl7vaehb3ofxbd7lrafpc3bddedi" alt="メイン画像" loading="lazy">
+          <source media="(min-width: 601px)" 
+                  srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeig3huiqdm47sgnpkrlabhpn6rhl7vaehb3ofxbd7lrafpc3bddedi" 
+                  type="image/jpeg">
+          <source media="(max-width: 600px)" 
+                  srcset="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeidoeksyoll7ojyblhzwx4ogytvi6ku2fa7gwc35ynjrdipjmuycqy" 
+                  type="image/jpeg">
+          <img src="https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafybeig3huiqdm47sgnpkrlabhpn6rhl7vaehb3ofxbd7lrafpc3bddedi" 
+               alt="メイン画像" 
+               loading="lazy">
         </picture>
       </div>
       <button id="startBtn">▶︎▶︎▶︎ 今すぐ無料診断 ◀︎◀︎◀︎</button>
