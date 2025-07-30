@@ -345,7 +345,8 @@ button:hover {
 }
 
 .result-description-first {
-  font-size: 1.5rem; /* 文字サイズを大きく */
+  font-size: 1.25rem; /* 見出しと同じサイズ */
+  font-weight: 700; /* 見出しと同じ太さ */
   color: var(--secondary); /* ピンク色 (#FF6584) */
   margin-bottom: 8px;
 }
@@ -1388,7 +1389,7 @@ hr {
     showScreen(resultScreen);
   }
 
- function toggleAccordion(button) {
+function toggleAccordion(button) {
   console.log('Toggle accordion clicked:', button.getAttribute('data-state'));
   const content = button.nextElementSibling;
   const arrow = button.querySelector('.arrow');
@@ -1405,7 +1406,7 @@ hr {
     content.style.opacity = '0';
     button.setAttribute('data-state', 'closed');
     button.setAttribute('aria-expanded', 'false');
-    button.querySelector('.arrow').textContent = '▼';
+    button.innerHTML = '詳しく見る <span class="arrow">▼</span>';
   } else {
     console.log('Opening accordion, scrollHeight:', content.scrollHeight);
     content.classList.add('open');
@@ -1413,7 +1414,7 @@ hr {
     content.style.opacity = '1';
     button.setAttribute('data-state', 'open');
     button.setAttribute('aria-expanded', 'true');
-    button.querySelector('.arrow').textContent = '▲';
+    button.innerHTML = '閉じる <span class="arrow">▲</span>';
   }
 }
 
