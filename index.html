@@ -1359,16 +1359,16 @@ hr {
   console.log('Custom first line:', customFirstLine, 'remainingDescription:', remainingDescription);
 
      const descriptionHTML = `
-        <div class="accordion">
-          ${firstSentence}
-          ${remainingDescription ? `
-            <button class="accordion-toggle" onclick="toggleAccordion(this)">詳しく見る</button>
-            <div class="accordion-content" style="display: none;">
-              ${remainingDescription}
-            </div>
-          ` : ''}
+    <div class="accordion">
+      <p class="result-description">${customFirstLine}</p>
+      ${remainingDescription ? `
+        <button class="accordion-toggle" onclick="toggleAccordion(this)">詳しく見る</button>
+        <div class="accordion-content" style="display: none;">
+          ${remainingDescription}
         </div>
-      `;
+      ` : ''}
+    </div>
+  `;
 
     resultTextDiv.innerHTML = `
     ${descriptionHTML}
