@@ -802,6 +802,33 @@ hr {
 誰かが苦しんでいるとき、あなたの一声は火となり、水となり、支えとなるでしょう。</p>`
   };
 
+  const customFirstLines = {
+  "C": "あなたは誠実で信頼を築く騎士タイプです。",
+  "cm": "あなたは静かに創造を続ける鍛冶屋タイプです。",
+  "D♭": "あなたは真理を追求する思想家タイプです。",
+  "c♯m": "あなたは壮大な世界を描く創造主タイプです。",
+  "D": "あなたは情熱で道を切り開く探検家タイプです。",
+  "dm": "あなたは感情を言葉に変える司書タイプです。",
+  "E♭": "あなたは調和を導く賢者タイプです。",
+  "e♭m": "あなたは感情を美に変える画家タイプです。",
+  "E": "あなたは歓びを届ける演奏家タイプです。",
+  "em": "あなたは自由に生きる遊牧民タイプです。",
+  "F": "あなたは奇跡を発明する発明家タイプです。",
+  "fm": "あなたは物語を紡ぐ小説家タイプです。",
+  "F♯": "あなたは調和を設計する建築士タイプです。",
+  "f♯m": "あなたは真理を錬成する錬金術師タイプです。",
+  "G": "あなたは未来を射抜く狙撃手タイプです。",
+  "gm": "あなたは真実を探す探偵タイプです。",
+  "A♭": "あなたは気品で導く舞踏家タイプです。",
+  "g♯m": "あなたは美を収集する収集家タイプです。",
+  "A": "あなたは戦略で導く参謀長タイプです。",
+  "am": "あなたは情景を言葉にする詩人タイプです。",
+  "B♭": "あなたは道を示す案内人タイプです。",
+  "b♭m": "あなたは心に寄り添う看護師タイプです。",
+  "B": "あなたは困難を乗り越える剣闘士タイプです。",
+  "bm": "あなたは信念を言葉にする魔術師タイプです。"
+};
+
   const compatibleKeys = {
     "C": ["cm", "am", "G", "F"],
     "cm": ["C", "E♭", "gm", "fm"],
@@ -828,6 +855,8 @@ hr {
     "B": ["bm", "g♯m", "F♯", "E"],
     "bm": ["B", "D", "f♯m", "em"]
   };
+
+      
 
   const famousSongs = {
     "C": {
@@ -1275,17 +1304,18 @@ hr {
     showScreen(resultScreen);
     return;
   }
+    
+　topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+  console.log('Calculated topKey:', topKey, 'totals:', totals);
+  const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600';
+  const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600';
+  document.getElementById('resultImage').innerHTML = `<img src="${displayImageUrl}" alt="${topKey}の画像" onerror="this.src='https://via.placeholder.com/800x600'">`;
 
-     topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
-     const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600'; // 4:3 for display
-     const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600'; // 2:1 for sharing
-     document.getElementById('resultImage').innerHTML = `<img src="${displayImageUrl}" alt="${topKey}の画像" onerror="this.src='https://via.placeholder.com/800x600'">`;
-
-      const twitterImageMeta = document.querySelector('meta[name="twitter:image"]');
-      const twitterTitleMeta = document.querySelector('meta[name="twitter:title"]');
-      const twitterDescMeta = document.querySelector('meta[name="twitter:description"]');
-      const ogImageMeta = document.querySelector('meta[property="og:image"]');
-      const characterTitle = getCharacterTitle(topKey);
+  const twitterImageMeta = document.querySelector('meta[name="twitter:image"]');
+  const twitterTitleMeta = document.querySelector('meta[name="twitter:title"]');
+  const twitterDescMeta = document.querySelector('meta[name="twitter:description"]');
+  const ogImageMeta = document.querySelector('meta[property="og:image"]');
+  const characterTitle = getCharacterTitle(topKey);
 
       if (twitterImageMeta) {
           twitterImageMeta.setAttribute('content', shareImageUrl);
@@ -1321,11 +1351,12 @@ hr {
   <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span>  ${colorInfo.code}</p>
 `;
 
-     const description = characterDescriptions[topKey] || '診断結果が見つかりませんでした。';
-     const firstSentenceMatch = description.match(/^(.*?)(?:<br>|$)/);
-     const firstSentence = firstSentenceMatch ? firstSentenceMatch[1] : description;
-     const remainingDescription = description.replace(firstSentenceMatch[0], '').trim();
-     console.log('Description split - firstSentence:', firstSentence, 'remainingDescription:', remainingDescription);
+  const description = characterDescriptions[topKey] || '診断結果が見つかりませんでした。';
+  // Extract the remaining description after the first sentence
+  const firstSentenceMatch = description.match(/^(.*?)(?:<br>|$)/);
+  const remainingDescription = firstSentenceMatch ? description.replace(firstSentenceMatch[0], '').trim() : '';
+  const customFirstLine = customFirstLines[topKey] || '診断結果が見つかりませんでした。';
+  console.log('Custom first line:', customFirstLine, 'remainingDescription:', remainingDescription);
 
      const descriptionHTML = `
         <div class="accordion">
