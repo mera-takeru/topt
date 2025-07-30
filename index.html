@@ -11,7 +11,7 @@
   <meta name="twitter:image" content="">
   <meta property="og:image" content=""> <!-- Fallback for other platforms -->
   <style>
-   :root {
+ :root {
   --primary: #6C63FF;
   --secondary: #FF6584;
   --bg: #F9FAFB;
@@ -344,10 +344,10 @@ button:hover {
   object-fit: cover;
 }
 
-.result-description-first {
-  font-size: 1.75rem　!important; /* 見出しと同じサイズ */
-  font-weight: 700; /* 見出しと同じ太さ */
-  color: var(--secondary); /* ピンク色 (#FF6584) */
+#resultText .result-description-first {
+  font-size: 2rem !important; /* さらに大きく */
+  font-weight: 700 !important;
+  color: #FF6584 !important; /* ピンク色を確実に */
   margin-bottom: 8px;
 }
 
@@ -377,10 +377,6 @@ button:hover {
 
 .accordion-toggle .arrow {
   font-size: 0.9rem;
-}
-
-.accordion-toggle[data-state="open"] .arrow {
-  transform: rotate(180deg); /* 開いた状態で矢印を180度回転（上向き） */
 }
 
 .accordion-content {
@@ -436,14 +432,7 @@ button:hover {
   color: var(--text);
 }
 
-#resultScreen h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-top: 16px;
-  margin-bottom: 8px;
-  color: var(--primary);
-}
-
+#resultScreen h3,
 #resultText h3 {
   font-size: 1.25rem;
   font-weight: 700;
