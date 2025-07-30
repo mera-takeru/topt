@@ -385,9 +385,7 @@ button:hover {
   overflow: hidden;
   max-height: 0;
   opacity: 0;
-}
-.accordion-content[style*="display: block"] {
-  opacity: 1;
+  display: none; /* 初期状態を明示 */
 }
 
 @media (max-width: 600px) {
@@ -1382,22 +1380,33 @@ hr {
   showScreen(resultScreen);
 }
       
-　function toggleAccordion(button) {
-const content = button.nextElementSibling;
-const arrow = button.querySelector('.arrow');
-if (content.style.display === 'block') {
-content.style.display = 'none';
-button.setAttribute('data-state', 'closed');
-button.setAttribute('aria-expanded', 'false');
-button.innerHTML = '詳しく見る <span class="arrow">▼</span>';
-content.style.maxHeight = '0';
-} else {
-content.style.display = 'block';
-button.setAttribute('data-state', 'open');
-button.setAttribute('aria-expanded', 'true');
-button.innerHTML = '閉じる <span class="arrow">▲</span>';
-content.style.maxHeight = content.scrollHeight + 'px';
-}
+function toggleAccordion(button) {
+  const content = button.nextElementSibling;
+  const arrow = button.querySelector('.arrow');
+  
+  if (content.style.display === 'block') {
+    // 閉じる処理
+    content.style.maxHeight = '0';
+    content.style.opacity = '0';
+    setTimeout(() => {
+      content.style.display = 'none';
+    }, 300); // トランジション時間（0.3s）と一致させる
+    button.setAttribute('data-state', 'closed');
+    button.setAttribute('aria-expanded', 'false');
+    button.innerHTML = '詳しく見る <span class="arrow">▼</span>';
+  } else {
+    // 開く処理
+    content.style.display = 'block';
+    content.style.opacity = '0'; // 初期状態を透明に
+    // レイアウト計算を待ってscrollHeightを取得
+    setTimeout(() => {
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.style.opacity = '1';
+    }, 0); // 即時実行だが、レイアウト計算を待つ
+    button.setAttribute('data-state', 'open');
+    button.setAttribute('aria-expanded', 'true');
+    button.innerHTML = '閉じる <span class="arrow">▲</span>';
+  }
 }
 
   document.getElementById('shareXBtn').addEventListener('click', () => {
