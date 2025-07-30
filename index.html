@@ -381,11 +381,15 @@ button:hover {
   margin-top: 8px;
   font-size: 1rem;
   line-height: 1.5;
-  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
-  overflow: hidden;
   max-height: 0;
   opacity: 0;
-  display: none; /* 初期状態を明示 */
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.accordion-content.open {
+  opacity: 1;
+  max-height: 1000px; /* 十分な高さを設定（動的に調整するため問題なし） */
 }
 
 @media (max-width: 600px) {
@@ -1343,27 +1347,27 @@ hr {
   <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span>  ${colorInfo.code}</p>
 `;
 
-  const description = characterDescriptions[topKey] || '診断結果が見つかりませんでした。';
-  // Split after the first sentence within <p class="result-description">, up to the first <br><br>
-  const firstSentenceMatch = description.match(/<span class="title"[^>]*>.*?<\/span>\s*<p class="result-description">([^<]*?)<br><br>/);
-  const remainingDescription = firstSentenceMatch ? description.replace(firstSentenceMatch[0], `<p class="result-description">`).trim() : description;
-  const customFirstLine = customFirstLines[topKey] || '診断結果が見つかりませんでした。';
-  console.log('Custom first line:', customFirstLine, 'remainingDescription:', remainingDescription);
+ const firstSentenceMatch = description.match(/<span class="title"[^>]*>.*?<\/span>\s*<p class="result-description">([^<]*?)<br><br>(.*?)<\/p>/s);
+let firstSentence = firstSentenceMatch ? firstSentenceMatch[1] : customFirstLine;
+let remainingDescription = firstSentenceMatch ? firstSentenceMatch[2] : '';
 
-  const descriptionHTML = `
-    <div class="accordion">
-      <span class="title" style="background-color: ${colorInfo.code}; color:#FFFFFF; padding: 2px 8px; border-radius: 4px;">${getCharacterTitle(topKey)}</span>
-      <p class="result-description">${customFirstLine}</p>
-      ${remainingDescription ? `
-        <button class="accordion-toggle" onclick="toggleAccordion(this)" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
-　　　　　詳しく見る <span class="arrow">▼</span>
-　　　　　</button>
-　　　　　<div class="accordion-content" id="accordion-content-${topKey}" style="display: none;">
-　　　　　${remainingDescription}
-　　　　　</div>
-      ` : ''}
-    </div>
-  `;
+const descriptionHTML = `
+  <div class="accordion">
+    <span class="title" style="background-color: ${colorInfo.code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">${getCharacterTitle(topKey)}</span>
+    <p class="result-description">${customFirstLine}</p>
+    ${remainingDescription ? `
+      <button class="accordion-toggle" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
+        詳しく見る <span class="arrow">▼</span>
+      </button>
+      <div class="accordion-content" id="accordion-content-${topKey}">
+        <p>${remainingDescription}</p>
+      </div>
+    ` : ''}
+  </div>
+`;
+
+  function showResult() {
+  // ... 既存のコード ...
 
   resultTextDiv.innerHTML = `
     ${descriptionHTML}
@@ -1376,33 +1380,34 @@ hr {
     <h3>あなたのパートナルの有名な曲</h3>
     ${songsHTML}
   `;
+
+  // アコーディオンのイベントリスナーを追加
+  const accordionButtons = document.querySelectorAll('.accordion-toggle');
+  accordionButtons.forEach(button => {
+    button.addEventListener('click', () => toggleAccordion(button));
+  });
+
   console.log('Result screen HTML set, calling showScreen');
   showScreen(resultScreen);
 }
-      
+
 function toggleAccordion(button) {
   const content = button.nextElementSibling;
   const arrow = button.querySelector('.arrow');
-  
-  if (content.style.display === 'block') {
+
+  if (content.classList.contains('open')) {
     // 閉じる処理
+    content.classList.remove('open');
     content.style.maxHeight = '0';
     content.style.opacity = '0';
-    setTimeout(() => {
-      content.style.display = 'none';
-    }, 300); // トランジション時間（0.3s）と一致させる
     button.setAttribute('data-state', 'closed');
     button.setAttribute('aria-expanded', 'false');
     button.innerHTML = '詳しく見る <span class="arrow">▼</span>';
   } else {
     // 開く処理
-    content.style.display = 'block';
-    content.style.opacity = '0'; // 初期状態を透明に
-    // レイアウト計算を待ってscrollHeightを取得
-    setTimeout(() => {
-      content.style.maxHeight = content.scrollHeight + 'px';
-      content.style.opacity = '1';
-    }, 0); // 即時実行だが、レイアウト計算を待つ
+    content.classList.add('open');
+    content.style.maxHeight = content.scrollHeight + 'px';
+    content.style.opacity = '1';
     button.setAttribute('data-state', 'open');
     button.setAttribute('aria-expanded', 'true');
     button.innerHTML = '閉じる <span class="arrow">▲</span>';
