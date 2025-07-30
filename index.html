@@ -342,7 +342,48 @@ button:hover {
   height: 100%;
   object-fit: cover;
 }
+  
+.accordion {
+  margin-bottom: 16px;
+}
 
+.accordion-toggle {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 8px;
+  display: inline-block;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.accordion-toggle:hover {
+  background: var(--secondary);
+  transform: scale(1.02);
+}
+
+.accordion-content {
+  margin-top: 8px;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  overflow: hidden;
+  max-height: 0;
+}
+
+.accordion-content[style*="display: block"] {
+  opacity: 1;
+  max-height: 500px;
+}
+
+.accordion-content[style*="display: none"] {
+  opacity: 0;
+  max-height: 0;
+}
+    
 @media (max-width: 600px) {
   .start-image {
     max-width: 100%;
@@ -1163,6 +1204,18 @@ hr {
     else console.error('showScreen: screen引数がnullです');
   }
 
+  function toggleAccordion(button) {
+      const content = button.nextElementSibling;
+      if (content.style.display === 'block') {
+        content.style.display = 'none';
+        button.textContent = '詳しく見る';
+      } else {
+        content.style.display = 'block';
+        button.textContent = '閉じる';
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }
+
   function renderQuestion() {
     const q = questions[current];
     if (!q) {
@@ -1265,6 +1318,23 @@ hr {
   <h3>あなたのパートナルカラー</h3>
   <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span>  ${colorInfo.code}</p>
 `;
+
+     const description = characterDescriptions[topKey] || '診断結果が見つかりませんでした。';
+     const firstSentenceMatch = description.match(/^(.*?)(?:<br>|$)/);
+     const firstSentence = firstSentenceMatch ? firstSentenceMatch[1] : description;
+     const remainingDescription = description.replace(firstSentenceMatch[0], '').trim();
+
+     const descriptionHTML = `
+        <div class="accordion">
+          ${firstSentence}
+          ${remainingDescription ? `
+            <button class="accordion-toggle" onclick="toggleAccordion(this)">詳しく見る</button>
+            <div class="accordion-content" style="display: none;">
+              ${remainingDescription}
+            </div>
+          ` : ''}
+        </div>
+      `;
 
     resultTextDiv.innerHTML = `
       ${characterDescriptions[topKey] || '診断結果が見つかりませんでした。'}
