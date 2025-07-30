@@ -345,7 +345,7 @@ button:hover {
 }
 
 .result-description-first {
-  font-size: 1.75rem; /* 見出しと同じサイズ */
+  font-size: 1.75rem　!important; /* 見出しと同じサイズ */
   font-weight: 700; /* 見出しと同じ太さ */
   color: var(--secondary); /* ピンク色 (#FF6584) */
   margin-bottom: 8px;
@@ -377,7 +377,6 @@ button:hover {
 
 .accordion-toggle .arrow {
   font-size: 0.9rem;
-  transition: transform 0.3s ease; /* スムーズな回転アニメーション */
 }
 
 .accordion-toggle[data-state="open"] .arrow {
@@ -1381,9 +1380,18 @@ hr {
 
     // アコーディオンのイベントリスナーを追加
     const accordionButtons = document.querySelectorAll('.accordion-toggle');
-    accordionButtons.forEach(button => {
-      button.addEventListener('click', () => toggleAccordion(button));
-    });
+accordionButtons.forEach(button => {
+  // 既存のイベントリスナーをクリア（重複防止）
+  button.removeEventListener('click', toggleAccordion);
+  button.removeEventListener('keydown', toggleAccordion);
+  button.addEventListener('click', () => toggleAccordion(button));
+  button.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleAccordion(button);
+    }
+  });
+});
 
     console.log('Result screen HTML set, calling showScreen');
     showScreen(resultScreen);
@@ -1414,7 +1422,7 @@ function toggleAccordion(button) {
     content.style.opacity = '1';
     button.setAttribute('data-state', 'open');
     button.setAttribute('aria-expanded', 'true');
-    button.innerHTML = '閉じる <span class="arrow">↪▼</span>';
+    button.innerHTML = '閉じる <span class="arrow">↪▲</span>';
   }
 }
 
