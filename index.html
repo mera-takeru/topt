@@ -1212,6 +1212,10 @@ hr {
     }
   ];
 
+ <script>
+document.addEventListener('DOMContentLoaded', () => {
+  // personalityColors, characterDescriptions, customFirstLines, compatibleKeys, famousSongs, displayImageUrls, shareImageUrls, questions の定義は変更なし
+
   let current = 0;
   let topKey = null;
   const answers = Array(questions.length).fill(null);
@@ -1291,41 +1295,33 @@ hr {
     });
 
     const allAnswered = answers.every(answer => answer != null);
-  　if (!allAnswered || Object.keys(totals).length === 0) {
-    console.log('Not all questions answered or totals empty:', totals); // Debug log
-    resultTextDiv.innerHTML = `
-      <p>エラー：すべての質問に回答してください。</p>
-      <p>もう一度最初から診断を始めるか、前の質問に戻って回答してください。</p>
-    `;
-    showScreen(resultScreen);
-    return;
-  }
-    
-　topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
-  console.log('Calculated topKey:', topKey, 'totals:', totals);
-  const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600';
-  const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600';
-  document.getElementById('resultImage').innerHTML = `<img src="${displayImageUrl}" alt="${topKey}の画像" onerror="this.src='https://via.placeholder.com/800x600'">`;
+    if (!allAnswered || Object.keys(totals).length === 0) {
+      console.log('Not all questions answered or totals empty:', totals);
+      resultTextDiv.innerHTML = `
+        <p>エラー：すべての質問に回答してください。</p>
+        <p>もう一度最初から診断を始めるか、前の質問に戻って回答してください。</p>
+      `;
+      showScreen(resultScreen);
+      return;
+    }
 
-  const twitterImageMeta = document.querySelector('meta[name="twitter:image"]');
-  const twitterTitleMeta = document.querySelector('meta[name="twitter:title"]');
-  const twitterDescMeta = document.querySelector('meta[name="twitter:description"]');
-  const ogImageMeta = document.querySelector('meta[property="og:image"]');
-  const characterTitle = getCharacterTitle(topKey);
+    topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+    console.log('Calculated topKey:', topKey, 'totals:', totals);
+    const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600';
+    const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600';
+    document.getElementById('resultImage').innerHTML = `<img src="${displayImageUrl}" alt="${topKey}の画像" onerror="this.src='https://via.placeholder.com/800x600'">`;
 
-      if (twitterImageMeta) {
-          twitterImageMeta.setAttribute('content', shareImageUrl);
-        }
-      if (ogImageMeta) {
-          ogImageMeta.setAttribute('content', shareImageUrl);
-        }
-      if (twitterTitleMeta) {
-          twitterTitleMeta.setAttribute('content', `私は${characterTitle} - パートナル診断`);
-        }
-      if (twitterDescMeta) {
-          twitterDescMeta.setAttribute('content', `音と色で私の性格を診断！私は${characterTitle}！あなたのパートナルは？今すぐ無料でチェック！`);
-        }
-    
+    const twitterImageMeta = document.querySelector('meta[name="twitter:image"]');
+    const twitterTitleMeta = document.querySelector('meta[name="twitter:title"]');
+    const twitterDescMeta = document.querySelector('meta[name="twitter:description"]');
+    const ogImageMeta = document.querySelector('meta[property="og:image"]');
+    const characterTitle = getCharacterTitle(topKey);
+
+    if (twitterImageMeta) twitterImageMeta.setAttribute('content', shareImageUrl);
+    if (ogImageMeta) ogImageMeta.setAttribute('content', shareImageUrl);
+    if (twitterTitleMeta) twitterTitleMeta.setAttribute('content', `私は${characterTitle} - パートナル診断`);
+    if (twitterDescMeta) twitterDescMeta.setAttribute('content', `音と色で私の性格を診断！私は${characterTitle}！あなたのパートナルは？今すぐ無料でチェック！`);
+
     const compatible = compatibleKeys[topKey] || [];
     const compatibleHTML = compatible
       .map(key => `<p class="compatible-title">${getCharacterTitle(key)}</p>`)
@@ -1334,85 +1330,90 @@ hr {
     const songs = famousSongs[topKey] || {};
     const songsHTML = songs.classic
       ? `
-        <p>${songs.classic}</p>
-        <p>${songs.showa}</p>
-        <p>${songs.heisei}</p>
-        <p>${songs.reiwa}</p>
-      `
+          <p>${songs.classic}</p>
+          <p>${songs.showa}</p>
+          <p>${songs.heisei}</p>
+          <p>${songs.reiwa}</p>
+        `
       : '<p>情報が見つかりませんでした。</p>';
 
     const colorInfo = personalityColors[topKey] || { name: "不明", code: "#000000" };
-  const colorHTML = `
-  <h3>あなたのパートナルカラー</h3>
-  <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span>  ${colorInfo.code}</p>
-`;
+    const colorHTML = `
+      <h3>あなたのパートナルカラー</h3>
+      <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span>  ${colorInfo.code}</p>
+    `;
 
- const firstSentenceMatch = description.match(/<span class="title"[^>]*>.*?<\/span>\s*<p class="result-description">([^<]*?)<br><br>(.*?)<\/p>/s);
-let firstSentence = firstSentenceMatch ? firstSentenceMatch[1] : customFirstLine;
-let remainingDescription = firstSentenceMatch ? firstSentenceMatch[2] : '';
+    const description = characterDescriptions[topKey] || '診断結果が見つかりませんでした。';
+    const customFirstLine = customFirstLines[topKey] || '診断結果が見つかりませんでした。';
+    const firstSentenceMatch = description.match(/<span class="title"[^>]*>.*?<\/span>\s*<p class="result-description">([^<]*?)<br><br>(.*?)<\/p>/s);
+    let firstSentence = firstSentenceMatch ? firstSentenceMatch[1] : customFirstLine;
+    let remainingDescription = firstSentenceMatch ? firstSentenceMatch[2] : '';
 
-const descriptionHTML = `
-  <div class="accordion">
-    <span class="title" style="background-color: ${colorInfo.code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">${getCharacterTitle(topKey)}</span>
-    <p class="result-description">${customFirstLine}</p>
-    ${remainingDescription ? `
-      <button class="accordion-toggle" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
-        詳しく見る <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content" id="accordion-content-${topKey}">
-        <p>${remainingDescription}</p>
+    const descriptionHTML = `
+      <div class="accordion">
+        <span class="title" style="background-color: ${colorInfo.code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">${getCharacterTitle(topKey)}</span>
+        <p class="result-description">${firstSentence}</p>
+        ${remainingDescription ? `
+          <button class="accordion-toggle" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
+            詳しく見る <span class="arrow">▼</span>
+          </button>
+          <div class="accordion-content" id="accordion-content-${topKey}">
+            <p>${remainingDescription}</p>
+          </div>
+        ` : ''}
       </div>
-    ` : ''}
-  </div>
-`;
+    `;
 
-  function showResult() {
-  // ... 既存のコード ...
+    resultTextDiv.innerHTML = `
+      ${descriptionHTML}
+      <hr>
+      ${colorHTML}
+      <hr>
+      <h3>あなたと相性の良いパートナル</h3>
+      ${compatibleHTML || '<p>情報が見つかりませんでした。</p>'}
+      <hr>
+      <h3>あなたのパートナルの有名な曲</h3>
+      ${songsHTML}
+    `;
 
-  resultTextDiv.innerHTML = `
-    ${descriptionHTML}
-    <hr>
-    ${colorHTML}
-    <hr>
-    <h3>あなたと相性の良いパートナル</h3>
-    ${compatibleHTML || '<p>情報が見つかりませんでした。</p>'}
-    <hr>
-    <h3>あなたのパートナルの有名な曲</h3>
-    ${songsHTML}
-  `;
+    // アコーディオンのイベントリスナーを追加
+    const accordionButtons = document.querySelectorAll('.accordion-toggle');
+    accordionButtons.forEach(button => {
+      button.addEventListener('click', () => toggleAccordion(button));
+    });
 
-  // アコーディオンのイベントリスナーを追加
-  const accordionButtons = document.querySelectorAll('.accordion-toggle');
-  accordionButtons.forEach(button => {
-    button.addEventListener('click', () => toggleAccordion(button));
-  });
-
-  console.log('Result screen HTML set, calling showScreen');
-  showScreen(resultScreen);
-}
-
-function toggleAccordion(button) {
-  const content = button.nextElementSibling;
-  const arrow = button.querySelector('.arrow');
-
-  if (content.classList.contains('open')) {
-    // 閉じる処理
-    content.classList.remove('open');
-    content.style.maxHeight = '0';
-    content.style.opacity = '0';
-    button.setAttribute('data-state', 'closed');
-    button.setAttribute('aria-expanded', 'false');
-    button.innerHTML = '詳しく見る <span class="arrow">▼</span>';
-  } else {
-    // 開く処理
-    content.classList.add('open');
-    content.style.maxHeight = content.scrollHeight + 'px';
-    content.style.opacity = '1';
-    button.setAttribute('data-state', 'open');
-    button.setAttribute('aria-expanded', 'true');
-    button.innerHTML = '閉じる <span class="arrow">▲</span>';
+    console.log('Result screen HTML set, calling showScreen');
+    showScreen(resultScreen);
   }
-}
+
+  function toggleAccordion(button) {
+    console.log('Toggle accordion clicked:', button);
+    const content = button.nextElementSibling;
+    const arrow = button.querySelector('.arrow');
+
+    if (!content) {
+      console.error('Accordion content not found for button:', button);
+      return;
+    }
+
+    if (content.classList.contains('open')) {
+      console.log('Closing accordion');
+      content.classList.remove('open');
+      content.style.maxHeight = '0';
+      content.style.opacity = '0';
+      button.setAttribute('data-state', 'closed');
+      button.setAttribute('aria-expanded', 'false');
+      button.innerHTML = '詳しく見る <span class="arrow">▼</span>';
+    } else {
+      console.log('Opening accordion, scrollHeight:', content.scrollHeight);
+      content.classList.add('open');
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.style.opacity = '1';
+      button.setAttribute('data-state', 'open');
+      button.setAttribute('aria-expanded', 'true');
+      button.innerHTML = '閉じる <span class="arrow">▲</span>';
+    }
+  }
 
   document.getElementById('shareXBtn').addEventListener('click', () => {
     if (topKey) {
