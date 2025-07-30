@@ -1254,6 +1254,7 @@ hr {
   }
 
   function showResult() {
+    console.log('showResult called, answers:', answers);
     const totals = {};
     questions.forEach((q, qi) => {
       const sel = answers[qi];
@@ -1265,14 +1266,15 @@ hr {
     });
 
     const allAnswered = answers.every(answer => answer != null);
-    if (!allAnswered || Object.keys(totals).length === 0) {
-      resultTextDiv.innerHTML = `
-        <p>エラー：すべての質問に回答してください。</p>
-        <p>もう一度最初から診断を始めるか、前の質問に戻って回答してください。</p>
-      `;
-      showScreen(resultScreen);
-      return;
-    }
+  　if (!allAnswered || Object.keys(totals).length === 0) {
+    console.log('Not all questions answered or totals empty:', totals); // Debug log
+    resultTextDiv.innerHTML = `
+      <p>エラー：すべての質問に回答してください。</p>
+      <p>もう一度最初から診断を始めるか、前の質問に戻って回答してください。</p>
+    `;
+    showScreen(resultScreen);
+    return;
+  }
 
      topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
      const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600'; // 4:3 for display
@@ -1323,6 +1325,7 @@ hr {
      const firstSentenceMatch = description.match(/^(.*?)(?:<br>|$)/);
      const firstSentence = firstSentenceMatch ? firstSentenceMatch[1] : description;
      const remainingDescription = description.replace(firstSentenceMatch[0], '').trim();
+     console.log('Description split - firstSentence:', firstSentence, 'remainingDescription:', remainingDescription);
 
      const descriptionHTML = `
         <div class="accordion">
@@ -1337,17 +1340,18 @@ hr {
       `;
 
     resultTextDiv.innerHTML = `
-      ${characterDescriptions[topKey] || '診断結果が見つかりませんでした。'}
-      <hr>
-      ${colorHTML}
-      <hr>
-      <h3>あなたと相性の良いパートナル</h3>
-      ${compatibleHTML || '<p>情報が見つかりませんでした。</p>'}
-      <hr>
-      <h3>あなたのパートナルの有名な曲</h3>
-      ${songsHTML}
-    `;
-    showScreen(resultScreen);
+    ${descriptionHTML}
+    <hr>
+    ${colorHTML}
+    <hr>
+    <h3>あなたと相性の良いパートナル</h3>
+    ${compatibleHTML || '<p>情報が見つかりませんでした。</p>'}
+    <hr>
+    <h3>あなたのパートナルの有名な曲</h3>
+    ${songsHTML}
+  `;
+  console.log('Result screen HTML set, calling showScreen'); // Debug log
+  showScreen(resultScreen);
   }
 
   document.getElementById('shareXBtn').addEventListener('click', () => {
