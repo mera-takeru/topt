@@ -1352,14 +1352,14 @@ hr {
 `;
 
   const description = characterDescriptions[topKey] || '診断結果が見つかりませんでした。';
-  // Split after the first <p class="result-description">...</p><br><br>
-  const firstSentenceMatch = description.match(/<span class="title"[^>]*>.*?<\/span>\s*<p class="result-description">.*?(?:<\/p>\s*<br><br>|$)/);
-  const remainingDescription = firstSentenceMatch ? description.replace(firstSentenceMatch[0], '').trim() : '';
+  // Split after the first sentence within <p class="result-description">, up to the first <br><br>
+  const firstSentenceMatch = description.match(/<span class="title"[^>]*>.*?<\/span>\s*<p class="result-description">([^<]*?)<br><br>/);
+  const remainingDescription = firstSentenceMatch ? description.replace(firstSentenceMatch[0], `<p class="result-description">`).trim() : description;
   const customFirstLine = customFirstLines[topKey] || '診断結果が見つかりませんでした。';
   console.log('Custom first line:', customFirstLine, 'remainingDescription:', remainingDescription);
 
   const descriptionHTML = `
-    <div class="accordion">
+  <div class="accordion">
       <span class="title" style="background-color: ${colorInfo.code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">${getCharacterTitle(topKey)}</span>
       <p class="result-description">${customFirstLine}</p>
       ${remainingDescription ? `
@@ -1371,7 +1371,7 @@ hr {
     </div>
   `;
 
-    resultTextDiv.innerHTML = `
+  resultTextDiv.innerHTML = `
     ${descriptionHTML}
     <hr>
     ${colorHTML}
@@ -1382,9 +1382,9 @@ hr {
     <h3>あなたのパートナルの有名な曲</h3>
     ${songsHTML}
   `;
-  console.log('Result screen HTML set, calling showScreen'); // Debug log
+  console.log('Result screen HTML set, calling showScreen');
   showScreen(resultScreen);
-  }
+}
 
   document.getElementById('shareXBtn').addEventListener('click', () => {
     if (topKey) {
