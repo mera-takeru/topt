@@ -1245,18 +1245,6 @@ hr {
     else console.error('showScreen: screen引数がnullです');
   }
 
-  function toggleAccordion(button) {
-      const content = button.nextElementSibling;
-      if (content.style.display === 'block') {
-        content.style.display = 'none';
-        button.textContent = '詳しく見る';
-      } else {
-        content.style.display = 'block';
-        button.textContent = '閉じる';
-        content.style.maxHeight = content.scrollHeight + 'px';
-      }
-    }
-
   function renderQuestion() {
     const q = questions[current];
     if (!q) {
@@ -1372,15 +1360,15 @@ hr {
 
   const descriptionHTML = `
     <div class="accordion">
-      <span class="title" style="background-color: ${colorInfo.code}; color:失 #FFFFFF; padding: 2px 8px; border-radius: 4px;">${getCharacterTitle(topKey)}</span>
+      <span class="title" style="background-color: ${colorInfo.code}; color:　#FFFFFF; padding: 2px 8px; border-radius: 4px;">${getCharacterTitle(topKey)}</span>
       <p class="result-description">${customFirstLine}</p>
       ${remainingDescription ? `
-        <button class="accordion-toggle" onclick="toggleAccordion(this)" data-state="closed">
-          詳しく見る <span class="arrow">▼</span>
-        </button>
-        <div class="accordion-content" style="display: none;">
-          ${remainingDescription}
-        </div>
+        <button class="accordion-toggle" onclick="toggleAccordion(this)" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
+　　　　　詳しく見る <span class="arrow">▼</span>
+　　　　　</button>
+　　　　　<div class="accordion-content" id="accordion-content-${topKey}" style="display: none;">
+　　　　　${remainingDescription}
+　　　　　</div>
       ` : ''}
     </div>
   `;
@@ -1401,19 +1389,21 @@ hr {
 }
       
 　function toggleAccordion(button) {
-  const content = button.nextElementSibling;
-  const arrow = button.querySelector('.arrow');
-  if (content.style.display === 'block') {
-    content.style.display = 'none';
-    button.setAttribute('data-state', 'closed');
-    button.innerHTML = '詳しく見る <span class="arrow">▼</span>';
-    content.style.maxHeight = '0';
-  } else {
-    content.style.display = 'block';
-    button.setAttribute('data-state', 'open');
-    button.innerHTML = '閉じる <span class="arrow">▲</span>';
-    content.style.maxHeight = content.scrollHeight + 'px';
-  }
+const content = button.nextElementSibling;
+const arrow = button.querySelector('.arrow');
+if (content.style.display === 'block') {
+content.style.display = 'none';
+button.setAttribute('data-state', 'closed');
+button.setAttribute('aria-expanded', 'false');
+button.innerHTML = '詳しく見る <span class="arrow">▼</span>';
+content.style.maxHeight = '0';
+} else {
+content.style.display = 'block';
+button.setAttribute('data-state', 'open');
+button.setAttribute('aria-expanded', 'true');
+button.innerHTML = '閉じる <span class="arrow">▲</span>';
+content.style.maxHeight = content.scrollHeight + 'px';
+}
 }
 
   document.getElementById('shareXBtn').addEventListener('click', () => {
