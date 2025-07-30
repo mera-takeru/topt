@@ -386,14 +386,17 @@ button:hover {
   max-height: 0;
 }
 
+.accordion-content {
+  margin-top: 8px;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+}
 .accordion-content[style*="display: block"] {
   opacity: 1;
-  max-height: 500px;
-}
-
-.accordion-content[style*="display: none"] {
-  opacity: 0;
-  max-height: 0;
 }
 
 @media (max-width: 600px) {
@@ -1360,7 +1363,7 @@ hr {
 
   const descriptionHTML = `
     <div class="accordion">
-      <span class="title" style="background-color: ${colorInfo.code}; color:　#FFFFFF; padding: 2px 8px; border-radius: 4px;">${getCharacterTitle(topKey)}</span>
+      <span class="title" style="background-color: ${colorInfo.code}; color:#FFFFFF; padding: 2px 8px; border-radius: 4px;">${getCharacterTitle(topKey)}</span>
       <p class="result-description">${customFirstLine}</p>
       ${remainingDescription ? `
         <button class="accordion-toggle" onclick="toggleAccordion(this)" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
