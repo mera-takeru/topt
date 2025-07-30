@@ -30,6 +30,7 @@ a {
   color: inherit !important;
   text-decoration: none;
 }
+
 a:visited, a:link, a:active {
   color: inherit !important;
 }
@@ -342,7 +343,7 @@ button:hover {
   height: 100%;
   object-fit: cover;
 }
-  
+
 .accordion {
   margin-bottom: 16px;
 }
@@ -356,13 +357,24 @@ button:hover {
   cursor: pointer;
   font-size: 1rem;
   margin-top: 8px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Space between text and arrow */
   transition: background var(--transition), transform var(--transition);
 }
 
 .accordion-toggle:hover {
   background: var(--secondary);
   transform: scale(1.02);
+}
+
+.accordion-toggle .arrow {
+  font-size: 0.9rem;
+  transition: transform var(--transition);
+}
+
+.accordion-toggle[data-state="open"] .arrow {
+  transform: rotate(180deg); /* Rotate arrow for "open" state */
 }
 
 .accordion-content {
@@ -383,7 +395,7 @@ button:hover {
   opacity: 0;
   max-height: 0;
 }
-    
+
 @media (max-width: 600px) {
   .start-image {
     max-width: 100%;
@@ -1359,11 +1371,13 @@ hr {
   console.log('Custom first line:', customFirstLine, 'remainingDescription:', remainingDescription);
 
   const descriptionHTML = `
-  <div class="accordion">
-      <span class="title" style="background-color: ${colorInfo.code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">${getCharacterTitle(topKey)}</span>
+    <div class="accordion">
+      <span class="title" style="background-color: ${colorInfo.code}; color:失 #FFFFFF; padding: 2px 8px; border-radius: 4px;">${getCharacterTitle(topKey)}</span>
       <p class="result-description">${customFirstLine}</p>
       ${remainingDescription ? `
-        <button class="accordion-toggle" onclick="toggleAccordion(this)">詳しく見る</button>
+        <button class="accordion-toggle" onclick="toggleAccordion(this)" data-state="closed">
+          詳しく見る <span class="arrow">▼</span>
+        </button>
         <div class="accordion-content" style="display: none;">
           ${remainingDescription}
         </div>
@@ -1384,6 +1398,22 @@ hr {
   `;
   console.log('Result screen HTML set, calling showScreen');
   showScreen(resultScreen);
+}
+      
+　function toggleAccordion(button) {
+  const content = button.nextElementSibling;
+  const arrow = button.querySelector('.arrow');
+  if (content.style.display === 'block') {
+    content.style.display = 'none';
+    button.setAttribute('data-state', 'closed');
+    button.innerHTML = '詳しく見る <span class="arrow">▼</span>';
+    content.style.maxHeight = '0';
+  } else {
+    content.style.display = 'block';
+    button.setAttribute('data-state', 'open');
+    button.innerHTML = '閉じる <span class="arrow">▲</span>';
+    content.style.maxHeight = content.scrollHeight + 'px';
+  }
 }
 
   document.getElementById('shareXBtn').addEventListener('click', () => {
