@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>pertonal -パートナル-</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="パートナル - 音と色の性格診断">
+  <meta name="twitter:description" content="音と色であなたの性格を診断！MBTIの次はコレ！今すぐ無料でチェック！">
+  <meta name="twitter:image" content="">
+  <meta property="og:image" content=""> <!-- Fallback for other platforms -->
   <style>
    :root {
   --primary: #6C63FF;
@@ -329,13 +334,13 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 4 / 3; /* Changed to 4:3 for horizontal format */
+  aspect-ratio: 4 / 3;
 }
 
 .result-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* or 'contain' if you prefer no cropping */
+  object-fit: cover;
 }
 
 @media (max-width: 600px) {
@@ -449,7 +454,7 @@ hr {
       <div class="progress-bar"><div id="progInner" class="progress-inner"></div></div>
       <div class="question"><h2 id="questionText"></h2></div>
       <ul id="optionsList" class="options"></ul>
-      <div class="nav"><button id="backBtn">← 前へ</button></div>
+      <div class="nav"><button id="backBtn">◀︎ 1つ前へ</button></div>
     </div>
     <div id="resultScreen" class="screen">
       <div id="resultImage" class="result-image"></div>
@@ -930,7 +935,7 @@ hr {
     }
   };
 
-  const imageUrls = {
+  const displayImageUrls = {
     "C": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
     "cm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
     "D♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
@@ -956,7 +961,32 @@ hr {
     "B": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4",
     "bm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/bafkreih7kgft7gwa4lozqqo5xrvlsurswwp5o5m47lz6zaopwdzk6u6mg4"
   };
-
+      const shareImageUrls = {
+      "C": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_C",
+      "cm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_cm",
+      "D♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_Db",
+      "c♯m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_csm",
+      "D": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_D",
+      "dm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_dm",
+      "E♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_Eb",
+      "e♭m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_ebm",
+      "E": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_E",
+      "em": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_em",
+      "F": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_F",
+      "fm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_fm",
+      "F♯": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_Fs",
+      "f♯m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_fsm",
+      "G": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_G",
+      "gm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_gm",
+      "A♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_Ab",
+      "g♯m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_gsm",
+      "A": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_A",
+      "am": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_am",
+      "B♭": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_Bb",
+      "b♭m": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_bbm",
+      "B": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_B",
+      "bm": "https://copper-glamorous-bass-418.mypinata.cloud/ipfs/share_image_bm"
+    };
   const questions = [
     {
       "id": "Q1",
@@ -1118,15 +1148,6 @@ hr {
   const progInner = document.getElementById('progInner');
   const resultTextDiv = document.getElementById('resultText');
 
-  if (!startBtn || !questionScreen || !startScreen) {
-    console.error('必要なDOM要素が見つかりません:', {
-      startBtn: !!startBtn,
-      questionScreen: !!questionScreen,
-      startScreen: !!startScreen
-    });
-    return;
-  }
-
   function getCharacterTitle(key) {
     const description = characterDescriptions[key];
     if (!description) return key;
@@ -1200,10 +1221,30 @@ hr {
       return;
     }
 
-    topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
-    const imageUrl = imageUrls[topKey] || 'placeholder.jpg';
-    document.getElementById('resultImage').innerHTML = `<img src="${imageUrl}" alt="${topKey}の画像" onerror="this.src='placeholder.jpg'">`;
+     topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+     const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600'; // 4:3 for display
+     const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600'; // 2:1 for sharing
+     document.getElementById('resultImage').innerHTML = `<img src="${displayImageUrl}" alt="${topKey}の画像" onerror="this.src='https://via.placeholder.com/800x600'">`;
 
+      const twitterImageMeta = document.querySelector('meta[name="twitter:image"]');
+      const twitterTitleMeta = document.querySelector('meta[name="twitter:title"]');
+      const twitterDescMeta = document.querySelector('meta[name="twitter:description"]');
+      const ogImageMeta = document.querySelector('meta[property="og:image"]');
+      const characterTitle = getCharacterTitle(topKey);
+
+      if (twitterImageMeta) {
+          twitterImageMeta.setAttribute('content', imageUrl);
+        }
+      if (ogImageMeta) {
+          ogImageMeta.setAttribute('content', imageUrl);
+        }
+      if (twitterTitleMeta) {
+          twitterTitleMeta.setAttribute('content', `私は${characterTitle} - パートナル診断`);
+        }
+      if (twitterDescMeta) {
+          twitterDescMeta.setAttribute('content', `音と色で私の性格を診断！私は${characterTitle}！あなたのパートナルは？今すぐ無料でチェック！`);
+        }
+    
     const compatible = compatibleKeys[topKey] || [];
     const compatibleHTML = compatible
       .map(key => `<p class="compatible-title">${getCharacterTitle(key)}</p>`)
