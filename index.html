@@ -1118,7 +1118,7 @@ a {
       btn.textContent = opt.text;
       btn.onclick = () => {
         answers[current] = idx;
-        console.log(Question ${current + 1}: Selected option ${idx}, Answers:, answers);
+        console.log(`Question ${current + 1}: Selected option ${idx}, Answers:`, answers);
         if (current < questions.length - 1) {
           current++;
           renderQuestion();
@@ -1196,9 +1196,7 @@ const colorHTML = `
 
 const description = characterDescriptions[topKey] || '診断結果が見つかりませんでした。';
 const customFirstLine = customFirstLines[topKey] || '診断結果が見つかりませんでした。';
-const firstSentenceMatch = description.match(/<span class="title"[^>]*>.*?<\/span>\s*<p class="result-description">([^<]*?)
-
-(.*?)<\/p>/s);
+const firstSentenceMatch = description.match(/<span class="title"[^>]*>.*?<\/span>\s*<p class="result-description">([^<]*?)(.*?)<\/p>/s);
 let firstSentence = firstSentenceMatch ? firstSentenceMatch[1] : customFirstLine;
 let remainingDescription = firstSentenceMatch ? firstSentenceMatch[2] : '';
 
