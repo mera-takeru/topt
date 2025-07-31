@@ -235,7 +235,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 3 / 2; /* PCでは3:2 */
+  aspect-ratio: 3 / 2; 
 }.start-image picture, .start-image img {
   width: 100%;
   height: auto;
@@ -289,7 +289,7 @@ a {
   transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
 }.accordion-content.open {
   opacity: 1;
-  max-height: 1000px; /* 十分な高さを設定（動的に調整するため問題なし） */
+  max-height: 1000px; 
 }@media (max-width: 600px) {
   .start-image {
     max-width: 100%;
@@ -299,7 +299,7 @@ a {
   .result-image {
     max-width: 100%;
     margin-bottom: 12px;
-    aspect-ratio: 4 / 3; /* Maintain 4:3 on mobile */
+    aspect-ratio: 4 / 3; 
   }
   .title-english {
     font-size: 2rem;
@@ -686,7 +686,6 @@ a {
 それを背負ってなお、周囲を思いやるあなたは、真の意味で強くて優しい存在です。<br><br>
 誰かが苦しんでいるとき、あなたの一声は火となり、水となり、支えとなるでしょう。</p>`
   };
-
   const customFirstLines = {
   "C": "あなたは誠実で信頼を築く騎士タイプです。",
   "cm": "あなたは静かに創造を続ける鍛冶屋タイプです。",
@@ -1235,7 +1234,6 @@ resultTextDiv.innerHTML = `
   ${songsHTML}
 `;
 
-// アコーディオンのイベントリスナーを追加
 const accordionButtons = document.querySelectorAll('.accordion-toggle');accordionButtons.forEach(button => {
   // 既存のイベントリスナーをクリア（重複防止）
   button.removeEventListener('click', toggleAccordion);
