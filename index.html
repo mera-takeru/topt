@@ -20,10 +20,10 @@
   --transition: .3s;
 }
 
-{
-box-sizing: border-box;
-margin: 0;
-padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -1109,7 +1109,7 @@ a {
       return;
     }
     questionText.textContent = q.text;
-    progInner.style.width = ${(current / questions.length) * 100}%;
+    progInner.style.width = `${(current / questions.length) * 100}%`;
     optionsList.innerHTML = '';
     q.options.forEach((opt, idx) => {
       const li = document.createElement('li');
@@ -1240,7 +1240,8 @@ const accordionButtons = document.querySelectorAll('.accordion-toggle');accordio
       toggleAccordion(button);
     }
   });
-});console.log('Result screen HTML set, calling showScreen');
+});
+    console.log('Result screen HTML set, calling showScreen');
 showScreen(resultScreen);  }function toggleAccordion(button) {
   console.log('Toggle accordion clicked:', button.getAttribute('data-state'));
   const content = button.nextElementSibling;
@@ -1266,10 +1267,10 @@ showScreen(resultScreen);  }function toggleAccordion(button) {
   }
 }  document.getElementById('shareXBtn').addEventListener('click', () => {
     if (topKey) {
-      window.open(
-        https://twitter.com/intent/tweet?text=${encodeURIComponent(私は「${topKey}型」\nMBTIの次はコレ音と色の性格診断「パートナル」\n今すぐ無料で相性チェック\n)}&url=${encodeURIComponent(location.href)},
-        '_blank'
-      );
+     window.open(
+  　　　`https://twitter.com/intent/tweet?text=${encodeURIComponent(`私は「${topKey}型」\nMBTIの次はコレ！音と色の性格診断「パートナル」\n今すぐ無料で相性チェック\n`)}&url=${encodeURIComponent(location.href)}`,
+  　　　'_blank'
+　　　);
     } else {
       console.warn('topKey is not set yet.');
     }
