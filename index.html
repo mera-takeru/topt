@@ -1126,7 +1126,7 @@ a {
       btn.textContent = opt.text;
       btn.onclick = () => {
         answers[current] = idx;
-        console.log(`Question ${current + 1}: Selected option ${idx}, Answers:`, answers);
+        //console.log(`Question ${current + 1}: Selected option ${idx}, Answers:`, answers);
         if (current < questions.length - 1) {
           current++;
           renderQuestion();
@@ -1144,7 +1144,7 @@ a {
       renderQuestion();
     }
   }  function showResult() {
-    console.log('showResult called, answers:', answers);
+    //console.log('showResult called, answers:', answers);
     const totals = {};
     questions.forEach((q, qi) => {
       const sel = answers[qi];
