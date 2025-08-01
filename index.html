@@ -1244,8 +1244,10 @@ const colorHTML = `
 `;
 
 const firstSentence = customFirstLines[topKey] || '';         // ここで必ず customFirstLines を取得
-const remainingDescription = characterDescriptions[topKey] || '';  // ボタンで開く全文は characterDescriptions から
-
+// HMTL全体を取得し、正規表現を使ってタイトル部分のspanタグを削除
+const fullDescription = characterDescriptions[topKey] || '';
+const remainingDescription = fullDescription.replace(/<span class="title"[^>]*>.*?<\/span>/, '');
+    
 const descriptionHTML = `
   <div class="accordion">
     <span class="title" style="background-color: ${colorInfo.code}; color: #FFF; padding:2px 8px; border-radius:4px;">
