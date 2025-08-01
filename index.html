@@ -1247,9 +1247,7 @@ const remainingDescription = characterDescriptions[topKey] || '';  // ボタン�
 
 const descriptionHTML = `
    <div class="accordion">
-    <span class="title" style="background-color: ${colorInfo.code}; color: #FFF; padding:2px 8px; border-radius:4px;">
-       ${getCharacterTitle(topKey)}
-     </span>
+    <span class="title">${getCharacterTitle(topKey)}</span>
      <p class="result-description-first">${firstSentence}</p>
      <button class="accordion-toggle" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
        詳しく見る <span class="arrow">▼</span>
