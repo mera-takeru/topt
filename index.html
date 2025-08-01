@@ -1242,25 +1242,23 @@ const colorHTML = `
   <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span>  ${colorInfo.code}</p>
 `;
 
-const description = characterDescriptions[topKey] || '診断結果が見つかりませんでした。';
-const customFirstLine = customFirstLines[topKey] || '診断結果が見つかりませんでした。';
-const firstSentenceMatch = description.match(/<span class="title"[^>]*>.*?<\/span>\s*<p class="result-description">([^<]*?)(.*?)<\/p>/s);
-let firstSentence = firstSentenceMatch ? firstSentenceMatch[1] : customFirstLine;
-let remainingDescription = firstSentenceMatch ? firstSentenceMatch[2] : '';
+const firstSentence = customFirstLines[topKey] || '';         // ここで必ず customFirstLines を取得
+const remainingDescription = characterDescriptions[topKey] || '';  // ボタンで開く全文は characterDescriptions から
 
-const descriptionHTML = `  <div class="accordion">
-    <span class="title" style="background-color: ${colorInfo.code}; color: #FFFFFF; padding: 2px 8px; border-radius: 4px;">${getCharacterTitle(topKey)}</span>
-    <p class="result-description-first">${firstSentence}</p>
-    ${remainingDescription ? `
-      <button class="accordion-toggle" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
-        詳しく見る <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content" id="accordion-content-${topKey}">
-        <p>${remainingDescription}</p>
-      </div>
-    ` : ''}
-  </div>
-`;
+const descriptionHTML = `
+   <div class="accordion">
+    <span class="title" style="background-color: ${colorInfo.code}; color: #FFF; padding:2px 8px; border-radius:4px;">
+       ${getCharacterTitle(topKey)}
+     </span>
+     <p class="result-description-first">${firstSentence}</p>
+     <button class="accordion-toggle" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
+       詳しく見る <span class="arrow">▼</span>
+     </button>
+     <div class="accordion-content" id="accordion-content-${topKey}">
+       ${remainingDescription}
+     </div>
+   </div>
+ `;
 
 resultTextDiv.innerHTML = `
   ${descriptionHTML}
