@@ -109,7 +109,7 @@
         backBtn.style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
       }
 
-       function calculateAndRedirect() {
+     function calculateAndRedirect() {
         const tieBreakerOrder = [
           "C", "am", "G", "em", "F", "dm", "D", "bm", "B♭", "gm", "A", "f♯m", "E♭", "cm", "E", "c♯m", "A♭", "fm", "B", "g♯m", "D♭", "b♭m", "F♯", "e♭m"
         ];
@@ -144,29 +144,11 @@
 
         if (resultKey) {
           // ▼▼▼ ここからが最終修正箇所 ▼▼▼
-          try {
-            const webAppUrl = 'https://script.google.com/macros/s/AKfycby85hMd3E8tD_p5JGqQG_eG4PMW-TFCg0EHhSOY7Eoht-CSoiDuG_2eqfgBWOvYaOM/exec'; // あなたのURLが設定されていることを確認してください
-            
-            // 送信するデータを準備
-            const formData = new URLSearchParams();
-            formData.append('partonal', resultKey);
-
-            // fetchを使用して、ページ遷移後もリクエストを継続させる
-            fetch(webAppUrl, {
-              method: 'POST',
-              body: formData,
-              mode: 'no-cors', // no-corsモードで送信
-              keepalive: true // このオプションが重要です
-            });
-
-          } catch (error) {
-            console.error('結果のバックグラウンド送信に失敗:', error);
-          }
+          // まずスプレッドシートのURLに結果を持たせて移動する
+          const webAppUrl = 'ここにあなたのウェブアプリURLを貼り付け'; // あなたのURLを設定
           
-          // データ送信処理の後に、結果ページへ移動
-          const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
-          window.location.href = `${fileName}.html`;
-          
+          // Google Apps Scriptに移動し、リダイレクトさせてもらう
+          window.location.href = `${webAppUrl}?result=${resultKey}`;
           // ▲▲▲ ここまで ▲▲▲
         } else {
           alert('エラーが発生しました。もう一度お試しください。');
