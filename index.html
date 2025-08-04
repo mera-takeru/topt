@@ -1281,12 +1281,17 @@ SNSの投稿や、日記や詩、あるいは何気ない一言——<br><br>
     if (answers.every(answer => answer != null) && Object.keys(totals).length > 0) {
       topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
       const newUrl = `${location.pathname}?result=${encodeURIComponent(topKey)}`;
-      if (!location.search.includes(`result=${topKey}`)) {
+
+      // URLが更新されていない場合のみリロード
+      if (!location.search.includes(`result=${encodeURIComponent(topKey)}`)) {
         history.replaceState(null, '', newUrl);
+        // 状態をlocalStorageに保存
+        localStorage.setItem('pertonalResult', topKey);
         location.reload();
         return;
       }
 
+      // 結果画面の表示処理
       const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600';
       const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600';
       const characterTitle = getCharacterTitle(topKey);
@@ -1403,7 +1408,7 @@ SNSの投稿や、日記や詩、あるいは何気ない一言——<br><br>
     }
   }
 
-  // シェアボタン（重複していたリスナーを統合）
+  // シェアボタン
   document.getElementById('shareXBtn').addEventListener('click', () => {
     if (topKey) {
       const characterTitle = getCharacterTitle(topKey);
@@ -1426,6 +1431,8 @@ SNSの投稿や、日記や詩、あるいは何気ない一言——<br><br>
     console.log('startBtn clicked, current:', current, 'answers:', answers);
     current = 0;
     answers.fill(null);
+    topKey = null;
+    localStorage.removeItem('pertonalResult'); // 新しい診断開始時に状態をクリア
     renderQuestion();
     showScreen(questionScreen);
   };
@@ -1437,12 +1444,22 @@ SNSの投稿や、日記や詩、あるいは何気ない一言——<br><br>
     current = 0;
     answers.fill(null);
     topKey = null;
+    localStorage.removeItem('pertonalResult'); // 再診断時に状態をクリア
     resultTextDiv.innerHTML = '';
     showScreen(startScreen);
   };
 
-  showScreen(startScreen);
+  // URLパラメータをチェックして結果画面を表示
+  const urlParams = new URLSearchParams(window.location.search);
+  const resultKey = urlParams.get('result');
+  if (resultKey && Object.keys(personalityColors).includes(resultKey)) {
+    topKey = resultKey;
+    showResult();
+  } else {
+    showScreen(startScreen);
+  }
 });
+      
   </script>
   <footer>
   <nav class="footer-nav">
