@@ -76,9 +76,11 @@
   <!-- このページ専用のロジック -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // 現在の質問番号とユーザーの回答を保存する変数
       let currentQuestionIndex = 0;
       const userAnswers = Array(questions.length).fill(null);
 
+      // HTML要素を取得
       const startBtn = document.getElementById('startBtn');
       const backBtn = document.getElementById('backBtn');
       const startScreen = document.getElementById('startScreen');
@@ -87,18 +89,21 @@
       const optionsList = document.getElementById('optionsList');
       const progInner = document.getElementById('progInner');
 
+      // 画面を切り替えるための関数
       function showScreen(screen) {
         startScreen.classList.remove('active');
         questionScreen.classList.remove('active');
         screen.classList.add('active');
       }
 
+      // 質問と選択肢を表示する関数
       function renderQuestion() {
         const q = questions[currentQuestionIndex];
         questionText.textContent = q.text;
         progInner.style.width = `${(currentQuestionIndex / questions.length) * 100}%`;
         optionsList.innerHTML = '';
 
+        // 選択肢のボタンを生成
         q.options.forEach((opt, idx) => {
           const li = document.createElement('li');
           if (userAnswers[currentQuestionIndex] === idx) {
@@ -107,7 +112,8 @@
           const btn = document.createElement('button');
           btn.textContent = opt.text;
           btn.onclick = () => {
-            userAnswers[currentQuestionIndex] = idx;
+            userAnswers[currentQuestionIndex] = idx; // 回答を保存
+            // 次の質問へ進むか、結果を計算するかを判断
             if (currentQuestionIndex < questions.length - 1) {
               currentQuestionIndex++;
               renderQuestion();
@@ -118,11 +124,15 @@
           li.appendChild(btn);
           optionsList.appendChild(li);
         });
+
+        // 「戻る」ボタンの表示・非表示を切り替え
         backBtn.style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
       }
 
+      // 診断結果を計算して、対応するページに移動する関数
       function calculateAndRedirect() {
         const totals = {};
+        // 回答に基づいてポイントを集計
         questions.forEach((q, qi) => {
           const selectedOptionIndex = userAnswers[qi];
           if (selectedOptionIndex !== null) {
@@ -133,23 +143,23 @@
           }
         });
 
+        // 最もポイントが高かったキー（性格タイプ）を特定
         if (Object.keys(totals).length > 0) {
-          let resultKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+          const resultKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
           
-          // ▼▼▼ ここからが修正箇所 ▼▼▼
-          // URL用にファイル名を変換する
+          // 結果キーをファイル名用に変換（例: "c♯m" → "csm"）
           const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
-          // ▲▲▲ ここまで ▲▲▲
-
-          // 対応する結果ページに移動する
-          const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
+          
+          // 対応する結果ページに移動
           window.location.href = `${fileName}.html`;
         } else {
+          // エラーが発生した場合
           alert('エラーが発生しました。もう一度お試しください。');
           showScreen(startScreen);
         }
       }
 
+      // スタートボタンがクリックされた時の処理
       startBtn.onclick = () => {
         currentQuestionIndex = 0;
         userAnswers.fill(null);
@@ -157,6 +167,7 @@
         showScreen(questionScreen);
       };
 
+      // 戻るボタンがクリックされた時の処理
       backBtn.onclick = () => {
         if (currentQuestionIndex > 0) {
           currentQuestionIndex--;
@@ -164,7 +175,7 @@
         }
       };
     });
-  </script>
+</script>
 </body>
 </html>
 
