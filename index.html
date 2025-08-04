@@ -142,28 +142,35 @@
           resultKey = tiedResults[0];
         }
 
-        if (resultKey) {
-          // ▼▼▼ ここからが最終修正箇所 ▼▼▼
+         if (resultKey) {
+          // ▼▼▼ ここからが修正箇所 ▼▼▼
 
-          // ユーザーを待たせずに、まず結果ページへ移動させる
-          const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
-          window.location.href = `${fileName}.html`;
-          
-          // その裏側で、Googleスプレッドシートへのデータ送信を試みる
+          // Googleスプレッドシートへのデータ送信を試みる（ページ遷移をブロックしない方法で）
           try {
-            const webAppUrl = 'https://script.google.com/macros/s/AKfycby85hMd3E8tD_p5JGqQG_eG4PMW-TFCg0EHhSOY7Eoht-CSoiDuG_2eqfgBWOvYaOM/exec';
-            
-            // 重要：awaitを使わず、処理の完了を待たない（Fire and Forget）
-            fetch(webAppUrl, {
-              method: 'POST',
-              mode: 'no-cors',
-              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-              body: JSON.stringify({ partonal: resultKey }),
-            });
+            const webAppUrl = 'ここにあなたのウェブアプリURLを貼り付け';
+            const data = JSON.stringify({ partonal: resultKey });
+
+            // navigator.sendBeaconを使い、バックグラウンドでデータを送信する
+            // これにより、ページ遷移を待たずにリクエストがキューに追加される
+            if (navigator.sendBeacon) {
+              navigator.sendBeacon(webAppUrl, new Blob([data], { type: 'application/json' }));
+            } else {
+              // sendBeaconが使えない古いブラウザのためのフォールバック
+              fetch(webAppUrl, {
+                method: 'POST',
+                body: new Blob([data], { type: 'application/json' }),
+                keepalive: true // ページがアンロードされてもリクエストを継続させる
+              });
+            }
           } catch (error) {
             // ここでエラーが発生してもユーザーには影響がない
             console.error('結果のバックグラウンド送信に失敗:', error);
           }
+          
+          // データ送信処理の後に、結果ページへ移動させる
+          const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
+          window.location.href = `${fileName}.html`;
+          
           // ▲▲▲ ここまで ▲▲▲
         } else {
           alert('エラーが発生しました。もう一度お試しください。');
