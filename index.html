@@ -1257,207 +1257,191 @@ SNSの投稿や、日記や詩、あるいは何気ない一言——<br><br>
     }
   }  
 
-      function updateMetaTag(name, content) {
-          let meta = document.querySelector(`meta[${name.includes('og:') ? 'property' : 'name'}="${name}"]`);
-          if (!meta) {
-              meta = document.createElement('meta');
-              meta.setAttribute(name.includes('og:') ? 'property' : 'name', name);
-              document.head.appendChild(meta);
-            }
-            meta.setAttribute('content', content);
-        }
-
-    　function showResult() {
-            const totals = {};
-            questions.forEach((q, qi) => {
-                const sel = answers[qi];
-                if (sel != null) {
-                    Object.entries(q.options[sel].points).forEach(([k, v]) => {
-                        totals[k] = (totals[k] || 0) + v;
-                    });
-                }
-            });
-
-            if (answers.every(answer => answer != null) && Object.keys(totals).length > 0) {
-                topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
-                const newUrl = `${location.pathname}?result=${encodeURIComponent(topKey)}`;
-                if (!location.search.includes(`result=${topKey}`)) {
-                    history.replaceState(null, '', newUrl);
-                    location.reload();
-                    return;
-                }
-
-                const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600';
-                const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600';
-                const characterTitle = getCharacterTitle(topKey);
-
-                // メタタグ更新
-                updateMetaTag('twitter:image', shareImageUrl);
-                updateMetaTag('og:image', shareImageUrl);
-                updateMetaTag('twitter:title', `私は${characterTitle} - パートナル診断`);
-                updateMetaTag('twitter:description', `音と色で私の性格を診断！私は${characterTitle}！あなたのパートナルは？今すぐ無料でチェック！`);
-
-                // 結果画像表示
-                document.getElementById('resultImage').innerHTML = `<img src="${displayImageUrl}" alt="${topKey}の画像" onerror="this.src='https://via.placeholder.com/800x600'">`;
-
-                // 他の結果表示コード（省略）
-                showScreen(resultScreen);
-            } else {
-                resultTextDiv.innerHTML = `
-                    <p>エラー：すべての質問に回答してください。</p>
-                    <p>もう一度最初から診断を始めるか、前の質問に戻って回答してください。</p>
-                `;
-                showScreen(resultScreen);
-            }
-        }
-
-        // シェアボタン
-        document.getElementById('shareXBtn').addEventListener('click', () => {
-            if (topKey) {
-                const characterTitle = getCharacterTitle(topKey);
-                const shareText = `私は${characterTitle}！音と色の性格診断「パートナル」で相性チェック！${location.href}`;
-                window.open(
-                    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`,
-                    '_blank'
-                );
-            } else {
-                console.warn('topKey is not set yet.');
-                alert('診断を完了してください。');
-            }
-        });
-
-topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
-console.log('Calculated topKey:', topKey, 'totals:', totals);
-const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600';
-const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600';
-document.getElementById('resultImage').innerHTML = `<img src="${displayImageUrl}" alt="${topKey}の画像" onerror="this.src='https://via.placeholder.com/800x600'">`;
-
-const twitterImageMeta = document.querySelector('meta[name="twitter:image"]');
-const twitterTitleMeta = document.querySelector('meta[name="twitter:title"]');
-const twitterDescMeta = document.querySelector('meta[name="twitter:description"]');
-const ogImageMeta = document.querySelector('meta[property="og:image"]');
-const characterTitle = getCharacterTitle(topKey);
-
-if (twitterImageMeta) twitterImageMeta.setAttribute('content', shareImageUrl);
-if (ogImageMeta) ogImageMeta.setAttribute('content', shareImageUrl);
-if (twitterTitleMeta) twitterTitleMeta.setAttribute('content', `私は${characterTitle} - パートナル診断`);
-if (twitterDescMeta) twitterDescMeta.setAttribute('content', `音と色で私の性格を診断！私は${characterTitle}！あなたのパートナルは？今すぐ無料でチェック！`);
-
-const compatible = compatibleKeys[topKey] || [];
-const compatibleHTML = compatible
-  .map(key => `<p class="compatible-title">${getCharacterTitle(key)}</p>`)
-  .join('');
-
-// topKey に対応する曲リストを取得（無ければ空配列）
-const songList = famousSongs[topKey] || [];
-// 配列をシャッフルして先頭4件を切り出し
-const selected = [...songList]
-  .sort(() => Math.random() - 0.5)
-  .slice(0, 4);
-// HTML 生成
-const songsHTML = selected.length > 0
-  ? selected.map(song => `<p>${song}</p>`).join('\n')
-  : '<p>情報が見つかりませんでした。</p>';
-
-const colorInfo = personalityColors[topKey] || { name: "不明", code: "#000000" };
-const colorHTML = `
-  <h3>あなたのパートナルカラー</h3>
-  <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span>  ${colorInfo.code}</p>
-`;
-
-const firstSentence = customFirstLines[topKey] || '';         // ここで必ず customFirstLines を取得
-// HMTL全体を取得し、正規表現を使ってタイトル部分のspanタグを削除
-const fullDescription = characterDescriptions[topKey] || '';
-const remainingDescription = fullDescription.replace(/<span class="title"[^>]*>.*?<\/span>/, '');
-    
-const descriptionHTML = `
-  <div class="accordion">
-    <span class="title" style="background-color: ${colorInfo.code}; color: #FFF; padding:2px 8px; border-radius:4px;">
-      ${getCharacterTitle(topKey)}
-    </span>
-    <p class="result-description-first">${firstSentence}</p>
-    <button class="accordion-toggle" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
-      詳しく見る <span class="arrow">▼</span>
-      </button>
-      <div class="accordion-content" id="accordion-content-${topKey}">
-        ${remainingDescription}
-      </div>
-    </div>
-  `;
-
-resultTextDiv.innerHTML = `
-  ${descriptionHTML}
-  <hr>
-  ${colorHTML}
-  <hr>
-  <h3>あなたと相性の良いパートナル</h3>
-  ${compatibleHTML || '<p>情報が見つかりませんでした。</p>'}
-  <hr>
-  <h3>あなたのパートナルの人気曲</h3>
-  ${songsHTML}
-`;
-
-const accordionButtons = document.querySelectorAll('.accordion-toggle');accordionButtons.forEach(button => {
-  // 既存のイベントリスナーをクリア（重複防止）
-  button.removeEventListener('click', toggleAccordion);
-  button.removeEventListener('keydown', toggleAccordion);
-  button.addEventListener('click', () => toggleAccordion(button));
-  button.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleAccordion(button);
+  function updateMetaTag(name, content) {
+    let meta = document.querySelector(`meta[${name.includes('og:') ? 'property' : 'name'}="${name}"]`);
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute(name.includes('og:') ? 'property' : 'name', name);
+      document.head.appendChild(meta);
     }
-  });
-});
-    console.log('Result screen HTML set, calling showScreen');
-showScreen(resultScreen);  }function toggleAccordion(button) {
-  console.log('Toggle accordion clicked:', button.getAttribute('data-state'));
-  const content = button.nextElementSibling;
-  const arrow = button.querySelector('.arrow');  if (!content || !arrow) {
-    console.error('Accordion content or arrow not found:', { content, arrow });
-    return;
-  }  if (content.classList.contains('open')) {
-    console.log('Closing accordion');
-    content.classList.remove('open');
-    content.style.maxHeight = '0';
-    content.style.opacity = '0';
-    button.setAttribute('data-state', 'closed');
-    button.setAttribute('aria-expanded', 'false');
-    button.innerHTML = '詳しく見る <span class="arrow">▼</span>';
-  } else {
-    console.log('Opening accordion, scrollHeight:', content.scrollHeight);
-    content.classList.add('open');
-    content.style.maxHeight = content.scrollHeight + 'px';
-    content.style.opacity = '1';
-    button.setAttribute('data-state', 'open');
-    button.setAttribute('aria-expanded', 'true');
-    button.innerHTML = '閉じる <span class="arrow">▲</span>';
+    meta.setAttribute('content', content);
   }
-}  document.getElementById('shareXBtn').addEventListener('click', () => {
+
+  function showResult() {
+    const totals = {};
+    questions.forEach((q, qi) => {
+      const sel = answers[qi];
+      if (sel != null) {
+        Object.entries(q.options[sel].points).forEach(([k, v]) => {
+          totals[k] = (totals[k] || 0) + v;
+        });
+      }
+    });
+
+    if (answers.every(answer => answer != null) && Object.keys(totals).length > 0) {
+      topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+      const newUrl = `${location.pathname}?result=${encodeURIComponent(topKey)}`;
+      if (!location.search.includes(`result=${topKey}`)) {
+        history.replaceState(null, '', newUrl);
+        location.reload();
+        return;
+      }
+
+      const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600';
+      const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600';
+      const characterTitle = getCharacterTitle(topKey);
+
+      // メタタグ更新
+      updateMetaTag('twitter:image', shareImageUrl);
+      updateMetaTag('og:image', shareImageUrl);
+      updateMetaTag('twitter:title', `私は${characterTitle} - パートナル診断`);
+      updateMetaTag('twitter:description', `音と色で私の性格を診断！私は${characterTitle}！あなたのパートナルは？今すぐ無料でチェック！`);
+
+      // 結果画像表示
+      document.getElementById('resultImage').innerHTML = `<img src="${displayImageUrl}" alt="${topKey}の画像" onerror="this.src='https://via.placeholder.com/800x600'">`;
+
+      // 相性、曲、カラー情報の生成
+      const compatible = compatibleKeys[topKey] || [];
+      const compatibleHTML = compatible
+        .map(key => `<p class="compatible-title">${getCharacterTitle(key)}</p>`)
+        .join('');
+
+      const songList = famousSongs[topKey] || [];
+      const selected = [...songList]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 4);
+      const songsHTML = selected.length > 0
+        ? selected.map(song => `<p>${song}</p>`).join('\n')
+        : '<p>情報が見つかりませんでした。</p>';
+
+      const colorInfo = personalityColors[topKey] || { name: "不明", code: "#000000" };
+      const colorHTML = `
+        <h3>あなたのパートナルカラー</h3>
+        <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span>  ${colorInfo.code}</p>
+      `;
+
+      const firstSentence = customFirstLines[topKey] || '';
+      const fullDescription = characterDescriptions[topKey] || '';
+      const remainingDescription = fullDescription.replace(/<span class="title"[^>]*>.*?<\/span>/, '');
+
+      const descriptionHTML = `
+        <div class="accordion">
+          <span class="title" style="background-color: ${colorInfo.code}; color: #FFF; padding:2px 8px; border-radius:4px;">
+            ${getCharacterTitle(topKey)}
+          </span>
+          <p class="result-description-first">${firstSentence}</p>
+          <button class="accordion-toggle" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
+            詳しく見る <span class="arrow">▼</span>
+          </button>
+          <div class="accordion-content" id="accordion-content-${topKey}">
+            ${remainingDescription}
+          </div>
+        </div>
+      `;
+
+      resultTextDiv.innerHTML = `
+        ${descriptionHTML}
+        <hr>
+        ${colorHTML}
+        <hr>
+        <h3>あなたと相性の良いパートナル</h3>
+        ${compatibleHTML || '<p>情報が見つかりませんでした。</p>'}
+        <hr>
+        <h3>あなたのパートナルの人気曲</h3>
+        ${songsHTML}
+      `;
+
+      // アコーディオンのイベントリスナー設定
+      const accordionButtons = document.querySelectorAll('.accordion-toggle');
+      accordionButtons.forEach(button => {
+        button.removeEventListener('click', toggleAccordion);
+        button.removeEventListener('keydown', toggleAccordion);
+        button.addEventListener('click', () => toggleAccordion(button));
+        button.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleAccordion(button);
+          }
+        });
+      });
+
+      console.log('Result screen HTML set, calling showScreen');
+      showScreen(resultScreen);
+    } else {
+      resultTextDiv.innerHTML = `
+        <p>エラー：すべての質問に回答してください。</p>
+        <p>もう一度最初から診断を始めるか、前の質問に戻って回答してください。</p>
+      `;
+      showScreen(resultScreen);
+    }
+  }
+
+  function toggleAccordion(button) {
+    console.log('Toggle accordion clicked:', button.getAttribute('data-state'));
+    const content = button.nextElementSibling;
+    const arrow = button.querySelector('.arrow');
+    if (!content || !arrow) {
+      console.error('Accordion content or arrow not found:', { content, arrow });
+      return;
+    }
+    if (content.classList.contains('open')) {
+      console.log('Closing accordion');
+      content.classList.remove('open');
+      content.style.maxHeight = '0';
+      content.style.opacity = '0';
+      button.setAttribute('data-state', 'closed');
+      button.setAttribute('aria-expanded', 'false');
+      button.innerHTML = '詳しく見る <span class="arrow">▼</span>';
+    } else {
+      console.log('Opening accordion, scrollHeight:', content.scrollHeight);
+      content.classList.add('open');
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.style.opacity = '1';
+      button.setAttribute('data-state', 'open');
+      button.setAttribute('aria-expanded', 'true');
+      button.innerHTML = '閉じる <span class="arrow">▲</span>';
+    }
+  }
+
+  // シェアボタン（重複していたリスナーを統合）
+  document.getElementById('shareXBtn').addEventListener('click', () => {
     if (topKey) {
-     window.open(
-  　　　`https://twitter.com/intent/tweet?text=${encodeURIComponent(`私は「${topKey}型」\nMBTIの次はコレ！音と色の性格診断「パートナル」\n今すぐ無料で相性チェック\n`)}&url=${encodeURIComponent(location.href)}`,
-  　　　'_blank'
-　　　);
+      const characterTitle = getCharacterTitle(topKey);
+      const shareText = `私は${characterTitle}！音と色の性格診断「パートナル」で相性チェック！${location.href}`;
+      window.open(
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`,
+        '_blank'
+      );
     } else {
       console.warn('topKey is not set yet.');
+      alert('診断を完了してください。');
     }
-  });  document.getElementById('goodsBtn').addEventListener('click', () => {
+  });
+
+  document.getElementById('goodsBtn').addEventListener('click', () => {
     window.open('https://example.com/official-goods', '_blank');
-  });  startBtn.onclick = () => {
+  });
+
+  startBtn.onclick = () => {
     console.log('startBtn clicked, current:', current, 'answers:', answers);
     current = 0;
     answers.fill(null);
     renderQuestion();
     showScreen(questionScreen);
-  };  backBtn.onclick = prevQuestion;  restartBtn.onclick = () => {
+  };
+
+  backBtn.onclick = prevQuestion;
+
+  restartBtn.onclick = () => {
     console.log('restartBtn clicked');
     current = 0;
     answers.fill(null);
     topKey = null;
     resultTextDiv.innerHTML = '';
     showScreen(startScreen);
-  };  showScreen(startScreen);
+  };
+
+  showScreen(startScreen);
 });
   </script>
   <footer>
