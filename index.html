@@ -109,7 +109,7 @@
         backBtn.style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
       }
 
-      function calculateAndRedirect() {
+       function calculateAndRedirect() {
         const tieBreakerOrder = [
           "C", "am", "G", "em", "F", "dm", "D", "bm", "B♭", "gm", "A", "f♯m", "E♭", "cm", "E", "c♯m", "A♭", "fm", "B", "g♯m", "D♭", "b♭m", "F♯", "e♭m"
         ];
@@ -142,32 +142,28 @@
           resultKey = tiedResults[0];
         }
 
-         if (resultKey) {
-          // ▼▼▼ ここからが修正箇所 ▼▼▼
-
-          // Googleスプレッドシートへのデータ送信を試みる（ページ遷移をブロックしない方法で）
+        if (resultKey) {
+          // ▼▼▼ ここからが最終修正箇所 ▼▼▼
           try {
-            const webAppUrl = 'https://script.google.com/macros/s/AKfycby85hMd3E8tD_p5JGqQG_eG4PMW-TFCg0EHhSOY7Eoht-CSoiDuG_2eqfgBWOvYaOM/exec';
-            const data = JSON.stringify({ partonal: resultKey });
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycby85hMd3E8tD_p5JGqQG_eG4PMW-TFCg0EHhSOY7Eoht-CSoiDuG_2eqfgBWOvYaOM/exec'; // あなたのURLが設定されていることを確認してください
+            
+            // 送信するデータを準備
+            const formData = new URLSearchParams();
+            formData.append('partonal', resultKey);
 
-            // navigator.sendBeaconを使い、バックグラウンドでデータを送信する
-            // これにより、ページ遷移を待たずにリクエストがキューに追加される
-            if (navigator.sendBeacon) {
-              navigator.sendBeacon(webAppUrl, new Blob([data], { type: 'application/json' }));
-            } else {
-              // sendBeaconが使えない古いブラウザのためのフォールバック
-              fetch(webAppUrl, {
-                method: 'POST',
-                body: new Blob([data], { type: 'application/json' }),
-                keepalive: true // ページがアンロードされてもリクエストを継続させる
-              });
-            }
+            // fetchを使用して、ページ遷移後もリクエストを継続させる
+            fetch(webAppUrl, {
+              method: 'POST',
+              body: formData,
+              mode: 'no-cors', // no-corsモードで送信
+              keepalive: true // このオプションが重要です
+            });
+
           } catch (error) {
-            // ここでエラーが発生してもユーザーには影響がない
             console.error('結果のバックグラウンド送信に失敗:', error);
           }
           
-          // データ送信処理の後に、結果ページへ移動させる
+          // データ送信処理の後に、結果ページへ移動
           const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
           window.location.href = `${fileName}.html`;
           
