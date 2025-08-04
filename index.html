@@ -1290,7 +1290,6 @@ function showResult() {
  const newUrl = `${location.pathname}?result=${encodeURIComponent(topKey)}`;
  if (!location.search.includes(`result=${encodeURIComponent(topKey)}`)) {
  history.replaceState(null, '', newUrl);
- console.log(`URL updated to: ${newUrl}`);
  location.reload();
  return;
  }
@@ -1307,8 +1306,7 @@ function showResult() {
  const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600';
  const characterTitle = getCharacterTitle(topKey);
 
- // メタタグ更新（先にログを追加してデバッグ）
- console.log(`Setting meta tags for topKey: ${topKey}, shareImageUrl: ${shareImageUrl}`);
+ // メタタグ更新
  updateMetaTag('twitter:card', 'summary_large_image');
  updateMetaTag('twitter:image', shareImageUrl);
  updateMetaTag('og:image', shareImageUrl);
@@ -1398,14 +1396,14 @@ function showResult() {
         content.classList.add('open');
       }
     }
+} // ============== showResult 関数の終了 =================
 
-// シェアボタンの動作を改良
+// シェアボタンやナビゲーションボタンのイベントハンドラはここから
 document.getElementById('shareXBtn').addEventListener('click', () => {
  if (topKey) {
  const characterTitle = getCharacterTitle(topKey);
  const shareText = `私は${characterTitle}！音と色の性格診断「パートナル」で相性チェック！${location.href}`;
  const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
- console.log(`Opening share URL: ${shareUrl}`);
  window.open(shareUrl, '_blank');
  } else {
  console.warn('topKey is not set yet.');
@@ -1413,42 +1411,41 @@ document.getElementById('shareXBtn').addEventListener('click', () => {
  }
 });
 
-  document.getElementById('goodsBtn').addEventListener('click', () => {
+document.getElementById('goodsBtn').addEventListener('click', () => {
+    // 実際のストアURLに書き換えてください
     window.open('https://example.com/official-goods', '_blank');
-  });
+});
 
-  startBtn.onclick = () => {
-    console.log('startBtn clicked, current:', current, 'answers:', answers);
+startBtn.onclick = () => {
     current = 0;
     answers.fill(null);
     topKey = null;
-    localStorage.removeItem('pertonalResult'); // 新しい診断開始時に状態をクリア
+    localStorage.removeItem('pertonalResult');
     renderQuestion();
     showScreen(questionScreen);
-  };
+};
 
-  backBtn.onclick = prevQuestion;
+backBtn.onclick = prevQuestion;
 
-  restartBtn.onclick = () => {
-    console.log('restartBtn clicked');
+restartBtn.onclick = () => {
     current = 0;
     answers.fill(null);
     topKey = null;
-    localStorage.removeItem('pertonalResult'); // 再診断時に状態をクリア
+    localStorage.removeItem('pertonalResult');
     resultTextDiv.innerHTML = '';
     showScreen(startScreen);
-  };
+};
 
-  // URLパラメータをチェックして結果画面を表示
-  const urlParams = new URLSearchParams(window.location.search);
-  const resultKey = urlParams.get('result');
-  if (resultKey && Object.keys(personalityColors).includes(resultKey)) {
+// URLパラメータをチェックして結果画面を表示する初期化処理
+const urlParams = new URLSearchParams(window.location.search);
+const resultKey = urlParams.get('result');
+if (resultKey && Object.keys(personalityColors).includes(resultKey)) {
     topKey = resultKey;
     showResult();
-  } else {
+    showScreen(resultScreen); // 結果がある場合は結果画面を表示
+} else {
     showScreen(startScreen);
-  }
-});
+}
       
   </script>
   <footer>
