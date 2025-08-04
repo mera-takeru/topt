@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>pertonal -パートナル-</title>
   
-  <!-- 共通CSSの読み込み -->
   <link rel="stylesheet" href="style.css">
   
-  <!-- シェアされた際のデフォルト情報 -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="パートナル - 音と色の性格診断">
   <meta name="twitter:description" content="音と色であなたの性格を診断！MBTIの次はコレ！今すぐ無料でチェック！">
@@ -34,26 +32,17 @@
       <span class="title-sub">「音」×「色」＝ New「性格診断」</span>
     </h1>
 
-    <!-- スタート画面 -->
     <div id="startScreen" class="screen active">
-      　<div class="start-image">
-  <video autoplay loop muted playsinline alt="メイン画像">
-    <source src="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeieecwryua54rzenirkaknhrknenmstocag6vbjykxdoxc7p3eswyq" 
-            media="(min-width: 601px)" 
-            type="video/mp4">
-            
-    <source src="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeiesn767okn2gtxqyipfcyngrceg2277h4emw6s2emi7yw3ozt767q" 
-            media="(max-width: 600px)" 
-            type="video/mp4">
-            
-    お使いのブラウザは動画の再生に対応していません。
-  </video>
-</div>
-   　
+      <div class="start-image">
+        <video autoplay loop muted playsinline alt="メイン画像">
+          <source src="PC用の動画パス.mp4" media="(min-width: 601px)" type="video/mp4">
+          <source src="スマホ用の動画パス.mp4" media="(max-width: 600px)" type="video/mp4">
+          お使いのブラウザは動画の再生に対応していません。
+        </video>
+      </div>
       <button id="startBtn">▶︎▶︎▶︎ 今すぐ無料診断 ◀︎◀︎◀︎</button>
     </div>
 
-    <!-- 質問画面 -->
     <div id="questionScreen" class="screen">
       <div class="progress-bar"><div id="progInner" class="progress-inner"></div></div>
       <div class="question"><h2 id="questionText"></h2></div>
@@ -71,17 +60,13 @@
     <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
   </footer>
 
-  <!-- 共通データ（質問など）を読み込む -->
   <script src="data.js"></script>
   
-  <!-- このページ専用のロジック -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 現在の質問番号とユーザーの回答を保存する変数
       let currentQuestionIndex = 0;
       const userAnswers = Array(questions.length).fill(null);
 
-      // HTML要素を取得
       const startBtn = document.getElementById('startBtn');
       const backBtn = document.getElementById('backBtn');
       const startScreen = document.getElementById('startScreen');
@@ -90,21 +75,18 @@
       const optionsList = document.getElementById('optionsList');
       const progInner = document.getElementById('progInner');
 
-      // 画面を切り替えるための関数
       function showScreen(screen) {
         startScreen.classList.remove('active');
         questionScreen.classList.remove('active');
         screen.classList.add('active');
       }
 
-      // 質問と選択肢を表示する関数
       function renderQuestion() {
         const q = questions[currentQuestionIndex];
         questionText.textContent = q.text;
         progInner.style.width = `${(currentQuestionIndex / questions.length) * 100}%`;
         optionsList.innerHTML = '';
 
-        // 選択肢のボタンを生成
         q.options.forEach((opt, idx) => {
           const li = document.createElement('li');
           if (userAnswers[currentQuestionIndex] === idx) {
@@ -113,8 +95,7 @@
           const btn = document.createElement('button');
           btn.textContent = opt.text;
           btn.onclick = () => {
-            userAnswers[currentQuestionIndex] = idx; // 回答を保存
-            // 次の質問へ進むか、結果を計算するかを判断
+            userAnswers[currentQuestionIndex] = idx;
             if (currentQuestionIndex < questions.length - 1) {
               currentQuestionIndex++;
               renderQuestion();
@@ -125,16 +106,12 @@
           li.appendChild(btn);
           optionsList.appendChild(li);
         });
-
-        // 「戻る」ボタンの表示・非表示を切り替え
         backBtn.style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
       }
 
-      async function calculateAndRedirect() {
+      function calculateAndRedirect() {
         const tieBreakerOrder = [
-          "C", "am", "G", "em", "F", "dm", "D", "bm", "B♭", "gm",
-          "A", "f♯m", "E♭", "cm", "E", "c♯m", "A♭", "fm",
-          "B", "g♯m", "D♭", "b♭m", "F♯", "e♭m"
+          "C", "am", "G", "em", "F", "dm", "D", "bm", "B♭", "gm", "A", "f♯m", "E♭", "cm", "E", "c♯m", "A♭", "fm", "B", "g♯m", "D♭", "b♭m", "F♯", "e♭m"
         ];
 
         const totals = {};
@@ -147,7 +124,7 @@
             });
           }
         });
-
+        
         if (Object.keys(totals).length === 0) {
           alert('エラーが発生しました。もう一度お試しください。');
           showScreen(startScreen);
@@ -166,27 +143,28 @@
         }
 
         if (resultKey) {
+          // ▼▼▼ ここからが最終修正箇所 ▼▼▼
+
+          // ユーザーを待たせずに、まず結果ページへ移動させる
+          const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
+          window.location.href = `${fileName}.html`;
+          
+          // その裏側で、Googleスプレッドシートへのデータ送信を試みる
           try {
             const webAppUrl = 'ここにあなたのウェブアプリURLを貼り付け';
             
-            // 診断結果をGoogle Apps Scriptに送信（より安定した方法に変更）
-            await fetch(webAppUrl, {
+            // 重要：awaitを使わず、処理の完了を待たない（Fire and Forget）
+            fetch(webAppUrl, {
               method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              // 念のため、リダイレクトは手動で行う
-              redirect: 'follow', 
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
               body: JSON.stringify({ partonal: resultKey }),
             });
-
           } catch (error) {
-            console.error('結果の送信に失敗しました:', error);
+            // ここでエラーが発生してもユーザーには影響がない
+            console.error('結果のバックグラウンド送信に失敗:', error);
           }
-
-          // 診断結果ページへの移動は、送信処理の成否に関わらず必ず実行
-          const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
-          window.location.href = `${fileName}.html`;
+          // ▲▲▲ ここまで ▲▲▲
         } else {
           alert('エラーが発生しました。もう一度お試しください。');
           showScreen(startScreen);
@@ -210,4 +188,3 @@
   </script>
 </body>
 </html>
-
