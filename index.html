@@ -130,14 +130,13 @@
         backBtn.style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
       }
 
-            async function calculateAndRedirect() { // asyncキーワードを追加
-        // 調号の数と長調優先を反映した優先順位リスト
+      async function calculateAndRedirect() {
         const tieBreakerOrder = [
           "C", "am", "G", "em", "F", "dm", "D", "bm", "B♭", "gm",
           "A", "f♯m", "E♭", "cm", "E", "c♯m", "A♭", "fm",
           "B", "g♯m", "D♭", "b♭m", "F♯", "e♭m"
         ];
-        
+
         const totals = {};
         questions.forEach((q, qi) => {
           const selectedOptionIndex = userAnswers[qi];
@@ -148,7 +147,7 @@
             });
           }
         });
-        
+
         if (Object.keys(totals).length === 0) {
           alert('エラーが発生しました。もう一度お試しください。');
           showScreen(startScreen);
@@ -167,28 +166,25 @@
         }
 
         if (resultKey) {
-          // ▼▼▼ ここからが追加・修正部分 ▼▼▼
           try {
-            // ステップ1でコピーしたあなたのウェブアプリURLをここに貼り付け
-            const webAppUrl = 'https://script.google.com/macros/s/AKfycby85hMd3E8tD_p5JGqQG_eG4PMW-TFCg0EHhSOY7Eoht-CSoiDuG_2eqfgBWOvYaOM/exec'; 
+            const webAppUrl = 'ここにあなたのウェブアプリURLを貼り付け';
             
-            // 診断結果をGoogle Apps Scriptに送信
+            // 診断結果をGoogle Apps Scriptに送信（より安定した方法に変更）
             await fetch(webAppUrl, {
               method: 'POST',
-              mode: 'no-cors', // CORSエラーを回避するためのおまじない
               headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json',
               },
+              // 念のため、リダイレクトは手動で行う
+              redirect: 'follow', 
               body: JSON.stringify({ partonal: resultKey }),
             });
 
           } catch (error) {
-            // サーバーへの送信が失敗しても、ユーザーの診断は続行させる
             console.error('結果の送信に失敗しました:', error);
           }
-          // ▲▲▲ ここまで ▲▲▲
 
-          // 診断結果ページへの移動（ここは元のまま）
+          // 診断結果ページへの移動は、送信処理の成否に関わらず必ず実行
           const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
           window.location.href = `${fileName}.html`;
         } else {
