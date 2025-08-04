@@ -1383,9 +1383,35 @@ function showResult() {
  });
  });
 
- console.log('Result screen HTML set, calling showScreen');
- showScreen(resultScreen);
-}
+  function toggleAccordion(button) {
+      const contentId = button.getAttribute('aria-controls');
+      const content = document.getElementById(contentId);
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+      if (isOpen) {
+        button.setAttribute('aria-expanded', 'false');
+        button.querySelector('.arrow').textContent = '▼';
+        content.classList.remove('open');
+      } else {
+        button.setAttribute('aria-expanded', 'true');
+        button.querySelector('.arrow').textContent = '▲';
+        content.classList.add('open');
+      }
+    }
+
+    // アコーディオンのイベントリスナー設定
+    const accordionButtons = document.querySelectorAll('.accordion-toggle');
+    accordionButtons.forEach(button => {
+      button.removeEventListener('click', toggleAccordion);
+      button.removeEventListener('keydown', toggleAccordion);
+      button.addEventListener('click', () => toggleAccordion(button));
+      button.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleAccordion(button);
+        }
+      });
+    });
 
 // シェアボタンの動作を改良
 document.getElementById('shareXBtn').addEventListener('click', () => {
