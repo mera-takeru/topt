@@ -1258,172 +1258,148 @@ SNSの投稿や、日記や詩、あるいは何気ない一言——<br><br>
   }  
 
   function updateMetaTag(name, content) {
-    let meta = document.querySelector(`meta[${name.includes('og:') ? 'property' : 'name'}="${name}"]`);
-    if (!meta) {
-      meta = document.createElement('meta');
-      meta.setAttribute(name.includes('og:') ? 'property' : 'name', name);
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute('content', content);
-  }
+ let meta = document.querySelector(`meta[${name.includes('og:') ? 'property' : 'name'}="${name}"]`);
+ if (!meta) {
+ meta = document.createElement('meta');
+ meta.setAttribute(name.includes('og:') ? 'property' : 'name', name);
+ document.head.appendChild(meta);
+ }
+ meta.setAttribute('content', content);
+ console.log(`Meta tag updated: ${name} = ${content}`);
+}
 
- function showResult() {
-    const totals = {};
-    questions.forEach((q, qi) => {
-      const sel = answers[qi];
-      if (sel != null) {
-        Object.entries(q.options[sel].points).forEach(([k, v]) => {
-          totals[k] = (totals[k] || 0) + v;
-        });
-      }
-    });
+// 結果画面を表示する関数
+function showResult() {
+ const totals = {};
+ questions.forEach((q, qi) => {
+ const sel = answers[qi];
+ if (sel != null) {
+ Object.entries(q.options[sel].points).forEach(([k, v]) => {
+ totals[k] = (totals[k] || 0) + v;
+ });
+ }
+ });
 
-    // URL パラメータから結果を取得（リロード後の場合）
-    const urlParams = new URLSearchParams(window.location.search);
-    const resultKey = urlParams.get('result');
-    if (resultKey && Object.keys(personalityColors).includes(resultKey)) {
-      topKey = resultKey;
-    } else if (answers.every(answer => answer != null) && Object.keys(totals).length > 0) {
-      topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
-      const newUrl = `${location.pathname}?result=${encodeURIComponent(topKey)}`;
-      // エンコードされた topKey で比較
-      if (!location.search.includes(`result=${encodeURIComponent(topKey)}`)) {
-        history.replaceState(null, '', newUrl);
-        location.reload();
-        return;
-      }
-    } else {
-      resultTextDiv.innerHTML = `
-        <p>エラー：すべての質問に回答してください。</p>
-        <p>もう一度最初から診断を始めるか、前の質問に戻って回答してください。</p>
-      `;
-      showScreen(resultScreen);
-      return;
-    }
+ // URL パラメータから結果を取得（リロード後の場合）
+ const urlParams = new URLSearchParams(window.location.search);
+ const resultKey = urlParams.get('result');
+ if (resultKey && Object.keys(personalityColors).includes(resultKey)) {
+ topKey = resultKey;
+ } else if (answers.every(answer => answer != null) && Object.keys(totals).length > 0) {
+ topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+ const newUrl = `${location.pathname}?result=${encodeURIComponent(topKey)}`;
+ if (!location.search.includes(`result=${encodeURIComponent(topKey)}`)) {
+ history.replaceState(null, '', newUrl);
+ console.log(`URL updated to: ${newUrl}`);
+ location.reload();
+ return;
+ }
+ } else {
+ resultTextDiv.innerHTML = `
+ <p>エラー：すべての質問に回答してください。</p>
+ <p>もう一度最初から診断を始めるか、前の質問に戻って回答してください。</p>
+ `;
+ showScreen(resultScreen);
+ return;
+ }
 
-    const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600';
-    const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600';
-    const characterTitle = getCharacterTitle(topKey);
+ const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600';
+ const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600';
+ const characterTitle = getCharacterTitle(topKey);
 
-    // メタタグ更新
-    updateMetaTag('twitter:image', shareImageUrl);
-    updateMetaTag('og:image', shareImageUrl);
-    updateMetaTag('twitter:title', `私は${characterTitle} - パートナル診断`);
-    updateMetaTag('twitter:description', `音と色で私の性格を診断！私は${characterTitle}！あなたのパートナルは？今すぐ無料でチェック！`);
+ // メタタグ更新（先にログを追加してデバッグ）
+ console.log(`Setting meta tags for topKey: ${topKey}, shareImageUrl: ${shareImageUrl}`);
+ updateMetaTag('twitter:card', 'summary_large_image');
+ updateMetaTag('twitter:image', shareImageUrl);
+ updateMetaTag('og:image', shareImageUrl);
+ updateMetaTag('twitter:title', `私は${characterTitle} - パートナル診断`);
+ updateMetaTag('twitter:description', `音と色で私の性格を診断！私は${characterTitle}！あなたのパートナルは ？今すぐ無料でチェック！`);
 
-    // 結果画像表示
-    document.getElementById('resultImage').innerHTML = `<img src="${displayImageUrl}" alt="${topKey}の画像" onerror="this.src='https://via.placeholder.com/800x600'">`;
+ // 結果画像表示
+ document.getElementById('resultImage').innerHTML = `<img src="${displayImageUrl}" alt="${topKey}の画像" onerror="this.src='https://via.placeholder.com/800x600'">`;
 
-    // 相性、曲、カラー情報の生成
-    const compatible = compatibleKeys[topKey] || [];
-    const compatibleHTML = compatible
-      .map(key => `<p class="compatible-title">${getCharacterTitle(key)}</p>`)
-      .join('');
+ // 相性、曲、カラー情報の生成
+ const compatible = compatibleKeys[topKey] || [];
+ const compatibleHTML = compatible
+ .map(key => `<p class="compatible-title">${getCharacterTitle(key)}</p>`)
+ .join('');
 
-    const songList = famousSongs[topKey] || [];
-    const selected = [...songList]
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 4);
-    const songsHTML = selected.length > 0
-      ? selected.map(song => `<p>${song}</p>`).join('\n')
-      : '<p>情報が見つかりませんでした。</p>';
+ const songList = famousSongs[topKey] || [];
+ const selected = [...songList]
+ .sort(() => Math.random() - 0.5)
+ .slice(0, 4);
+ const songsHTML = selected.length > 0
+ ? selected.map(song => `<p>${song}</p>`).join('\n')
+ : '<p>情報が見つかりませんでした。</p>';
 
-    const colorInfo = personalityColors[topKey] || { name: "不明", code: "#000000" };
-    const colorHTML = `
-      <h3>あなたのパートナルカラー</h3>
-      <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span>  ${colorInfo.code}</p>
-    `;
+ const colorInfo = personalityColors[topKey] || { name: "不明", code: "#000000" };
+ const colorHTML = `
+ <h3>あなたのパートナルカラー</h3>
+ <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span> ${colorInfo.code}</p>
+ `;
 
-    const firstSentence = customFirstLines[topKey] || '';
-    const fullDescription = characterDescriptions[topKey] || '';
-    const remainingDescription = fullDescription.replace(/<span class="title"[^>]*>.*?<\/span>/, '');
+ const firstSentence = customFirstLines[topKey] || '';
+ const fullDescription = characterDescriptions[topKey] || '';
+ const remainingDescription = fullDescription.replace(/<span class="title"[^>]*>.*?<\/span>/, '');
 
-    const descriptionHTML = `
-      <div class="accordion">
-        <span class="title" style="background-color: ${colorInfo.code}; color: #FFF; padding:2px 8px; border-radius:4px;">
-          ${getCharacterTitle(topKey)}
-        </span>
-        <p class="result-description-first">${firstSentence}</p>
-        <button class="accordion-toggle" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
-          詳しく見る <span class="arrow">▼</span>
-        </button>
-        <div class="accordion-content" id="accordion-content-${topKey}">
-          ${remainingDescription}
-        </div>
-      </div>
-    `;
+ const descriptionHTML = `
+ <div class="accordion">
+ <span class="title" style="background-color: ${colorInfo.code}; color: #FFF; padding:2px 8px; border-radius:4px;">
+ ${getCharacterTitle(topKey)}
+ </span>
+ <p class="result-description-first">${firstSentence}</p>
+ <button class="accordion-toggle" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
+ 詳しく見る <span class="arrow">▼</span>
+ </button>
+ <div class="accordion-content" id="accordion-content-${topKey}">
+ ${remainingDescription}
+ </div>
+ </div>
+ `;
 
-    resultTextDiv.innerHTML = `
-      ${descriptionHTML}
-      <hr>
-      ${colorHTML}
-      <hr>
-      <h3>あなたと相性の良いパートナル</h3>
-      ${compatibleHTML || '<p>情報が見つかりませんでした。</p>'}
-      <hr>
-      <h3>あなたのパートナルの人気曲</h3>
-      ${songsHTML}
-    `;
+ resultTextDiv.innerHTML = `
+ ${descriptionHTML}
+ <hr>
+ ${colorHTML}
+ <hr>
+ <h3>あなたと相性の良いパートナル</h3>
+ ${compatibleHTML || '<p>情報が見つかりませんでした。</p>'}
+ <hr>
+ <h3>あなたのパートナルの人気曲</h3>
+ ${songsHTML}
+ `;
 
-    // アコーディオンのイベントリスナー設定
-    const accordionButtons = document.querySelectorAll('.accordion-toggle');
-    accordionButtons.forEach(button => {
-      button.removeEventListener('click', toggleAccordion);
-      button.removeEventListener('keydown', toggleAccordion);
-      button.addEventListener('click', () => toggleAccordion(button));
-      button.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggleAccordion(button);
-        }
-      });
-    });
+ // アコーディオンのイベントリスナー設定
+ const accordionButtons = document.querySelectorAll('.accordion-toggle');
+ accordionButtons.forEach(button => {
+ button.removeEventListener('click', toggleAccordion);
+ button.removeEventListener('keydown', toggleAccordion);
+ button.addEventListener('click', () => toggleAccordion(button));
+ button.addEventListener('keydown', (e) => {
+ if (e.key === 'Enter' || e.key === ' ') {
+ e.preventDefault();
+ toggleAccordion(button);
+ }
+ });
+ });
 
-    console.log('Result screen HTML set, calling showScreen');
-    showScreen(resultScreen);
-  }
+ console.log('Result screen HTML set, calling showScreen');
+ showScreen(resultScreen);
+}
 
-  function toggleAccordion(button) {
-    console.log('Toggle accordion clicked:', button.getAttribute('data-state'));
-    const content = button.nextElementSibling;
-    const arrow = button.querySelector('.arrow');
-    if (!content || !arrow) {
-      console.error('Accordion content or arrow not found:', { content, arrow });
-      return;
-    }
-    if (content.classList.contains('open')) {
-      console.log('Closing accordion');
-      content.classList.remove('open');
-      content.style.maxHeight = '0';
-      content.style.opacity = '0';
-      button.setAttribute('data-state', 'closed');
-      button.setAttribute('aria-expanded', 'false');
-      button.innerHTML = '詳しく見る <span class="arrow">▼</span>';
-    } else {
-      console.log('Opening accordion, scrollHeight:', content.scrollHeight);
-      content.classList.add('open');
-      content.style.maxHeight = content.scrollHeight + 'px';
-      content.style.opacity = '1';
-      button.setAttribute('data-state', 'open');
-      button.setAttribute('aria-expanded', 'true');
-      button.innerHTML = '閉じる <span class="arrow">▲</span>';
-    }
-  }
-
-  // シェアボタン
-  document.getElementById('shareXBtn').addEventListener('click', () => {
-    if (topKey) {
-      const characterTitle = getCharacterTitle(topKey);
-      const shareText = `私は${characterTitle}！音と色の性格診断「パートナル」で相性チェック！${location.href}`;
-      window.open(
-        `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`,
-        '_blank'
-      );
-    } else {
-      console.warn('topKey is not set yet.');
-      alert('診断を完了してください。');
-    }
-  });
+// シェアボタンの動作を改良
+document.getElementById('shareXBtn').addEventListener('click', () => {
+ if (topKey) {
+ const characterTitle = getCharacterTitle(topKey);
+ const shareText = `私は${characterTitle}！音と色の性格診断「パートナル」で相性チェック！${location.href}`;
+ const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+ console.log(`Opening share URL: ${shareUrl}`);
+ window.open(shareUrl, '_blank');
+ } else {
+ console.warn('topKey is not set yet.');
+ alert('診断を完了してください。');
+ }
+});
 
   document.getElementById('goodsBtn').addEventListener('click', () => {
     window.open('https://example.com/official-goods', '_blank');
