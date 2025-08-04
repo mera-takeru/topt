@@ -1199,7 +1199,9 @@ SNSの投稿や、日記や詩、あるいは何気ない一言——<br><br>
         {"text": "感動のあの瞬間に行く", "points": {"fm": 4, "am": 1}}
       ]
     }
-  ];  let current = 0;
+  ];  
+
+  let current = 0;
   let topKey = null;
   const answers = Array(questions.length).fill(null);
   const startBtn = document.getElementById('startBtn');
@@ -1211,25 +1213,30 @@ SNSの投稿や、日記や詩、あるいは何気ない一言——<br><br>
   const questionText = document.getElementById('questionText');
   const optionsList = document.getElementById('optionsList');
   const progInner = document.getElementById('progInner');
-  const resultTextDiv = document.getElementById('resultText');  function getCharacterTitle(key) {
+  const resultTextDiv = document.getElementById('resultText');
+
+  function getCharacterTitle(key) {
     const description = characterDescriptions[key];
     if (!description) return key;
     const match = description.match(/<span class="title"[^>]*>(.*?)<\/span>/);
     return match ? match[1] : key;
-  }  function showScreen(screen) {
+  }
+
+  function showScreen(screen) {
     [startScreen, questionScreen, resultScreen].forEach(s => {
       if (s) s.classList.remove('active');
     });
     if (screen) screen.classList.add('active');
-    else console.error('showScreen: screen引数がnullです');
-  }  function renderQuestion() {
+  }
+
+  function renderQuestion() {
     const q = questions[current];
     if (!q) {
       console.error('質問データが見つかりません: current =', current);
       return;
     }
     questionText.textContent = q.text;
-    progInner.style.width = `${(current / questions.length) * 100}%`;
+    progInner.style.width = `${((current) / questions.length) * 100}%`;
     optionsList.innerHTML = '';
     q.options.forEach((opt, idx) => {
       const li = document.createElement('li');
@@ -1238,11 +1245,12 @@ SNSの投稿や、日記や詩、あるいは何気ない一言——<br><br>
       btn.textContent = opt.text;
       btn.onclick = () => {
         answers[current] = idx;
-        //console.log(`Question ${current + 1}: Selected option ${idx}, Answers:`, answers);
         if (current < questions.length - 1) {
           current++;
           renderQuestion();
         } else {
+          // 最後の質問に答えたら結果表示
+          progInner.style.width = `100%`;
           showResult();
         }
       };
@@ -1250,137 +1258,115 @@ SNSの投稿や、日記や詩、あるいは何気ない一言——<br><br>
       optionsList.appendChild(li);
     });
     backBtn.style.display = current > 0 ? 'inline-block' : 'none';
-  }  function prevQuestion() {
+  }
+
+  function prevQuestion() {
     if (current > 0) {
       current--;
       renderQuestion();
     }
-  }  
+  }
 
   function updateMetaTag(name, content) {
- let meta = document.querySelector(`meta[${name.includes('og:') ? 'property' : 'name'}="${name}"]`);
- if (!meta) {
- meta = document.createElement('meta');
- meta.setAttribute(name.includes('og:') ? 'property' : 'name', name);
- document.head.appendChild(meta);
- }
- meta.setAttribute('content', content);
- console.log(`Meta tag updated: ${name} = ${content}`);
-}
+    let meta = document.querySelector(`meta[${name.includes('og:') ? 'property' : 'name'}="${name}"]`);
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute(name.includes('og:') ? 'property' : 'name', name);
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', content);
+  }
 
-// 結果画面を表示する関数
-function showResult() {
- const totals = {};
- questions.forEach((q, qi) => {
- const sel = answers[qi];
- if (sel != null) {
- Object.entries(q.options[sel].points).forEach(([k, v]) => {
- totals[k] = (totals[k] || 0) + v;
- });
- }
- });
+  function renderResult(resultKey) {
+    topKey = resultKey;
 
- // URL パラメータから結果を取得（リロード後の場合）
- const urlParams = new URLSearchParams(window.location.search);
- const resultKey = urlParams.get('result');
- if (resultKey && Object.keys(personalityColors).includes(resultKey)) {
- topKey = resultKey;
- } else if (answers.every(answer => answer != null) && Object.keys(totals).length > 0) {
- topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
- const newUrl = `${location.pathname}?result=${encodeURIComponent(topKey)}`;
- if (!location.search.includes(`result=${encodeURIComponent(topKey)}`)) {
- history.replaceState(null, '', newUrl);
- location.reload();
- return;
- }
- } else {
- resultTextDiv.innerHTML = `
- <p>エラー：すべての質問に回答してください。</p>
- <p>もう一度最初から診断を始めるか、前の質問に戻って回答してください。</p>
- `;
- showScreen(resultScreen);
- return;
- }
+    // URLを更新（ページリロードはしない）
+    const newUrl = `${location.pathname}?result=${encodeURIComponent(topKey)}`;
+    history.pushState({ result: topKey }, '', newUrl);
 
- const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600';
- const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600';
- const characterTitle = getCharacterTitle(topKey);
+    const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600';
+    const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600';
+    const characterTitle = getCharacterTitle(topKey);
 
- // メタタグ更新
- updateMetaTag('twitter:card', 'summary_large_image');
- updateMetaTag('twitter:image', shareImageUrl);
- updateMetaTag('og:image', shareImageUrl);
- updateMetaTag('twitter:title', `私は${characterTitle} - パートナル診断`);
- updateMetaTag('twitter:description', `音と色で私の性格を診断！私は${characterTitle}！あなたのパートナルは ？今すぐ無料でチェック！`);
+    updateMetaTag('twitter:image', shareImageUrl);
+    updateMetaTag('og:image', shareImageUrl);
+    updateMetaTag('twitter:title', `私は${characterTitle} - パートナル診断`);
+    updateMetaTag('twitter:description', `音と色で私の性格を診断！私は${characterTitle}！あなたのパートナルは ？今すぐ無料でチェック！`);
 
- // 結果画像表示
- document.getElementById('resultImage').innerHTML = `<img src="${displayImageUrl}" alt="${topKey}の画像" onerror="this.src='https://via.placeholder.com/800x600'">`;
+    document.getElementById('resultImage').innerHTML = `<img src="${displayImageUrl}" alt="${topKey}の画像" onerror="this.src='https://via.placeholder.com/800x600'">`;
 
- // 相性、曲、カラー情報の生成
- const compatible = compatibleKeys[topKey] || [];
- const compatibleHTML = compatible
- .map(key => `<p class="compatible-title">${getCharacterTitle(key)}</p>`)
- .join('');
+    const compatible = compatibleKeys[topKey] || [];
+    const compatibleHTML = compatible.map(key => `<p class="compatible-title">${getCharacterTitle(key)}</p>`).join('');
 
- const songList = famousSongs[topKey] || [];
- const selected = [...songList]
- .sort(() => Math.random() - 0.5)
- .slice(0, 4);
- const songsHTML = selected.length > 0
- ? selected.map(song => `<p>${song}</p>`).join('\n')
- : '<p>情報が見つかりませんでした。</p>';
+    const songList = famousSongs[topKey] || [];
+    const selected = [...songList].sort(() => 0.5 - Math.random()).slice(0, 4);
+    const songsHTML = selected.length > 0 ? selected.map(song => `<p>${song}</p>`).join('\n') : '<p>情報が見つかりませんでした。</p>';
 
- const colorInfo = personalityColors[topKey] || { name: "不明", code: "#000000" };
- const colorHTML = `
- <h3>あなたのパートナルカラー</h3>
- <p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span> ${colorInfo.code}</p>
- `;
+    const colorInfo = personalityColors[topKey] || { name: "不明", code: "#000000" };
+    const colorHTML = `<h3>あなたのパートナルカラー</h3><p><span class="color-name" style="background-color: ${colorInfo.code} !important; padding: 2px 8px; border-radius: 4px; color: #FFF !important; display: inline-block;">${colorInfo.name}</span> ${colorInfo.code}</p>`;
 
- const firstSentence = customFirstLines[topKey] || '';
- const fullDescription = characterDescriptions[topKey] || '';
- const remainingDescription = fullDescription.replace(/<span class="title"[^>]*>.*?<\/span>/, '');
+    const firstSentence = customFirstLines[topKey] || '';
+    const fullDescription = characterDescriptions[topKey] || '';
+    const remainingDescription = fullDescription.replace(/<span class="title"[^>]*>.*?<\/span>/, '');
+    const descriptionHTML = `
+      <div class="accordion">
+        <span class="title" style="background-color: ${colorInfo.code}; color: #FFF; padding:2px 8px; border-radius:4px;">
+          ${getCharacterTitle(topKey)}
+        </span>
+        <p class="result-description-first">${firstSentence}</p>
+        <button class="accordion-toggle" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
+          詳しく見る <span class="arrow">▼</span>
+        </button>
+        <div class="accordion-content" id="accordion-content-${topKey}">
+          ${remainingDescription}
+        </div>
+      </div>
+    `;
 
- const descriptionHTML = `
- <div class="accordion">
- <span class="title" style="background-color: ${colorInfo.code}; color: #FFF; padding:2px 8px; border-radius:4px;">
- ${getCharacterTitle(topKey)}
- </span>
- <p class="result-description-first">${firstSentence}</p>
- <button class="accordion-toggle" data-state="closed" aria-expanded="false" aria-controls="accordion-content-${topKey}">
- 詳しく見る <span class="arrow">▼</span>
- </button>
- <div class="accordion-content" id="accordion-content-${topKey}">
- ${remainingDescription}
- </div>
- </div>
- `;
+    resultTextDiv.innerHTML = `
+      ${descriptionHTML}
+      <hr>
+      ${colorHTML}
+      <hr>
+      <h3>あなたと相性の良いパートナル</h3>
+      ${compatibleHTML || '<p>情報が見つかりませんでした。</p>'}
+      <hr>
+      <h3>あなたのパートナルの人気曲</h3>
+      ${songsHTML}
+    `;
 
- resultTextDiv.innerHTML = `
- ${descriptionHTML}
- <hr>
- ${colorHTML}
- <hr>
- <h3>あなたと相性の良いパートナル</h3>
- ${compatibleHTML || '<p>情報が見つかりませんでした。</p>'}
- <hr>
- <h3>あなたのパートナルの人気曲</h3>
- ${songsHTML}
- `;
+    const accordionButton = resultTextDiv.querySelector('.accordion-toggle');
+    accordionButton.addEventListener('click', () => toggleAccordion(accordionButton));
+    accordionButton.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleAccordion(accordionButton);
+        }
+    });
 
- // アコーディオンのイベントリスナー設定
- const accordionButtons = document.querySelectorAll('.accordion-toggle');
- accordionButtons.forEach(button => {
- button.removeEventListener('click', toggleAccordion);
- button.removeEventListener('keydown', toggleAccordion);
- button.addEventListener('click', () => toggleAccordion(button));
- button.addEventListener('keydown', (e) => {
- if (e.key === 'Enter' || e.key === ' ') {
- e.preventDefault();
- toggleAccordion(button);
- }
- });
- });
+    showScreen(resultScreen);
+  }
 
+  function showResult() {
+    const totals = {};
+    questions.forEach((q, qi) => {
+      const sel = answers[qi];
+      if (sel != null) {
+        Object.entries(q.options[sel].points).forEach(([k, v]) => {
+          totals[k] = (totals[k] || 0) + v;
+        });
+      }
+    });
+
+    if (answers.every(answer => answer != null) && Object.keys(totals).length > 0) {
+      const calculatedKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+      renderResult(calculatedKey);
+    } else {
+      resultTextDiv.innerHTML = `<p>エラー：すべての質問に回答してください。</p>`;
+      showScreen(resultScreen);
+    }
+  }
+  
   function toggleAccordion(button) {
       const contentId = button.getAttribute('aria-controls');
       const content = document.getElementById(contentId);
@@ -1395,58 +1381,62 @@ function showResult() {
         button.querySelector('.arrow').textContent = '▲';
         content.classList.add('open');
       }
+  }
+
+  document.getElementById('shareXBtn').addEventListener('click', () => {
+    if (topKey) {
+      const characterTitle = getCharacterTitle(topKey);
+      const shareText = `私は${characterTitle}！音と色の性格診断「パートナル」で相性チェック！ ${location.href}`;
+      const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+      window.open(shareUrl, '_blank');
+    } else {
+      alert('診断を完了してください。');
     }
-} // ============== showResult 関数の終了 =================
+  });
 
-// シェアボタンやナビゲーションボタンのイベントハンドラはここから
-document.getElementById('shareXBtn').addEventListener('click', () => {
- if (topKey) {
- const characterTitle = getCharacterTitle(topKey);
- const shareText = `私は${characterTitle}！音と色の性格診断「パートナル」で相性チェック！${location.href}`;
- const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
- window.open(shareUrl, '_blank');
- } else {
- console.warn('topKey is not set yet.');
- alert('診断を完了してください。');
- }
-});
+  document.getElementById('goodsBtn').addEventListener('click', () => {
+    window.open('https://suzuri.jp/pertonal', '_blank');
+  });
 
-document.getElementById('goodsBtn').addEventListener('click', () => {
-    // 実際のストアURLに書き換えてください
-    window.open('https://example.com/official-goods', '_blank');
-});
-
-startBtn.onclick = () => {
+  startBtn.onclick = () => {
     current = 0;
     answers.fill(null);
     topKey = null;
-    localStorage.removeItem('pertonalResult');
+    history.pushState(null, '', location.pathname);
     renderQuestion();
     showScreen(questionScreen);
-};
+  };
 
-backBtn.onclick = prevQuestion;
+  backBtn.onclick = prevQuestion;
 
-restartBtn.onclick = () => {
+  restartBtn.onclick = () => {
     current = 0;
     answers.fill(null);
     topKey = null;
-    localStorage.removeItem('pertonalResult');
     resultTextDiv.innerHTML = '';
+    history.pushState(null, '', location.pathname);
     showScreen(startScreen);
-};
+  };
+  
+  window.onpopstate = function(event) {
+    if (event.state && event.state.result) {
+      renderResult(event.state.result);
+    } else if(document.getElementById('questionScreen').classList.contains('active')) {
+      // 質問画面であれば何もしない、もしくは状態に応じて制御
+    } else {
+      showScreen(startScreen);
+    }
+  };
 
-// URLパラメータをチェックして結果画面を表示する初期化処理
-const urlParams = new URLSearchParams(window.location.search);
-const resultKey = urlParams.get('result');
-if (resultKey && Object.keys(personalityColors).includes(resultKey)) {
-    topKey = resultKey;
-    showResult();
-    showScreen(resultScreen); // 結果がある場合は結果画面を表示
-} else {
+  // 初期読み込み時の処理
+  const urlParams = new URLSearchParams(window.location.search);
+  const resultKeyFromUrl = urlParams.get('result');
+  if (resultKeyFromUrl && Object.keys(personalityColors).includes(resultKeyFromUrl)) {
+    renderResult(resultKeyFromUrl);
+  } else {
     showScreen(startScreen);
-}
-      
+  }
+   
   </script>
   <footer>
   <nav class="footer-nav">
