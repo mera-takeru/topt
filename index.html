@@ -1399,20 +1399,6 @@ function showResult() {
       }
     }
 
-    // アコーディオンのイベントリスナー設定
-    const accordionButtons = document.querySelectorAll('.accordion-toggle');
-    accordionButtons.forEach(button => {
-      button.removeEventListener('click', toggleAccordion);
-      button.removeEventListener('keydown', toggleAccordion);
-      button.addEventListener('click', () => toggleAccordion(button));
-      button.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggleAccordion(button);
-        }
-      });
-    });
-
 // シェアボタンの動作を改良
 document.getElementById('shareXBtn').addEventListener('click', () => {
  if (topKey) {
