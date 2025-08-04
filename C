@@ -1,1 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>【C型】騎士 - pertonal -パートナル-</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="私は【C型】騎士でした！ - パートナル性格診断">
+  <meta name="twitter:description" content="音と色であなたの性格を診断！私は「騎士」タイプ！あなたも今すぐ無料でチェック！">
+  <meta name="twitter:image" content="https://ipfs.io/ipfs/bafybeiegttglm3l26eckpxi6nchnctut3kj6heo3uo5nxpfed7baopavgq/1.jpg">
+  <meta property="og:image" content="https://ipfs.io/ipfs/bafybeiegttglm3l26eckpxi6nchnctut3kj6heo3uo5nxpfed7baopavgq/1.jpg">
+  <style>
+    /* CSSはindex.htmlと同じものをここに貼り付けます */
+    :root {
+      --primary: #6C63FF;
+      --secondary: #FF6584;
+      --bg: #F9FAFB;
+      --text: #333;
+      --radius: 12px;
+      --transition: .3s;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    a { color: inherit !important; text-decoration: none; }
+    a:visited, a:link, a:active { color: inherit !important; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient( 45deg, rgba(255, 99, 71, 0.1), rgba(255, 165, 0, 0.1), rgba(255, 255, 0, 0.1), rgba(50, 205, 50, 0.1), rgba(0, 191, 255, 0.1), rgba(75, 0, 130, 0.1), rgba(238, 130, 238, 0.1) );
+      background-size: 400%; color: var(--text); display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 100vh; padding: 16px; animation: rainbow 8s ease infinite;
+    }
+    @keyframes rainbow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .container { width: 100%; max-width: 600px; background: rgba(255, 255, 255, 0.9); border-radius: var(--radius); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); padding: 24px; margin: 16px auto; }
+    header, footer { background: rgba(255, 255, 255, 0.9); padding: 12px; width: 100%; text-align: center; box-sizing: border-box; }
+    header { border-bottom: 1px solid #ddd; } footer { border-top: 1px solid #ddd; }
+    .header-nav, .footer-nav { display: flex; justify-content: center; align-items: center; gap: 12px; }
+    .header-nav a, .footer-nav a { text-decoration: none; color: #000000 !important; font-weight: 400; font-size: 0.75rem; padding: 0 6px; transition: color var(--transition); }
+    .header-nav a:hover, .footer-nav a:hover { color: var(--secondary); }
+    .header-nav .divider, .footer-nav .divider { color: #000000 !important; font-size: 0.75rem; font-weight: 400; }
+    .copyright { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 400; color: #000000; text-align: center; margin-top: 8px; }
+    h1 { text-align: center; font-weight: 700; margin-bottom: 16px; color: var(--primary); }
+    .title-topt { font-weight: 700; text-align: center; display: block; margin-bottom: 8px; color: var(--secondary); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 4px rgba(255, 255, 255, 0.5); letter-spacing: 0.5px; }
+    .title-english { font-size: 2rem; font-weight: 700; } .title-japanese { font-size: 1.25rem; font-weight: 700; } .title-sub { font-size: 1rem; display: block; }
+    .result-image { width: 100%; background: #ecebff; border-radius: var(--radius); margin-bottom: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3; }
+    .result-image img { width: 100%; height: 100%; object-fit: cover; }
+    button { font: inherit; font-size: 1rem; padding: 12px 20px; border: none; border-radius: var(--radius); background: var(--primary); color: #fff; cursor: pointer; transition: background var(--transition), transform var(--transition); }
+    button:hover { background: var(--secondary); transform: scale(1.02); }
+    .share-row, .goods-row, .restart-row { display: flex; width: 100%; margin-top: 16px; margin-bottom: 16px; flex-wrap: nowrap; }
+    .share-row button, .goods-row button, .restart-row button { flex: 1; }
+    #shareXBtn { background: #1DA1F2; }
+    #goodsBtn { background: var(--primary); color: #fff; flex: 1; }
+    #goodsBtn:hover { background: var(--secondary); transform: scale(1.02); }
+    .restart-row button { flex: 1; background: #fff; color: var(--primary); border: 1px solid var(--primary); }
+    #resultText .result-description-first { font-size: 1.25rem !important; font-weight: 700 !important; color: #000000 !important; margin-bottom: 8px; }
+    .accordion { margin-bottom: 16px; }
+    .accordion-toggle { background: var(--primary); color: #fff; border: none; padding: 8px 16px; border-radius: var(--radius); cursor: pointer; font-size: 1rem; margin-top: 8px; display: inline-flex; align-items: center; gap: 8px; transition: background var(--transition), transform var(--transition); }
+    .accordion-toggle:hover { background: var(--secondary); transform: scale(1.02); }
+    .accordion-toggle .arrow { font-size: 0.9rem; }
+    .accordion-content { margin-top: 8px; font-size: 1rem; line-height: 1.5; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.3s ease-out, opacity 0.3s ease-out; }
+    .accordion-content.open { opacity: 1; max-height: 1000px; }
+    .title { font-size: 1.5rem; font-weight: 700; margin-top: 0; margin-bottom: 8px; text-align: left; display: inline-block; padding: 2px 8px; border-radius: 4px; }
+    .compatible-title { font-size: 1.5rem; font-weight: 400; text-align: left; margin-bottom: 8px; color: var(--text); }
+    h3 { font-size: 1.25rem; font-weight: 700; margin-top: 16px; margin-bottom: 8px; color: var(--primary); }
+    #resultText p { font-size: 1rem; margin-bottom: 16px; }
+    .color-name { font-weight: 600; border: 1px solid #ddd; padding: 2px 8px; border-radius: 4px; }
+    hr { border: 0; border-top: 1px solid #ddd; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="./about.html">パートナルとは</a><span class="divider">|</span>
+      <a href="./faq.html">よくある質問</a><span class="divider">|</span>
+      <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>
+      <span class="title-topt">
+        <span class="title-english">pertonal</span><span class="title-japanese"> -パートナル-</span>
+      </span>
+      <span class="title-sub">「音」×「色」＝ New「性格診断」</span>
+    </h1>
 
+    <div id="resultScreen">
+      <div id="resultImage" class="result-image"></div>
+      <h3>あなたの調性格（パートナル）</h3>
+      <div id="resultText"></div>
+      <div class="share-row">
+        <button id="shareXBtn">Xでシェアする</button>
+      </div>
+      <div class="goods-row">
+        <button id="goodsBtn">公式グッズを見る</button>
+      </div>
+      <div class="restart-row">
+        <button id="restartBtn">もう一度診断する</button>
+      </div>
+    </div>
+
+  </div>
+  
+  <script>
+    // このページがどの結果を表示すべきかを定義
+    const RESULT_KEY = "C";
+
+    // データはindex.htmlと同じものをここに貼り付けます
+    const personalityColors = { "C": { name: "ブライトレッド", code: "#FF3232" }, "cm": { name: "ディープパープル", code: "#4C0099" }, "D♭": { name: "ブライトアクア", code: "#3298FF" }, "c♯m": { name: "ディープグリーン", code: "#009900" }, "D": { name: "ブライトイエロー", code: "#FEFF32" }, "dm": { name: "ディープローズ", code: "#99004C" }, "E♭": { name: "ブライトパープル", code: "#9832FF" }, "e♭m": { name: "ディープシアン", code: "#009899" }, "E": { name: "ブライトグリーン", code: "#32FF32" }, "em": { name: "ディープオレンジ", code: "#994C00" }, "F": { name: "ブライトローズ", code: "#FF3299" }, "fm": { name: "ディープブルー", code: "#000099" }, "F♯": { name: "ブライトシアン", code: "#32FEFF" }, "f♯m": { name: "ディープライム", code: "#4C9900" }, "G": { name: "ブライトオレンジ", code: "#FF9932" }, "gm": { name: "ディープマゼンタ", code: "#990098" }, "A♭": { name: "ブライトブルー", code: "#3232FF" }, "g♯m": { name: "ディープミント", code: "#00994C" }, "A": { name: "ブライトライム", code: "#99FF32" }, "am": { name: "ディープレッド", code: "#990000" }, "B♭": { name: "ブライトマゼンタ", code: "#FF32FE" }, "b♭m": { name: "ディープアクア", code: "#004C99" }, "B": { name: "ブライトミント", code: "#32FF99" }, "bm": { name: "ディープイエロー", code: "#989900" } };
+    const characterDescriptions = { 
+
+};
+    const customFirstLines = { /* ... index.htmlから全てのcustomFirstLinesデータをここに貼り付け ... */ };
+    const compatibleKeys = { /* ... index.htmlから全てのcompatibleKeysデータをここに貼り付け ... */ };
+    const famousSongs = { /* ... index.htmlから全てのfamousSongsデータをここに貼り付け ... */ };
+    const displayImageUrls = { /* ... index.htmlから全てのdisplayImageUrlsデータをここに貼り付け ... */ };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderResult(RESULT_KEY);
+
+      document.getElementById('shareXBtn').addEventListener('click', () => {
+        const shareText = `私は【${RESULT_KEY}型】騎士でした！音と色の性格診断「パートナル」であなたも診断しよう！`;
+        const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(location.href)}`;
+        window.open(shareUrl, '_blank');
+      });
+
+      document.getElementById('goodsBtn').addEventListener('click', () => {
+        window.open('https://suzuri.jp/pertonal', '_blank');
+      });
+
+      document.getElementById('restartBtn').onclick = () => {
+        // index.htmlのパスを正しく指定してください
+        window.location.href = './index.html';
+      };
+    });
+
+    function getCharacterTitle(key) {
+      const description = characterDescriptions[key];
+      if (!description) return key;
+      const match = description.match(/<span class="title"[^>]*>(.*?)<\/span>/);
+      return match ? match[1] : key;
+    }
+
+    function renderResult(resultKey) {
+      const resultTextDiv = document.getElementById('resultText');
+      const resultImageDiv = document.getElementById('resultImage');
+
+      const displayImageUrl = displayImageUrls[resultKey];
+      resultImageDiv.innerHTML = `<img src="${displayImageUrl}" alt="${resultKey}の画像">`;
+
+      const colorInfo = personalityColors[resultKey];
+      const compatibleHTML = (compatibleKeys[resultKey] || []).map(key => `<p class="compatible-title">${getCharacterTitle(key)}</p>`).join('');
+      const songList = famousSongs[resultKey] || [];
+      const selectedSongs = [...songList].sort(() => 0.5 - Math.random()).slice(0, 4);
+      const songsHTML = selectedSongs.length > 0 ? selectedSongs.map(song => `<p>${song}</p>`).join('\n') : '<p>情報が見つかりませんでした。</p>';
+
+      const firstSentence = customFirstLines[resultKey] || '';
+      const fullDescription = characterDescriptions[resultKey] || '';
+      const remainingDescription = fullDescription.replace(/<span class="title"[^>]*>.*?<\/span>/, '');
+      
+      const descriptionHTML = `<div class="accordion">...</div>`; // (省略)
+      
+      resultTextDiv.innerHTML = `
+        <div class="accordion">
+          <span class="title" style="background-color: ${colorInfo.code}; color: #FFF; padding:2px 8px; border-radius:4px;">${getCharacterTitle(resultKey)}</span>
+          <p class="result-description-first">${firstSentence}</p>
+          <button class="accordion-toggle">詳しく見る <span class="arrow">▼</span></button>
+          <div class="accordion-content">${remainingDescription}</div>
+        </div>
+        <hr>
+        <h3>あなたのパートナルカラー</h3>
+        <p><span class="color-name" style="background-color: ${colorInfo.code} !important; color: #FFF !important;">${colorInfo.name}</span> ${colorInfo.code}</p>
+        <hr>
+        <h3>あなたと相性の良いパートナル</h3>
+        ${compatibleHTML}
+        <hr>
+        <h3>あなたのパートナルの人気曲</h3>
+        ${songsHTML}
+      `;
+      
+      const accordionButton = resultTextDiv.querySelector('.accordion-toggle');
+      accordionButton.addEventListener('click', () => {
+        const content = accordionButton.nextElementSibling;
+        const arrow = accordionButton.querySelector('.arrow');
+        if (content.classList.toggle('open')) {
+          arrow.textContent = '▲';
+        } else {
+          arrow.textContent = '▼';
+        }
+      });
+    }
+  </script>
+  
+  <footer>
+    <nav class="footer-nav">
+      <a href="./terms.html">利用規約</a><span class="divider">|</span>
+      <a href="./privacy.html">プライバシーポリシー</a><span class="divider">|</span>
+      <a href="./operator.html">運営者情報</a>
+    </nav>
+    <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
+  </footer>
+</body>
+</html>
