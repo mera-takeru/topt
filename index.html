@@ -8,8 +8,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="パートナル - 音と色の性格診断">
   <meta name="twitter:description" content="音と色であなたの性格を診断！MBTIの次はコレ！今すぐ無料でチェック！">
-  <meta name="twitter:image" content="">
-  <meta property="og:image" content=""> <!-- Fallback for other platforms -->
+  <meta name="twitter:image" content="https://ipfs.io/ipfs/bafybeifuttq27ioeycupsnmuj4u2kuvjtmg4ibhtxualf6mti2yxa5abbe">
+  <meta property="og:image" content="https://ipfs.io/ipfs/bafybeifuttq27ioeycupsnmuj4u2kuvjtmg4ibhtxualf6mti2yxa5abbe"> <!-- Fallback for other platforms -->
   <style>
  :root {
   --primary: #6C63FF;
@@ -1255,26 +1255,76 @@ SNSの投稿や、日記や詩、あるいは何気ない一言——<br><br>
       current--;
       renderQuestion();
     }
-  }  function showResult() {
-    //console.log('showResult called, answers:', answers);
-    const totals = {};
-    questions.forEach((q, qi) => {
-      const sel = answers[qi];
-      if (sel != null) {
-        Object.entries(q.options[sel].points).forEach(([k, v]) => {
-          totals[k] = (totals[k] || 0) + v;
+  }  
+
+      function updateMetaTag(name, content) {
+          let meta = document.querySelector(`meta[${name.includes('og:') ? 'property' : 'name'}="${name}"]`);
+          if (!meta) {
+              meta = document.createElement('meta');
+              meta.setAttribute(name.includes('og:') ? 'property' : 'name', name);
+              document.head.appendChild(meta);
+            }
+            meta.setAttribute('content', content);
+        }
+
+    　function showResult() {
+            const totals = {};
+            questions.forEach((q, qi) => {
+                const sel = answers[qi];
+                if (sel != null) {
+                    Object.entries(q.options[sel].points).forEach(([k, v]) => {
+                        totals[k] = (totals[k] || 0) + v;
+                    });
+                }
+            });
+
+            if (answers.every(answer => answer != null) && Object.keys(totals).length > 0) {
+                topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+                const newUrl = `${location.pathname}?result=${encodeURIComponent(topKey)}`;
+                if (!location.search.includes(`result=${topKey}`)) {
+                    history.replaceState(null, '', newUrl);
+                    location.reload();
+                    return;
+                }
+
+                const displayImageUrl = displayImageUrls[topKey] || 'https://via.placeholder.com/800x600';
+                const shareImageUrl = shareImageUrls[topKey] || 'https://via.placeholder.com/1200x600';
+                const characterTitle = getCharacterTitle(topKey);
+
+                // メタタグ更新
+                updateMetaTag('twitter:image', shareImageUrl);
+                updateMetaTag('og:image', shareImageUrl);
+                updateMetaTag('twitter:title', `私は${characterTitle} - パートナル診断`);
+                updateMetaTag('twitter:description', `音と色で私の性格を診断！私は${characterTitle}！あなたのパートナルは？今すぐ無料でチェック！`);
+
+                // 結果画像表示
+                document.getElementById('resultImage').innerHTML = `<img src="${displayImageUrl}" alt="${topKey}の画像" onerror="this.src='https://via.placeholder.com/800x600'">`;
+
+                // 他の結果表示コード（省略）
+                showScreen(resultScreen);
+            } else {
+                resultTextDiv.innerHTML = `
+                    <p>エラー：すべての質問に回答してください。</p>
+                    <p>もう一度最初から診断を始めるか、前の質問に戻って回答してください。</p>
+                `;
+                showScreen(resultScreen);
+            }
+        }
+
+        // シェアボタン
+        document.getElementById('shareXBtn').addEventListener('click', () => {
+            if (topKey) {
+                const characterTitle = getCharacterTitle(topKey);
+                const shareText = `私は${characterTitle}！音と色の性格診断「パートナル」で相性チェック！${location.href}`;
+                window.open(
+                    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`,
+                    '_blank'
+                );
+            } else {
+                console.warn('topKey is not set yet.');
+                alert('診断を完了してください。');
+            }
         });
-      }
-    });const allAnswered = answers.every(answer => answer != null);
-if (!allAnswered || Object.keys(totals).length === 0) {
-  console.log('Not all questions answered or totals empty:', totals);
-  resultTextDiv.innerHTML = `
-    <p>エラー：すべての質問に回答してください。</p>
-    <p>もう一度最初から診断を始めるか、前の質問に戻って回答してください。</p>
-  `;
-  showScreen(resultScreen);
-  return;
-}
 
 topKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
 console.log('Calculated topKey:', topKey, 'totals:', totals);
@@ -1409,7 +1459,8 @@ showScreen(resultScreen);  }function toggleAccordion(button) {
     showScreen(startScreen);
   };  showScreen(startScreen);
 });
-  </script><footer>
+  </script>
+  <footer>
   <nav class="footer-nav">
     <a href="./terms.html">利用規約</a>
     <span class="divider">|</span>
