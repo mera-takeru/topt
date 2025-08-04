@@ -142,6 +142,7 @@
           // ▲▲▲ ここまで ▲▲▲
 
           // 対応する結果ページに移動する
+          const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
           window.location.href = `${fileName}.html`;
         } else {
           alert('エラーが発生しました。もう一度お試しください。');
