@@ -134,9 +134,15 @@
         });
 
         if (Object.keys(totals).length > 0) {
-          const resultKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+          let resultKey = Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+          
+          // ▼▼▼ ここからが修正箇所 ▼▼▼
+          // URL用にファイル名を変換する
+          const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
+          // ▲▲▲ ここまで ▲▲▲
+
           // 対応する結果ページに移動する
-          window.location.href = `${resultKey}.html`;
+          window.location.href = `${fileName}.html`;
         } else {
           alert('エラーが発生しました。もう一度お試しください。');
           showScreen(startScreen);
@@ -160,3 +166,4 @@
   </script>
 </body>
 </html>
+
