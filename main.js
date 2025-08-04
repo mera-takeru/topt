@@ -53,8 +53,6 @@ function renderPageLayout(resultKey) {
   addEventListeners(resultKey);
 }
 
-/**
- * 結果表示エリアのコンテンツを生成・描画する
  * @param {string} resultKey 
  */
 function renderResultContent(resultKey) {
@@ -68,7 +66,16 @@ function renderResultContent(resultKey) {
   const firstSentence = customFirstLines[resultKey];
   const fullDescription = characterDescriptions[resultKey];
   const remainingDescription = fullDescription.replace(/<span class="title"[^>]*>.*?<\/span>/, '');
-  const compatibleHTML = (compatibleKeys[resultKey] || []).map(key => `<p class="compatible-title">${getCharacterTitle(key)}</p>`).join('');
+  
+  // ▼▼▼ ここからが修正箇所 ▼▼▼
+  const compatibleHTML = (compatibleKeys[resultKey] || []).map(key => {
+    // パートナルのキーをファイル名に変換（例: "c♯m" → "csm"）
+    const fileName = key.replace('♯', 's').replace('♭', 'b');
+    // aタグで囲み、新しいタブで開くようにtarget="_blank"を設定
+    return `<a href="./${fileName}.html" target="_blank" rel="noopener noreferrer"><p class="compatible-title">${getCharacterTitle(key)}</p></a>`;
+  }).join('');
+  // ▲▲▲ ここまで ▲▲▲
+
   const songList = famousSongs[resultKey] || [];
   const selectedSongs = [...songList].sort(() => 0.5 - Math.random()).slice(0, 4);
   const songsHTML = selectedSongs.length > 0 ? selectedSongs.map(song => `<p>${song}</p>`).join('\n') : '<p>情報が見つかりませんでした。</p>';
