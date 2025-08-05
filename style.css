@@ -525,37 +525,38 @@ button.back-btn:hover {
 }
 
 /* ======================================= */
-/* 今日のラッキーパートナル (修正版) */
+/* 今日のラッキーパートナル 最終版スタイル */
 /* ======================================= */
 
-/* セクション全体のスタイル */
+/* セクション全体を「光る額縁」のように装飾 */
 #lucky-pertonal-section {
   width: 100%;
   max-width: 600px;
   margin: 16px auto;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.9);
+  background: #fff; /* 背景は不透明な白に */
   border-radius: var(--radius);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   text-align: center;
-  border: 2px solid #e1c48f; /* 金色の枠線 */
+  /* ▼▼▼ 豪華な枠線の演出 ▼▼▼ */
+  border: 2px solid #D4AF37; /* やや濃いめの金色の枠線 */
+  box-shadow: 0 0 15px rgba(225, 190, 100, 0.6), 0 4px 12px rgba(0, 0, 0, 0.05); /* 金色に光るグロー効果と通常の影を両立 */
 }
 
-/* タイトル文字を、縁取りを付けて目立たせる */
+/* タイトル文字を、視認性の高い立体的な金色に */
 #lucky-pertonal-section h3 {
   font-weight: bold;
-  background: linear-gradient(to bottom, #fff9d8 0%, #d4af37 100%);
+  font-size: 1.5rem; /* サイズを少し大きくして目立たせる */
+  color: #D4AF37; /* グラデーション非対応ブラウザ用の代替色 */
+  margin-bottom: 12px;
+  /* ▼▼▼ 高コントラストな金色のグラデーションに変更 ▼▼▼ */
+  background: linear-gradient(180deg, #F7E8A6 20%, #C0A060 80%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 
-    -1px -1px 0 #6c5828,  
-     1px -1px 0 #6c5828,
-    -1px  1px 0 #6c5828,
-     1px  1px 0 #6c5828,
-     0px 2px 4px rgba(0, 0, 0, 0.4); 
+  /* ▼▼▼ 視認性を上げるための、くっきりとした影 ▼▼▼ */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 
-/* パートナル表示のスタイル */
+/* 既存のラッキーパートナル表示スタイル */
 #lucky-pertonal-display {
   display: flex;
   justify-content: center;
@@ -609,33 +610,6 @@ button.back-btn:hover {
   0% { left: -85%; }
   20% { left: 120%; }
   100% { left: 120%; }
-}
-
-/* ======================================= */
-/* 今日のラッキーパートナル テキスト虹色アニメーション */
-/* ======================================= */
-#lucky-pertonal-section h3 {
-  font-weight: bold;
-  background: linear-gradient(
-    90deg,
-    #ff6363, #ffae70, #fffa8a, #a6ff8a, #8abfff, #b28aff, #ff8ae2
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% 200%; /* アニメーションが滑らかに見えるように少し大きめに */
-  animation: rainbow-text-animation 5s linear infinite;
-  text-shadow:
-    -1px -1px 0 #6c5828,
-     1px -1px 0 #6c5828,
-    -1px  1px 0 #6c5828,
-     1px  1px 0 #6c5828,
-     0px 2px 4px rgba(0, 0, 0, 0.4); /* 既存の縁取りは維持 */
-}
-
-/* 虹色テキストアニメーションのキーフレーム */
-@keyframes rainbow-text-animation {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
 }
 
 /* ======================================= */
