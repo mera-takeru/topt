@@ -401,3 +401,78 @@ a {
     padding: 6px 12px;  /* 内側の余白を少し狭くする */
   }
 }
+
+/* ======================================= */
+/* about.html 等の静的ページ用スタイル     */
+/* ======================================= */
+
+.content h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.content h2::before {
+  font-size: 1.5rem;
+}
+
+.content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.content ul {
+  list-style: disc;
+  margin-left: 20px;
+  margin-bottom: 16px;
+}
+
+.content li {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.type-image {
+  width: 100%;
+  background: #ecebff;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4/3;
+}
+
+.type-image picture, .type-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+button.back-btn {
+  font: inherit;
+  font-size: 1rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  width: 100%;
+  margin-top: 16px;
+}
+
+button.back-btn:hover {
+  background: var(--secondary);
+  transform: scale(1.02);
+}
