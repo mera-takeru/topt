@@ -37,7 +37,7 @@ a {
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  padding: 16px;
+  padding: 12px;
   animation: rainbow 8s ease infinite;
 }@keyframes rainbow {
   0% { background-position: 0% 50%; }
@@ -49,8 +49,8 @@ a {
   background: rgba(255, 255, 255);
   border-radius: var(--radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 16px;
-  margin: 16px auto;
+  padding: 12px;
+  margin: 12px auto;
 }header {
   background: rgba(255, 255, 255, 0.9);
   padding: 12px;
@@ -107,17 +107,17 @@ a {
   font-weight: 400;
   color: #000000;
   text-align: center;
-  margin-top: 8px;
+  margin-top: 12px;
 }h1 {
   text-align: center;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   color: var(--primary);
 }.title-topt {
   font-weight: 700;
   text-align: center;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   color: var(--secondary);
   text-shadow: 
     1px 1px 2px rgba(0, 0, 0, 0.3),
@@ -157,7 +157,7 @@ a {
   background: #eee;
   border-radius: 4px;
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }.progress-inner {
   height: 100%;
   background: var(--primary);
@@ -165,11 +165,11 @@ a {
   transition: width var(--transition);
 }.question h2 {
   font-size: 1.25rem;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }.options {
   list-style: none;
   padding: 0;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }.options li {
   margin-bottom: 12px;
 }.options li.selected button {
@@ -194,8 +194,8 @@ a {
 }.share-row, .goods-row, .restart-row {
   display: flex;
   width: 100%;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: 12px;
+  margin-bottom: 12px;
   flex-wrap: nowrap;
 }.share-row button, .goods-row button, .restart-row button {
   flex: 1;
@@ -217,7 +217,7 @@ a {
   width: 100%;
   background: #ecebff;
   border-radius: var(--radius);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -231,7 +231,7 @@ a {
   width: 100%;
   background: #ecebff;
   border-radius: var(--radius);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -245,21 +245,21 @@ a {
   font-size: 1.25rem !important;
   font-weight: 700 !important;
   color: #000000 !important; 
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }.accordion {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }.accordion-toggle {
   background: var(--primary);
   color: #fff;
   border: none;
-  padding: 8px 16px;
+  padding: 6px 12px;
   border-radius: var(--radius);
   cursor: pointer;
   font-size: 1rem;
-  margin-top: 8px;
+  margin-top: 12px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   transition: background var(--transition), transform var(--transition);
 }.accordion-toggle:hover {
   background: var(--secondary);
@@ -267,7 +267,7 @@ a {
 }.accordion-toggle .arrow {
   font-size: 0.9rem;
 }.accordion-content {
-  margin-top: 8px;
+  margin-top: 12px;
   font-size: 1rem;
   line-height: 1.5;
   max-height: 0;
@@ -300,7 +300,7 @@ a {
   font-size: 1.5rem;
   font-weight: 700;
   margin-top: 0;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   text-align: left;
   display: inline-block;
   padding: 2px 12px;    /* 左右の余白を調整 */
@@ -314,18 +314,18 @@ a {
   font-size: 1.5rem;
   font-weight: 400;
   text-align: left;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   color: var(--text);
 }#resultScreen h3,
 #resultText h3 {
   font-size: 1.25rem;
   font-weight: 700;
-  margin-top: 16px;
-  margin-bottom: 8px;
+  margin-top: 12px;
+  margin-bottom: 12px;
   color: var(--primary);
 }#resultText p {
   font-size: 1rem;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }.color-name {
   font-weight: 600;
   border: 1px solid #ddd;
@@ -334,7 +334,7 @@ a {
 }hr {
   border: 0;
   border-top: 1px solid #ddd;
-  margin: 16px 0;
+  margin: 12px 0;
 }
 .title, .color-name {
   text-shadow:
@@ -359,8 +359,8 @@ a {
 #lucky-pertonal-section {
   width: 100%;
   max-width: 600px; /* メインのカラムと同じ横幅に設定 */
-  margin: 16px auto;  /* 上下の余白を設定 */
-  padding: 16px;
+  margin: 12px auto;  /* 上下の余白を設定 */
+  padding: 12px;
   background: rgba(255, 255, 255, 0.9); /* 背景を少し濃いめの白に */
   border-radius: var(--radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* メインカラムと同じ影を適用 */
@@ -393,7 +393,7 @@ a {
 
 @media (max-width: 480px) {
   #lucky-pertonal-display {
-    gap: 8px; /* パートナル間の隙間を少し狭くする */
+    gap: 12px; /* パートナル間の隙間を少し狭くする */
   }
 
   #lucky-pertonal-display span {
@@ -424,27 +424,27 @@ a {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .content ul {
   list-style: disc;
-  margin-left: 20px;
-  margin-bottom: 16px;
+  margin-left: 12px;
+  margin-bottom: 12px;
 }
 
 .content li {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .type-image {
   width: 100%;
   background: #ecebff;
   border-radius: var(--radius);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -469,7 +469,7 @@ button.back-btn {
   cursor: pointer;
   transition: background var(--transition), transform var(--transition);
   width: 100%;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 button.back-btn:hover {
@@ -482,7 +482,7 @@ button.back-btn:hover {
 /* ======================================= */
 @media (max-width: 600px) {
   .container {
-    padding: 16px;
+    padding: 12px;
   }
   .content h2 {
     font-size: 1.25rem;
@@ -492,7 +492,7 @@ button.back-btn:hover {
   }
   button.back-btn {
     font-size: 1rem;
-    padding: 10px 16px;
+    padding: 12px 12px;
   }
   .title-english {
     font-size: 2rem;
@@ -510,8 +510,8 @@ button.back-btn:hover {
 #lucky-pertonal-section {
   width: 100%;
   max-width: 600px;
-  margin: 16px auto;
-  padding: 16px;
+  margin: 12px auto;
+  padding: 12px;
   background: #fff;
   border-radius: var(--radius);
   text-align: center;
