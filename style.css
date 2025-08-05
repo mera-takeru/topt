@@ -294,16 +294,23 @@ a {
   .title-japanese {
     font-size: 1.25rem;
   }
-}.title {
+}
+
+.title {
   font-size: 1.5rem;
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 8px;
   text-align: left;
   display: inline-block;
-  padding: 2px 8px;
-  border-radius: 4px;
-}.compatible-title {
+  padding: 2px 12px;    /* 左右の余白を調整 */
+  border-radius: 4px;   /* 角丸をシャープに */
+  color: #fff !important; /* 文字色を白で統一 */
+  /* ▼▼▼ 黒い縁取りを追加 ▼▼▼ */
+  text-shadow: -1px -1px 0 #000, 0 -1px 0 #000, 1px -1px 0 #000, -1px 0 0 #000, 1px 0 0 #000, -1px 1px 0 #000, 0 1px 0 #000, 1px 1px 0 #000;
+}
+
+.compatible-title {
   font-size: 1.5rem;
   font-weight: 400;
   text-align: left;
