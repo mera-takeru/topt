@@ -73,9 +73,10 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // --- 診断クイズのプログラム (既存のまま) ---
       let currentQuestionIndex = 0;
       const userAnswers = Array(questions.length).fill(null);
-      let isSubmitting = false; // ■■■【この行を追加してください】■■■
+      let isSubmitting = false;
 
       const startBtn = document.getElementById('startBtn');
       const backBtn = document.getElementById('backBtn');
@@ -119,11 +120,10 @@
         backBtn.style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
       }
 
-       function calculateAndRedirect() {
+      function calculateAndRedirect() {
         if (isSubmitting) return;
         isSubmitting = true;
 
-        // --- 診断結果の計算ロジック（ここは変更なし） ---
         const tieBreakerOrder = ["C", "am", "G", "em", "F", "dm", "D", "bm", "B♭", "gm", "A", "f♯m", "E♭", "cm", "E", "c♯m", "A♭", "fm", "B", "g♯m", "D♭", "b♭m", "F♯", "e♭m"];
         const totals = {};
         questions.forEach((q, qi) => {
@@ -149,37 +149,27 @@
         } else {
           resultKey = tiedResults[0];
         }
-        // --- 計算ロジックここまで ---
 
         if (resultKey) {
           try {
             const webAppUrl = 'https://script.google.com/macros/s/AKfycby85hMd3E8tD_p5JGqQG_eG4PMW-TFCg0EHhSOY7Eoht-CSoiDuG_2eqfgBWOvYaOM/exec';
             const data = JSON.stringify({ partonal: resultKey });
-
-            // ■■■【ここを修正】fetchからsendBeaconに変更 ■■■
-            // これにより、ページ遷移を待たずにバックグラウンドで安全にデータを送信できる
             if (navigator.sendBeacon) {
               navigator.sendBeacon(webAppUrl, data);
             } else {
-              // sendBeaconが使えない古いブラウザのための予備処理
               fetch(webAppUrl, { method: 'POST', body: data, mode: 'no-cors', keepalive: true });
             }
-            // ■■■【修正ここまで】■■■
-            
           } catch (error) {
             console.error('結果の送信に失敗しました:', error);
           }
-          
-          const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
-          window.location.href = `${fileName}.html`;
-      
+          window.location.href = `ads.html?result=${resultKey}`;
         } else {
           alert('エラーが発生しました。もう一度お試しください。');
           showScreen(startScreen);
           isSubmitting = false;
         }
       }
-    
+
       startBtn.onclick = () => {
         currentQuestionIndex = 0;
         userAnswers.fill(null);
@@ -193,13 +183,12 @@
           renderQuestion();
         }
       };
-    });
-
-     // ▼▼▼ ここから追加 ▼▼▼
+      
+      // --- ここからがラッキーパートナルのプログラムです ---
       function displayLuckyPertonal() {
         const startDate = new Date('1683-09-25T00:00:00Z');
-        // JSTで今日の日付を取得
         const now = new Date();
+        // タイムゾーンを日本時間に固定して今日の日付を取得
         const today = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Tokyo"}));
         today.setHours(0, 0, 0, 0);
 
@@ -218,12 +207,12 @@
 
         const luckyPair = pertonalPairs[luckyIndex];
         
-        // 称号（例：騎士）を取得する関数
+        // data.jsから称号（例：騎士）を取得する関数
         function getCharacterTitle(key) {
           const description = characterDescriptions[key];
-          if (!description) return key;
+          if (!description) return `【${key}型】`;
           const match = description.match(/<span class="title"[^>]*>【.*?】(.*?)<\/span>/);
-          return match ? `【${key}型】${match[1]}` : key;
+          return match ? `【${key}型】${match[1]}` : `【${key}型】`;
         }
 
         const luckyPertonal1 = document.getElementById('lucky-pertonal-1');
@@ -236,9 +225,8 @@
         luckyPertonal2.style.backgroundColor = personalityColors[luckyPair.minor].code;
       }
 
-      // ページが読み込まれたら実行
+      // ページが読み込まれたらラッキーパートナルを表示
       displayLuckyPertonal();
-      // ▲▲▲ 追加ここまで ▲▲▲
     });
   </script>
 
