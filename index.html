@@ -162,7 +162,8 @@
           } catch (error) {
             console.error('結果の送信に失敗しました:', error);
           }
-          window.location.href = `ads.html?result=${resultKey}`;
+          const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
+          window.location.href = `${fileName}.html`;
         } else {
           alert('エラーが発生しました。もう一度お試しください。');
           showScreen(startScreen);
