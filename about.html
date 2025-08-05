@@ -1,20 +1,71 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>パートナルとは | pertonal -パートナル-</title>
   <link rel="icon" href="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafkreias6hwejitd2az5nuyrjdjkgrxgkao6bao7trhvfhoenebv5tnjey" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
-   <style>
+
+  <style>
+    /* 他の静的ページとスタイルを統一 */
     .start-image {
-      aspect-ratio: 3 / 1;
+      aspect-ratio: 3/1;
     }
     .type-image {
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 4/3;
+    }
+    .content h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .content h2::before {
+      font-size: 1.5rem;
+    }
+    .content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .content ul {
+      list-style: disc;
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+    .content li {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    button.back-btn {
+      font: inherit;
+      font-size: 1rem;
+      padding: 12px 20px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      width: 100%;
+      margin-top: 16px;
+    }
+    button.back-btn:hover {
+      background: var(--secondary);
+      transform: scale(1.02);
     }
   </style>
+</head>
 </head>
 <body>
   <header>
