@@ -610,3 +610,30 @@ button.back-btn:hover {
   20% { left: 120%; }
   100% { left: 120%; }
 }
+
+/* ======================================= */
+/* 今日のラッキーパートナル テキスト虹色アニメーション */
+/* ======================================= */
+#lucky-pertonal-section h3 {
+  font-weight: bold;
+  background: linear-gradient(
+    90deg,
+    #ff6363, #ffae70, #fffa8a, #a6ff8a, #8abfff, #b28aff, #ff8ae2
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%; /* アニメーションが滑らかに見えるように少し大きめに */
+  animation: rainbow-text-animation 5s linear infinite;
+  text-shadow:
+    -1px -1px 0 #6c5828,
+     1px -1px 0 #6c5828,
+    -1px  1px 0 #6c5828,
+     1px  1px 0 #6c5828,
+     0px 2px 4px rgba(0, 0, 0, 0.4); /* 既存の縁取りは維持 */
+}
+
+/* 虹色テキストアニメーションのキーフレーム */
+@keyframes rainbow-text-animation {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
