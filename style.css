@@ -637,3 +637,28 @@ button.back-btn:hover {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
+
+/* ======================================= */
+/* 全ページ共通 スマートフォン表示の調整   */
+/* ======================================= */
+@media (max-width: 600px) {
+  .container {
+    padding: 16px;
+  }
+  .content h2 {
+    font-size: 1.25rem;
+  }
+  .content p, .content li, .content dt, .content dd {
+    font-size: 1rem;
+  }
+  button.back-btn {
+    font-size: 1rem;
+    padding: 10px 16px;
+  }
+  .title-english {
+    font-size: 2rem;
+  }
+  .title-japanese {
+    font-size: 1.25rem;
+  }
+}
