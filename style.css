@@ -346,13 +346,18 @@ a {
   object-fit: contain;
 }
 
+/* ======================================= */
+/* 今日のラッキーパートナル */
+/* ======================================= */
 #lucky-pertonal-section {
-  text-align: center;
-  margin: 24px 0;
+  width: 100%;
+  max-width: 600px; /* メインのカラムと同じ横幅に設定 */
+  margin: 16px auto;  /* 上下の余白を設定 */
   padding: 16px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.9); /* 背景を少し濃いめの白に */
   border-radius: var(--radius);
-  border: 1px solid #eee;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* メインカラムと同じ影を適用 */
+  text-align: center;
 }
 
 #lucky-pertonal-section h3 {
@@ -367,7 +372,7 @@ a {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  flex-wrap: wrap; /* スマホで折り返すように */
+  flex-wrap: wrap;
 }
 
 #lucky-pertonal-display span {
