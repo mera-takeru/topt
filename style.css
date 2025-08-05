@@ -525,42 +525,88 @@ button.back-btn:hover {
 }
 
 /* ======================================= */
-/* ラッキーパートナル 虹色アニメーション演出 Ver.2 */
+/* 今日のラッキーパートナル (修正版) */
 /* ======================================= */
 
-/* セクションの枠線を、より速く鮮やかな虹色アニメーションに */
+/* セクション全体のスタイル */
 #lucky-pertonal-section {
-  padding: 3px; /* 枠線の太さを設定 */
-  position: relative;
-  border-radius: var(--radius); /* 角丸を維持 */
-  /* ▼▼▼ より鮮やかなグラデーションに変更 ▼▼▼ */
-  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-  background-size: 300% 300%;
-  /* ▼▼▼ 背景とは違う、速いアニメーションを適用 ▼▼▼ */
-  animation: lucky-rainbow-animation 4s ease-in-out infinite;
-}
-
-/* 枠線の内側に白い背景を再設定 */
-#lucky-pertonal-section .lucky-content-wrapper {
-  background: rgba(255, 255, 255, 0.95);
+  width: 100%;
+  max-width: 600px;
+  margin: 16px auto;
   padding: 16px;
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  border: 2px solid #e1c48f; /* 金色の枠線 */
 }
 
-/* タイトル文字も、枠線と同じ速く鮮やかな虹色アニメーションに */
+/* タイトル文字を、縁取りを付けて目立たせる */
 #lucky-pertonal-section h3 {
   font-weight: bold;
-  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  background: linear-gradient(to bottom, #fff9d8 0%, #d4af37 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 300% 300%;
-  animation: lucky-rainbow-animation 4s ease-in-out infinite;
-  text-shadow: none;
+  text-shadow: 
+    -1px -1px 0 #6c5828,  
+     1px -1px 0 #6c5828,
+    -1px  1px 0 #6c5828,
+     1px  1px 0 #6c5828,
+     0px 2px 4px rgba(0, 0, 0, 0.4); 
 }
 
-/* ラッキーパートナル専用の、新しいアニメーション定義 */
-@keyframes lucky-rainbow-animation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* パートナル表示のスタイル */
+#lucky-pertonal-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#lucky-pertonal-display span {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 2px 12px;
+  border-radius: 4px;
+  text-shadow: -1px -1px 0 #000, 0 -1px 0 #000, 1px -1px 0 #000, -1px 0 0 #000, 1px 0 0 #000, -1px 1px 0 #000, 0 1px 0 #000, 1px 1px 0 #000;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+#lucky-pertonal-display span:active {
+  transform: scale(0.98);
+}
+
+#lucky-pertonal-display span::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -85%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: skewX(-25deg);
+  animation: shine 5s infinite;
+}
+
+/* スマホ用の調整 */
+@media (max-width: 480px) {
+  #lucky-pertonal-display {
+    gap: 8px;
+  }
+  #lucky-pertonal-display span {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+}
+
+/* キラッと光るアニメーション */
+@keyframes shine {
+  0% { left: -85%; }
+  20% { left: 120%; }
+  100% { left: 120%; }
 }
