@@ -478,49 +478,27 @@ button.back-btn:hover {
 }
 
 /* ======================================= */
-/* ラッキーパートナル リッチ演出 */
+/* 全ページ共通 スマートフォン表示の調整   */
 /* ======================================= */
-
-#lucky-pertonal-display span {
-  position: relative; /* アニメーションの基準位置にする */
-  overflow: hidden;   /* はみ出した光沢を隠す */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 少しだけ影をつけて立体感を出す */
-  transition: transform 0.2s ease;
-}
-
-/* タップ（クリック）した時に少しだけ沈むエフェクト */
-#lucky-pertonal-display span:active {
-  transform: scale(0.98);
-}
-
-/* キラリと光るアニメーションの本体 */
-#lucky-pertonal-display span::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -85%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-25deg);
-  animation: shine 5s infinite; /* 5秒に1回アニメーションを実行 */
-}
-
-/* アニメーションの詳細設定 */
-@keyframes shine {
-  0% {
-    left: -85%;
+@media (max-width: 600px) {
+  .container {
+    padding: 16px;
   }
-  20% {
-    left: 120%;
+  .content h2 {
+    font-size: 1.25rem;
   }
-  100% {
-    left: 120%;
+  .content p, .content li, .content dt, .content dd {
+    font-size: 1rem;
+  }
+  button.back-btn {
+    font-size: 1rem;
+    padding: 10px 16px;
+  }
+  .title-english {
+    font-size: 2rem;
+  }
+  .title-japanese {
+    font-size: 1.25rem;
   }
 }
 
@@ -528,35 +506,32 @@ button.back-btn:hover {
 /* 今日のラッキーパートナル 最終版スタイル */
 /* ======================================= */
 
-/* セクション全体を「光る額縁」のように装飾 */
+/* セクション全体のスタイル */
 #lucky-pertonal-section {
   width: 100%;
   max-width: 600px;
   margin: 16px auto;
   padding: 16px;
-  background: #fff; /* 背景は不透明な白に */
+  background: #fff;
   border-radius: var(--radius);
   text-align: center;
-  /* ▼▼▼ 豪華な枠線の演出 ▼▼▼ */
-  border: 2px solid #D4AF37; /* やや濃いめの金色の枠線 */
-  box-shadow: 0 0 15px rgba(225, 190, 100, 0.6), 0 4px 12px rgba(0, 0, 0, 0.05); /* 金色に光るグロー効果と通常の影を両立 */
+  border: 2px solid #D4AF37;
+  box-shadow: 0 0 15px rgba(225, 190, 100, 0.6), 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* タイトル文字を、視認性の高い立体的な金色に */
+/* 「今日のラッキーパートナル」タイトルのスタイル */
 #lucky-pertonal-section h3 {
   font-weight: bold;
-  font-size: 1.5rem; /* サイズを少し大きくして目立たせる */
-  color: #D4AF37; /* グラデーション非対応ブラウザ用の代替色 */
+  font-size: 1.5rem;
   margin-bottom: 12px;
-  /* ▼▼▼ 高コントラストな金色のグラデーションに変更 ▼▼▼ */
+  color: #D4AF37; /* 非対応ブラウザ用の色 */
   background: linear-gradient(180deg, #F7E8A6 20%, #C0A060 80%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* ▼▼▼ 視認性を上げるための、くっきりとした影 ▼▼▼ */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* 既存のラッキーパートナル表示スタイル */
+/* パートナル表示（ペア）のスタイル */
 #lucky-pertonal-display {
   display: flex;
   justify-content: center;
@@ -582,6 +557,7 @@ button.back-btn:hover {
   transform: scale(0.98);
 }
 
+/* キラッと光るアニメーション */
 #lucky-pertonal-display span::before {
   content: '';
   position: absolute;
@@ -594,7 +570,13 @@ button.back-btn:hover {
   animation: shine 5s infinite;
 }
 
-/* スマホ用の調整 */
+@keyframes shine {
+  0% { left: -85%; }
+  20% { left: 120%; }
+  100% { left: 120%; }
+}
+
+/* スマホ用の表示調整 */
 @media (max-width: 480px) {
   #lucky-pertonal-display {
     gap: 8px;
@@ -602,37 +584,5 @@ button.back-btn:hover {
   #lucky-pertonal-display span {
     font-size: 1rem;
     padding: 6px 12px;
-  }
-}
-
-/* キラッと光るアニメーション */
-@keyframes shine {
-  0% { left: -85%; }
-  20% { left: 120%; }
-  100% { left: 120%; }
-}
-
-/* ======================================= */
-/* 全ページ共通 スマートフォン表示の調整   */
-/* ======================================= */
-@media (max-width: 600px) {
-  .container {
-    padding: 16px;
-  }
-  .content h2 {
-    font-size: 1.25rem;
-  }
-  .content p, .content li, .content dt, .content dd {
-    font-size: 1rem;
-  }
-  button.back-btn {
-    font-size: 1rem;
-    padding: 10px 16px;
-  }
-  .title-english {
-    font-size: 2rem;
-  }
-  .title-japanese {
-    font-size: 1.25rem;
   }
 }
