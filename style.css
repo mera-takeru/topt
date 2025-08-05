@@ -525,25 +525,46 @@ button.back-btn:hover {
 }
 
 /* ======================================= */
-/* ラッキーパートナル ゴージャス演出 Ver.2 */
+/* ラッキーパートナル 虹色アニメーション演出 */
 /* ======================================= */
 
-/* セクションの枠線をゴールド系に */
+/* セクションの枠線を虹色アニメーションにするための準備 */
 #lucky-pertonal-section {
-  border: 2px solid #e1c48f;
+  padding: 2px; /* 枠線の太さ */
+  position: relative;
+  background: linear-gradient(
+    45deg, 
+    #ff6363, #ffae70, #fffa8a, #a6ff8a, #8abfff, #b28aff, #ff8ae2
+  );
+  background-size: 400% 400%;
+  animation: rainbow-border-animation 10s ease infinite;
+  border-radius: var(--radius); /* 角丸を維持 */
 }
 
-/* タイトル文字を、縁取りを付けて目立たせる */
+/* 枠線の内側に白い背景を再設定 */
+#lucky-pertonal-section .lucky-content-wrapper {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 16px;
+  border-radius: 10px; /* 枠線との間に少し隙間が見えるように調整 */
+}
+
+/* タイトル文字を虹色アニメーションに */
 #lucky-pertonal-section h3 {
   font-weight: bold;
-  background: linear-gradient(to bottom, #fff9d8 0%, #d4af37 100%);
+  background: linear-gradient(
+    90deg, 
+    #ff6363, #ffae70, #fffa8a, #a6ff8a, #8abfff, #b28aff, #ff8ae2
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* ▼▼▼ 黒と金の多重シャドウで、くっきりとした縁取り効果を出す ▼▼▼ */
-  text-shadow: 
-    -1px -1px 0 #6c5828,  
-     1px -1px 0 #6c5828,
-    -1px  1px 0 #6c5828,
-     1px  1px 0 #6c5828,
-     0px 2px 4px rgba(0, 0, 0, 0.4); 
+  background-size: 400% 400%;
+  animation: rainbow-border-animation 10s ease infinite;
+  text-shadow: none; /* 前回の縁取りをリセット */
+}
+
+/* 虹色アニメーションの詳細設定 */
+@keyframes rainbow-border-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
