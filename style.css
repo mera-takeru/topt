@@ -523,3 +523,55 @@ button.back-btn:hover {
     left: 120%;
   }
 }
+
+/* ======================================= */
+/* ラッキーパートナル ゴージャス演出 */
+/* ======================================= */
+
+/* セクション全体にリボンのための準備 */
+#lucky-pertonal-section {
+  position: relative;
+  overflow: hidden; /* はみ出したリボンを隠す */
+  border: 2px solid #e1c48f; /* 枠線をゴールド系に */
+}
+
+/* タイトル文字を金色に、そして光らせる */
+#lucky-pertonal-section h3 {
+  font-weight: bold;
+  background: linear-gradient(to bottom, #fff9d8 0%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0px 2px 4px rgba(255, 215, 0, 0.5); /* 金色の淡い光を追加 */
+}
+
+/* 金色のリボンを作成（左上） */
+#lucky-pertonal-section::before {
+  content: '★';
+  position: absolute;
+  top: -15px;
+  left: -25px;
+  width: 80px;
+  height: 50px;
+  background: linear-gradient(to right, #e1c48f, #f0e1a6);
+  transform: rotate(-45deg);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 2px;
+  font-size: 1rem;
+  color: rgba(0,0,0,0.3);
+}
+
+/* 金色のリボンを作成（右下） */
+#lucky-pertonal-section::after {
+  content: '';
+  position: absolute;
+  bottom: -25px;
+  right: -25px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(to left, #e1c48f, #f0e1a6);
+  transform: rotate(-45deg);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
