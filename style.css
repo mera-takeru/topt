@@ -525,45 +525,41 @@ button.back-btn:hover {
 }
 
 /* ======================================= */
-/* ラッキーパートナル 虹色アニメーション演出 */
+/* ラッキーパートナル 虹色アニメーション演出 Ver.2 */
 /* ======================================= */
 
-/* セクションの枠線を虹色アニメーションにするための準備 */
+/* セクションの枠線を、より速く鮮やかな虹色アニメーションに */
 #lucky-pertonal-section {
-  padding: 2px; /* 枠線の太さ */
+  padding: 3px; /* 枠線の太さを設定 */
   position: relative;
-  background: linear-gradient(
-    45deg, 
-    #ff6363, #ffae70, #fffa8a, #a6ff8a, #8abfff, #b28aff, #ff8ae2
-  );
-  background-size: 400% 400%;
-  animation: rainbow-border-animation 10s ease infinite;
   border-radius: var(--radius); /* 角丸を維持 */
+  /* ▼▼▼ より鮮やかなグラデーションに変更 ▼▼▼ */
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  background-size: 300% 300%;
+  /* ▼▼▼ 背景とは違う、速いアニメーションを適用 ▼▼▼ */
+  animation: lucky-rainbow-animation 4s ease-in-out infinite;
 }
 
 /* 枠線の内側に白い背景を再設定 */
 #lucky-pertonal-section .lucky-content-wrapper {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   padding: 16px;
-  border-radius: 10px; /* 枠線との間に少し隙間が見えるように調整 */
+  border-radius: 10px;
 }
 
-/* タイトル文字を虹色アニメーションに */
+/* タイトル文字も、枠線と同じ速く鮮やかな虹色アニメーションに */
 #lucky-pertonal-section h3 {
   font-weight: bold;
-  background: linear-gradient(
-    90deg, 
-    #ff6363, #ffae70, #fffa8a, #a6ff8a, #8abfff, #b28aff, #ff8ae2
-  );
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 400% 400%;
-  animation: rainbow-border-animation 10s ease infinite;
-  text-shadow: none; /* 前回の縁取りをリセット */
+  background-size: 300% 300%;
+  animation: lucky-rainbow-animation 4s ease-in-out infinite;
+  text-shadow: none;
 }
 
-/* 虹色アニメーションの詳細設定 */
-@keyframes rainbow-border-animation {
+/* ラッキーパートナル専用の、新しいアニメーション定義 */
+@keyframes lucky-rainbow-animation {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
