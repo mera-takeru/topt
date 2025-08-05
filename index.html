@@ -109,11 +109,14 @@
         backBtn.style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
       }
 
-     function calculateAndRedirect() {
+       async function calculateAndRedirect() { // asyncキーワードを追加
+        // 調号の数と長調優先を反映した優先順位リスト
         const tieBreakerOrder = [
-          "C", "am", "G", "em", "F", "dm", "D", "bm", "B♭", "gm", "A", "f♯m", "E♭", "cm", "E", "c♯m", "A♭", "fm", "B", "g♯m", "D♭", "b♭m", "F♯", "e♭m"
+          "C", "am", "G", "em", "F", "dm", "D", "bm", "B♭", "gm",
+          "A", "f♯m", "E♭", "cm", "E", "c♯m", "A♭", "fm",
+          "B", "g♯m", "D♭", "b♭m", "F♯", "e♭m"
         ];
-
+        
         const totals = {};
         questions.forEach((q, qi) => {
           const selectedOptionIndex = userAnswers[qi];
@@ -143,19 +146,36 @@
         }
 
         if (resultKey) {
-          // ▼▼▼ ここからが最終修正箇所 ▼▼▼
-          // まずスプレッドシートのURLに結果を持たせて移動する
-          const webAppUrl = 'https://script.google.com/macros/s/AKfycby85hMd3E8tD_p5JGqQG_eG4PMW-TFCg0EHhSOY7Eoht-CSoiDuG_2eqfgBWOvYaOM/exec'; // あなたのURLを設定
-          
-          // Google Apps Scriptに移動し、リダイレクトさせてもらう
-          window.location.href = `${webAppUrl}?partonal=${resultKey}`;
+          // ▼▼▼ ここからが追加・修正部分 ▼▼▼
+          try {
+            // ステップ1でコピーしたあなたのウェブアプリURLをここに貼り付け
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycby85hMd3E8tD_p5JGqQG_eG4PMW-TFCg0EHhSOY7Eoht-CSoiDuG_2eqfgBWOvYaOM/exec'; 
+            
+            // 診断結果をGoogle Apps Scriptに送信
+            await fetch(webAppUrl, {
+              method: 'POST',
+              mode: 'no-cors', // CORSエラーを回避するためのおまじない
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              body: JSON.stringify({ partonal: resultKey }),
+            });
+
+          } catch (error) {
+            // サーバーへの送信が失敗しても、ユーザーの診断は続行させる
+            console.error('結果の送信に失敗しました:', error);
+          }
           // ▲▲▲ ここまで ▲▲▲
+
+          // 診断結果ページへの移動（ここは元のまま）
+          const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
+          window.location.href = `${fileName}.html`;
         } else {
           alert('エラーが発生しました。もう一度お試しください。');
           showScreen(startScreen);
         }
       }
-
+    
       startBtn.onclick = () => {
         currentQuestionIndex = 0;
         userAnswers.fill(null);
