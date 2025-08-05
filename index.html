@@ -25,6 +25,15 @@
   </header>
 
   <div class="container">
+
+     <div id="lucky-pertonal-section">
+      <h3>今日のラッキーパートナル</h3>
+      <div id="lucky-pertonal-display">
+        <span id="lucky-pertonal-1"></span>
+        <span id="lucky-pertonal-2"></span>
+      </div>
+    </div>
+    
     <h1>
       <span class="title-topt">
         <span class="title-english">pertonal</span>
@@ -185,6 +194,52 @@
           renderQuestion();
         }
       };
+    });
+
+     // ▼▼▼ ここから追加 ▼▼▼
+      function displayLuckyPertonal() {
+        const startDate = new Date('1683-09-25T00:00:00Z');
+        // JSTで今日の日付を取得
+        const now = new Date();
+        const today = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Tokyo"}));
+        today.setHours(0, 0, 0, 0);
+
+        const pertonalPairs = [
+          { major: "C", minor: "am" }, { major: "G", minor: "em" },
+          { major: "D", minor: "bm" }, { major: "A", minor: "f♯m" },
+          { major: "E", minor: "c♯m" }, { major: "B", minor: "g♯m" },
+          { major: "F♯", minor: "e♭m" }, { major: "D♭", minor: "b♭m" },
+          { major: "A♭", minor: "fm" }, { major: "E♭", minor: "cm" },
+          { major: "B♭", minor: "gm" }, { major: "F", minor: "dm" }
+        ];
+
+        const elapsedMilliseconds = today - startDate;
+        const elapsedDays = Math.floor(elapsedMilliseconds / (1000 * 60 * 60 * 24));
+        const luckyIndex = elapsedDays % 12;
+
+        const luckyPair = pertonalPairs[luckyIndex];
+        
+        // 称号（例：騎士）を取得する関数
+        function getCharacterTitle(key) {
+          const description = characterDescriptions[key];
+          if (!description) return key;
+          const match = description.match(/<span class="title"[^>]*>【.*?】(.*?)<\/span>/);
+          return match ? `【${key}型】${match[1]}` : key;
+        }
+
+        const luckyPertonal1 = document.getElementById('lucky-pertonal-1');
+        const luckyPertonal2 = document.getElementById('lucky-pertonal-2');
+
+        luckyPertonal1.textContent = getCharacterTitle(luckyPair.major);
+        luckyPertonal1.style.backgroundColor = personalityColors[luckyPair.major].code;
+        
+        luckyPertonal2.textContent = getCharacterTitle(luckyPair.minor);
+        luckyPertonal2.style.backgroundColor = personalityColors[luckyPair.minor].code;
+      }
+
+      // ページが読み込まれたら実行
+      displayLuckyPertonal();
+      // ▲▲▲ 追加ここまで ▲▲▲
     });
   </script>
 
