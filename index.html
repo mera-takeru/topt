@@ -110,66 +110,65 @@
         backBtn.style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
       }
 
-       function calculateAndRedirect() { // async は不要なので削除
-          if (isSubmitting) return; // 既に処理中なら何もしない
-          isSubmitting = true;     // 処理を開始
-        
-          // (診断結果を計算する部分は、これまで通り)
-          const tieBreakerOrder = [
-            "C", "am", "G", "em", "F", "dm", "D", "bm", "B♭", "gm",
-            "A", "f♯m", "E♭", "cm", "E", "c♯m", "A♭", "fm",
-            "B", "g♯m", "D♭", "b♭m", "F♯", "e♭m"
-          ];
-          const totals = {};
-          questions.forEach((q, qi) => {
-            const selectedOptionIndex = userAnswers[qi];
-            if (selectedOptionIndex !== null) {
-              const points = q.options[selectedOptionIndex].points;
-              Object.entries(points).forEach(([key, value]) => {
-                totals[key] = (totals[key] || 0) + value;
-              });
-            }
-          });
-          if (Object.keys(totals).length === 0) {
-            alert('エラーが発生しました。もう一度お試しください。');
-            showScreen(startScreen);
-            isSubmitting = false;
-            return;
+       function calculateAndRedirect() {
+        if (isSubmitting) return;
+        isSubmitting = true;
+
+        // --- 診断結果の計算ロジック（ここは変更なし） ---
+        const tieBreakerOrder = ["C", "am", "G", "em", "F", "dm", "D", "bm", "B♭", "gm", "A", "f♯m", "E♭", "cm", "E", "c♯m", "A♭", "fm", "B", "g♯m", "D♭", "b♭m", "F♯", "e♭m"];
+        const totals = {};
+        questions.forEach((q, qi) => {
+          const selectedOptionIndex = userAnswers[qi];
+          if (selectedOptionIndex !== null) {
+            const points = q.options[selectedOptionIndex].points;
+            Object.entries(points).forEach(([key, value]) => {
+              totals[key] = (totals[key] || 0) + value;
+            });
           }
-          const maxScore = Math.max(...Object.values(totals));
-          const tiedResults = Object.keys(totals).filter(key => totals[key] === maxScore);
-          let resultKey;
-          if (tiedResults.length > 1) {
-            resultKey = tieBreakerOrder.find(key => tiedResults.includes(key));
-          } else {
-            resultKey = tiedResults[0];
-          }
-        
-          if (resultKey) {
-            try {
-              const webAppUrl = 'https://script.google.com/macros/s/AKfycby85hMd3E8tD_p5JGqQG_eG4PMW-TFCg0EHhSOY7Eoht-CSoiDuG_2eqfgBWOvYaOM/exec';
-              
-              fetch(webAppUrl, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: JSON.stringify({ partonal: resultKey }),
-              });
-        
-            } catch (error) {
-              console.error('結果の送信に失敗しました:', error);
+        });
+        if (Object.keys(totals).length === 0) {
+          alert('エラーが発生しました。もう一度お試しください。');
+          showScreen(startScreen);
+          isSubmitting = false;
+          return;
+        }
+        const maxScore = Math.max(...Object.values(totals));
+        const tiedResults = Object.keys(totals).filter(key => totals[key] === maxScore);
+        let resultKey;
+        if (tiedResults.length > 1) {
+          resultKey = tieBreakerOrder.find(key => tiedResults.includes(key));
+        } else {
+          resultKey = tiedResults[0];
+        }
+        // --- 計算ロジックここまで ---
+
+        if (resultKey) {
+          try {
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycby85hMd3E8tD_p5JGqQG_eG4PMW-TFCg0EHhSOY7Eoht-CSoiDuG_2eqfgBWOvYaOM/exec';
+            const data = JSON.stringify({ partonal: resultKey });
+
+            // ■■■【ここを修正】fetchからsendBeaconに変更 ■■■
+            // これにより、ページ遷移を待たずにバックグラウンドで安全にデータを送信できる
+            if (navigator.sendBeacon) {
+              navigator.sendBeacon(webAppUrl, data);
+            } else {
+              // sendBeaconが使えない古いブラウザのための予備処理
+              fetch(webAppUrl, { method: 'POST', body: data, mode: 'no-cors', keepalive: true });
             }
+            // ■■■【修正ここまで】■■■
             
-            const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
-            window.location.href = `${fileName}.html`;
-        
-          } else {
-            alert('エラーが発生しました。もう一度お試しください。');
-            showScreen(startScreen);
-            isSubmitting = false;
+          } catch (error) {
+            console.error('結果の送信に失敗しました:', error);
           }
+          
+          const fileName = resultKey.replace('♯', 's').replace('♭', 'b');
+          window.location.href = `${fileName}.html`;
+      
+        } else {
+          alert('エラーが発生しました。もう一度お試しください。');
+          showScreen(startScreen);
+          isSubmitting = false;
+        }
       }
     
       startBtn.onclick = () => {
