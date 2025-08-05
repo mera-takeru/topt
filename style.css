@@ -377,10 +377,10 @@ a {
 
 #lucky-pertonal-display span {
   color: #fff;
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 8px;
+  font-size: 1.5rem;      /* 診断結果タイトルと同じサイズに */
+  font-weight: 700;       /* 診断結果タイトルと同じ太さに */
+  padding: 2px 12px;      /* 余白を診断結果タイトルに近づける（左右は少し広め） */
+  border-radius: 4px;     /* 診断結果タイトルと同じ角丸に */
   text-shadow: -1px -1px 0 #000, 0 -1px 0 #000, 1px -1px 0 #000, -1px 0 0 #000, 1px 0 0 #000, -1px 1px 0 #000, 0 1px 0 #000, 1px 1px 0 #000;
 }
 
