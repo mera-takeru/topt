@@ -440,9 +440,9 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
 
 /* 矢印のアニメーションを定義 */
 @keyframes arrow-blink {
-  0% { opacity: 0.2; }
+  0% { opacity: 0; }
   50% { opacity: 1; }
-  100% { opacity: 0.2; }
+  100% { opacity: 0; }
 }
 
 /* 矢印全体にアニメーションを適用 */
