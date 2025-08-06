@@ -448,16 +448,16 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
 /* 矢印全体にアニメーションを適用 */
 .arrows span {
   animation-name: arrow-blink;
-  animation-duration: 1.2s;
+  animation-duration: 3s;
   animation-iteration-count: infinite;
 }
 
 /* 左側の矢印（内側から光るように遅延を設定） */
 .arrows-left span:nth-child(3) {
-  animation-delay: 0.8s;
+  animation-delay: 2s;
 }
 .arrows-left span:nth-child(2) {
-  animation-delay: 0.4s;
+  animation-delay: 1s;
 }
 .arrows-left span:nth-child(1) {
   animation-delay: 0s;
@@ -465,10 +465,10 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
 
 /* 右側の矢印（内側から光るように遅延を設定） */
 .arrows-right span:nth-child(1) {
-  animation-delay: 0.8s;
+  animation-delay: 2s;
 }
 .arrows-right span:nth-child(2) {
-  animation-delay: 0.4s;
+  animation-delay: 1s;
 }
 .arrows-right span:nth-child(3) {
   animation-delay: 0s;
