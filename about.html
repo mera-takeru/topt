@@ -11,7 +11,23 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* 他の静的ページとスタイルを統一 */
+    :root {
+      --primary: #6C63FF;
+      --secondary: #FF6584;
+      --bg: #F9FAFB;
+      --text: #333;
+      --radius: 12px;
+      --transition: .3s;
+    }
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+      margin: 16px auto;
+    }
     .start-image {
       aspect-ratio: 3/1;
     }
