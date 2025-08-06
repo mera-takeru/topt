@@ -270,7 +270,13 @@ button:hover {
   border-radius: var(--radius);
   transition: background var(--transition), border-color var(--transition);
 }
-.options button:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+@media (hover: hover) {
+  .options button:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+  }
+}
 .nav { display: flex; justify-content: space-between; }
 
 /* 結果画面のボタン */
