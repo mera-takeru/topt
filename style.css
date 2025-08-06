@@ -50,7 +50,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  padding: 12px;
+  padding: 16px;
   animation: rainbow 8s ease infinite;
 }
 
