@@ -106,7 +106,7 @@ function renderResultContent(resultKey) {
 function addEventListeners(resultKey) {
   document.getElementById('shareXBtn').addEventListener('click', () => {
     const characterTitle = getCharacterTitle(resultKey);
-    const shareText = `私は${characterTitle}でした！音と色の性格診断「パートナル」であなたも診断しよう！`;
+    const shareText = `私は${characterTitle}です♪\nMBTIの次はコレ！✨音と色の性格診断「パートナル」🎼\nあなたは何型？👀`;
     const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(location.href)}`;
     window.open(shareUrl, '_blank');
   });
