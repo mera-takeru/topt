@@ -63,65 +63,37 @@ body {
 .container {
   width: 100%;
   max-width: 600px;
-  background: rgba(255, 255, 255);
+  background: white;
   border-radius: var(--radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   padding: 24px;
   margin: 12px auto;
 }
 
-header {
+header, footer {
   background: rgba(255, 255, 255, 0.9);
   padding: 12px;
-  border-bottom: 1px solid #ddd;
   width: 100%;
   text-align: center;
   box-sizing: border-box;
 }
 
-.header-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-}
-
-header .header-nav a {
-  text-decoration: none;
-  color: #000000 !important;
-  font-weight: 400;
-  font-size: 0.75rem;
-  padding: 0 6px;
-  transition: color var(--transition);
-}
-
-header .header-nav a:hover {
-  color: var(--secondary);
-}
-
-header .header-nav .divider {
-  color: #000000 !important;
-  font-size: 0.75rem;
-  font-weight: 400;
+header {
+  border-bottom: 1px solid #ddd;
 }
 
 footer {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 12px;
   border-top: 1px solid #ddd;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
 }
 
-.footer-nav {
+.header-nav, .footer-nav {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
 }
 
-footer .footer-nav a {
+.header-nav a, .footer-nav a {
   text-decoration: none;
   color: #000000 !important;
   font-weight: 400;
@@ -130,11 +102,11 @@ footer .footer-nav a {
   transition: color var(--transition);
 }
 
-footer .footer-nav a:hover {
+.header-nav a:hover, .footer-nav a:hover {
   color: var(--secondary);
 }
 
-footer .footer-nav .divider {
+.header-nav .divider, .footer-nav .divider {
   color: #000000 !important;
   font-size: 0.75rem;
   font-weight: 400;
@@ -155,7 +127,7 @@ footer .footer-nav .divider {
 h1 {
   text-align: center;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 24px; /* ★修正：タイトルと動画の間の余白を確保 */
   color: var(--primary);
 }
 
@@ -253,16 +225,19 @@ button:hover {
 /* 診断開始ボタン */
 #startBtn {
   width: 100%;
-  margin-top: 12px;
-  margin-bottom: 8px; /* 以前の会話で調整した値 */
+  margin: 0; /* ★修正：個別marginをリセット */
 }
 
 /* 診断画面 */
-.screen {
-  display: none;
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* メインページの各要素の間の余白を統一 */
+#startScreen > * {
+  margin-bottom: 16px; /* ★追加：各要素の下に16pxの余白を標準設定 */
 }
-.screen.active {
-  display: block;
+#startScreen > *:last-child {
+  margin-bottom: 0; /* ★追加：最後の要素の余白は削除 */
 }
 
 /* プログレスバー */
@@ -281,22 +256,10 @@ button:hover {
 }
 
 /* 質問画面 */
-.question h2 {
-  font-size: 1.25rem;
-  margin-bottom: 12px;
-}
-.options {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 12px;
-}
-.options li {
-  margin-bottom: 12px;
-}
-.options li.selected button {
-  background: var(--secondary);
-  color: #fff;
-}
+.question h2 { font-size: 1.25rem; margin-bottom: 12px; }
+.options { list-style: none; padding: 0; margin-bottom: 12px; }
+.options li { margin-bottom: 12px; }
+.options li.selected button { background: var(--secondary); color: #fff; }
 .options button {
   width: 100%;
   text-align: left;
@@ -307,124 +270,54 @@ button:hover {
   border-radius: var(--radius);
   transition: background var(--transition), border-color var(--transition);
 }
-.options button:hover {
-  background: var(--primary);
-  color: #fff;
-  border-color: var(--primary);
-}
-.nav {
-  display: flex;
-  justify-content: space-between;
-}
+.options button:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+.nav { display: flex; justify-content: space-between; }
 
 /* 結果画面のボタン */
-.share-row, .goods-row, .restart-row {
-  display: flex;
-  width: 100%;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  flex-wrap: nowrap;
-}
-.share-row button, .goods-row button, .restart-row button {
-  flex: 1;
-}
-#shareXBtn {
-  background: #1DA1F2;
-}
-#goodsBtn {
-  background: var(--primary);
-  color: #fff;
-  flex: 1;
-}
-#goodsBtn:hover {
-  background: var(--secondary);
-  transform: scale(1.02);
-}
-.restart-row button {
-  flex: 1;
-  background: #fff;
-  color: var(--primary);
-  border: 1px solid var(--primary);
-}
+.share-row, .goods-row, .restart-row { display: flex; width: 100%; margin-top: 12px; margin-bottom: 12px; flex-wrap: nowrap; }
+.share-row button, .goods-row button, .restart-row button { flex: 1; }
+#shareXBtn { background: #1DA1F2; }
+#goodsBtn { background: var(--primary); color: #fff; flex: 1; }
+#goodsBtn:hover { background: var(--secondary); transform: scale(1.02); }
+.restart-row button { flex: 1; background: #fff; color: var(--primary); border: 1px solid var(--primary); }
 
 /* 画像コンテナ */
 .start-image, .result-image {
   width: 100%;
   background: #ecebff;
   border-radius: var(--radius);
-  margin-bottom: 12px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 3 / 2; 
+  margin-bottom: 0; /* ★修正：個別marginをリセット */
 }
-.start-image picture, .start-image img, .start-image video {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-.result-image {
-  aspect-ratio: 4 / 3;
-}
-.result-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.start-image picture, .start-image img, .start-image video { width: 100%; height: auto; object-fit: contain; }
+.result-image { aspect-ratio: 4 / 3; }
+.result-image img { width: 100%; height: 100%; object-fit: cover; }
 
 /* アコーディオン (詳しく見る) */
-.accordion {
-  margin-bottom: 12px;
-}
+.accordion { margin-bottom: 12px; }
 .accordion-toggle {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: var(--radius);
-  cursor: pointer;
-  font-size: 1rem;
-  margin-top: 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  transition: background var(--transition), transform var(--transition);
+  background: var(--primary); color: #fff; border: none; padding: 6px 12px; border-radius: var(--radius);
+  cursor: pointer; font-size: 1rem; margin-top: 12px; display: inline-flex;
+  align-items: center; gap: 12px; transition: background var(--transition), transform var(--transition);
 }
-.accordion-toggle:hover {
-  background: var(--secondary);
-  transform: scale(1.02);
-}
-.accordion-toggle .arrow {
-  font-size: 0.9rem;
-}
+.accordion-toggle:hover { background: var(--secondary); transform: scale(1.02); }
+.accordion-toggle .arrow { font-size: 0.9rem; }
 .accordion-content {
-  margin-top: 12px;
-  font-size: 1rem;
-  line-height: 1.5;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  margin-top: 12px; font-size: 1rem; line-height: 1.5; max-height: 0;
+  opacity: 0; overflow: hidden; transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
 }
-.accordion-content.open {
-  opacity: 1;
-  max-height: 1000px; 
-}
+.accordion-content.open { opacity: 1; max-height: 1000px; }
 
 /* その他パーツ */
 .color-name {
-  font-weight: 600;
-  border: 1px solid #ddd;
-  padding: 2px 8px;
-  border-radius: 4px;
+  font-weight: 600; border: 1px solid #ddd; padding: 2px 8px; border-radius: 4px;
   text-shadow: -1px -1px 0 #000, 0 -1px 0 #000, 1px -1px 0 #000, -1px 0 0 #000, 1px 0 0 #000, -1px 1px 0 #000, 0 1px 0 #000, 1px 1px 0 #000;
 }
-hr {
-  border: 0;
-  border-top: 1px solid #ddd;
-  margin: 12px 0;
-}
+hr { border: 0; border-top: 1px solid #ddd; margin: 12px 0; }
 
 /* ======================================= */
 /* 6. 今日のラッキーパートナル (PC)
@@ -432,7 +325,7 @@ hr {
 #lucky-pertonal-section {
   width: 100%;
   max-width: 600px;
-  margin: 6px auto 12px;
+  margin: 24px auto 12px; /* ★修正：メインカラムとの間に24pxの余白を確保 */
   padding: 12px;
   background: #fff;
   border-radius: var(--radius);
@@ -442,177 +335,72 @@ hr {
 }
 
 #lucky-pertonal-section h3 {
-  font-weight: bold;
-  font-size: 1.5rem;
-  margin-bottom: 12px;
-  color: #D4AF37;
+  font-weight: bold; font-size: 1.5rem; margin-bottom: 12px; color: #D4AF37;
   background: linear-gradient(180deg, #F7E8A6 20%, #C0A060 80%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-#lucky-pertonal-display {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
+#lucky-pertonal-display { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; }
 #lucky-pertonal-display span {
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: 700;
-  padding: 2px 12px;
-  border-radius: 4px;
+  color: #fff; font-size: 1.5rem; font-weight: 700; padding: 2px 12px; border-radius: 4px;
   text-shadow: -1px -1px 0 #000, 0 -1px 0 #000, 1px -1px 0 #000, -1px 0 0 #000, 1px 0 0 #000, -1px 1px 0 #000, 0 1px 0 #000, 1px 1px 0 #000;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  position: relative; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); transition: transform 0.2s ease;
 }
-
-#lucky-pertonal-display span:active {
-  transform: scale(0.98);
-}
-
+#lucky-pertonal-display span:active { transform: scale(0.98); }
 #lucky-pertonal-display span::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -85%;
-  width: 50%;
-  height: 100%;
+  content: ''; position: absolute; top: 0; left: -85%; width: 50%; height: 100%;
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
-  transform: skewX(-25deg);
-  animation: shine 5s infinite;
+  transform: skewX(-25deg); animation: shine 5s infinite;
 }
-
-@keyframes shine {
-  0% { left: -85%; }
-  20% { left: 120%; }
-  100% { left: 120%; }
-}
+@keyframes shine { 0% { left: -85%; } 20% { left: 120%; } 100% { left: 120%; } }
 
 /* ======================================= */
 /* 7. 静的ページ用スタイル (PC)
 /* ======================================= */
-.content h2 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.content h2::before {
-  font-size: 1.5rem;
-}
-
-.content p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text);
-  margin-bottom: 12px;
-}
-
-.content ul {
-  list-style: disc;
-  margin-left: 12px;
-  margin-bottom: 12px;
-}
-
-.content li {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text);
-  margin-bottom: 12px;
-}
-
+.content h2 { font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.content h2::before { font-size: 1.5rem; }
+.content p { font-size: 1rem; line-height: 1.6; color: var(--text); margin-bottom: 12px; }
+.content ul { list-style: disc; margin-left: 12px; margin-bottom: 12px; }
+.content li { font-size: 1rem; line-height: 1.6; color: var(--text); margin-bottom: 12px; }
 .type-image {
-  width: 100%;
-  background: #ecebff;
-  border-radius: var(--radius);
-  margin-bottom: 12px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 4/3;
+  width: 100%; background: #ecebff; border-radius: var(--radius); margin-bottom: 12px;
+  overflow: hidden; display: flex; align-items: center; justify-content: center; aspect-ratio: 4/3;
 }
-
-.type-image picture, .type-image img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
+.type-image picture, .type-image img { width: 100%; height: auto; object-fit: contain; }
 button.back-btn {
-  font: inherit;
-  font-size: 1rem;
-  padding: 12px 20px;
-  border: none;
-  border-radius: var(--radius);
-  background: var(--primary);
-  color: #fff;
-  cursor: pointer;
+  font: inherit; font-size: 1rem; padding: 12px 20px; border: none; border-radius: var(--radius);
+  background: var(--primary); color: #fff; cursor: pointer;
   transition: background var(--transition), transform var(--transition);
-  width: 100%;
-  margin-top: 12px;
+  width: 100%; margin-top: 12px;
 }
-
-button.back-btn:hover {
-  background: var(--secondary);
-  transform: scale(1.02);
-}
+button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
 
 /* ======================================= */
 /* 8. レスポンシブスタイル (スマホ用)
 /* ======================================= */
-
-/* 画面幅が600px以下の場合 */
 @media (max-width: 600px) {
-  .container {
-    padding: 12px;
-  }
-  .start-image {
-    aspect-ratio: 1 / 1;
-  }
-  .result-image {
-    aspect-ratio: 4 / 3; 
-  }
-  .title-english {
-    font-size: 2rem;
-  }
-  .title-japanese {
-    font-size: 1.25rem;
-  }
-  .content h2 {
-    font-size: 1.25rem;
-  }
-  .content p, .content li, .content dt, .content dd {
-    font-size: 1rem;
-  }
-  button.back-btn {
-    font-size: 1rem;
-    padding: 12px 12px;
-  }
-  #startBtn {
-    margin-top: 8px;
-    margin-bottom: 12px;
-  }
+  /* レイアウト */
+  .container { padding: 16px; }
+
+  /* トップページ */
+  .start-image { aspect-ratio: 1 / 1; }
+  
+  /* 結果ページ */
+  .result-image { aspect-ratio: 4 / 3; }
+  
+  /* テキスト */
+  .title-english { font-size: 2rem; }
+  .title-japanese { font-size: 1.25rem; }
+
+  /* 静的ページ */
+  .content h2 { font-size: 1.25rem; }
+  .content p, .content li, .content dt, .content dd { font-size: 1rem; }
+  button.back-btn { padding: 12px; }
 }
 
-/* 画面幅が480px以下の場合 */
 @media (max-width: 480px) {
-  #lucky-pertonal-display {
-    gap: 8px;
-  }
-  #lucky-pertonal-display span {
-    font-size: 1rem;
-    padding: 6px 12px;
-  }
+  /* ラッキーパートナル */
+  #lucky-pertonal-display { gap: 8px; }
+  #lucky-pertonal-display span { font-size: 1rem; padding: 6px 12px; }
 }
