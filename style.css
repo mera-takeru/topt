@@ -403,6 +403,11 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
   button.back-btn { padding: 12px; }
 }
 
+ #lucky-pertonal-section h3 {
+    font-size: 1.2rem; /* スマホ表示の際の文字サイズを小さくする */
+  }
+}
+
 @media (max-width: 480px) {
   /* ラッキーパートナル */
   #lucky-pertonal-display { gap: 8px; }
