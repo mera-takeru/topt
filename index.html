@@ -245,6 +245,20 @@
       // ページが読み込まれたらラッキーパートナルを表示
       displayLuckyPertonal();
     });
+
+      // --- ここからが動画再生の不具合対策コードです ---
+      const videoElement = document.querySelector('#startScreen video');
+      if (videoElement) {
+        // ページが読み込まれたときに再生を試みる
+        videoElement.play().catch(error => {
+          // 自動再生が失敗した場合（特にiOS Chromeでよくある）
+          console.log("Autoplay failed, waiting for user interaction.", error);
+          // ユーザーが画面を一度でも触ったら、再度再生を試みる
+          document.body.addEventListener('touchstart', () => {
+            videoElement.play();
+          }, { once: true });
+        });
+      }
   </script>
 
 </body>
