@@ -438,37 +438,45 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
   gap: 8px; /* 文字と矢印の間の隙間 */
 }
 
-/* 矢印のアニメーションを定義 */
-@keyframes arrow-blink {
-  0%, 49% { opacity: 1; }  /* アニメーションの前半は、常に表示された状態 */
-  50%, 100% { opacity: 0; } /* アニメーションの後半は、常に消えた状態 */
-}
-
-/* 矢印全体にアニメーションを適用 */
+/* アニメーションの基本設定 */
 .arrows span {
-  animation-name: arrow-blink;
-  animation-duration: 5s;
-  animation-iteration-count: infinite;
+  opacity: 0; /* 最初は非表示 */
+  animation-duration: 3s; /* アニメーション全体の長さを3秒に設定 */
+  animation-iteration-count: infinite; /* 無限に繰り返す */
 }
 
-/* 左側の矢印（内側から光るように遅延を設定） */
-.arrows-left span:nth-child(3) {
-  animation-delay: 2s;
-}
-.arrows-left span:nth-child(2) {
-  animation-delay: 1s;
-}
-.arrows-left span:nth-child(1) {
-  animation-delay: 0s;
+/* 1秒目に点滅するアニメーション */
+@keyframes blink-first-second {
+  0%, 33.3% { opacity: 1; }
+  33.4%, 100% { opacity: 0; }
 }
 
-/* 右側の矢印（内側から光るように遅延を設定） */
-.arrows-right span:nth-child(1) {
-  animation-delay: 2s;
+/* 2秒目に点滅するアニメーション */
+@keyframes blink-second-second {
+  33.4%, 66.6% { opacity: 1; }
+  0%, 33.3%, 66.7%, 100% { opacity: 0; }
 }
-.arrows-right span:nth-child(2) {
-  animation-delay: 1s;
+
+/* 3秒目に点滅するアニメーション */
+@keyframes blink-third-second {
+  66.7%, 99.9% { opacity: 1; }
+  0%, 66.6%, 100% { opacity: 0; }
 }
+
+/* 1秒目：一番外側の矢印を点滅させる */
+.arrows-left span:nth-child(1),
 .arrows-right span:nth-child(3) {
-  animation-delay: 0s;
+  animation-name: blink-first-second;
+}
+
+/* 2秒目：真ん中の矢印を点滅させる */
+.arrows-left span:nth-child(2),
+.arrows-right span:nth-child(2) {
+  animation-name: blink-second-second;
+}
+
+/* 3秒目：一番内側の矢印を点滅させる */
+.arrows-left span:nth-child(3),
+.arrows-right span:nth-child(1) {
+  animation-name: blink-third-second;
 }
