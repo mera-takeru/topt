@@ -454,22 +454,22 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
 
 /* 左側の矢印（内側から光るように遅延を設定） */
 .arrows-left span:nth-child(3) {
-  animation-delay: 0s;
+  animation-delay: 0.8s;
 }
 .arrows-left span:nth-child(2) {
-  animation-delay: 0.2s;
+  animation-delay: 0.4s;
 }
 .arrows-left span:nth-child(1) {
-  animation-delay: 0.4s;
+  animation-delay: 0s;
 }
 
 /* 右側の矢印（内側から光るように遅延を設定） */
 .arrows-right span:nth-child(1) {
-  animation-delay: 0s;
+  animation-delay: 0.8s;
 }
 .arrows-right span:nth-child(2) {
-  animation-delay: 0.2s;
+  animation-delay: 0.4s;
 }
 .arrows-right span:nth-child(3) {
-  animation-delay: 0.4s;
+  animation-delay: 0s;
 }
