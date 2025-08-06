@@ -511,7 +511,7 @@ button.back-btn:hover {
 #lucky-pertonal-section {
   width: 100%;
   max-width: 600px;
-  margin: 12px auto;
+  margin: 6px auto 12px;
   padding: 12px;
   background: #fff;
   border-radius: var(--radius);
