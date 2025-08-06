@@ -426,6 +426,19 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
   text-align: left;  /* ← この行を追加して右揃えにします */
 }
 
+はい、承知いたしました。
+「常に薄く矢印が見えていて、そのうちの1ペアだけが順番に点灯するループアニメーション」ですね。今度こそ、ご希望通りの動きになるよう修正します。
+
+何度も修正をお願いすることになり、大変申し訳ありません。
+
+修正方法
+style.cssファイルを開きます。
+
+ファイルの一番最後にある**「10. 診断開始ボタンのアニメーション」のセクションを、以下の「修正後のコード」に丸ごと置き換え**てください。
+
+修正後のコード (これを丸ごと置き換え)
+CSS
+
 /* ======================================= */
 /* 10. 診断開始ボタンのアニメーション
 /* ======================================= */
@@ -438,35 +451,47 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
   gap: 8px; /* 文字と矢印の間の隙間 */
 }
 
-/* 矢印の点滅アニメーションを定義 */
-@keyframes simple-blink {
-  0%, 100% { opacity: 0.2; } /* 開始と終了時は薄く表示 */
-  50% { opacity: 1; }      /* 中間で完全に表示 */
-}
-
-/* 矢印の基本設定 */
+/* 矢印の基本状態 */
 .arrows span {
-  opacity: 0.2; /*常に薄く表示させておく*/
-  animation-name: simple-blink;
-  animation-duration: 1s; /* 1回の点滅は1秒 */
+  opacity: 0.2; /* 常に薄く表示 */
+  animation-duration: 3s; /* アニメーション全体の長さを3秒に設定 */
   animation-iteration-count: infinite; /* 無限に繰り返す */
 }
 
-/* 1秒ごとに点滅のタイミングをずらす */
-/* 1番目の矢印（両端） */
+/* 1秒目に点灯するアニメーション */
+@keyframes blink-step-1 {
+  0%, 33.3% { opacity: 1; } /* 0秒から1秒の間だけ点灯 */
+  33.4%, 100% { opacity: 0.2; } /* それ以外は薄く表示 */
+}
+
+/* 2秒目に点灯するアニメーション */
+@keyframes blink-step-2 {
+  0%, 33.3% { opacity: 0.2; }
+  33.4%, 66.6% { opacity: 1; } /* 1秒から2秒の間だけ点灯 */
+  66.7%, 100% { opacity: 0.2; }
+}
+
+/* 3秒目に点灯するアニメーション */
+@keyframes blink-step-3 {
+  0%, 66.6% { opacity: 0.2; }
+  66.7%, 99.9% { opacity: 1; } /* 2秒から3秒の間だけ点灯 */
+  100% { opacity: 0.2; }
+}
+
+/* 1秒目：一番外側の矢印を点滅させる */
 .arrows-left span:nth-child(1),
 .arrows-right span:nth-child(3) {
-  animation-delay: 0s;
+  animation-name: blink-step-1;
 }
 
-/* 2番目の矢印 */
+/* 2秒目：真ん中の矢印を点滅させる */
 .arrows-left span:nth-child(2),
 .arrows-right span:nth-child(2) {
-  animation-delay: 1s;
+  animation-name: blink-step-2;
 }
 
-/* 3番目の矢印（中央側） */
+/* 3秒目：一番内側の矢印を点滅させる */
 .arrows-left span:nth-child(3),
 .arrows-right span:nth-child(1) {
-  animation-delay: 2s;
+  animation-name: blink-step-3;
 }
