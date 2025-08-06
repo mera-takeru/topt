@@ -325,20 +325,21 @@ hr { border: 0; border-top: 1px solid #ddd; margin: 12px 0; }
 #lucky-pertonal-section {
   width: 100%;
   max-width: 600px;
-  margin: 24px auto 12px; /* ★修正：メインカラムとの間に24pxの余白を確保 */
+  margin: 24px auto 12px;
   padding: 12px;
   background: #fff;
   border-radius: var(--radius);
   text-align: center;
-  border: 2px solid #D4AF37;
-  box-shadow: 0 0 15px rgba(225, 190, 100, 0.6), 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 2px solid var(--secondary); /* 金色の線をピンク色に変更 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 金色の影を削除し、他の要素と統一 */
 }
 
 #lucky-pertonal-section h3 {
-  font-weight: bold; font-size: 1.5rem; margin-bottom: 12px; color: #D4AF37;
-  background: linear-gradient(180deg, #F7E8A6 20%, #C0A060 80%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: var(--secondary); /* 金色の文字をピンク色に変更 */
+  /* 金色のグラデーションと影に関する指定を削除 */
 }
 
 #lucky-pertonal-display { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; }
