@@ -408,3 +408,15 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
   #lucky-pertonal-display { gap: 8px; }
   #lucky-pertonal-display span { font-size: 1rem; padding: 6px 12px; }
 }
+
+/* ======================================= */
+/* 9. ラッキーパートナル説明文のスタイル
+/* ======================================= */
+.lucky-description {
+  font-size: 0.875rem; /* 少し小さめの文字サイズ */
+  line-height: 1.6;   /* 行間を読みやすく調整 */
+  color: var(--text); /* 基本のテキストカラー */
+  margin-bottom: 16px;/* パートナル表示との間に余白を確保 */
+  padding: 0 12px;    /* 左右に少し余白をとって中央に寄せる */
+}
+
