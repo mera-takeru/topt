@@ -425,3 +425,38 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
   padding: 0 12px;    /* 左右に少し余白をとって中央に寄せる */
   text-align: left;  /* ← この行を追加して右揃えにします */
 }
+
+/* ======================================= */
+/* 10. 診断開始ボタンのアニメーション
+/* ======================================= */
+
+/* ボタン内の要素を横並びにする設定 */
+#startBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* 文字と矢印の間の隙間 */
+}
+
+/* 矢印のアニメーションを定義 */
+@keyframes arrow-blink {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+/* 矢印全体にアニメーションを適用 */
+.arrows span {
+  animation-name: arrow-blink;
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+}
+
+/* 矢印が順番に光るように、2番目と3番目のアニメーションを少し遅らせる */
+.arrows span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.arrows span:nth-child(3) {
+  animation-delay: 0.4s;
+}
