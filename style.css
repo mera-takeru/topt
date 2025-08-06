@@ -448,7 +448,7 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
 /* 矢印全体にアニメーションを適用 */
 .arrows span {
   animation-name: arrow-blink;
-  animation-duration: 3s;
+  animation-duration: 4s;
   animation-iteration-count: infinite;
 }
 
