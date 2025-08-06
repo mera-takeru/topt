@@ -335,11 +335,14 @@ hr { border: 0; border-top: 1px solid #ddd; margin: 12px 0; }
 }
 
 #lucky-pertonal-section h3 {
-  font-weight: bold;
+  font-weight: 700; /* 太さを700に指定 */
   font-size: 1.5rem;
   margin-bottom: 12px;
-  color: var(--secondary); /* 金色の文字をピンク色に変更 */
-  /* 金色のグラデーションと影に関する指定を削除 */
+  color: var(--secondary); /* ピンク色に設定 */
+  text-shadow: 
+    1px 1px 2px rgba(0, 0, 0, 0.3),
+    0 0 4px rgba(255, 255, 255, 0.5); /* メインタイトルと同じ影を追加 */
+  letter-spacing: 0.5px; /* メインタイトルと同じ文字間隔を追加 */
 }
 
 #lucky-pertonal-display { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; }
