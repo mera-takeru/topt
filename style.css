@@ -325,7 +325,7 @@ hr { border: 0; border-top: 1px solid #ddd; margin: 12px 0; }
 #lucky-pertonal-section {
   width: 100%;
   max-width: 600px;
-  margin: 16px auto 12px;
+  margin: 12px auto 12px;
   padding: 12px;
   background: #fff;
   border-radius: var(--radius);
