@@ -416,7 +416,6 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
   font-size: 0.875rem; /* 少し小さめの文字サイズ */
   line-height: 1.6;   /* 行間を読みやすく調整 */
   color: var(--text); /* 基本のテキストカラー */
-  margin-bottom: 16px;/* パートナル表示との間に余白を確保 */
+  margin-top: 16px;   /* ★修正：パートナル表示との間に上の余白を確保 */
   padding: 0 12px;    /* 左右に少し余白をとって中央に寄せる */
 }
-
