@@ -418,5 +418,5 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
   color: var(--text); /* 基本のテキストカラー */
   margin-top: 16px;   /* ★修正：パートナル表示との間に上の余白を確保 */
   padding: 0 12px;    /* 左右に少し余白をとって中央に寄せる */
-  text-align: right;  /* ← この行を追加して右揃えにします */
+  text-align: left;  /* ← この行を追加して右揃えにします */
 }
