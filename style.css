@@ -438,45 +438,35 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
   gap: 8px; /* 文字と矢印の間の隙間 */
 }
 
-/* アニメーションの基本設定 */
+/* 矢印の点滅アニメーションを定義 */
+@keyframes simple-blink {
+  0%, 100% { opacity: 0.2; } /* 開始と終了時は薄く表示 */
+  50% { opacity: 1; }      /* 中間で完全に表示 */
+}
+
+/* 矢印の基本設定 */
 .arrows span {
-  opacity: 0; /* 最初は非表示 */
-  animation-duration: 3s; /* アニメーション全体の長さを3秒に設定 */
+  opacity: 0.2; /*常に薄く表示させておく*/
+  animation-name: simple-blink;
+  animation-duration: 1s; /* 1回の点滅は1秒 */
   animation-iteration-count: infinite; /* 無限に繰り返す */
 }
 
-/* 1秒目に点滅するアニメーション */
-@keyframes blink-first-second {
-  0%, 33.3% { opacity: 1; }
-  33.4%, 100% { opacity: 0; }
-}
-
-/* 2秒目に点滅するアニメーション */
-@keyframes blink-second-second {
-  33.4%, 66.6% { opacity: 1; }
-  0%, 33.3%, 66.7%, 100% { opacity: 0; }
-}
-
-/* 3秒目に点滅するアニメーション */
-@keyframes blink-third-second {
-  66.7%, 99.9% { opacity: 1; }
-  0%, 66.6%, 100% { opacity: 0; }
-}
-
-/* 1秒目：一番外側の矢印を点滅させる */
+/* 1秒ごとに点滅のタイミングをずらす */
+/* 1番目の矢印（両端） */
 .arrows-left span:nth-child(1),
 .arrows-right span:nth-child(3) {
-  animation-name: blink-first-second;
+  animation-delay: 0s;
 }
 
-/* 2秒目：真ん中の矢印を点滅させる */
+/* 2番目の矢印 */
 .arrows-left span:nth-child(2),
 .arrows-right span:nth-child(2) {
-  animation-name: blink-second-second;
+  animation-delay: 1s;
 }
 
-/* 3秒目：一番内側の矢印を点滅させる */
+/* 3番目の矢印（中央側） */
 .arrows-left span:nth-child(3),
 .arrows-right span:nth-child(1) {
-  animation-name: blink-third-second;
+  animation-delay: 2s;
 }
