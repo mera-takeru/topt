@@ -1,3 +1,10 @@
+承知いたしました。各記事のタイトルの文字サイズを大きくし、タイトルの右側に表示される下向きの矢印を削除しました。
+
+具体的には、`blog.html`の`<style>`タグ内にあるCSSの`.blog-title`の`font-size`を`1.5rem`に変更し、矢印を非表示にするためのスタイルを追加しました。
+
+以下が修正後の`blog.html`のコードです。
+
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -336,7 +343,7 @@
       margin-bottom: 0;
     }
     .blog-title {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       font-weight: 700;
       margin: 0 0 8px 0;
       padding: 0;
@@ -348,6 +355,9 @@
     .blog-title a:hover {
       color: var(--secondary) !important;
       text-decoration: underline;
+    }
+    .blog-title::after {
+      content: none;
     }
     .blog-date {
       font-size: 0.875rem;
@@ -440,7 +450,7 @@
        <div class="blog-entry">
         <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
         <p class="blog-date">2025.08.15</p>
-        <p class="blog-snippet">なぜ音楽と性格診断だったのか？診断ロジックの裏側にある秘密を少しだけお話しします</p>
+        <p class="blog-snippet"><strong>なぜ音楽と性格診断だったのか？診断ロジックの裏側をお話しします</strong></p>
       </div>
 
        <div class="blog-entry">
@@ -559,3 +569,4 @@
   </script>
 </body>
 </html>
+```
