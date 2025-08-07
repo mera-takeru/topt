@@ -1,1 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>公式ブログ | pertonal -パートナル-</title>
+  <link rel="icon" href="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafkreigaj4jljhdjkoavf2tdarmpyzfalutwxnnmmhrb437soizt2peewe" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6C63FF;
+      --secondary: #FF6584;
+      --bg: #F9FAFB;
+      --text: #333;
+      --radius: 12px;
+      --transition: .3s;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: inherit !important;
+      text-decoration: none;
+    }
+    a:visited, a:link, a:active {
+      color: inherit !important;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(
+        45deg,
+        rgba(255, 99, 71, 0.2),
+        rgba(255, 165, 0, 0.2),
+        rgba(255, 255, 0, 0.2),
+        rgba(50, 205, 50, 0.2),
+        rgba(0, 191, 255, 0.2),
+        rgba(75, 0, 130, 0.2),
+        rgba(238, 130, 238, 0.2)
+      );
+      background-size: 400%;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 16px;
+      animation: rainbow 8s ease infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+      margin: 16px auto;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .header-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    header .header-nav a {
+      text-decoration: none;
+      color: #000000 !important;
+      font-weight: 400;
+      font-size: 0.75rem;
+      padding: 0 6px;
+      transition: color var(--transition);
+    }
+
+    header .header-nav a:hover {
+      color: var(--secondary);
+    }
+
+    header .header-nav a.active {
+      color: var(--secondary);
+    }
+
+    header .header-nav .divider {
+      color: #000000 !important;
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+
+    footer {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    footer .footer-nav a {
+      text-decoration: none;
+      color: #000000 !important;
+      font-weight: 400;
+      font-size: 0.75rem;
+      padding: 0 6px;
+      transition: color var(--transition);
+    }
+
+    footer .footer-nav a:hover {
+      color: var(--secondary);
+    }
+
+    footer .footer-nav .divider {
+      color: #000000 !important;
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+
+    .copyright {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: #000000;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    h1 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 24px; /* ← この数値を24pxに統一します */
+  color: var(--primary);
+　　 }
+
+    .title-topt {
+      text-align: center;
+      display: block;
+      margin-bottom: 8px;
+      color: var(--secondary);
+      text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.3),
+        0 0 4px rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.5px;
+    }
+
+    .title-english {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .title-japanese {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .title-sub {
+      font-size: 1rem;
+      display: block;
+    }
+
+    .start-image {
+      width: 100%;
+      background: #ecebff;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 3/1;
+    }
+
+    .start-image picture, .start-image img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .content h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+      margin-top: 8px;
+      cursor: pointer;
+      padding: 12px;
+      border-radius: var(--radius);
+      transition: background var(--transition);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .content h2:hover {
+      background: rgba(108, 99, 255, 0.1);
+    }
+
+    .content h2::after {
+      content: '▼';
+      font-size: 0.75rem;
+      transition: transform var(--transition);
+    }
+
+    .content h2.active::after {
+      transform: rotate(180deg);
+    }
+
+    .content .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition) ease-out;
+      margin-bottom: 8px;
+    }
+
+    .content .accordion-content.open {
+      max-height: 500px;
+    }
+
+    .content p {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .content .answer-label {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    .content p a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .content p a:hover {
+      color: var(--secondary);
+    }
+
+    button.back-btn {
+      font: inherit;
+      font-size: 1rem;
+      padding: 12px 20px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    button.back-btn:hover {
+      background: var(--secondary);
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 16px;
+      }
+      .start-image {
+        max-width: 100%;
+        margin-bottom: 12px;
+      }
+      .content h2 {
+        font-size: 1rem;
+      }
+      .content p {
+        font-size: 1rem;
+      }
+      button.back-btn {
+        font-size: 1rem;
+        padding: 10px 16px;
+      }
+      header .header-nav a {
+        font-size: 0.75rem;
+      }
+      header .header-nav .divider {
+        font-size: 0.75rem;
+      }
+      footer .footer-nav a {
+        font-size: 0.75rem;
+      }
+      footer .footer-nav .divider {
+        font-size: 0.75rem;
+      }
+      .copyright {
+        font-size: 0.75rem;
+      }
+      .title-english {
+        font-size: 2rem; 
+      }
+      .title-japanese {
+        font-size: 1.25rem; 
+      }
+    }
+
+    /* ▼▼▼ ブログ一覧用のスタイル ▼▼▼ */
+    .blog-entry {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+    }
+    .blog-entry:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .blog-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      padding: 0;
+      color: var(--primary);
+    }
+    .blog-title a {
+      text-decoration: none;
+    }
+    .blog-title a:hover {
+      color: var(--secondary) !important;
+      text-decoration: underline;
+    }
+    .blog-date {
+      font-size: 0.875rem;
+      color: #888;
+      margin: 0 0 12px 0;
+      padding: 0;
+    }
+    .blog-snippet {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    /* ▲▲▲ ここまで ▲▲▲ */
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7664351285167114"
+     crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M1HFSG9FVD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M1HFSG9FVD');
+
+  <link rel="canonical" href="https://pertonal.jp/blog.html">
+  
+</script>
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="./about.html">パートナルとは</a>
+      <span class="divider">|</span>
+      <a href="./faq.html" class="active">よくある質問</a>
+      <span class="divider">|</span>
+      <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>
+      <span class="title-topt">
+        <span class="title-english">pertonal</span>
+        <span class="title-japanese"> -パートナル-</span>
+      </span>
+      <span class="title-sub">「音」×「色」＝ New「性格診断」</span>
+    </h1>
+    
+　　　　<div class="blog-entry">
+        <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
+        <p class="blog-date">2025.08.15</p>
+        <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
+      </div>
+
+      <div class="blog-entry">
+        <h2 class="blog-title"><a href="./article-2.html">【C型】騎士を徹底解説！MBTI"管理者"との違いとは？</a></h2>
+        <p class="blog-date">2025.08.20</p>
+        <p class="blog-snippet">最も実直なタイプである【C型】騎士。その真面目さの根源はどこにあるのか。似ていると言われるMBTIのISTJタイプとの共通点と、決定的な違いを解説します…</p>
+      </div>
+    
+      <button class="back-btn" onclick="location.href='./index.html'">トップページに戻る</button>
+    </div>
+  </div>
+  <footer>
+    <nav class="footer-nav">
+      <a href="./terms.html">利用規約</a>
+      <span class="divider">|</span>
+      <a href="./privacy.html">プライバシーポリシー</a>
+      <span class="divider">|</span>
+      <a href="./operator.html">運営者情報</a>
+    </nav>
+    <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
+  </footer>
+  <script>
+    document.querySelectorAll('.content h2').forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        const isOpen = content.classList.contains('open');
+
+        // Close all other open accordion items
+        document.querySelectorAll('.accordion-content.open').forEach(openContent => {
+          openContent.classList.remove('open');
+          openContent.previousElementSibling.classList.remove('active');
+        });
+
+        // Toggle the clicked item
+        if (!isOpen) {
+          content.classList.add('open');
+          header.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
