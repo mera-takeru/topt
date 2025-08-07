@@ -362,18 +362,50 @@
       padding: 0;
     }
     /* ▲▲▲ ここまで ▲▲▲ */
+
+    /* ▼▼▼ ページネーション用のスタイル ▼▼▼ */
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 32px;
+    }
+
+    .pagination-container a {
+      color: var(--primary);
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color .3s;
+      border: 1px solid #ddd;
+      margin: 0 4px;
+      border-radius: 4px;
+    }
+
+    .pagination-container a.active {
+      background-color: var(--primary);
+      color: white !important;
+      border: 1px solid var(--primary);
+    }
+
+    .pagination-container a:hover:not(.active) {
+      background-color: #f2f2f2;
+    }
+
+    .pagination-container a.disabled {
+      color: #ccc !important;
+      pointer-events: none;
+    }
+    /* ▲▲▲ ここまで ▲▲▲ */
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7664351285167114"
      crossorigin="anonymous"></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M1HFSG9FVD"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M1HFSG9FVD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'G-M1HFSG9FVD');
-  
 </script>
 <link rel="canonical" href="https://pertonal.jp/blog.html">
 </head>
@@ -405,25 +437,25 @@
 
      <div class="content">
 
-       　<div class="blog-entry">
+       <div class="blog-entry">
         <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
         <p class="blog-date">2025.08.15</p>
         <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
       </div>
 
-       　<div class="blog-entry">
+       <div class="blog-entry">
         <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
         <p class="blog-date">2025.08.15</p>
         <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
       </div>
 
-       　<div class="blog-entry">
+       <div class="blog-entry">
         <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
         <p class="blog-date">2025.08.15</p>
         <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
       </div>
 
-       　<div class="blog-entry">
+       <div class="blog-entry">
         <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
         <p class="blog-date">2025.08.15</p>
         <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
@@ -446,9 +478,10 @@
         <p class="blog-date">2025.08.20</p>
         <p class="blog-snippet">最も実直なタイプである【C型】騎士。その真面目さの根源はどこにあるのか。似ていると言われるMBTIのISTJタイプとの共通点と、決定的な違いを解説します…</p>
       </div>
-
+      
        </div>
     
+      <div class="pagination-container"></div>
       <button class="back-btn" onclick="location.href='./index.html'">トップページに戻る</button>
     </div>
   </div>
@@ -463,23 +496,65 @@
     <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
   </footer>
   <script>
-    document.querySelectorAll('.content h2').forEach(header => {
-      header.addEventListener('click', () => {
-        const content = header.nextElementSibling;
-        const isOpen = content.classList.contains('open');
+    document.addEventListener('DOMContentLoaded', function () {
+      const articlesPerPage = 6;
+      const blogEntries = document.querySelectorAll('.blog-entry');
+      const paginationContainer = document.querySelector('.pagination-container');
+      const totalArticles = blogEntries.length;
+      const totalPages = Math.ceil(totalArticles / articlesPerPage);
+      let currentPage = 1;
 
-        // Close all other open accordion items
-        document.querySelectorAll('.accordion-content.open').forEach(openContent => {
-          openContent.classList.remove('open');
-          openContent.previousElementSibling.classList.remove('active');
+      function showPage(page) {
+        currentPage = page;
+        const startIndex = (page - 1) * articlesPerPage;
+        const endIndex = startIndex + articlesPerPage;
+
+        blogEntries.forEach((entry, index) => {
+          entry.style.display = (index >= startIndex && index < endIndex) ? 'block' : 'none';
         });
 
-        // Toggle the clicked item
-        if (!isOpen) {
-          content.classList.add('open');
-          header.classList.add('active');
+        renderPaginationControls();
+      }
+
+      function renderPaginationControls() {
+        paginationContainer.innerHTML = '';
+
+        const prevButton = document.createElement('a');
+        prevButton.href = '#';
+        prevButton.innerHTML = '&laquo; 前へ';
+        if (currentPage === 1) prevButton.classList.add('disabled');
+        prevButton.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (currentPage > 1) showPage(currentPage - 1);
+        });
+        paginationContainer.appendChild(prevButton);
+
+        for (let i = 1; i <= totalPages; i++) {
+          const pageLink = document.createElement('a');
+          pageLink.href = '#';
+          pageLink.textContent = i;
+          if (i === currentPage) pageLink.classList.add('active');
+          pageLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage(i);
+          });
+          paginationContainer.appendChild(pageLink);
         }
-      });
+
+        const nextButton = document.createElement('a');
+        nextButton.href = '#';
+        nextButton.innerHTML = '次へ &raquo;';
+        if (currentPage === totalPages) nextButton.classList.add('disabled');
+        nextButton.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (currentPage < totalPages) showPage(currentPage + 1);
+        });
+        paginationContainer.appendChild(nextButton);
+      }
+
+      if (totalArticles > articlesPerPage) {
+        showPage(1);
+      }
     });
   </script>
 </body>
