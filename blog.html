@@ -325,34 +325,35 @@
       }
     }
 
-   /* ▼▼▼ ブログ一覧用のスタイル（修正版）▼▼▼ */
+  /* ▼▼▼ ブログ一覧用のスタイル（修正版）▼▼▼ */
 .blog-entry {
   border-bottom: 1px solid #ddd;
-  padding-bottom: 16px; /* 区切り線の下の余白を調整 */
-  margin-bottom: 16px;  /* 記事と記事の間の空白を調整 */
+  padding-bottom: 24px;
+  margin-bottom: 24px;
 }
-.blog-entry:last-of-type { /* 表示されている最後の記事にのみ適用 */
-  margin-bottom: 0;
-  border-bottom: none;
+/* JavaScriptで制御するため、CSSでの最後の要素のスタイル指定は不要 */
+
+/* 汎用のh2スタイルに打ち勝つための、より詳細なセレクタ指定 */
+.content h2.blog-title {
+  font-size: 1.5rem;   /* ← タイトルサイズがここで変更されます */
+  margin-top: 0;       /* ← ★★★【最重要】ここで上部の余白を削除します★★★ */
+  padding: 0;          /* 共通スタイルによる内側の余白も削除 */
+  margin-bottom: 8px;  /* タイトルと日付の間の余白を再設定 */
+  font-weight: 700;
+  color: var(--primary);
+  cursor: default;     /* クリックできないようにカーソルを標準に */
 }
 
-/* 汎用のh2スタイルに打ち勝つよう、セレクタを詳細化 */
-.content .blog-title {
-  font-size: 1.5rem; /* ← ここでサイズが変更されます。1.8remなどお好みの数値にしてください */
-  font-weight: 700;
-  padding: 0;        /* 意図しない余白を削除 */
-  margin: 0 0 8px 0;
-  cursor: default;
-}
-.content .blog-title a:hover {
-  text-decoration: underline;
-}
-.content .blog-title::after {
-  content: none;
-}
-.content .blog-title:hover {
+/* 共通スタイルのマウスオーバー効果を無効化 */
+.content h2.blog-title:hover {
   background: transparent;
 }
+
+/* 共通スタイルの矢印を非表示に */
+.content h2.blog-title::after {
+  content: none;
+}
+
 .blog-date {
   font-size: 0.875rem;
   color: #888;
