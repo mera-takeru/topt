@@ -525,8 +525,24 @@
         const endIndex = startIndex + articlesPerPage;
 
         blogEntries.forEach((entry, index) => {
-          entry.style.display = (index >= startIndex && index < endIndex) ? 'block' : 'none';
+          // まず、全記事の余白設定をリセットしてCSSのデフォルト値に戻す
+          entry.style.marginBottom = '';
+
+          // ページに応じて表示・非表示を切り替え
+          if (index >= startIndex && index < endIndex) {
+            entry.style.display = 'block';
+          } else {
+            entry.style.display = 'none';
+          }
         });
+
+        // 表示されている記事グループの最後の記事のインデックスを計算
+        const lastVisibleIndex = Math.min(endIndex - 1, totalArticles - 1);
+
+        // その最後の記事が存在する場合、下の余白だけを0にする
+        if (lastVisibleIndex >= startIndex) {
+          blogEntries[lastVisibleIndex].style.marginBottom = '0';
+        }
 
         renderPaginationControls();
       }
