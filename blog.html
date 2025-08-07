@@ -325,46 +325,47 @@
       }
     }
 
-    /* ▼▼▼ ブログ一覧用のスタイル ▼▼▼ */
-    .blog-entry {
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 24px;
-      margin-bottom: 24px;
-    }
-    .blog-entry:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-    }
-    .blog-title {
-      font-size: 2rem;
-      font-weight: 700;
-      margin: 0 0 8px 0;
-      padding: 0;
-      color: var(--primary);
-    }
-    .blog-title a {
-      text-decoration: none;
-    }
-    .blog-title a:hover {
-      color: var(--secondary) !important;
-      text-decoration: underline;
-    }
-    .blog-title::after {
-      content: none !important;
-    }
-    .blog-date {
-      font-size: 0.875rem;
-      color: #888;
-      margin: 0 0 12px 0;
-      padding: 0;
-    }
-    .blog-snippet {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-    }
-    /* ▲▲▲ ここまで ▲▲▲ */
+   /* ▼▼▼ ブログ一覧用のスタイル（修正版）▼▼▼ */
+.blog-entry {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 16px; /* 区切り線の下の余白を調整 */
+  margin-bottom: 16px;  /* 記事と記事の間の空白を調整 */
+}
+.blog-entry:last-of-type { /* 表示されている最後の記事にのみ適用 */
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+/* 汎用のh2スタイルに打ち勝つよう、セレクタを詳細化 */
+.content .blog-title {
+  font-size: 1.5rem; /* ← ここでサイズが変更されます。1.8remなどお好みの数値にしてください */
+  font-weight: 700;
+  padding: 0;        /* 意図しない余白を削除 */
+  margin: 0 0 8px 0;
+  cursor: default;
+}
+.content .blog-title a:hover {
+  text-decoration: underline;
+}
+.content .blog-title::after {
+  content: none;
+}
+.content .blog-title:hover {
+  background: transparent;
+}
+.blog-date {
+  font-size: 0.875rem;
+  color: #888;
+  margin: 0 0 12px 0;
+  padding: 0;
+}
+.blog-snippet {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+/* ▲▲▲ ここまで ▲▲▲ */
 
     /* ▼▼▼ ページネーション用のスタイル ▼▼▼ */
     .pagination-container {
