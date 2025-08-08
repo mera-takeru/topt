@@ -18,8 +18,7 @@
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7664351285167114"
      crossorigin="anonymous"></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M1HFSG9FVD"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M1HFSG9FVD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -27,6 +26,46 @@
 
   gtag('config', 'G-M1HFSG9FVD');
 </script>
+
+<style>
+    /* ブログ紹介セクション用の追加CSS */
+    #blog-section {
+      width: 100%;
+      max-width: 600px;
+      margin: 12px auto 12px;
+      padding: 12px;
+      background: #fff;
+      border-radius: var(--radius);
+      text-align: center;
+      border: 4px solid var(--primary); /* テーマカラーを青に */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    #blog-section h3 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: var(--primary); /* テーマカラーを青に */
+      text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.3),
+        0 0 4px rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.5px;
+    }
+
+    .blog-description {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding: 0 12px;
+      text-align: left;
+    }
+
+    #blogBtn {
+      width: 100%;
+    }
+</style>
+
 </head>
 <body>
 
@@ -58,18 +97,18 @@
         </video>
       </div>
       <button id="startBtn">
-  <span class="arrows arrows-left">
-    <span>▶︎</span>
-    <span>▶︎</span>
-    <span>▶︎</span>
-  </span>
-  <span class="btn-text"> 今すぐ無料診断 </span>
-  <span class="arrows arrows-right">
-    <span>◀︎</span>
-    <span>◀︎</span>
-    <span>◀︎</span>
-  </span>
-</button>
+          <span class="arrows arrows-left">
+            <span>▶︎</span>
+            <span>▶︎</span>
+            <span>▶︎</span>
+          </span>
+          <span class="btn-text"> 今すぐ無料診断 </span>
+          <span class="arrows arrows-right">
+            <span>◀︎</span>
+            <span>◀︎</span>
+            <span>◀︎</span>
+          </span>
+      </button>
     </div>
 
     <div id="questionScreen" class="screen">
@@ -87,8 +126,13 @@
         <span id="lucky-pertonal-2"></span>
       </div>
      <p class="lucky-description">「ラッキーパートナル」は、調性の父・ラモーの誕生日を起点とするオリジナルの占いです。音楽理論に基づいて、幸運なパートナルのペアが日替わりで決まります。</p>
-    </div>
+  </div>
 
+  <div id="blog-section">
+    <h3>📝 開発者ブログ</h3>
+    <p class="blog-description">パートナルの開発秘話や、各タイプの詳しい解説、MBTIとの違いなどを発信しています。</p>
+    <button id="blogBtn" onclick="location.href='./blog.html'">ブログを見る</button>
+  </div>
   <footer>
     <nav class="footer-nav">
       <a href="./terms.html">利用規約</a><span class="divider">|</span>
@@ -202,6 +246,7 @@
 
       startBtn.onclick = () => {
         document.getElementById('lucky-pertonal-section').style.display = 'none';
+        document.getElementById('blog-section').style.display = 'none'; // ★★★ブログセクションも非表示に★★★
         currentQuestionIndex = 0;
         userAnswers.fill(null);
         renderQuestion();
@@ -238,7 +283,6 @@
 
         const luckyPair = pertonalPairs[luckyIndex];
         
-        // data.jsから称号（例：騎士）を取得する関数
         function getCharacterTitle(key) {
           const description = characterDescriptions[key];
           if (!description) return `【${key}型】`;
@@ -256,18 +300,14 @@
         luckyPertonal2.style.backgroundColor = personalityColors[luckyPair.minor].code;
       }
 
-      // ページが読み込まれたらラッキーパートナルを表示
       displayLuckyPertonal();
     });
 
       // --- ここからが動画再生の不具合対策コードです ---
       const videoElement = document.querySelector('#startScreen video');
       if (videoElement) {
-        // ページが読み込まれたときに再生を試みる
         videoElement.play().catch(error => {
-          // 自動再生が失敗した場合（特にiOS Chromeでよくある）
           console.log("Autoplay failed, waiting for user interaction.", error);
-          // ユーザーが画面を一度でも触ったら、再度再生を試みる
           document.body.addEventListener('touchstart', () => {
             videoElement.play();
           }, { once: true });
