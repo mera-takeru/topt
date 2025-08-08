@@ -37,15 +37,15 @@
       background: #fff;
       border-radius: var(--radius);
       text-align: center;
-      border: 4px solid var(--primary); /* テーマカラーを青に */
+      border: 4px solid var(--primary);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     #blog-section h3 {
       font-weight: 700;
-      font-size: 1.25rem;
+      font-size: 1.4rem;
       margin-bottom: 12px;
-      color: var(--primary); /* テーマカラーを青に */
+      color: var(--primary);
       text-shadow: 
         1px 1px 2px rgba(0, 0, 0, 0.3),
         0 0 4px rgba(255, 255, 255, 0.5);
@@ -88,7 +88,7 @@
 
     <div id="startScreen" class="screen active">
       <div class="start-image">
-        <video autoplay loop muted playsinline alt="メイン画像">
+        <video poster="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeieuvzjzjnxofrohvp5txmau6ormtlsyfwwry6vg56xq2c6eqhk4ou/1.jpg" data-poster-mobile="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeieuvzjzjnxofrohvp5txmau6ormtlsyfwwry6vg56xq2c6eqhk4ou/1_sp.jpg" autoplay loop muted playsinline alt="メイン画像">
           <source src="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeib3kzbq5ta26g6vdaeunl7x4ptcpvnjblmcbpimlvhdqkrm3atcni" media="(min-width: 601px)" type="video/webm">
           <source src="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeieecwryua54rzenirkaknhrknenmstocag6vbjykxdoxc7p3eswyq" media="(min-width: 601px)" type="video/mp4">
           <source src="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeidrzsmosxgysfoavp6nfzagrfw7lprzbztsjzp4dgnfthef7jrz3m" media="(max-width: 600px)" type="video/webm">
@@ -130,15 +130,10 @@
 
   <div id="blog-section">
     <h3>📝 開発者ブログ (近日公開)</h3>
-    <p class="blog-description">パートナルの開発秘話や各パートナルの詳細解説、相性診断などを発信予定です。どうぞお楽しみに！</p>
+    <p class="blog-description">パートナルの開発秘話や、各タイプの詳しい解説、MBTIとの違いなどを発信予定です。どうぞお楽しみに！</p>
     <button id="blogBtn" disabled style="background-color: #ccc; cursor: not-allowed;">準備中です</button>
   </div>
   
-  <!--　<div id="blog-section">
-    <h3>📝メラの開発者ブログ📝</h3>
-    <p class="blog-description">パートナルの開発秘話や各パートナルの詳細解説、相性診断などを発信していく予定です。</p>
-    <button id="blogBtn" onclick="location.href='./blog.html'">ブログを見る</button>　-->
-  </div>
   <footer>
     <nav class="footer-nav">
       <a href="./terms.html">利用規約</a><span class="divider">|</span>
@@ -152,7 +147,6 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // --- 診断クイズのプログラム (既存のまま) ---
       let currentQuestionIndex = 0;
       const userAnswers = Array(questions.length).fill(null);
       let isSubmitting = false;
@@ -252,7 +246,7 @@
 
       startBtn.onclick = () => {
         document.getElementById('lucky-pertonal-section').style.display = 'none';
-        document.getElementById('blog-section').style.display = 'none'; // ★★★ブログセクションも非表示に★★★
+        document.getElementById('blog-section').style.display = 'none';
         currentQuestionIndex = 0;
         userAnswers.fill(null);
         renderQuestion();
@@ -266,11 +260,9 @@
         }
       };
       
-      // --- ここからがラッキーパートナルのプログラムです ---
       function displayLuckyPertonal() {
         const startDate = new Date('1683-09-25T00:00:00Z');
         const now = new Date();
-        // タイムゾーンを日本時間に固定して今日の日付を取得
         const today = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Tokyo"}));
         today.setHours(0, 0, 0, 0);
 
@@ -307,11 +299,14 @@
       }
 
       displayLuckyPertonal();
-    });
-
-      // --- ここからが動画再生の不具合対策コードです ---
+      
       const videoElement = document.querySelector('#startScreen video');
       if (videoElement) {
+        const mobilePoster = videoElement.getAttribute('data-poster-mobile');
+        if (window.innerWidth <= 600 && mobilePoster) {
+          videoElement.setAttribute('poster', mobilePoster);
+        }
+
         videoElement.play().catch(error => {
           console.log("Autoplay failed, waiting for user interaction.", error);
           document.body.addEventListener('touchstart', () => {
@@ -319,6 +314,7 @@
           }, { once: true });
         });
       }
+    });
   </script>
 
 </body>
