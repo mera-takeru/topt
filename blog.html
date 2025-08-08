@@ -56,7 +56,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 16px; /* ★★★ 他のページと統一 ★★★ */
+      min-height: 100vh;
+      padding: 16px;
       animation: rainbow 8s ease infinite;
     }
 
@@ -70,9 +71,15 @@
       background: rgba(255, 255, 255, 0.9);
       padding: 12px;
       width: 100%;
-      max-width: 600px;
+      /* max-width: 600px; を削除 */
       text-align: center;
       box-sizing: border-box;
+    }
+    
+    .header-container, .footer-container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
     }
 
     header { border-bottom: 1px solid #ddd; }
@@ -270,6 +277,7 @@
     @media (max-width: 768px) {
       .main-layout {
         flex-direction: column;
+        padding: 0;
       }
       .sidebar {
         width: 100%;
@@ -288,13 +296,15 @@
 </head>
 <body>
   <header>
-    <nav class="header-nav">
-      <a href="./about.html">パートナルとは</a>
-      <span class="divider">|</span>
-      <a href="./faq.html" class="active">よくある質問</a>
-      <span class="divider">|</span>
-      <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
-    </nav>
+    <div class="header-container">
+        <nav class="header-nav">
+          <a href="./about.html">パートナルとは</a>
+          <span class="divider">|</span>
+          <a href="./faq.html" class="active">よくある質問</a>
+          <span class="divider">|</span>
+          <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
+        </nav>
+    </div>
   </header>
 
   <div class="main-layout">
@@ -441,14 +451,16 @@
   </div>
   
   <footer>
-    <nav class="footer-nav">
-      <a href="./terms.html">利用規約</a>
-      <span class="divider">|</span>
-      <a href="./privacy.html">プライバシーポリシー</a>
-      <span class="divider">|</span>
-      <a href="./operator.html">運営者情報</a>
-    </nav>
-    <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
+    <div class="footer-container">
+        <nav class="footer-nav">
+          <a href="./terms.html">利用規約</a>
+          <span class="divider">|</span>
+          <a href="./privacy.html">プライバシーポリシー</a>
+          <span class="divider">|</span>
+          <a href="./operator.html">運営者情報</a>
+        </nav>
+        <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
+    </div>
   </footer>
 
 <script>
