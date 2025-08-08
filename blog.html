@@ -53,6 +53,9 @@
       );
       background-size: 400%;
       color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: 16px;
       animation: rainbow 8s ease infinite;
     }
@@ -63,45 +66,24 @@
       100% { background-position: 0% 50%; }
     }
 
-    .page-container {
+    .page-wrapper {
       width: 100%;
-      max-width: 960px; /* 全体の横幅を少し広げる */
-      margin: 16px auto;
-    }
-    
-    .main-layout {
       display: flex;
-      gap: 24px;
-    }
-    
-    .main-content {
-      flex: 1; /* メインコンテンツが幅の大部分を占めるように */
-    }
-
-    .sidebar {
-      width: 280px; /* サイドバーの幅を固定 */
-      flex-shrink: 0;
-    }
-    
-    .blog-container {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: var(--radius);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      padding: 24px;
+      flex-direction: column;
+      align-items: center;
     }
 
     header, footer {
       background: rgba(255, 255, 255, 0.9);
       padding: 12px;
       width: 100%;
+      max-width: 600px; /* 他のページと幅を統一 */
       text-align: center;
       box-sizing: border-box;
-      max-width: 960px;
-      margin: 0 auto;
     }
 
-    header { border-bottom: 1px solid #ddd; border-radius: var(--radius) var(--radius) 0 0; }
-    footer { border-top: 1px solid #ddd; border-radius: 0 0 var(--radius) var(--radius); }
+    header { border-bottom: 1px solid #ddd; }
+    footer { border-top: 1px solid #ddd; }
 
     .header-nav, .footer-nav {
       display: flex;
@@ -121,6 +103,31 @@
     .header-nav .divider, .footer-nav .divider { font-size: 0.75rem; font-weight: 400; }
     .copyright { font-size: 0.75rem; font-weight: 400; text-align: center; margin-top: 8px; }
 
+    /* メインコンテンツエリア */
+    .main-layout {
+      display: flex;
+      gap: 24px;
+      width: 100%;
+      max-width: 960px; /* ブログ部分は広い幅を維持 */
+      margin: 16px 0;
+    }
+    
+    .main-content {
+      flex: 1;
+    }
+
+    .sidebar {
+      width: 280px;
+      flex-shrink: 0;
+    }
+    
+    .blog-container {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+    }
+
     /* ======================================= */
     /* 4. ブログ記事カードのデザイン
     /* ======================================= */
@@ -129,7 +136,7 @@
       border-radius: var(--radius);
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       margin-bottom: 24px;
-      overflow: hidden; /* 角丸を画像に適用するため */
+      overflow: hidden;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .blog-entry:hover {
@@ -287,7 +294,7 @@
 <link rel="canonical" href="https://pertonal.jp/blog.html">
 </head>
 <body>
-<div class="page-container">
+<div class="page-wrapper">
   <header>
     <nav class="header-nav">
       <a href="./about.html">パートナルとは</a>
@@ -455,8 +462,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const articlesPerPage = 6;
-      // 記事一覧のコンテナを正しく指定
+      const articlesPerPage = 3; // ★★★ 6から3に変更 ★★★
       const blogListContainer = document.getElementById('blog-list');
       const blogEntries = blogListContainer.querySelectorAll('.blog-entry');
       const paginationContainer = document.querySelector('.pagination-container');
