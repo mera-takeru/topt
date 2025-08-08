@@ -56,7 +56,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 16px;
+      padding: 0; /* bodyのpaddingをリセット */
       animation: rainbow 8s ease infinite;
     }
 
@@ -75,11 +75,16 @@
 
     header, footer {
       background: rgba(255, 255, 255, 0.9);
-      padding: 12px;
+      padding: 12px 16px;
       width: 100%;
-      max-width: 600px; /* 他のページと幅を統一 */
       text-align: center;
       box-sizing: border-box;
+    }
+    
+    .header-nav-container, .footer-nav-container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
     }
 
     header { border-bottom: 1px solid #ddd; }
@@ -110,6 +115,7 @@
       width: 100%;
       max-width: 960px; /* ブログ部分は広い幅を維持 */
       margin: 16px 0;
+      padding: 0 16px; /* 左右にpaddingを追加 */
     }
     
     .main-content {
@@ -296,13 +302,15 @@
 <body>
 <div class="page-wrapper">
   <header>
-    <nav class="header-nav">
-      <a href="./about.html">パートナルとは</a>
-      <span class="divider">|</span>
-      <a href="./faq.html" class="active">よくある質問</a>
-      <span class="divider">|</span>
-      <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
-    </nav>
+    <div class="header-nav-container">
+        <nav class="header-nav">
+          <a href="./about.html">パートナルとは</a>
+          <span class="divider">|</span>
+          <a href="./faq.html" class="active">よくある質問</a>
+          <span class="divider">|</span>
+          <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
+        </nav>
+    </div>
   </header>
 
   <div class="main-layout">
@@ -449,20 +457,22 @@
   </div>
   
   <footer>
-    <nav class="footer-nav">
-      <a href="./terms.html">利用規約</a>
-      <span class="divider">|</span>
-      <a href="./privacy.html">プライバシーポリシー</a>
-      <span class="divider">|</span>
-      <a href="./operator.html">運営者情報</a>
-    </nav>
-    <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
+    <div class="footer-nav-container">
+        <nav class="footer-nav">
+          <a href="./terms.html">利用規約</a>
+          <span class="divider">|</span>
+          <a href="./privacy.html">プライバシーポリシー</a>
+          <span class="divider">|</span>
+          <a href="./operator.html">運営者情報</a>
+        </nav>
+        <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
+    </div>
   </footer>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const articlesPerPage = 3; // ★★★ 6から3に変更 ★★★
+      const articlesPerPage = 3;
       const blogListContainer = document.getElementById('blog-list');
       const blogEntries = blogListContainer.querySelectorAll('.blog-entry');
       const paginationContainer = document.querySelector('.pagination-container');
