@@ -7,6 +7,9 @@
   <link rel="icon" href="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafkreigaj4jljhdjkoavf2tdarmpyzfalutwxnnmmhrb437soizt2peewe" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    /* ======================================= */
+    /* 1. 基本設定と変数定義
+    /* ======================================= */
     :root {
       --primary: #6C63FF;
       --secondary: #FF6584;
@@ -16,6 +19,9 @@
       --transition: .3s;
     }
 
+    /* ======================================= */
+    /* 2. グローバルスタイルとリセット
+    /* ======================================= */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -30,6 +36,9 @@
       color: inherit !important;
     }
 
+    /* ======================================= */
+    /* 3. 全体レイアウト
+    /* ======================================= */
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(
@@ -44,11 +53,6 @@
       );
       background-size: 400%;
       color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
       padding: 16px;
       animation: rainbow 8s ease infinite;
     }
@@ -59,210 +63,190 @@
       100% { background-position: 0% 50%; }
     }
 
-    .container {
+    .page-container {
       width: 100%;
-      max-width: 600px;
+      max-width: 960px; /* 全体の横幅を少し広げる */
+      margin: 16px auto;
+    }
+    
+    .main-layout {
+      display: flex;
+      gap: 24px;
+    }
+    
+    .main-content {
+      flex: 1; /* メインコンテンツが幅の大部分を占めるように */
+    }
+
+    .sidebar {
+      width: 280px; /* サイドバーの幅を固定 */
+      flex-shrink: 0;
+    }
+    
+    .blog-container {
       background: rgba(255, 255, 255, 0.9);
       border-radius: var(--radius);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       padding: 24px;
-      margin: 16px auto;
     }
 
-    header {
+    header, footer {
       background: rgba(255, 255, 255, 0.9);
       padding: 12px;
-      border-bottom: 1px solid #ddd;
       width: 100%;
       text-align: center;
       box-sizing: border-box;
+      max-width: 960px;
+      margin: 0 auto;
     }
 
-    .header-nav {
+    header { border-bottom: 1px solid #ddd; border-radius: var(--radius) var(--radius) 0 0; }
+    footer { border-top: 1px solid #ddd; border-radius: 0 0 var(--radius) var(--radius); }
+
+    .header-nav, .footer-nav {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 12px;
     }
 
-    header .header-nav a {
-      text-decoration: none;
-      color: #000000 !important;
+    .header-nav a, .footer-nav a {
       font-weight: 400;
       font-size: 0.75rem;
       padding: 0 6px;
       transition: color var(--transition);
     }
 
-    header .header-nav a:hover {
-      color: var(--secondary);
-    }
+    .header-nav a:hover, .footer-nav a:hover { color: var(--secondary); }
+    .header-nav .divider, .footer-nav .divider { font-size: 0.75rem; font-weight: 400; }
+    .copyright { font-size: 0.75rem; font-weight: 400; text-align: center; margin-top: 8px; }
 
-    header .header-nav a.active {
-      color: var(--secondary);
+    /* ======================================= */
+    /* 4. ブログ記事カードのデザイン
+    /* ======================================= */
+    .blog-entry {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+      overflow: hidden; /* 角丸を画像に適用するため */
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
-    header .header-nav .divider {
-      color: #000000 !important;
-      font-size: 0.75rem;
-      font-weight: 400;
+    .blog-entry:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.1);
     }
-
-    footer {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 12px;
-      border-top: 1px solid #ddd;
-      text-align: center;
+    .blog-thumbnail img {
       width: 100%;
-      box-sizing: border-box;
-    }
-
-    .footer-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-    }
-
-    footer .footer-nav a {
-      text-decoration: none;
-      color: #000000 !important;
-      font-weight: 400;
-      font-size: 0.75rem;
-      padding: 0 6px;
-      transition: color var(--transition);
-    }
-
-    footer .footer-nav a:hover {
-      color: var(--secondary);
-    }
-
-    footer .footer-nav .divider {
-      color: #000000 !important;
-      font-size: 0.75rem;
-      font-weight: 400;
-    }
-
-    .copyright {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: #000000;
-      text-align: center;
-      margin-top: 8px;
-    }
-
-    h1 {
-  text-align: center;
-  font-weight: 700;
-  margin-bottom: 24px; /* ← この数値を24pxに統一します */
-  color: var(--primary);
-　　 }
-
-    .title-topt {
-      text-align: center;
+      height: 200px;
+      object-fit: cover;
       display: block;
-      margin-bottom: 8px;
-      color: var(--secondary);
-      text-shadow: 
-        1px 1px 2px rgba(0, 0, 0, 0.3),
-        0 0 4px rgba(255, 255, 255, 0.5);
-      letter-spacing: 0.5px;
     }
-
-    .title-english {
-      font-size: 2rem;
-      font-weight: 700;
+    .blog-content {
+      padding: 20px;
     }
-
-    .title-japanese {
+    .blog-title {
       font-size: 1.25rem;
+      margin: 0 0 8px 0;
       font-weight: 700;
     }
-
-    .title-sub {
-      font-size: 1rem;
-      display: block;
-    }
-
-    .start-image {
-      width: 100%;
-      background: #ecebff;
-      border-radius: var(--radius);
-      margin-bottom: 16px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      aspect-ratio: 3/1;
-    }
-
-    .start-image picture, .start-image img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .content h2 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 4px;
-      margin-top: 8px;
-      cursor: pointer;
-      padding: 12px;
-      border-radius: var(--radius);
-      transition: background var(--transition);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .content h2:hover {
-      background: rgba(108, 99, 255, 0.1);
-    }
-
-    .content h2::after {
-      content: '▼';
-      font-size: 0.75rem;
-      transition: transform var(--transition);
-    }
-
-    .content h2.active::after {
-      transform: rotate(180deg);
-    }
-
-    .content .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height var(--transition) ease-out;
-      margin-bottom: 8px;
-    }
-
-    .content .accordion-content.open {
-      max-height: 500px;
-    }
-
-    .content p {
-      font-size: 1rem;
-      font-weight: 500;
-      line-height: 1.7;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-
-    .content .answer-label {
-      color: var(--secondary);
-      font-weight: 600;
-    }
-
-    .content p a {
-      color: var(--primary);
+    .blog-title a {
       text-decoration: underline;
+      transition: color var(--transition);
+      color: var(--primary) !important;
+    }
+    .blog-title a:hover {
+      color: var(--secondary) !important;
+    }
+    .blog-date {
+      font-size: 0.875rem;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .blog-snippet {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .blog-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .blog-tags a {
+        background: #eee;
+        color: #555 !important;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        transition: background .2s, color .2s;
+    }
+    .blog-tags a:hover {
+        background: var(--primary);
+        color: #fff !important;
+    }
+    
+    /* ======================================= */
+    /* 5. サイドバーのデザイン
+    /* ======================================= */
+    .sidebar-widget {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    .widget-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary);
+    }
+    .popular-posts-list li, .tags-list li {
+      list-style: none;
+      margin-bottom: 12px;
+    }
+    .popular-posts-list a {
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+    }
+    .popular-posts-list a:hover {
+        color: var(--secondary) !important;
+    }
+    .tags-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
     }
 
-    .content p a:hover {
-      color: var(--secondary);
+    /* ======================================= */
+    /* 6. ページネーションとその他
+    /* ======================================= */
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 16px;
+    }
+    .pagination-container a {
+      color: var(--primary);
+      padding: 8px 16px;
+      transition: background-color .3s;
+      border: 1px solid #ddd;
+      margin: 0 4px;
+      border-radius: 4px;
+    }
+    .pagination-container a.active {
+      background-color: var(--primary);
+      color: white !important;
+      border-color: var(--primary);
+    }
+    .pagination-container a:hover:not(.active) { background-color: #f2f2f2; }
+    .pagination-container a.disabled {
+      color: #ccc !important;
+      pointer-events: none;
     }
 
     button.back-btn {
@@ -276,153 +260,34 @@
       cursor: pointer;
       transition: background var(--transition), transform var(--transition);
       width: 100%;
-      margin-top: 16px;
+      margin-top: 24px;
     }
+    button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
 
-    button.back-btn:hover {
-      background: var(--secondary);
-      transform: scale(1.02);
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        padding: 16px;
+    /* ======================================= */
+    /* 7. レスポンシブ対応
+    /* ======================================= */
+    @media (max-width: 768px) {
+      .main-layout {
+        flex-direction: column;
       }
-      .start-image {
-        max-width: 100%;
-        margin-bottom: 12px;
+      .sidebar {
+        width: 100%;
       }
-      .content h2 {
-        font-size: 1rem;
-      }
-      .content p {
-        font-size: 1rem;
-      }
-      button.back-btn {
-        font-size: 1rem;
-        padding: 10px 16px;
-      }
-      header .header-nav a {
-        font-size: 0.75rem;
-      }
-      header .header-nav .divider {
-        font-size: 0.75rem;
-      }
-      footer .footer-nav a {
-        font-size: 0.75rem;
-      }
-      footer .footer-nav .divider {
-        font-size: 0.75rem;
-      }
-      .copyright {
-        font-size: 0.75rem;
-      }
-      .title-english {
-        font-size: 2rem; 
-      }
-      .title-japanese {
-        font-size: 1.25rem; 
-      }
-    }
-
-  /* ▼▼▼ ブログ一覧用のスタイル（修正版）▼▼▼ */
-.blog-entry {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 12px;
-  margin-bottom: 12px;
-}
-
-/* 汎用のh2スタイルに打ち勝つための、より詳細なセレクタ指定 */
-.content h2.blog-title {
-  font-size: 1.25rem;
-  margin-top: 0;
-  padding: 0;
-  margin-bottom: 12px;
-  font-weight: 700;
-  color: var(--primary);
-  /* cursor: default; を削除 */
-}
-
-/* ★★★ここからが今回の修正箇所★★★ */
-
-/* ブログタイトルのリンクに下線を追加し、ホバー効果を無効化 */
-.content h2.blog-title a {
-  text-decoration: underline;
-  transition: color var(--transition); /* 色の変化を滑らかに */
-}
-
-/* ブログタイトルにマウスを重ねた際のスタイル */
-.content h2.blog-title a:hover {
-  color: var(--secondary) !important; /* ピンク色に変化 */
-}
-
-/* ★★★ここまでが今回の修正箇所★★★ */
-
-/* 共通スタイルの矢印を非表示に */
-.content h2.blog-title::after {
-  content: none;
-}
-
-.blog-date {
-  font-size: 0.875rem;
-  color: #888;
-  margin: 0 0 12px 0;
-  padding: 0;
-}
-.blog-snippet {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-}
-/* ▲▲▲ ここまで ▲▲▲ */
-
-    /* ▼▼▼ ページネーション用のスタイル ▼▼▼ */
-    .pagination-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 32px;
-    }
-
-    .pagination-container a {
-      color: var(--primary);
-      padding: 8px 16px;
-      text-decoration: none;
-      transition: background-color .3s;
-      border: 1px solid #ddd;
-      margin: 0 4px;
-      border-radius: 4px;
-    }
-
-    .pagination-container a.active {
-      background-color: var(--primary);
-      color: white !important;
-      border: 1px solid var(--primary);
-    }
-
-    .pagination-container a:hover:not(.active) {
-      background-color: #f2f2f2;
-    }
-
-    .pagination-container a.disabled {
-      color: #ccc !important;
-      pointer-events: none;
     }
   </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7664351285167114"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7664351285167114" crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M1HFSG9FVD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-M1HFSG9FVD');
 </script>
 <link rel="canonical" href="https://pertonal.jp/blog.html">
 </head>
 <body>
+<div class="page-container">
   <header>
     <nav class="header-nav">
       <a href="./about.html">パートナルとは</a>
@@ -432,71 +297,150 @@
       <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
     </nav>
   </header>
-  <div class="container">
-    <h1>
-      <span class="title-topt">
-        <span class="title-english">pertonal</span>
-        <span class="title-japanese"> -パートナル-</span>
-      </span>
-      <span class="title-sub">「音」×「色」＝ New「性格診断」</span>
-    </h1>
 
-     <div class="start-image static-page-image">
-      <picture>
-        <source media="(max-width: 600px)" srcset="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeieuvzjzjnxofrohvp5txmau6ormtlsyfwwry6vg56xq2c6eqhk4ou/6.jpg">
-        <img src="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeieuvzjzjnxofrohvp5txmau6ormtlsyfwwry6vg56xq2c6eqhk4ou/6.jpg" alt="パートナル公式ブログ" loading="lazy">
-      </picture>
-    </div>
+  <div class="main-layout">
+    <main class="main-content">
+      <div class="blog-container">
+        <div id="blog-list">
+            <div class="blog-entry">
+                <a href="./article-1.html" class="blog-thumbnail">
+                    <img src="https://picsum.photos/seed/a/600/400" alt="記事サムネイル">
+                </a>
+                <div class="blog-content">
+                    <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
+                    <p class="blog-date">2025.08.15</p>
+                    <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
+                    <div class="blog-tags">
+                        <a href="#">#開発秘話</a>
+                        <a href="#">#コンセプト</a>
+                    </div>
+                </div>
+            </div>
 
-     <div class="content">
-       <div class="blog-entry">
-        <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまで</a></h2>
-        <p class="blog-date">2025.08.15</p>
-        <p class="blog-snippet"><strong>なぜ音楽と性格診断だったのか？診断ロジックの裏側にある秘密をお話しします…</strong></p>
+            <div class="blog-entry">
+                <a href="./article-2.html" class="blog-thumbnail">
+                     <img src="https://picsum.photos/seed/b/600/400" alt="記事サムネイル">
+                </a>
+                <div class="blog-content">
+                    <h2 class="blog-title"><a href="./article-2.html">【C型】騎士を徹底解説！MBTI"管理者"との違いとは？</a></h2>
+                    <p class="blog-date">2025.08.20</p>
+                    <p class="blog-snippet">最も実直なタイプである【C型】騎士。その真面目さの根源はどこにあるのか。似ていると言われるMBTIのISTJタイプとの共通点と、決定的な違いを解説します…</p>
+                    <div class="blog-tags">
+                        <a href="#">#C型</a>
+                        <a href="#">#MBTI比較</a>
+                        <a href="#">#性格解説</a>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="blog-entry">
+                <a href="./article-1.html" class="blog-thumbnail">
+                    <img src="https://picsum.photos/seed/c/600/400" alt="記事サムネイル">
+                </a>
+                <div class="blog-content">
+                    <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
+                    <p class="blog-date">2025.08.15</p>
+                    <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
+                    <div class="blog-tags">
+                        <a href="#">#開発秘話</a>
+                        <a href="#">#コンセプト</a>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="blog-entry">
+                <a href="./article-1.html" class="blog-thumbnail">
+                    <img src="https://picsum.photos/seed/d/600/400" alt="記事サムネイル">
+                </a>
+                <div class="blog-content">
+                    <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
+                    <p class="blog-date">2025.08.15</p>
+                    <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
+                     <div class="blog-tags">
+                        <a href="#">#開発秘話</a>
+                        <a href="#">#コンセプト</a>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="blog-entry">
+                <a href="./article-1.html" class="blog-thumbnail">
+                    <img src="https://picsum.photos/seed/e/600/400" alt="記事サムネイル">
+                </a>
+                <div class="blog-content">
+                    <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
+                    <p class="blog-date">2025.08.15</p>
+                    <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
+                     <div class="blog-tags">
+                        <a href="#">#開発秘話</a>
+                        <a href="#">#コンセプト</a>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="blog-entry">
+                <a href="./article-1.html" class="blog-thumbnail">
+                    <img src="https://picsum.photos/seed/f/600/400" alt="記事サムネイル">
+                </a>
+                <div class="blog-content">
+                    <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
+                    <p class="blog-date">2025.08.15</p>
+                    <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
+                     <div class="blog-tags">
+                        <a href="#">#開発秘話</a>
+                        <a href="#">#コンセプト</a>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="blog-entry">
+                <a href="./article-2.html" class="blog-thumbnail">
+                    <img src="https://picsum.photos/seed/g/600/400" alt="記事サムネイル">
+                </a>
+                <div class="blog-content">
+                    <h2 class="blog-title"><a href="./article-2.html">【C型】騎士を徹底解説！MBTI"管理者"との違いとは？</a></h2>
+                    <p class="blog-date">2025.08.20</p>
+                    <p class="blog-snippet">最も実直なタイプである【C型】騎士。その真面目さの根源はどこにあるのか。似ていると言われるMBTIのISTJタイプとの共通点と、決定的な違いを解説します…</p>
+                     <div class="blog-tags">
+                        <a href="#">#C型</a>
+                        <a href="#">#MBTI比較</a>
+                        <a href="#">#性格解説</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pagination-container"></div>
+        <button class="back-btn" onclick="location.href='./index.html'">トップページに戻る</button>
       </div>
+    </main>
 
-       <div class="blog-entry">
-        <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
-        <p class="blog-date">2025.08.15</p>
-        <p class="blog-snippet"><strong>なぜ音楽と性格診断だったのか？診断ロジックの裏側にある秘密をお話しします…</strong></p>
-      </div>
-
-       <div class="blog-entry">
-        <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
-        <p class="blog-date">2025.08.15</p>
-        <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
-      </div>
-
-       <div class="blog-entry">
-        <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
-        <p class="blog-date">2025.08.15</p>
-        <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
-      </div>
-
-        <div class="blog-entry">
-        <h2 class="blog-title"><a href="./article-2.html">【C型】騎士を徹底解説！MBTI"管理者"との違いとは？</a></h2>
-        <p class="blog-date">2025.08.20</p>
-        <p class="blog-snippet">最も実直なタイプである【C型】騎士。その真面目さの根源はどこにあるのか。似ていると言われるMBTIのISTJタイプとの共通点と、決定的な違いを解説します…</p>
-      </div>
-    
-      <div class="blog-entry">
-        <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
-        <p class="blog-date">2025.08.15</p>
-        <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
-      </div>
-
-      <div class="blog-entry">
-        <h2 class="blog-title"><a href="./article-2.html">【C型】騎士を徹底解説！MBTI"管理者"との違いとは？</a></h2>
-        <p class="blog-date">2025.08.20</p>
-        <p class="blog-snippet">最も実直なタイプである【C型】騎士。その真面目さの根源はどこにあるのか。似ていると言われるMBTIのISTJタイプとの共通点と、決定的な違いを解説します…</p>
-      </div>
-      
-       </div>
-    
-      <div class="pagination-container"></div>
-      <button class="back-btn" onclick="location.href='./index.html'">トップページに戻る</button>
-    </div>
+    <aside class="sidebar">
+        <div class="sidebar-widget">
+            <h3 class="widget-title">👑 人気の記事</h3>
+            <ul class="popular-posts-list">
+                <li><a href="./article-2.html">1. 【C型】騎士を徹底解説！MBTIとの違い</a></li>
+                <li><a href="./article-1.html">2. パートナル開発秘話：着想からローンチまで</a></li>
+                <li><a href="#">3. あなたの「ラッキーパートナル」は？</a></li>
+                <li><a href="#">4. 全24タイプの相性一覧表</a></li>
+                <li><a href="#">5. 最も自由な性格【em型】遊牧民とは？</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-widget">
+            <h3 class="widget-title">🏷️ タグ一覧</h3>
+            <div class="tags-list">
+                <a href="#">#性格解説</a>
+                <a href="#">#MBTI比較</a>
+                <a href="#">#開発秘話</a>
+                <a href="#">#C型</a>
+                <a href="#">#em型</a>
+                <a href="#">#相性</a>
+                <a href="#">#コンセプト</a>
+                <a href="#">#お知らせ</a>
+            </div>
+        </div>
+    </aside>
   </div>
+  
   <footer>
     <nav class="footer-nav">
       <a href="./terms.html">利用規約</a>
@@ -507,10 +451,14 @@
     </nav>
     <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
   </footer>
-  <script>
+</div>
+
+<script>
     document.addEventListener('DOMContentLoaded', function () {
       const articlesPerPage = 6;
-      const blogEntries = document.querySelectorAll('.blog-entry');
+      // 記事一覧のコンテナを正しく指定
+      const blogListContainer = document.getElementById('blog-list');
+      const blogEntries = blogListContainer.querySelectorAll('.blog-entry');
       const paginationContainer = document.querySelector('.pagination-container');
       const totalArticles = blogEntries.length;
       const totalPages = Math.ceil(totalArticles / articlesPerPage);
@@ -522,10 +470,6 @@
         const endIndex = startIndex + articlesPerPage;
 
         blogEntries.forEach((entry, index) => {
-          // まず、全記事の余白設定をリセットしてCSSのデフォルト値に戻す
-          entry.style.marginBottom = '';
-
-          // ページに応じて表示・非表示を切り替え
           if (index >= startIndex && index < endIndex) {
             entry.style.display = 'block';
           } else {
@@ -533,19 +477,12 @@
           }
         });
 
-        // 表示されている記事グループの最後の記事のインデックスを計算
-        const lastVisibleIndex = Math.min(endIndex - 1, totalArticles - 1);
-
-        // その最後の記事が存在する場合、下の余白だけを0にする
-        if (lastVisibleIndex >= startIndex) {
-          blogEntries[lastVisibleIndex].style.marginBottom = '0';
-        }
-
         renderPaginationControls();
       }
 
       function renderPaginationControls() {
         paginationContainer.innerHTML = '';
+        if (totalPages <= 1) return;
 
         const prevButton = document.createElement('a');
         prevButton.href = '#';
@@ -579,10 +516,8 @@
         });
         paginationContainer.appendChild(nextButton);
       }
-
-      if (totalArticles > articlesPerPage) {
-        showPage(1);
-      }
+      
+      showPage(1);
     });
   </script>
 </body>
