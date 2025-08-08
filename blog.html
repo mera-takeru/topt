@@ -7,6 +7,9 @@
   <link rel="icon" href="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafkreigaj4jljhdjkoavf2tdarmpyzfalutwxnnmmhrb437soizt2peewe" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    /* ======================================= */
+    /* 1. 基本設定と変数定義
+    /* ======================================= */
     :root {
       --primary: #6C63FF;
       --secondary: #FF6584;
@@ -15,13 +18,39 @@
       --radius: 12px;
       --transition: .3s;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    a { color: inherit !important; text-decoration: none; }
-    a:visited, a:link, a:active { color: inherit !important; }
 
+    /* ======================================= */
+    /* 2. グローバルスタイルとリセット
+    /* ======================================= */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: inherit !important;
+      text-decoration: none;
+    }
+    a:visited, a:link, a:active {
+      color: inherit !important;
+    }
+
+    /* ======================================= */
+    /* 3. 全体レイアウト
+    /* ======================================= */
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient( 45deg, rgba(255,99,71,0.2), rgba(255,165,0,0.2), rgba(255,255,0,0.2), rgba(50,205,50,0.2), rgba(0,191,255,0.2), rgba(75,0,130,0.2), rgba(238,130,238,0.2) );
+      background: linear-gradient(
+        45deg,
+        rgba(255, 99, 71, 0.2),
+        rgba(255, 165, 0, 0.2),
+        rgba(255, 255, 0, 0.2),
+        rgba(50, 205, 50, 0.2),
+        rgba(0, 191, 255, 0.2),
+        rgba(75, 0, 130, 0.2),
+        rgba(238, 130, 238, 0.2)
+      );
       background-size: 400%;
       color: var(--text);
       display: flex;
@@ -31,58 +60,226 @@
       padding: 16px;
       animation: rainbow 8s ease infinite;
     }
-    @keyframes rainbow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
     
     header, footer {
-      background: rgba(255,255,255,0.9);
+      background: rgba(255, 255, 255, 0.9);
       padding: 12px;
       width: 100%;
       text-align: center;
       box-sizing: border-box;
     }
-    .header-container, .footer-container { width: 100%; max-width: 600px; margin: 0 auto; }
+    
+    .header-container, .footer-container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
     header { border-bottom: 1px solid #ddd; }
     footer { border-top: 1px solid #ddd; }
-    .header-nav, .footer-nav { display: flex; justify-content: center; align-items: center; gap: 12px; }
-    .header-nav a, .footer-nav a { font-weight: 400; font-size: 0.75rem; padding: 0 6px; transition: color var(--transition); }
+
+    .header-nav, .footer-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-nav a, .footer-nav a {
+      font-weight: 400;
+      font-size: 0.75rem;
+      padding: 0 6px;
+      transition: color var(--transition);
+    }
+
     .header-nav a:hover, .footer-nav a:hover { color: var(--secondary); }
     .header-nav .divider, .footer-nav .divider { font-size: 0.75rem; font-weight: 400; }
     .copyright { font-size: 0.75rem; font-weight: 400; text-align: center; margin-top: 8px; }
 
-    .main-layout { display: flex; gap: 24px; width: 100%; max-width: 960px; margin: 16px 0; }
-    .main-content { flex: 1; }
-    .sidebar { width: 280px; flex-shrink: 0; }
-    .blog-container { background: rgba(255,255,255,0.9); border-radius: var(--radius); box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 24px; }
-
-    .blog-entry { background: #fff; border-radius: var(--radius); box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 24px; overflow: hidden; transition: transform .2s ease, box-shadow .2s ease; }
-    .blog-entry:hover { transform: translateY(-4px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
-    .blog-thumbnail img { width: 100%; height: 200px; object-fit: cover; display: block; }
-    .blog-content { padding: 20px; }
-    .blog-title { font-size: 1.25rem; margin: 0 0 8px 0; font-weight: 700; }
-    .blog-title a { text-decoration: underline; transition: color var(--transition); color: var(--primary) !important; }
-    .blog-title a:hover { color: var(--secondary) !important; }
-    .blog-date { font-size: 0.875rem; color: #888; margin-bottom: 12px; }
-    .blog-snippet { font-size: 0.95rem; line-height: 1.6; margin-bottom: 16px; }
+    /* メインコンテンツエリア */
+    .main-layout {
+      display: flex;
+      gap: 24px;
+      width: 100%;
+      max-width: 960px;
+      margin: 16px 0;
+    }
     
-    .blog-tags, .tags-list { display: flex; flex-wrap: wrap; gap: 8px; }
-    .blog-tags a, .tags-list a { background: #eee; color: #555 !important; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; transition: background .2s, color .2s; cursor: pointer; }
-    .blog-tags a:hover, .tags-list a:hover { background: var(--primary); color: #fff !important; }
-    .blog-tags a.is-active, .tags-list a.is-active { background: var(--secondary); color: #fff !important; } /* ★★★アクティブなタグのスタイル★★★ */
+    .main-content {
+      flex: 1;
+    }
 
-    .sidebar-widget { background: rgba(255,255,255,0.9); border-radius: var(--radius); padding: 20px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-    .widget-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--primary); }
-    .popular-posts-list li, .tags-list li { list-style: none; margin-bottom: 12px; }
-    .popular-posts-list a { font-size: 0.9rem; transition: color .2s ease; }
-    .popular-posts-list a:hover { color: var(--secondary) !important; }
+    .sidebar {
+      width: 280px;
+      flex-shrink: 0;
+    }
     
-    .pagination-container { display: flex; justify-content: center; align-items: center; margin-top: 16px; }
-    .pagination-container a { color: var(--primary); padding: 8px 16px; transition: background-color .3s; border: 1px solid #ddd; margin: 0 4px; border-radius: 4px; }
-    .pagination-container a.active { background-color: var(--primary); color: white !important; border-color: var(--primary); }
+    .blog-container {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+    }
+
+    /* ======================================= */
+    /* 4. ブログ記事カードのデザイン
+    /* ======================================= */
+    .blog-entry {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .blog-entry:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+    .blog-thumbnail img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    .blog-content {
+      padding: 20px;
+    }
+    .blog-title {
+      font-size: 1.25rem;
+      margin: 0 0 8px 0;
+      font-weight: 700;
+    }
+    .blog-title a {
+      text-decoration: underline;
+      transition: color var(--transition);
+      color: var(--primary) !important;
+    }
+    .blog-title a:hover {
+      color: var(--secondary) !important;
+    }
+    .blog-date {
+      font-size: 0.875rem;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .blog-snippet {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .blog-tags, .tags-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .blog-tags a, .tags-list a {
+        background: #eee;
+        color: #555 !important;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        transition: background .2s, color .2s;
+        cursor: pointer;
+    }
+    .blog-tags a:hover, .tags-list a:hover {
+        background: var(--primary);
+        color: #fff !important;
+    }
+    .blog-tags a.is-active, .tags-list a.is-active {
+        background: var(--secondary);
+        color: #fff !important;
+    }
+
+    /* ======================================= */
+    /* 5. サイドバーのデザイン
+    /* ======================================= */
+    .sidebar-widget {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    .widget-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary);
+    }
+    .popular-posts-list li {
+      list-style: none;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+    .popular-posts-list .rank-icon {
+        font-size: 1.1rem;
+        margin-right: 8px;
+        width: 24px; /* アイコンの幅を固定してレイアウトを揃える */
+        text-align: center;
+    }
+    .popular-posts-list a {
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+    }
+    .popular-posts-list a:hover {
+        color: var(--secondary) !important;
+    }
+    
+    /* ======================================= */
+    /* 6. ページネーションとその他
+    /* ======================================= */
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 16px;
+    }
+    .pagination-container a {
+      color: var(--primary);
+      padding: 8px 16px;
+      transition: background-color .3s;
+      border: 1px solid #ddd;
+      margin: 0 4px;
+      border-radius: 4px;
+    }
+    .pagination-container a.active {
+      background-color: var(--primary);
+      color: white !important;
+      border-color: var(--primary);
+    }
     .pagination-container a:hover:not(.active) { background-color: #f2f2f2; }
-    .pagination-container a.disabled { color: #ccc !important; pointer-events: none; }
-    button.back-btn { font: inherit; font-size: 1rem; padding: 12px 20px; border: none; border-radius: var(--radius); background: var(--primary); color: #fff; cursor: pointer; transition: background var(--transition), transform var(--transition); width: 100%; margin-top: 24px; }
+    .pagination-container a.disabled {
+      color: #ccc !important;
+      pointer-events: none;
+    }
+    button.back-btn {
+      font: inherit;
+      font-size: 1rem;
+      padding: 12px 20px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      width: 100%;
+      margin-top: 24px;
+    }
     button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
 
+    /* ======================================= */
+    /* 7. レスポンシブ対応
+    /* ======================================= */
     @media (max-width: 768px) {
       body { padding: 0; }
       header, footer { border-radius: 0; }
@@ -118,9 +315,7 @@
       <div class="blog-container">
         <div id="blog-list">
             <div class="blog-entry" data-tags='["開発秘話", "コンセプト"]'>
-                <a href="./article-1.html" class="blog-thumbnail">
-                    <img src="https://picsum.photos/seed/a/600/400" alt="記事サムネイル">
-                </a>
+                <a href="./article-1.html" class="blog-thumbnail"><img src="https://picsum.photos/seed/a/600/400" alt="記事サムネイル"></a>
                 <div class="blog-content">
                     <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
                     <p class="blog-date">2025.08.15</p>
@@ -131,11 +326,8 @@
                     </div>
                 </div>
             </div>
-
             <div class="blog-entry" data-tags='["C型", "MBTI比較", "性格解説"]'>
-                <a href="./article-2.html" class="blog-thumbnail">
-                     <img src="https://picsum.photos/seed/b/600/400" alt="記事サムネイル">
-                </a>
+                <a href="./article-2.html" class="blog-thumbnail"><img src="https://picsum.photos/seed/b/600/400" alt="記事サムネイル"></a>
                 <div class="blog-content">
                     <h2 class="blog-title"><a href="./article-2.html">【C型】騎士を徹底解説！MBTI"管理者"との違いとは？</a></h2>
                     <p class="blog-date">2025.08.20</p>
@@ -147,11 +339,8 @@
                     </div>
                 </div>
             </div>
-          
             <div class="blog-entry" data-tags='["開発秘話", "コンセプト"]'>
-                <a href="./article-1.html" class="blog-thumbnail">
-                    <img src="https://picsum.photos/seed/c/600/400" alt="記事サムネイル">
-                </a>
+                <a href="./article-1.html" class="blog-thumbnail"><img src="https://picsum.photos/seed/c/600/400" alt="記事サムネイル"></a>
                 <div class="blog-content">
                     <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
                     <p class="blog-date">2025.08.15</p>
@@ -167,16 +356,15 @@
         <button class="back-btn" onclick="location.href='./index.html'">トップページに戻る</button>
       </div>
     </main>
-
     <aside class="sidebar">
         <div class="sidebar-widget">
             <h3 class="widget-title">👑 人気の記事</h3>
             <ul class="popular-posts-list">
-                <li><a href="./article-2.html">1. 【C型】騎士を徹底解説！MBTIとの違い</a></li>
-                <li><a href="./article-1.html">2. パートナル開発秘話：着想からローンチまで</a></li>
-                <li><a href="#">3. あなたの「ラッキーパートナル」は？</a></li>
-                <li><a href="#">4. 全24タイプの相性一覧表</a></li>
-                <li><a href="#">5. 最も自由な性格【em型】遊牧民とは？</a></li>
+                <li><span class="rank-icon">🥇</span><a href="./article-2.html"><strong>【C型】騎士を徹底解説！MBTIとの違い</strong></a></li>
+                <li><span class="rank-icon">🥈</span><a href="./article-1.html"><strong>パートナル開発秘話：着想からローンチまで</strong></a></li>
+                <li><span class="rank-icon">🥉</span><a href="#"><strong>あなたの「ラッキーパートナル」は？</strong></a></li>
+                <li><span class="rank-icon">４</span><a href="#"><strong>全24タイプの相性一覧表</strong></a></li>
+                <li><span class="rank-icon">５</span><a href="#"><strong>最も自由な性格【em型】遊牧民とは？</strong></a></li>
             </ul>
         </div>
         <div class="sidebar-widget">
@@ -217,43 +405,43 @@
       const paginationContainer = document.querySelector('.pagination-container');
       const allTagLinks = document.querySelectorAll('.tag-link');
       const totalArticles = blogEntries.length;
-      const totalPages = Math.ceil(totalArticles / articlesPerPage);
       let currentPage = 1;
+      let currentFilteredEntries = Array.from(blogEntries);
 
       function showPage(page) {
         currentPage = page;
-        paginationContainer.style.display = 'flex'; // ページネーションを表示
+        paginationContainer.style.display = 'flex';
+        const totalPages = Math.ceil(currentFilteredEntries.length / articlesPerPage);
+
         const startIndex = (page - 1) * articlesPerPage;
         const endIndex = startIndex + articlesPerPage;
 
-        blogEntries.forEach((entry, index) => {
-          if (index >= startIndex && index < endIndex) {
-            entry.style.display = 'block';
-          } else {
-            entry.style.display = 'none';
-          }
+        blogEntries.forEach(entry => entry.style.display = 'none');
+
+        currentFilteredEntries.slice(startIndex, endIndex).forEach(entry => {
+          entry.style.display = 'block';
         });
-        renderPaginationControls();
+        
+        renderPaginationControls(totalPages);
       }
 
       function filterByTag(tag) {
-        paginationContainer.style.display = 'none'; // タグ絞り込み中はページネーションを非表示
-        blogEntries.forEach(entry => {
-          const entryTags = JSON.parse(entry.dataset.tags || '[]');
-          if (entryTags.includes(tag)) {
-            entry.style.display = 'block';
-          } else {
-            entry.style.display = 'none';
-          }
-        });
+        if (tag === 'all') {
+          currentFilteredEntries = Array.from(blogEntries);
+        } else {
+          currentFilteredEntries = Array.from(blogEntries).filter(entry => {
+            const entryTags = JSON.parse(entry.dataset.tags || '[]');
+            return entryTags.includes(tag);
+          });
+        }
+        showPage(1);
       }
 
       function updateActiveTag(clickedTag) {
           allTagLinks.forEach(link => link.classList.remove('is-active'));
-          // 同じdata-tagを持つすべてのタグをアクティブにする
           const tagName = clickedTag.dataset.tag;
-          document.querySelectorAll(`.tag-link[data-tag="${tagName}"]`).forEach(tag => {
-              tag.classList.add('is-active');
+          document.querySelectorAll(`.tag-link[data-tag="${tagName}"]`).forEach(tagEl => {
+              tagEl.classList.add('is-active');
           });
       }
 
@@ -262,16 +450,11 @@
           e.preventDefault();
           const selectedTag = this.dataset.tag;
           updateActiveTag(this);
-          
-          if (selectedTag === 'all') {
-            showPage(1);
-          } else {
-            filterByTag(selectedTag);
-          }
+          filterByTag(selectedTag);
         });
       });
 
-      function renderPaginationControls() {
+      function renderPaginationControls(totalPages) {
         paginationContainer.innerHTML = '';
         if (totalPages <= 1) return;
 
@@ -299,7 +482,7 @@
         paginationContainer.appendChild(nextButton);
       }
       
-      showPage(1);
+      filterByTag('all');
     });
   </script>
 </body>
