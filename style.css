@@ -571,13 +571,13 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
 }
 
 /* ======================================= */
-/* 13. リッチフッター (追加)
+/* 13. リッチフッター (デザイン調整版)
 /* ======================================= */
 
 /* フッター全体の背景とパディング */
 footer {
-  background: #f8f9fa; /* 少し色味のある背景に変更 */
-  color: #6c757d; /* テキストの色を少し柔らかく */
+  background: #f8f9fa;
+  color: #6c757d;
   padding: 40px 16px;
   border-top: 1px solid #dee2e6;
   width: 100%;
@@ -586,7 +586,7 @@ footer {
 
 .footer-container {
   width: 100%;
-  max-width: 960px; /* ブログページなどに合わせて最大幅を広げる */
+  max-width: 960px;
   margin: 0 auto;
   text-align: left;
 }
@@ -604,12 +604,12 @@ footer {
 
 .footer-about, .footer-sitemap {
   flex: 1;
-  min-width: 250px; /* 折り返し時の最小幅 */
+  min-width: 250px;
 }
 
 .footer-about h4 {
-  font-size: 1.1rem;
-  color: var(--primary);
+  font-size: 1.25rem; /* ★★★ サイズを大きく ★★★ */
+  color: var(--secondary); /* ★★★ 色をピンクに ★★★ */
   margin-bottom: 12px;
 }
 
@@ -619,8 +619,8 @@ footer {
 }
 
 .footer-sitemap h4 {
-  font-size: 1.1rem;
-  color: #343a40;
+  font-size: 1.0rem; /* ★★★ サイズを小さく ★★★ */
+  color: var(--primary); /* ★★★ 色を青紫に ★★★ */
   margin-bottom: 12px;
 }
 
@@ -655,7 +655,7 @@ footer {
 }
 
 .footer-secondary .footer-nav {
-  gap: 16px; /* リンク間の隙間を少し広げる */
+  gap: 12px; /* ★★★ 間隔を16pxから12pxに戻して改行を防止 ★★★ */
   margin-bottom: 8px;
 }
 
