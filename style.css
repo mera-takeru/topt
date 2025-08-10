@@ -717,7 +717,7 @@ footer {
     rgba(255, 255, 255, 0) 100%
   );
   transform: skewX(-25deg); /* 光を斜めにする */
-  animation: shine 5s infinite; /* アニメーションを適用 */
+  animation: shine 3s infinite; /* アニメーションを適用 */
 }
 
 /* アニメーションの定義（既存のものと同じ） */
