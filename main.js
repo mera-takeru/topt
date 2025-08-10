@@ -101,7 +101,6 @@ function renderResultContent(resultKey) {
   
   resultTextDiv.innerHTML = `
     <div class="accordion">
-     {/* ★★★ "shine-effect"クラスを追加 ★★★ */}
       <span class="title shine-effect" style="background-color: ${colorInfo.code}; color: #FFF;">${characterTitle}</span>
       <p class="result-description-first">${firstSentence}</p>
       <button class="accordion-toggle">詳しく見る <span class="arrow">▼</span></button>
