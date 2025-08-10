@@ -521,3 +521,51 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
 .compatible-title {
   display: none; 
 }
+
+/* ======================================= */
+/* 12. 人気曲リスト (音楽プレイヤー風)
+/* ======================================= */
+.playlist {
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  overflow: hidden; /* 角丸を内側の要素にも適用 */
+  background: #f9f9f9;
+}
+
+.playlist-track {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+}
+
+.playlist-track:last-child {
+  border-bottom: none; /* 最後の曲の下線は消す */
+}
+
+.playlist-track:hover {
+  background-color: #f0f0f0; /* マウスを乗せると色が変わる */
+}
+
+.track-icon {
+  font-size: 1.5rem;
+  margin-right: 12px;
+  color: var(--primary);
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.track-title {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.track-artist {
+  font-size: 0.8rem;
+  color: #666;
+}
