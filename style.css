@@ -690,3 +690,45 @@ footer {
 .footer-secondary .copyright {
     text-align: center;
 }
+
+/* ======================================= */
+/* 14. 汎用シャインエフェクト (追加)
+/* ======================================= */
+
+/* エフェクトをかけたい画像の親要素にこのクラスを追加 */
+.shine-effect {
+  position: relative; /* 疑似要素を配置する基準点にする */
+  overflow: hidden;   /* はみ出した光を隠す */
+  display: inline-block; /* 画像のサイズに合わせる */
+}
+
+/* 光の帯を疑似要素で作成 */
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%; /* 初期位置は左の見えない位置 */
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg); /* 光を斜めにする */
+  animation: shine 5s infinite; /* アニメーションを適用 */
+}
+
+/* アニメーションの定義（既存のものと同じ） */
+@keyframes shine {
+  0% {
+    left: -150%;
+  }
+  20% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
