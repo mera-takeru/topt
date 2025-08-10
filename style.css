@@ -489,18 +489,22 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
 }
 
 /* ======================================= */
-/* 11. 相性の良いパートナル表示 (追加)
+/* 11. 相性の良いパートナル表示 (デザイン調整)
 /* ======================================= */
+
+/* 4つのパートナルを縦に並べるためのコンテナ設定 */
 .compatible-types-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px; /* タグ同士の間隔 */
+  flex-direction: column; /* ★★★ アイテムを縦に並べる ★★★ */
+  align-items: flex-start;  /* ★★★ アイテムを左揃えにする ★★★ */
+  gap: 12px;
   margin-bottom: 12px;
 }
 
+/* パートナルタグのサイズを調整 */
 .compatible-tag {
   display: inline-block;
-  font-size: 1.25rem; /* メインのタイトルより少し小さく */
+  font-size: 1.1rem; /* ★★★ サイズを小さく調整 ★★★ */
   font-weight: 700;
   padding: 4px 12px;
   border-radius: 4px;
@@ -510,7 +514,7 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
 }
 
 .compatible-tag:hover {
-  transform: scale(1.05); /* マウスを乗せると少し拡大する効果 */
+  transform: scale(1.05);
 }
 
 /* 古いスタイルは不要になるので非表示に */
