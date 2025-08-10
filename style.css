@@ -571,9 +571,105 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
 }
 
 /* ======================================= */
-/* 13. リッチフッター (デザイン調整版)
-/* ... (この上にある他のフッタースタイルはそのまま) ... */
+/* 13. リッチフッター (影効果を追加)
 /* ======================================= */
+
+/* フッター全体の背景とパディング */
+footer {
+  background: #f8f9fa;
+  color: #6c757d;
+  padding: 40px 16px;
+  border-top: 1px solid #dee2e6;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* 上段（サイト紹介とナビゲーション） */
+.footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.footer-about, .footer-sitemap {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-about h4 {
+  font-size: 1.25rem;
+  color: var(--secondary);
+  margin-bottom: 12px;
+  /* ★★★ 影の効果を追加 ★★★ */
+  text-shadow: 
+    1px 1px 2px rgba(0, 0, 0, 0.3),
+    0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+.footer-about p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footer-sitemap h4 {
+  font-size: 1.0rem;
+  color: var(--primary);
+  margin-bottom: 12px;
+  /* ★★★ 影の効果を追加 ★★★ */
+  text-shadow: 
+    1px 1px 2px rgba(0, 0, 0, 0.3),
+    0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+.footer-sitemap ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-sitemap li {
+  margin-bottom: 8px;
+}
+
+.footer-sitemap a {
+  font-size: 0.9rem;
+  color: #6c757d !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.footer-sitemap a:hover {
+  color: var(--secondary) !important;
+}
+
+/* 下段（規約リンクとコピーライト） */
+.footer-secondary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.footer-secondary .footer-nav {
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.footer-secondary .footer-nav a {
+  color: #6c757d !important;
+}
 
 /* 下段（規約リンクとコピーライト） */
 .footer-secondary {
