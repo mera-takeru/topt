@@ -69,10 +69,21 @@ function renderResultContent(resultKey) {
   const fullDescription = characterDescriptions[resultKey];
   const remainingDescription = fullDescription.replace(/<span class="title"[^>]*>.*?<\/span>/, '');
   
+  // ★★★ ここからが変更箇所 ★★★
   const compatibleHTML = (compatibleKeys[resultKey] || []).map(key => {
+    const characterTitle = getCharacterTitle(key);
+    const typeColor = personalityColors[key].code;
     const fileName = key.replace('♯', 's').replace('♭', 'b');
-    return `<a href="./${fileName}.html" target="_blank" rel="noopener noreferrer"><p class="compatible-title">${getCharacterTitle(key)}</p></a>`;
+    
+    return `
+        <a href="./${fileName}.html" target="_blank" rel="noopener noreferrer">
+            <span class="compatible-tag" style="background-color: ${typeColor};">
+                ${characterTitle}
+            </span>
+        </a>
+    `;
   }).join('');
+  // ★★★ ここまでが変更箇所 ★★★
 
   const songList = famousSongs[resultKey] || [];
   const selectedSongs = [...songList].sort(() => 0.5 - Math.random()).slice(0, 4);
@@ -92,7 +103,9 @@ function renderResultContent(resultKey) {
     <p><span class="color-name" style="background-color: ${colorInfo.code} !important; color: #FFF !important; display: inline-block;">${colorInfo.name}</span> ${colorInfo.code}</p>
     <hr>
     <h3>あなたと相性の良いパートナル</h3>
-    ${compatibleHTML}
+    <div class="compatible-types-container">
+        ${compatibleHTML}
+    </div>
     <hr>
     <h3>あなたのパートナルの人気曲</h3>
     ${songsHTML}
@@ -140,7 +153,7 @@ function addEventListeners(resultKey) {
  */
 function getCharacterTitle(key) {
   const description = characterDescriptions[key];
-  if (!description) return key;
+  if (!description) return `【${key}型】`; // ★★★ `data.js`にdescriptionがない場合のためのフォールバックを追加 ★★★
   const match = description.match(/<span class="title"[^>]*>(.*?)<\/span>/);
-  return match ? match[1] : key;
+  return match ? match[1] : `【${key}型】`;
 }
