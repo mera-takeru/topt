@@ -63,6 +63,8 @@ function renderResultContent(resultKey) {
   const resultTextDiv = document.getElementById('resultText');
   const resultImageDiv = document.getElementById('resultImage');
 
+  resultImageDiv.classList.add('shine-effect');
+
   // data.jsから必要なデータを取得
   const colorInfo = personalityColors[resultKey];
   const displayImageUrl = displayImageUrls[resultKey];
