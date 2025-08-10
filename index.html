@@ -265,7 +265,7 @@
         }
       };
       
-      function displayLuckyPertonal() {
+　　　function displayLuckyPertonal() {
         const startDate = new Date('1683-09-25T00:00:00Z');
         const now = new Date();
         const today = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Tokyo"}));
@@ -292,17 +292,21 @@
           const match = description.match(/<span class="title"[^>]*>【.*?】(.*?)<\/span>/);
           return match ? `【${key}型】${match[1]}` : `【${key}型】`;
         }
-
+        
         const luckyPertonal1 = document.getElementById('lucky-pertonal-1');
         const luckyPertonal2 = document.getElementById('lucky-pertonal-2');
 
-        luckyPertonal1.textContent = getCharacterTitle(luckyPair.major);
+        // ★★★ ここからが変更箇所 ★★★
+        const fileNameMajor = luckyPair.major.replace('♯', 's').replace('♭', 'b');
+        luckyPertonal1.innerHTML = `<a href="./${fileNameMajor}.html">${getCharacterTitle(luckyPair.major)}</a>`;
         luckyPertonal1.style.backgroundColor = personalityColors[luckyPair.major].code;
         
-        luckyPertonal2.textContent = getCharacterTitle(luckyPair.minor);
+        const fileNameMinor = luckyPair.minor.replace('♯', 's').replace('♭', 'b');
+        luckyPertonal2.innerHTML = `<a href="./${fileNameMinor}.html">${getCharacterTitle(luckyPair.minor)}</a>`;
         luckyPertonal2.style.backgroundColor = personalityColors[luckyPair.minor].code;
+        // ★★★ ここまでが変更箇所 ★★★
       }
-
+      
       displayLuckyPertonal();
       
       const videoElement = document.querySelector('#startScreen video');
