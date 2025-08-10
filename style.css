@@ -569,3 +569,96 @@ button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
   font-size: 0.8rem;
   color: #666;
 }
+
+/* ======================================= */
+/* 13. リッチフッター (追加)
+/* ======================================= */
+
+/* フッター全体の背景とパディング */
+footer {
+  background: #f8f9fa; /* 少し色味のある背景に変更 */
+  color: #6c757d; /* テキストの色を少し柔らかく */
+  padding: 40px 16px;
+  border-top: 1px solid #dee2e6;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 960px; /* ブログページなどに合わせて最大幅を広げる */
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* 上段（サイト紹介とナビゲーション） */
+.footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.footer-about, .footer-sitemap {
+  flex: 1;
+  min-width: 250px; /* 折り返し時の最小幅 */
+}
+
+.footer-about h4 {
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.footer-about p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footer-sitemap h4 {
+  font-size: 1.1rem;
+  color: #343a40;
+  margin-bottom: 12px;
+}
+
+.footer-sitemap ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-sitemap li {
+  margin-bottom: 8px;
+}
+
+.footer-sitemap a {
+  font-size: 0.9rem;
+  color: #6c757d !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.footer-sitemap a:hover {
+  color: var(--secondary) !important;
+}
+
+/* 下段（規約リンクとコピーライト） */
+.footer-secondary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.footer-secondary .footer-nav {
+  gap: 16px; /* リンク間の隙間を少し広げる */
+  margin-bottom: 8px;
+}
+
+.footer-secondary .footer-nav a {
+  color: #6c757d !important;
+}
