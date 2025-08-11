@@ -462,9 +462,7 @@ const famousSongs = {
       //"『風の通り道』- 久石譲",
         `<iframe width="100%" height="150" src="https://www.youtube.com/embed/-uNNWc0wJiw?si=dTXS6byOicRIQ17U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
       //"『Drop』- HANA",
-        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/n2Rywx3g1PM?si=Fj0gjEkB_zi1uMbN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-      //"『夜に駆ける』- YOASOBI"
-        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/x8VYWazR5mE?si=l0wT0h3So2l6jVZ7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/n2Rywx3g1PM?si=Fj0gjEkB_zi1uMbN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "D♭": [
       //"『若者のすべて』- フジファブリック",
