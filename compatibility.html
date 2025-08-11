@@ -52,10 +52,10 @@
       padding-top: 24px;
       text-align: left;
       border-radius: var(--radius);
-      transition: background 0.8s ease-out; /* 背景色の変化を滑らかに */
+      transition: background 0.8s ease-out;
     }
 
-    /* ▼▼▼【追加】ハートメーターとランク表示のスタイル ▼▼▼ */
+    /* ▼▼▼【修正】ハートメーターのスタイルを全面的に変更 ▼▼▼ */
     #compatibility-visual {
       text-align: center;
       margin-bottom: 24px;
@@ -68,36 +68,43 @@
       margin: 0 auto;
     }
     
-    .heart-fill::before, .heart-meter::before {
+    /* ベースとなる背景のハート（グラデーション） */
+    .heart-meter::before {
       content: "❤️";
       position: absolute;
       top: 0;
       left: 0;
       font-size: 120px;
       line-height: 1;
-    }
-
-    .heart-meter::before {
-      color: #ddd; /* 背景のハート色 */
-    }
-
-    .heart-fill {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      overflow: hidden;
-      height: 0%; /* JSで高さを変更 */
-      transition: height 1s ease-out;
-    }
-
-    .heart-fill::before {
       background-image: linear-gradient(45deg, var(--secondary), var(--primary));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
+    /* 下から満ちてくる赤いハートのコンテナ */
+    .heart-fill {
+      position: absolute;
+      bottom: 0; /* 下を基準に配置 */
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      height: 0%; /* 初期状態は高さ0% */
+      transition: height 1s ease-out;
+    }
+
+    /* 下から満ちてくる赤いハート本体 */
+    .heart-fill::before {
+      content: "❤️";
+      position: absolute;
+      bottom: 0; /* コンテナの下に配置 */
+      left: 0;
+      font-size: 120px;
+      line-height: 1;
+      color: red; /* ハート本来の色 */
+    }
+
+    /* パーセンテージ表示は変更なし */
     .heart-percent {
       position: absolute;
       width: 100%;
@@ -109,6 +116,8 @@
       color: #fff;
       text-shadow: 0 0 4px rgba(0,0,0,0.5);
     }
+    
+    /* ▲▲▲【修正】ここまで ▲▲▲ */
 
     .compatibility-rank {
       font-size: 1.5rem;
@@ -116,7 +125,6 @@
       color: var(--primary);
       margin-top: 12px;
     }
-    /* ▲▲▲ ここまで ▲▲▲ */
     
     #share-images-container {
       display: flex;
@@ -146,7 +154,7 @@
       background-color: #f9f9f9;
       padding: 16px;
       border-radius: var(--radius);
-      margin: 0 16px 16px; /* 余白調整 */
+      margin: 0 16px 16px;
     }
     
   </style>
@@ -279,8 +287,8 @@
         const key2 = select2.value;
         let result = compatibilityData[key1]?.[key2] || compatibilityData[key2]?.[key1];
         
+        // JavaScript部分は前回から変更ありません
         if (result) {
-          // ▼▼▼【JS修正】ここから ▼▼▼
           const percentage = parseInt(result.percentage, 10);
           const heartFill = document.querySelector('.heart-fill');
           const heartPercent = document.querySelector('.heart-percent');
@@ -295,21 +303,17 @@
           else if (percentage >= 30) rank = 'すれ違うメロディー...';
           else rank = '努力が必要かも...';
 
-          // 結果をUIに反映
           rankDiv.textContent = rank;
           heartPercent.textContent = `${percentage}%`;
           textDiv.innerHTML = result.commentary.replace(/\n/g, '<br>');
           
-          // ハートのアニメーションをリセットして再実行
           heartFill.style.height = '0%';
           setTimeout(() => {
               heartFill.style.height = `${percentage}%`;
           }, 100);
 
-          // 背景グラデーションを設定
           resultArea.style.background = `linear-gradient(135deg, ${color1}20, ${color2}20)`;
 
-          // 画像表示
           imagesContainer.innerHTML = ''; 
           const imageUrl1 = displayImageUrls[key1];
           const imageUrl2 = displayImageUrls[key2];
@@ -324,13 +328,12 @@
               </div>
             `;
           }
-          // ▲▲▲【JS修正】ここまで ▲▲▲
 
           resultArea.style.display = 'block';
 
         } else {
-          resultArea.style.background = 'none'; // エラー時は背景をリセット
-          document.getElementById('compatibility-visual').style.display = 'none'; // エラー時はハートを非表示
+          resultArea.style.background = 'none';
+          document.getElementById('compatibility-visual').style.display = 'none';
           imagesContainer.innerHTML = '';
           textDiv.textContent = '相性データが見つかりませんでした。';
           resultArea.style.display = 'block';
