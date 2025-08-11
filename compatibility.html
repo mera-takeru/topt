@@ -51,7 +51,8 @@
     #result-area {
       margin-top: 24px;
       padding-top: 24px;
-      border-top: 2px solid var(--primary);
+      /* ▼▼▼【修正】この行を削除しました ▼▼▼ */
+      /* border-top: 2px solid var(--primary); */ 
       text-align: left;
     }
 
@@ -70,20 +71,17 @@
       gap: 16px;
       margin-bottom: 24px;
     }
-    
-    /* ▼▼▼【修正】画像そのものではなく、画像を囲むコンテナのスタイルを指定します ▼▼▼ */
+
     .image-wrapper {
       width: 80%;
       max-width: 300px;
       border-radius: var(--radius);
-      /* shine-effectクラスが適用されるため、ここではoverflowやpositionは不要 */
     }
 
-    /* ▼▼▼【修正】画像自体のスタイルをシンプルにします ▼▼▼ */
     .compatibility-image {
-      width: 100%; /* 親要素(wrapper)の幅に合わせる */
+      width: 100%;
       height: auto;
-      display: block; /* 隙間ができないように */
+      display: block;
       border-radius: var(--radius);
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
@@ -232,7 +230,6 @@
           const imageUrl2 = displayImageUrls[key2];
 
           if (imageUrl1 && imageUrl2) {
-            // ▼▼▼【修正】画像をdivで囲み、そのdivにshine-effectクラスを適用します ▼▼▼
             imagesContainer.innerHTML = `
               <div class="image-wrapper shine-effect">
                 <img src="${imageUrl1}" alt="${getCharacterTitle(key1)}の画像" class="compatibility-image">
