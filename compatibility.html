@@ -63,25 +63,26 @@
       margin-bottom: 16px;
     }
     
+    /* ▼▼▼【変更】ここから ▼▼▼ */
     #share-images-container {
       display: flex;
-      justify-content: center;
+      flex-direction: column; /* 横並び(row)から縦並び(column)に変更 */
+      align-items: center;   /* 中央揃えにする */
       gap: 16px;
       margin-bottom: 24px;
-      flex-wrap: wrap;
     }
 
     .compatibility-image {
-      width: 45%;
-      max-width: 200px;
+      width: 80%; /* 横幅を広げて視認性を向上 */
+      max-width: 300px; /* 最大幅も調整 */
       height: auto;
       border-radius: var(--radius);
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       border: 2px solid #fff;
-      /* 画像に輝くエフェクトを追加 */
       position: relative;
       overflow: hidden;
     }
+    /* ▲▲▲【変更】ここまで ▲▲▲ */
     
     .compatibility-image::after {
       content: '';
@@ -235,10 +236,8 @@
           
           imagesContainer.innerHTML = ''; 
 
-          // ▼▼▼【変更箇所】shareImageUrls から displayImageUrls に変更 ▼▼▼
           const imageUrl1 = displayImageUrls[key1];
           const imageUrl2 = displayImageUrls[key2];
-          // ▲▲▲【変更箇所】ここまで ▲▲▲
 
           if (imageUrl1 && imageUrl2) {
             imagesContainer.innerHTML = `
