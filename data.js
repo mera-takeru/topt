@@ -435,13 +435,16 @@ SNSの投稿や、日記や詩、あるいは何気ない一言——<br><br>
   };  
 const famousSongs = {
     "C": [
-      "『チェリー』- スピッツ",
-      "『ありがとう』- いきものがかり",
-      "『キセキ』- GReeeeN",
-      "『silent』- SEKAI NO OWARI",
-      "『Star』- 星野源",
-      "『点描の唄 (feat. 井上苑子)』- Mrs. GREEN APPLE",
-      "『カメレオン』- King Gnu"
+      //"『チェリー』- スピッツ",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/Eze6-eHmtJg?si=1wYNI3D0gzoydvUQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『ありがとう』- いきものがかり",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/VZBU8LvZ91Q?si=EfQtDmfj6FHzox13" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『キセキ』- GReeeeN",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/DwTinTO0o9I?si=36ZFrDzlm4Aj2yyU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
+      //"『silent』- SEKAI NO OWARI",
+      //"『Star』- 星野源",
+      //"『点描の唄 (feat. 井上苑子)』- Mrs. GREEN APPLE",
+      //"『カメレオン』- King Gnu"
     ],
     "cm": [
       "『残酷な天使のテーゼ』- 高橋洋子",
