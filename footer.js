@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="footer-main">
         <div class="footer-about">
           <h4>pertonal -パートナル-</h4>
-          <p>「音」と「色」でわかる新感覚の性格診断。<br>全24種のパートナルから本当のあなたを見つけてみませんか？</p>
+          <p>「音」と「色」でわかる新感覚の性格診断。<br>24のパートナルから本当のあなたを見つけてみませんか？</p>
         </div>
         <div class="footer-sitemap">
           <h4>サイトマップ</h4>
