@@ -1,7 +1,5 @@
 // pertonal - 共通ロジックファイル
 
-// ★★★ 冒頭にあった "const personalityColors = { ... };" のブロックを削除しました ★★★
-
 /**
  * ページ全体のレイアウトを描画するメイン関数
  * @param {string} resultKey - 表示する結果のキー (例: "C", "cm")
@@ -38,14 +36,6 @@ function renderPageLayout(resultKey) {
         <div class="restart-row"><button id="restartBtn">もう一度診断する</button></div>
       </div>
     </div>
-    <footer>
-      <nav class="footer-nav">
-        <a href="./terms.html">利用規約</a><span class="divider">|</span>
-        <a href="./privacy.html">プライバシーポリシー</a><span class="divider">|</span>
-        <a href="./operator.html">運営者情報</a>
-      </nav>
-      <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
-    </footer>
   `;
 
   // 結果コンテンツを描画
