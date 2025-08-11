@@ -78,12 +78,9 @@
       border-radius: var(--radius);
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       border: 2px solid #fff;
-      /* ▼▼▼【修正】shine-effectクラスを適用するため、displayプロパティを追加 ▼▼▼ */
       display: block; 
     }
     
-    /* ▼▼▼【修正】重複していた ::after と @keyframes の記述を削除しました ▼▼▼ */
-
     #compatibility-text {
       font-size: 1rem;
       line-height: 1.8;
@@ -187,26 +184,37 @@
       const textDiv = document.getElementById('compatibility-text');
       const imagesContainer = document.getElementById('share-images-container');
 
+      // ▼▼▼【修正】ここからが重要な修正箇所です ▼▼▼
+      // 'data.js'に在るcharacterDescriptionsオブジェクトのキーの配列を取得します。
       const pertonalTypes = Object.keys(characterDescriptions);
 
+      // 指定されたキー（例：「C」）に対応するキャラクターの正式名称（例：「【C型】騎士」）を取得する関数です。
       function getCharacterTitle(key) {
         const description = characterDescriptions[key];
-        if (!description) return `【${key}型】`;
+        if (!description) return `【${key}型】`; // もしもの時の予備対応
+        
+        // 正規表現を使い、HTMLの中から<span>タグで囲まれた部分を抜き出します。
         const match = description.match(/<span class="title"[^>]*>(.*?)<\/span>/);
+        
+        // マッチした部分があればそれを、なければ予備の形式を返します。
         return match ? match[1] : `【${key}型】`;
       }
 
+      // pertonalTypes配列をループ処理し、各プルダウンメニューに<option>を追加します。
       pertonalTypes.forEach(key => {
+        const optionText = getCharacterTitle(key); // 上記の関数を使って、表示用のテキストを取得します。
+        
         const option1 = document.createElement('option');
-        option1.value = key;
-        option1.textContent = getCharacterTitle(key);
+        option1.value = key; // 値には 'C' や 'am' などを設定
+        option1.textContent = optionText; // 表示テキストには「【C型】騎士」などを設定
         select1.appendChild(option1);
 
         const option2 = document.createElement('option');
         option2.value = key;
-        option2.textContent = getCharacterTitle(key);
+        option2.textContent = optionText;
         select2.appendChild(option2);
       });
+      // ▲▲▲【修正】ここまで ▲▲▲
       
       if(select2.options.length > 1) {
         select2.selectedIndex = 1;
@@ -228,7 +236,6 @@
           const imageUrl2 = displayImageUrls[key2];
 
           if (imageUrl1 && imageUrl2) {
-            // ▼▼▼【修正】img タグに .shine-effect クラスを追加 ▼▼▼
             imagesContainer.innerHTML = `
               <img src="${imageUrl1}" alt="${getCharacterTitle(key1)}の画像" class="compatibility-image shine-effect">
               <img src="${imageUrl2}" alt="${getCharacterTitle(key2)}の画像" class="compatibility-image shine-effect">
