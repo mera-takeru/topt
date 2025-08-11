@@ -803,7 +803,7 @@ const famousSongs = {
   const questions = [
   {
     "id": "Q1",
-    "text": "Q1. SNS上で友人が落ち込んでいたら？",
+    "text": "Q1. SNSで友人が落ち込んでいたら？",
     "options": [
       {"text": "「大丈夫？」とDMで心配する", "points": {"B♭": 3, "b♭m": 1}},
       {"text": "おバカなミームで笑顔にさせる", "points": {"em": 3, "A♭": 1}}, 
