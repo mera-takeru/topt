@@ -8,9 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-  
+
   <style>
-    /* blog.htmlからコピーした共通スタイル */
     :root {
       --primary: #6C63FF;
       --secondary: #FF6584;
@@ -19,75 +18,101 @@
       --radius: 12px;
       --transition: .3s;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    a { color: inherit !important; text-decoration: none; }
-    a:visited, a:link, a:active { color: inherit !important; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient( 45deg, rgba(255,99,71,0.2), rgba(255,165,0,0.2), rgba(255,255,0,0.2), rgba(50,205,50,0.2), rgba(0,191,255,0.2), rgba(75,0,130,0.2), rgba(238,130,238,0.2) );
-      background-size: 400%;
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 16px;
-      animation: rainbow 8s ease infinite;
-    }
-    @keyframes rainbow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-    
-    header, footer {
-      background: rgba(255,255,255,0.9);
-      padding: 12px;
+    .container {
       width: 100%;
-      text-align: center;
-      box-sizing: border-box;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+      margin: 16px auto;
     }
-    
-    .header-container, .footer-container { width: 100%; max-width: 600px; margin: 0 auto; }
-    header { border-bottom: 1px solid #ddd; }
-    footer { border-top: 1px solid #ddd; }
-    .header-nav, .footer-nav { display: flex; justify-content: center; align-items: center; gap: 12px; }
-    .header-nav a, .footer-nav a { font-weight: 400; font-size: 0.75rem; padding: 0 6px; transition: color var(--transition); }
-    .header-nav a:hover, .footer-nav a:hover { color: var(--secondary); }
-    .header-nav .divider, .footer-nav .divider { font-size: 0.75rem; font-weight: 400; }
-    .copyright { font-size: 0.75rem; font-weight: 400; text-align: center; margin-top: 8px; }
-
-    .main-layout { display: flex; gap: 24px; width: 100%; max-width: 960px; margin: 16px 0; }
-    .main-content { flex: 1; }
-    .sidebar { width: 280px; flex-shrink: 0; }
-    
-    .article-container { background: rgba(255,255,255,0.9); border-radius: var(--radius); box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 24px; }
-    .article-header { text-align: center; margin-bottom: 24px; }
-    .article-title { font-size: 1.8rem; margin-bottom: 8px; color: var(--primary); }
-    .article-date { font-size: 0.9rem; color: #888; }
-    .article-thumbnail img { width: 100%; border-radius: var(--radius); margin-bottom: 24px; }
-    .article-body { line-height: 1.8; font-size: 1rem; }
-    .article-body h2 { font-size: 1.5rem; margin-top: 24px; margin-bottom: 16px; color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 8px; }
-    .article-body p { margin-bottom: 16px; }
-    .article-body strong { color: var(--secondary); }
-    
-    .article-tags, .tags-list { display: flex; flex-wrap: wrap; gap: 8px; }
-    .article-tags a, .tags-list a { background: #eee; color: #555 !important; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; transition: background .2s, color .2s; }
-    .article-tags a:hover, .tags-list a:hover { background: var(--primary); color: #fff !important; }
-    
-    .sidebar-widget { background: rgba(255,255,255,0.9); border-radius: var(--radius); padding: 20px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-    .widget-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--primary); }
-    .popular-posts-list li { list-style: none; margin-bottom: 12px; display: flex; align-items: center; }
-    .popular-posts-list .rank-icon { font-size: 1.1rem; margin-right: 8px; width: 24px; text-align: center; }
-    .popular-posts-list a { font-size: 0.9rem; transition: color .2s ease; }
-    .popular-posts-list a:hover { color: var(--secondary) !important; }
-    button.back-btn { font: inherit; font-size: 1rem; padding: 12px 20px; border: none; border-radius: var(--radius); background: var(--primary); color: #fff; cursor: pointer; transition: background var(--transition), transform var(--transition); width: 100%; margin-top: 24px; }
-    button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
-
-    @media (max-width: 768px) {
-      body { padding: 0; }
-      header, footer { border-radius: 0; }
-      .main-layout { flex-direction: column; margin: 16px 0; padding: 0 16px; }
-      .sidebar { width: 100%; }
+    .start-image {
+      aspect-ratio: 3/1;
     }
+    .type-image {
+      aspect-ratio: 4/3;
+    }
+    .content h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .content h2::before {
+      font-size: 1.5rem;
+    }
+    .content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .content ul {
+      list-style: disc;
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+    .content li {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    button.back-btn {
+      font: inherit;
+      font-size: 1rem;
+      padding: 12px 20px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      width: 100%;
+      margin-top: 16px;
+    }
+    button.back-btn:hover {
+      background: var(--secondary);
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 600px) {
+  .container {
+    padding: 16px;
+  }
+  .start-image {
+    max-width: 100%;
+    margin-bottom: 12px;
+  }
+  .content h2 {
+    font-size: 1.25rem;
+  }
+  .content p, .content li {
+    font-size: 1rem;
+  }
+  button.back-btn {
+    font-size: 1rem;
+    padding: 10px 16px;
+  }
+  .title-english {
+    font-size: 2rem;
+  }
+  .title-japanese {
+    font-size: 1.25rem;
+  }
+}
+
+.divider-line {
+  border: 0;
+  border-top: 1px solid #ddd; /* 線の色と太さ */
+  margin: 32px 0;             /* 線の上下の余白 */
+}
   </style>
+ 
 </head>
 <body>
   <header>
