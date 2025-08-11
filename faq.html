@@ -70,45 +70,6 @@
       margin: 16px auto;
     }
 
-    header {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 12px;
-      border-bottom: 1px solid #ddd;
-      width: 100%;
-      text-align: center;
-      box-sizing: border-box;
-    }
-
-    .header-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-    }
-
-    header .header-nav a {
-      text-decoration: none;
-      color: #000000 !important;
-      font-weight: 400;
-      font-size: 0.75rem;
-      padding: 0 6px;
-      transition: color var(--transition);
-    }
-
-    header .header-nav a:hover {
-      color: var(--secondary);
-    }
-
-    header .header-nav a.active {
-      color: var(--secondary);
-    }
-
-    header .header-nav .divider {
-      color: #000000 !important;
-      font-size: 0.75rem;
-      font-weight: 400;
-    }
-
     h1 {
   text-align: center;
   font-weight: 700;
@@ -241,45 +202,57 @@
       transform: scale(1.02);
     }
 
-    @media (max-width: 600px) {
-      .container {
-        padding: 16px;
-      }
-      .start-image {
-        max-width: 100%;
-        margin-bottom: 12px;
-      }
-      .content h2 {
-        font-size: 1rem;
-      }
-      .content p {
-        font-size: 1rem;
-      }
-      button.back-btn {
-        font-size: 1rem;
-        padding: 10px 16px;
-      }
-      header .header-nav a {
-        font-size: 0.75rem;
-      }
-      header .header-nav .divider {
-        font-size: 0.75rem;
-      }
-      .title-english {
-        font-size: 2rem; 
-      }
-      .title-japanese {
-        font-size: 1.25rem; 
-      }
-    }
+    /* ======================================= */
+/* ヘッダーとフッターの共通スタイル
+/* ======================================= */
 
-  footer {
+header, footer {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+header {
+  border-bottom: 1px solid #ddd;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+header .header-nav a {
+  text-decoration: none;
+  color: #000000 !important;
+  font-weight: 400;
+  font-size: 0.75rem;
+  padding: 0 6px;
+  transition: color var(--transition);
+}
+
+header .header-nav a:hover {
+  color: var(--secondary);
+}
+
+header .header-nav a.active {
+  color: var(--secondary);
+}
+
+header .header-nav .divider {
+  color: #000000 !important;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+footer {
   background: #f8f9fa;
   color: #6c757d;
   padding: 40px 16px;
   border-top: 1px solid #dee2e6;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .footer-container {
@@ -358,13 +331,71 @@
 }
 
 .footer-secondary .footer-nav {
+  display: flex; /* 追加 */
+  justify-content: center; /* 追加 */
+  align-items: center; /* 追加 */
   gap: 12px;
   margin-bottom: 0;
 }
 
+.footer-secondary .footer-nav a {
+  color: #6c757d !important;
+  font-weight: 400; /* 追加 */
+  font-size: 0.75rem; /* 追加 */
+  padding: 0 6px; /* 追加 */
+  transition: color var(--transition); /* 追加 */
+}
+
+.footer-secondary .footer-nav a:hover {
+    color: var(--secondary) !important; /* 追加 */
+}
+
+.footer-secondary .footer-nav .divider {
+    color: #6c757d !important; /* 追加 */
+    font-size: 0.75rem; /* 追加 */
+}
+
 .footer-secondary .copyright {
     text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #6c757d;
+    margin-top: 0; /* 修正 */
 }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 16px;
+      }
+      .start-image {
+        max-width: 100%;
+        margin-bottom: 12px;
+      }
+      .content h2 {
+        font-size: 1rem;
+      }
+      .content p {
+        font-size: 1rem;
+      }
+      button.back-btn {
+        font-size: 1rem;
+        padding: 10px 16px;
+      }
+      header .header-nav a {
+        font-size: 0.75rem;
+      }
+      header .header-nav .divider {
+        font-size: 0.75rem;
+      }
+      .title-english {
+        font-size: 2rem; 
+      }
+      .title-japanese {
+        font-size: 1.25rem; 
+      }
+    }
+
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7664351285167114"
      crossorigin="anonymous"></script>
