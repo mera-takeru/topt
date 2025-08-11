@@ -3,158 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>パートナル開発秘話：着想からローンチまでの道のり | pertonal -パートナル-</title>
+  
+  <title>【記事のタイトルをここに入力】 | pertonal -パートナル-</title>
+  <meta name="description" content="【記事の要約を120文字程度でここに入力】">
+  <meta name="twitter:image" content="【記事のサムネイル画像のURLをここに入力】">
+  <meta property="og:image" content="【記事のサムネイル画像のURLをここに入力】">
   <link rel="icon" href="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafkreigaj4jljhdjkoavf2tdarmpyzfalutwxnnmmhrb437soizt2peewe" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
-
+  
   <style>
+    /* 基本設定 */
     :root {
       --primary: #6C63FF;
       --secondary: #FF6584;
-      --bg: #F9FAFB;
       --text: #333;
       --radius: 12px;
       --transition: .3s;
     }
-    .container {
-      width: 100%;
-      max-width: 600px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: var(--radius);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      padding: 24px;
-      margin: 16px auto;
-    }
-    .start-image {
-      aspect-ratio: 3/1;
-    }
-    .type-image {
-      aspect-ratio: 4/3;
-    }
-    .content h2 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 12px;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    a { color: inherit !important; text-decoration: none; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient( 45deg, rgba(255,99,71,0.2), rgba(255,165,0,0.2), rgba(255,255,0,0.2), rgba(50,205,50,0.2), rgba(0,191,255,0.2), rgba(75,0,130,0.2), rgba(238,130,238,0.2) );
+      background-size: 400%;
+      color: var(--text);
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 8px;
+      min-height: 100vh;
+      padding: 16px;
+      animation: rainbow 8s ease infinite;
     }
-    .content h2::before {
-      font-size: 1.5rem;
-    }
-    .content p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-    .content ul {
-      list-style: disc;
-      margin-left: 20px;
-      margin-bottom: 16px;
-    }
-    .content li {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-    button.back-btn {
-      font: inherit;
-      font-size: 1rem;
-      padding: 12px 20px;
-      border: none;
-      border-radius: var(--radius);
-      background: var(--primary);
-      color: #fff;
-      cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
-      width: 100%;
-      margin-top: 16px;
-    }
-    button.back-btn:hover {
-      background: var(--secondary);
-      transform: scale(1.02);
-    }
+    @keyframes rainbow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    
+    /* レイアウト */
+    .main-layout { display: flex; gap: 24px; width: 100%; max-width: 960px; margin: 16px 0; }
+    .main-content { flex: 1; }
+    .sidebar { width: 280px; flex-shrink: 0; }
+    .article-container { background: rgba(255,255,255,0.9); border-radius: var(--radius); box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 24px; }
 
-    @media (max-width: 600px) {
-  .container {
-    padding: 16px;
-  }
-  .start-image {
-    max-width: 100%;
-    margin-bottom: 12px;
-  }
-  .content h2 {
-    font-size: 1.25rem;
-  }
-  .content p, .content li {
-    font-size: 1rem;
-  }
-  button.back-btn {
-    font-size: 1rem;
-    padding: 10px 16px;
-  }
-  .title-english {
-    font-size: 2rem;
-  }
-  .title-japanese {
-    font-size: 1.25rem;
-  }
-}
+    /* 記事ヘッダー */
+    .article-header { text-align: center; margin-bottom: 24px; }
+    .article-title { font-size: 1.8rem; margin-bottom: 8px; color: var(--primary); }
+    .article-date { font-size: 0.9rem; color: #888; }
+    .article-thumbnail { width: 100%; border-radius: var(--radius); margin-bottom: 24px; aspect-ratio: 16/9; overflow: hidden;}
+    .article-thumbnail img { width: 100%; height: 100%; object-fit: cover; }
 
-.divider-line {
-  border: 0;
-  border-top: 1px solid #ddd; /* 線の色と太さ */
-  margin: 32px 0;             /* 線の上下の余白 */
-}
+    /* 記事本文 (about.htmlのスタイルを参考に) */
+    .article-body { line-height: 1.8; font-size: 1rem; }
+    .article-body h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin: 32px 0 16px; border-bottom: 2px solid var(--secondary); padding-bottom: 8px; }
+    .article-body h3 { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin: 24px 0 12px; border-left: 5px solid var(--secondary); padding-left: 8px;}
+    .article-body p { margin-bottom: 16px; }
+    .article-body strong { color: var(--secondary); font-weight: 700; }
+    .article-body ul { list-style: disc; margin-left: 20px; margin-bottom: 16px; }
+    .article-body li { margin-bottom: 8px; }
+    .article-image { width: 100%; border-radius: var(--radius); margin: 24px 0; aspect-ratio: 4/3; overflow: hidden; }
+    .article-image img { width: 100%; height: 100%; object-fit: cover; }
+    .divider-line { border: 0; border-top: 1px solid #ddd; margin: 32px 0; }
+
+    /* タグ */
+    .article-tags, .tags-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .article-tags a, .tags-list a { background: #eee; color: #555 !important; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; transition: background .2s, color .2s; }
+    .article-tags a:hover, .tags-list a:hover { background: var(--primary); color: #fff !important; }
+    
+    /* サイドバー */
+    .sidebar-widget { background: rgba(255,255,255,0.9); border-radius: var(--radius); padding: 20px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .widget-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--primary); }
+    .popular-posts-list li { list-style: none; margin-bottom: 12px; display: flex; align-items: center; }
+    .popular-posts-list .rank-icon { font-size: 1.1rem; margin-right: 8px; width: 24px; text-align: center; }
+    .popular-posts-list a { font-size: 0.9rem; transition: color .2s ease; }
+    .popular-posts-list a:hover { color: var(--secondary) !important; }
+    
+    /* その他 */
+    button.back-btn { font: inherit; font-size: 1rem; padding: 12px 20px; border: none; border-radius: var(--radius); background: var(--primary); color: #fff; cursor: pointer; transition: background var(--transition), transform var(--transition); width: 100%; margin-top: 24px; }
+    button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
+
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+      body { padding: 0; }
+      .main-layout { flex-direction: column; margin: 16px 0; padding: 0 16px; }
+      .sidebar { width: 100%; }
+      .article-title { font-size: 1.5rem; }
+      .article-body h2 { font-size: 1.3rem; }
+    }
   </style>
- 
 </head>
 <body>
   <header>
-    <div class="header-container">
-        <nav class="header-nav">
-          <a href="./about.html">パートナルとは</a><span class="divider">|</span>
-          <a href="./faq.html">よくある質問</a><span class="divider">|</span>
-          <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
-        </nav>
-    </div>
+    <nav class="header-nav">
+      <a href="./about.html">パートナルとは</a><span class="divider">|</span>
+      <a href="./faq.html">よくある質問</a><span class="divider">|</span>
+      <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
+    </nav>
   </header>
 
   <div class="main-layout">
     <main class="main-content">
       <div class="article-container">
+        
         <div class="article-header">
-            <h1 class="article-title">パートナル開発秘話：着想からローンチまでの道のり</h1>
-            <p class="article-date">2025.08.12</p>
+            <h1 class="article-title">【記事のタイトルをここに入力】</h1>
+            <p class="article-date">2025.08.15</p>
         </div>
-        <div class="article-thumbnail">
-            <img src="https://picsum.photos/seed/a/800/400" alt="記事メイン画像">
+        <div class="article-thumbnail shine-effect">
+            <img src="https://picsum.photos/seed/a/800/400" alt="記事のメイン画像">
         </div>
         <div class="article-body">
-          <p><strong style="color: var(--secondary);">「自分って本当はどんな人間なんだろう？」</strong><br><br>
-      誰かとすれ違ったとき<br><br>
-      うまく話せなかったとき<br><br>
-      そう思う瞬間はありませんか？<br><br><br>
-      そんなあなたにオススメしたいのが<br><br>
-      この<strong>「pertonal -パートナル-」</strong>です。</p>
-      <hr class="divider-line">
-      <h2> 🎼自分自身の"キー"を知る</h2>
-      <hr class="divider-line">
-      <strong style="color: var(--secondary);">「パートナル」は<br><br>
-      音楽理論と色彩心理学を掛け合わせた<br><br>
-      新感覚のWeb性格診断。</strong><br><br><br>
-      12個の４択の質問に答えるだけで<br><br>
-      あなたの<strong>「調性格(パートナル)」</strong>が<br><br> 
-      見つかります。</p>
-        <hr style="margin: 24px 0; border: none; border-top: 1px solid #ddd;">
+            <p><strong>ここが記事の導入文です。</strong>読者の興味を引くような文章を書きましょう。「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
+            
+            <h2>🎼 見出し(H2)のサンプル</h2>
+            <p>ここが段落の文章です。about.htmlの雰囲気を参考に、読みやすい文章を心がけましょう。パートナルは音楽理論と色彩心理学を掛け合わせた新感覚のWeb性格診断です。</p>
+            
+            <div class="article-image shine-effect">
+              <img src="https://picsum.photos/seed/b/800/600" alt="記事中の画像">
+            </div>
+
+            <h3>見出し(H3)のサンプル</h3>
+            <p>12個の４択の質問に答えるだけで、あなたの「調性格(パートナル)」が見つかります。</p>
+            <ul>
+              <li>リストの項目1</li>
+              <li>リストの項目2</li>
+            </ul>
+        </div>
+        <hr class="divider-line">
+        
         <div class="article-tags">
-            <a href="./blog.html">#お知らせ</a>
             <a href="./blog.html">#開発秘話</a>
+            <a href="./blog.html">#コンセプト</a>
         </div>
         <button class="back-btn" onclick="location.href='./blog.html'">ブログ一覧に戻る</button>
       </div>
@@ -164,7 +139,7 @@
         <div class="sidebar-widget">
             <h3 class="widget-title">👑 人気の記事</h3>
             <ul class="popular-posts-list">
-                <li><span class="rank-icon">🥇</span><a href="./article-2.html"><strong>音と色でわかる新感覚の性格診断「パートナル」って？</strong></a></li>
+                <li><span class="rank-icon">🥇</span><a href="./article-2.html"><strong>【C型】騎士を徹底解説！MBTIとの違い</strong></a></li>
                 <li><span class="rank-icon">🥈</span><a href="./article-1.html"><strong>パートナル開発秘話：着想からローンチまで</strong></a></li>
                 <li><span class="rank-icon">🥉</span><a href="#"><strong>あなたの「ラッキーパートナル」は？</strong></a></li>
             </ul>
@@ -172,44 +147,14 @@
         <div class="sidebar-widget">
             <h3 class="widget-title">🏷️ タグ一覧</h3>
             <div class="tags-list">
-                <a class="tag-link is-active" data-tag="all">#すべて表示</a>
-                <a class="tag-link" data-tag="性格解説">#相性診断</a>
-                <a class="tag-link" data-tag="MBTI比較">#MBTI比較</a>
-                <a class="tag-link" data-tag="お知らせ">#お知らせ</a>
-                <a class="tag-link" data-tag="開発秘話">#開発秘話</a>
-                <a class="tag-link" data-tag="仕事・キャリア">#仕事・キャリア</a>
-                <a class="tag-link" data-tag="性格解説">#性格解説</a>
-                <a class="tag-link" data-tag="人間関係">#人間関係</a>
-                <a class="tag-link" data-tag="ランキング">#ランキング</a>
-                <a class="tag-link" data-tag="恋愛">#恋愛</a>
-                <a class="tag-link" data-tag="その他">#その他</a>
-                <a class="tag-link" data-tag="【C型】騎士">#【C型】騎士</a>
-                <a class="tag-link" data-tag="【cm型】鍛冶屋">#【cm型】鍛冶屋</a>
-                <a class="tag-link" data-tag="【D♭型】思想家">#【D♭型】思想家</a>
-                <a class="tag-link" data-tag="【c♯m型】創造主">#【c♯m型】創造主</a>
-                <a class="tag-link" data-tag="【D型】探検家">#【D型】探検家</a>
-                <a class="tag-link" data-tag="【dm型】司書">#【dm型】司書</a>
-                <a class="tag-link" data-tag="【E♭型】賢者">#【E♭型】賢者</a>
-                <a class="tag-link" data-tag="【e♭m型】画家">#【e♭m型】画家</a>
-                <a class="tag-link" data-tag="【E型】演奏家">#【E型】演奏家</a>
-                <a class="tag-link" data-tag="【em型】遊牧民">#【em型】遊牧民</a>
-                <a class="tag-link" data-tag="【F型】発明家">#【F型】発明家</a>
-                <a class="tag-link" data-tag="【fm型】小説家">#【fm型】小説家</a>
-                <a class="tag-link" data-tag="【F♯型】建築士">#【F♯型】建築士</a>
-                <a class="tag-link" data-tag="【f♯m型】錬金術師">#【f♯m型】錬金術師</a>
-                <a class="tag-link" data-tag="【G型】狙撃手">#【G型】狙撃手</a>
-                <a class="tag-link" data-tag="【gm型】探偵">#【gm型】探偵</a>
-                <a class="tag-link" data-tag="【A♭型】舞踏家">#【A♭型】舞踏家</a>
-                <a class="tag-link" data-tag="【g♯m型】収集家">#【g♯m型】収集家</a>
-                <a class="tag-link" data-tag="【A型】参謀長">#【A型】参謀長</a>
-                <a class="tag-link" data-tag="【B♭型】案内人">#【B♭型】案内人</a>
-                <a class="tag-link" data-tag="【b♭m型】看護師">#【b♭m型】看護師</a>
-                <a class="tag-link" data-tag="【B型】剣闘士">#【B型】剣闘士</a>
-                <a class="tag-link" data-tag="【bm型】魔術師">#【bm型】魔術師</a>
-            </div>
+                <a href="./blog.html">#すべて表示</a>
+                <a href="./blog.html">#相性診断</a>
+                <a href="./blog.html">#MBTI比較</a>
+                </div>
         </div>
     </aside>
   </div>
+  
   <script src="footer.js"></script>
 </body>
 </html>
