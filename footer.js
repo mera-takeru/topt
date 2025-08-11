@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <li><a href="./index.html">トップページ</a></li>
             <li><a href="./about.html">パートナルとは</a></li>
             <li><a href="./faq.html">よくある質問</a></li>
+            <li><a href="./compatibility.html">パートナル相性診断</a></li>
             <li><a href="https://forms.gle/nmsCdZtsjdprxSwY9">お問い合わせ</a></li>
           </ul>
         </div>
