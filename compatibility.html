@@ -55,7 +55,6 @@
       transition: background 0.8s ease-out;
     }
 
-    /* ▼▼▼【修正】ハートメーターのスタイルを全面的に変更 ▼▼▼ */
     #compatibility-visual {
       text-align: center;
       margin-bottom: 24px;
@@ -68,7 +67,6 @@
       margin: 0 auto;
     }
     
-    /* ベースとなる背景のハート（グラデーション） */
     .heart-meter::before {
       content: "❤️";
       position: absolute;
@@ -82,29 +80,26 @@
       color: transparent;
     }
 
-    /* 下から満ちてくる赤いハートのコンテナ */
     .heart-fill {
       position: absolute;
-      bottom: 0; /* 下を基準に配置 */
+      bottom: 0;
       left: 0;
       width: 100%;
       overflow: hidden;
-      height: 0%; /* 初期状態は高さ0% */
+      height: 0%;
       transition: height 1s ease-out;
     }
 
-    /* 下から満ちてくる赤いハート本体 */
     .heart-fill::before {
       content: "❤️";
       position: absolute;
-      bottom: 0; /* コンテナの下に配置 */
+      bottom: 0;
       left: 0;
       font-size: 120px;
       line-height: 1;
-      color: red; /* ハート本来の色 */
+      color: red;
     }
 
-    /* パーセンテージ表示は変更なし */
     .heart-percent {
       position: absolute;
       width: 100%;
@@ -116,8 +111,6 @@
       color: #fff;
       text-shadow: 0 0 4px rgba(0,0,0,0.5);
     }
-    
-    /* ▲▲▲【修正】ここまで ▲▲▲ */
 
     .compatibility-rank {
       font-size: 1.5rem;
@@ -174,18 +167,20 @@
     <nav class="header-nav">
       <a href="./about.html">パートナルとは</a><span class="divider">|</span>
       <a href="./faq.html">よくある質問</a><span class="divider">|</span>
-      <a href="./compatibility.html" class="active">相性診断</a><span class="divider">|</span>
       <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
     </nav>
   </header>
-
   <div class="container">
     <h1>
         <span class="title-topt">
-            <span class="title-english">相性シミュレーター</span>
+            <span class="title-english">Compatibility</span>
+            <span class="title-japanese"> -相性診断-</span>
         </span>
-        <span class="title-sub">パートナル同士の相性診断</span>
+        <span class="title-sub">あなたと、あの人との相性は？</span>
     </h1>
+
+    <div class="simulator-container">
+      <p>あなたと気になるあの人のパートナルを選択してください。</p>
       
       <div class="selector-area">
         <select id="pertonal1" class="pertonal-select"></select>
@@ -223,7 +218,6 @@
             <li><a href="./index.html">トップページ</a></li>
             <li><a href="./about.html">パートナルとは</a></li>
             <li><a href="./faq.html">よくある質問</a></li>
-            <li><a href="./compatibility.html">相性診断</a></li>
             <li><a href="https://forms.gle/nmsCdZtsjdprxSwY9">お問い合わせ</a></li>
           </ul>
         </div>
@@ -283,7 +277,6 @@
         const key2 = select2.value;
         let result = compatibilityData[key1]?.[key2] || compatibilityData[key2]?.[key1];
         
-        // JavaScript部分は前回から変更ありません
         if (result) {
           const percentage = parseInt(result.percentage, 10);
           const heartFill = document.querySelector('.heart-fill');
