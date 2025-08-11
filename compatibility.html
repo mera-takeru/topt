@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>相性シミュレーター | pertonal -パートナル-</title>
+  <link rel="icon" href="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafkreigaj4jljhdjkoavf2tdarmpyzfalutwxnnmmhrb437soizt2peewe" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* このページ専用のスタイル */
+    .simulator-container {
+      background: rgba(255,255,255,0.9);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+    }
+    .selector-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .pertonal-select {
+      padding: 8px 12px;
+      border-radius: var(--radius);
+      border: 1px solid #ddd;
+      font-size: 1rem;
+    }
+    #result-area {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #ddd;
+      text-align: left;
+    }
+     #compatibility-percentage {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--secondary);
+      text-align: center;
+    }
+    #compatibility-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="./about.html">パートナルとは</a><span class="divider">|</span>
+      <a href="./faq.html">よくある質問</a><span class="divider">|</span>
+      <a href="./compatibility.html" class="active">相性シミュレーター</a><span class="divider">|</span>
+      <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="simulator-container">
+      <h1>相性シミュレーター</h1>
+      <p>あなたと気になるあの人のパートナルを選択してください。</p>
+      <div class="selector-container">
+        <select id="pertonal1" class="pertonal-select"></select>
+        <span>と</span>
+        <select id="pertonal2" class="pertonal-select"></select>
+      </div>
+      <button id="check-compatibility">相性を診断する</button>
+
+      <div id="result-area" style="display: none;">
+        <div id="compatibility-percentage"></div>
+        <p id="compatibility-text"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    </footer>
+
+  <script src="data.js"></script>
+  <script src="compatibility-data.js"></script> <script>
+    // このページの動作を記述するJavaScript
+  </script>
+</body>
+</html>
