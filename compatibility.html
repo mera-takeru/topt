@@ -19,24 +19,25 @@
       margin-bottom: 16px;
     }
 
+    /* ▼▼▼【修正】ここから ▼▼▼ */
     .selector-area {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column; /* 要素を縦に並べる */
+      align-items: center;   /* 中央揃えにする */
       gap: 12px;
       margin: 24px 0;
-      flex-wrap: wrap;
     }
 
     .pertonal-select {
-      padding: 8px 12px;
+      width: 100%; /* 幅をコンテナいっぱいに広げ、均一にする */
+      max-width: 400px; /* PC表示での最大幅を設定 */
+      padding: 12px;
       border-radius: var(--radius);
       border: 1px solid #ddd;
       font-size: 1rem;
       background-color: #fff;
-      flex-grow: 1;
-      min-width: 120px;
     }
+    /* ▲▲▲【修正】ここまで ▲▲▲ */
     
     .selector-area > span {
         font-size: 1.2rem;
@@ -51,8 +52,6 @@
     #result-area {
       margin-top: 24px;
       padding-top: 24px;
-      /* ▼▼▼【修正】この行を削除しました ▼▼▼ */
-      /* border-top: 2px solid var(--primary); */ 
       text-align: left;
     }
 
