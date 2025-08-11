@@ -78,36 +78,11 @@
       border-radius: var(--radius);
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       border: 2px solid #fff;
-      position: relative;
-      overflow: hidden;
+      /* ▼▼▼【修正】shine-effectクラスを適用するため、displayプロパティを追加 ▼▼▼ */
+      display: block; 
     }
     
-    /* ▼▼▼ シャインエフェクトのスタイル ▼▼▼ */
-    .compatibility-image::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -150%;
-      width: 40%;
-      height: 100%;
-      background: linear-gradient( to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100% );
-      transform: skewX(-25deg);
-      animation: shine 3s infinite; /* 3秒間隔で繰り返し */
-    }
-
-    /* シャインエフェクトのアニメーション定義 */
-    @keyframes shine {
-      0% {
-        left: -150%;
-      }
-      20% {
-        left: 150%;
-      }
-      100% {
-        left: 150%;
-      }
-    }
-    /* ▲▲▲ ここまで ▲▲▲ */
+    /* ▼▼▼【修正】重複していた ::after と @keyframes の記述を削除しました ▼▼▼ */
 
     #compatibility-text {
       font-size: 1rem;
@@ -253,9 +228,10 @@
           const imageUrl2 = displayImageUrls[key2];
 
           if (imageUrl1 && imageUrl2) {
+            // ▼▼▼【修正】img タグに .shine-effect クラスを追加 ▼▼▼
             imagesContainer.innerHTML = `
-              <img src="${imageUrl1}" alt="${getCharacterTitle(key1)}の画像" class="compatibility-image">
-              <img src="${imageUrl2}" alt="${getCharacterTitle(key2)}の画像" class="compatibility-image">
+              <img src="${imageUrl1}" alt="${getCharacterTitle(key1)}の画像" class="compatibility-image shine-effect">
+              <img src="${imageUrl2}" alt="${getCharacterTitle(key2)}の画像" class="compatibility-image shine-effect">
             `;
           }
 
