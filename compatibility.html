@@ -82,6 +82,7 @@
       overflow: hidden;
     }
     
+    /* ▼▼▼ シャインエフェクトのスタイル ▼▼▼ */
     .compatibility-image::after {
       content: '';
       position: absolute;
@@ -91,8 +92,22 @@
       height: 100%;
       background: linear-gradient( to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100% );
       transform: skewX(-25deg);
-      animation: shine 3s infinite;
+      animation: shine 3s infinite; /* 3秒間隔で繰り返し */
     }
+
+    /* シャインエフェクトのアニメーション定義 */
+    @keyframes shine {
+      0% {
+        left: -150%;
+      }
+      20% {
+        left: 150%;
+      }
+      100% {
+        left: 150%;
+      }
+    }
+    /* ▲▲▲ ここまで ▲▲▲ */
 
     #compatibility-text {
       font-size: 1rem;
@@ -151,7 +166,7 @@
       </div>
     </div>
     
-    </div>
+  </div>
 
   <footer>
     <div class="footer-container">
@@ -183,6 +198,7 @@
       </div>
     </div>
   </footer>
+
   <script src="data.js"></script>
   <script src="compatibility-data.js"></script>
 
