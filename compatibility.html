@@ -63,24 +63,37 @@
       margin-bottom: 16px;
     }
     
-    /* ▼▼▼【追加】画像表示用のコンテナと画像のスタイル ▼▼▼ */
     #share-images-container {
       display: flex;
       justify-content: center;
-      gap: 16px; /* 画像間のスペース */
+      gap: 16px;
       margin-bottom: 24px;
-      flex-wrap: wrap; /* スマホで折り返すように */
+      flex-wrap: wrap;
     }
 
     .compatibility-image {
-      width: 45%; /* コンテナに対して45%の幅 */
-      max-width: 200px; /* PCでの最大幅を指定 */
+      width: 45%;
+      max-width: 200px;
       height: auto;
       border-radius: var(--radius);
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       border: 2px solid #fff;
+      /* 画像に輝くエフェクトを追加 */
+      position: relative;
+      overflow: hidden;
     }
-    /* ▲▲▲【追加】ここまで ▲▲▲ */
+    
+    .compatibility-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient( to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100% );
+      transform: skewX(-25deg);
+      animation: shine 3s infinite;
+    }
 
     #compatibility-text {
       font-size: 1rem;
@@ -153,21 +166,20 @@
 
       <div id="result-area" style="display: none;">
         <div id="compatibility-percentage"></div>
-        
         <div id="share-images-container"></div>
-
         <div id="compatibility-text"></div>
       </div>
     </div>
     
      <button class="back-btn" onclick="location.href='./index.html'">トップページに戻る</button>
-
   </div>
 
   <footer>
     <nav class="footer-nav">
-      <a href="./terms.html">利用規約</a><span class="divider">|</span>
-      <a href="./privacy.html">プライバシーポリシー</a><span class="divider">|</span>
+      <a href="./terms.html">利用規約</a>
+      <span class="divider">|</span>
+      <a href="./privacy.html">プライバシーポリシー</a>
+      <span class="divider">|</span>
       <a href="./operator.html">運営者情報</a>
     </nav>
     <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
@@ -184,8 +196,6 @@
       const resultArea = document.getElementById('result-area');
       const percentageDiv = document.getElementById('compatibility-percentage');
       const textDiv = document.getElementById('compatibility-text');
-      
-      // ▼▼▼【追加】画像コンテナの要素を取得 ▼▼▼
       const imagesContainer = document.getElementById('share-images-container');
 
       const pertonalTypes = Object.keys(characterDescriptions);
@@ -223,28 +233,25 @@
           percentageDiv.textContent = `相性 ${result.percentage}%`;
           textDiv.innerHTML = result.commentary.replace(/\n/g, '<br>'); 
           
-          // ▼▼▼【追加】画像表示の処理 ▼▼▼
-          // 1. まずコンテナを空にする
           imagesContainer.innerHTML = ''; 
 
-          // 2. data.js の shareImageUrls からURLを取得
-          const imageUrl1 = shareImageUrls[key1];
-          const imageUrl2 = shareImageUrls[key2];
+          // ▼▼▼【変更箇所】shareImageUrls から displayImageUrls に変更 ▼▼▼
+          const imageUrl1 = displayImageUrls[key1];
+          const imageUrl2 = displayImageUrls[key2];
+          // ▲▲▲【変更箇所】ここまで ▲▲▲
 
-          // 3. 2つの画像要素を作成してコンテナに追加
           if (imageUrl1 && imageUrl2) {
             imagesContainer.innerHTML = `
-              <img src="${imageUrl1}" alt="${getCharacterTitle(key1)}のシェア画像" class="compatibility-image">
-              <img src="${imageUrl2}" alt="${getCharacterTitle(key2)}のシェア画像" class="compatibility-image">
+              <img src="${imageUrl1}" alt="${getCharacterTitle(key1)}の画像" class="compatibility-image">
+              <img src="${imageUrl2}" alt="${getCharacterTitle(key2)}の画像" class="compatibility-image">
             `;
           }
-          // ▲▲▲【追加】ここまで ▲▲▲
 
           resultArea.style.display = 'block';
 
         } else {
           percentageDiv.textContent = '';
-          imagesContainer.innerHTML = ''; // データがない場合も画像コンテナを空にする
+          imagesContainer.innerHTML = '';
           textDiv.textContent = '相性データが見つかりませんでした。';
           resultArea.style.display = 'block';
         }
