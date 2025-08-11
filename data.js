@@ -698,7 +698,7 @@ const famousSongs = {
     ],
     "B♭": [
       //"『ライラック』- Mrs. GREEN APPLE",
-        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/QjrkrVmC-8M?si=jtCsq_PGXl0BzACA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/QjrkrVmC-8M?si=jtCsq_PGXl0BzACA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
       //"『ひまわりの約束』- 秦基博",
         `<iframe width="100%" height="150" src="https://www.youtube.com/embed/rKsQ-3N-Bks?si=qajclDEUOYqD1ed2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
       //"『新宝島』- サカナクション",
