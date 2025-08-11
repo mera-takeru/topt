@@ -440,188 +440,311 @@ const famousSongs = {
       //"『ありがとう』- いきものがかり",
         `<iframe width="100%" height="150" src="https://www.youtube.com/embed/VZBU8LvZ91Q?si=EfQtDmfj6FHzox13" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
       //"『キセキ』- GReeeeN",
-        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/DwTinTO0o9I?si=36ZFrDzlm4Aj2yyU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/DwTinTO0o9I?si=36ZFrDzlm4Aj2yyU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
       //"『silent』- SEKAI NO OWARI",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/03Xa38nfhGw?si=g7IFKQw4qFIOqCBH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
       //"『Star』- 星野源",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/SaMza0m209g?si=v2UVECC9-Y_nQRlj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
       //"『点描の唄 (feat. 井上苑子)』- Mrs. GREEN APPLE",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/sL-yJIyuEaM?si=byAEysKB8IEMWqKk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
       //"『カメレオン』- King Gnu"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/BOrdMrh4uKg?si=9dNFGyC9V8aQ2rtY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "cm": [
-      "『残酷な天使のテーゼ』- 高橋洋子",
-      "『ピースサイン』- 米津玄師",
-      "『APT.』- ROSE & BRUNO MARS",
-      "『Hachikō』- 藤井 風",
-      "『風の通り道』- 久石譲",
-      "『Drop』- HANA",
-      "『夜に駆ける』- YOASOBI"
+      //"『残酷な天使のテーゼ』- 高橋洋子",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/o6wtDPVkKqI?si=BhqEj1SFuj2g9Yd7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『ピースサイン』- 米津玄師",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/9aJVr5tTTWk?si=scyVKNE7ifJuKDzO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『APT.』- ROSE & BRUNO MARS",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/ekr2nIex040?si=GzoL0j-D62wLgIxu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Hachikō』- 藤井 風",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/OodEsjZ88TQ?si=0hVoWQmxbDANU3nH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『風の通り道』- 久石譲",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/-uNNWc0wJiw?si=dTXS6byOicRIQ17U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Drop』- HANA",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/n2Rywx3g1PM?si=Fj0gjEkB_zi1uMbN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『夜に駆ける』- YOASOBI"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/x8VYWazR5mE?si=l0wT0h3So2l6jVZ7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "D♭": [
-      "『若者のすべて』- フジファブリック",
-      "『天体観測』- BUMP OF CHICKEN",
-      "『アイラブユー』- back number",
-      "『Everything』- MISIA",
-      "『カタオモイ』- Aimer",
-      "『恋人ごっこ』- マカロニえんぴつ"
+      //"『若者のすべて』- フジファブリック",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/IPBXepn5jTA?si=bn7acsDGPw2yS4Zm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『天体観測』- BUMP OF CHICKEN",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/j7CDb610Bg0?si=IoDFfa1keY47Cfin" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『アイラブユー』- back number",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/_k0mJYct4UE?si=LL-qqu10JnA6yp-X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Everything』- MISIA",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/aHIR33pOUv0?si=cJV1sm8YGy1XyM_1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『カタオモイ』- Aimer",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/kxs9Su_mbpU?si=gs6HUZAxaE-2RVFB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『恋人ごっこ』- マカロニえんぴつ"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/323j5BRFi7s?si=vjHRRzPsTIJipI4M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "c♯m": [
-      "『クスシキ』- Mrs. GREEN APPLE",
-      "『完全感覚Dreamer』- ONE OK ROCK",
-      "『阿修羅ちゃん』- Ado",
-      "『太正浪漫』- YOASOBI",
-      "『火星人』- ヨルシカ"
+      //"『クスシキ』- Mrs. GREEN APPLE",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/RCaTLn4qoz4?si=fGVwo-LfGvMY7rEq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『完全感覚Dreamer』- ONE OK ROCK",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/xGbxsiBZGPI?si=0IHMs_dlV2OKNQjr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『阿修羅ちゃん』- Ado",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/cyq5-StPISU?si=2U5OnhMJ_ENIq-rC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『太正浪漫』- YOASOBI",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/wJQ9ig_d8yY?si=ovPOaD7DjC1hHMs5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『火星人』- ヨルシカ"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/OLRbIc8KZ_8?si=xDAqqPi7OxHo_F7_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "D": [
-      "『何なんw』- 藤井 風",
-      "『マリーゴールド』- あいみょん",
-      "『怪獣の花唄』- Vaundy",
-      "『ダンスホール』- Mrs. GREEN APPLE",
-      "『花束』- back number"
+      //"『何なんw』- 藤井 風",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/Nt6ZwuVzOS4?si=ebSY_exeEBekX9Kn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『マリーゴールド』- あいみょん",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/0xSiBpUdW4E?si=Kh-TefqhFvH9s6UP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『怪獣の花唄』- Vaundy",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/UM9XNpgrqVk?si=zFFfSOGC0mV8P0Z-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『ダンスホール』- Mrs. GREEN APPLE",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/x2rvSf0STBM?si=Gs_kdx623eIpdpZj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『花束』- back number"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/meZPD28Y7xE?si=JRpko-0DiUC2stpB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "dm": [
-      "『千本桜』- 黒うさP feat. 初音ミク",
-      "『本能』- 椎名林檎",
-      "『第ゼロ感』- 10-FEET",
-      "『不可幸力』- Vaundy",
-      "『UNDEAD』- YOASOBI"
+      //"『千本桜』- 黒うさP feat. 初音ミク",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/shs0rAiwsGQ?si=qXGvrzK30o6zfBer" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『本能』- 椎名林檎",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/ECxBHhMc7oI?si=YGAoTEJQxg1kENws" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『第ゼロ感』- 10-FEET",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/EsJGbHJyXYc?si=3ZuSymVORdxnIrTK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『不可幸力』- Vaundy",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/Gbz2C2gQREI?si=L0i50e2_-QbvaV6-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『UNDEAD』- YOASOBI"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/Jj1_mfUzjOs?si=7qaPYHXbuFEIYy_u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "E♭": [
-      "『カブトムシ』- aiko",
-      "『丸の内サディスティック』- 椎名林檎",
-      "『115万キロのフィルム』- Official髭男dism",
-      "『ウィーアー！』- きただにひろし",
-      "『猫』- DISH//"
+      //"『カブトムシ』- aiko",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/wp2U40KI63A?si=V0b8Hx-qoJJzof_T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『丸の内サディスティック』- 椎名林檎",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/4tlUwgtgdZA?si=l1FAwpR05LlOY7KP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『115万キロのフィルム』- Official髭男dism",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/ReCnlwVZj1M?si=W1uZU6skIdegaZuE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『ウィーアー！』- きただにひろし",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/r7n-L5B0bBw?si=-URaCTfvthG4CLj9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『猫』- DISH//"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/1KgAear9rao?si=5JQGmrqckPEzFl09" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "e♭m": [
-      "『Subtitle』- Official髭男dism",
-      "『打上花火』- DAOKO × 米津玄師",
-      "『Azalea』- 米津玄師",
-      "『Monster』- 嵐"
+      //"『Subtitle』- Official髭男dism",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/hN5MBlGv2Ac?si=x5STWAOi6WLtgisw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『打上花火』- DAOKO × 米津玄師",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/-tKVN2mAKRI?si=HQKm4L-4pbrE2OSb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Azalea』- 米津玄師",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/FqWBQv7h_3I?si=E14-FlMDj505oRSg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Monster』- 嵐"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/JedKBJVHhiE?si=cLVTYRMbNmY_oXTM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "E": [
-      "『Dynamite』- BTS",
-      "『青と夏』- Mrs. GREEN APPLE",
-      "『私は最強』- Ado",
-      "『Wherever you are』- ONE OK ROCK",
-      "『栄光の架け橋』- ゆず",
-      "『RPG』- SEKAI NO OWARI"
+      //"『Dynamite』- BTS",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/gdZLi9oWNZg?si=hLhXpGjSRrbQWui6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『青と夏』- Mrs. GREEN APPLE",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/m34DPnRUfMU?si=aM36zlnhWMSnRYTt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『私は最強』- Ado",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/sk1Z-Hqwwog?si=54H_tc0zzk5HmJK9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Wherever you are』- ONE OK ROCK",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/eoQAnGx4Pss?si=AUnB0J6o_2Fs3EhY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『栄光の架け橋』- ゆず",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/PRJoAPH0ZGo?si=n6mwuvlj-GdmqV04" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『RPG』- SEKAI NO OWARI"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/Mi9uNu35Gmk?si=1stJw26qafdekBwk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "em": [
-      "『オトナブルー』- 新しい学校のリーダーズ",
-      "『紅蓮華』- LiSA",
-      "『さよーならまたいつか！』- 米津玄師",
-      "『三文小説』- King Gnu",
-      "『サウダージ』- ポルノグラフィティ",
-      "『テレパシ』- DECO*27"
+      //"『オトナブルー』- 新しい学校のリーダーズ",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/l446hUqQ7GY?si=WQeyk8DbnNIp38z8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『紅蓮華』- LiSA",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/x1FV6IrjZCY?si=aL-ImS7PPo-3yvhn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『さよーならまたいつか！』- 米津玄師",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/-wb2PAx6aEs?si=IhhgO35m8TnJEaYp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『三文小説』- King Gnu",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/Y8HeOA95UzQ?si=T9gULX2t3-wtfixi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『サウダージ』- ポルノグラフィティ",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/lzsB4eKPdJI?si=Y6VU6NsTfgKj6rlQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『テレパシ』- DECO*27"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/c56TpxfO9q0?si=ZTjLE0WxxAw1XTSH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "F": [
-      "『花火』- aiko",
-      "『パプリカ』- 米津玄師",
-      "『宿命』- Official髭男dism",
-      "『アイデア』- 星野源",
-      "『３月９日』- レミオロメン"
+      //"『花火』- aiko",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/iqGHxcTPRfI?si=tMVAR1WUDR7qscHg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『パプリカ』- 米津玄師",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/s582L3gujnw?si=DRFcVuhcHwvNn4yW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『宿命』- Official髭男dism",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/-kgOFJG881I?si=VX_nuV1766FihNx6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『アイデア』- 星野源",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/RlUb2F-zLxw?si=xRLyqo1Et48qlNUe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『３月９日』- レミオロメン"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/UNRJyBHziX4?si=mUB09v5WJIS5UafW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "fm": [
-      "『踊』- Ado",
-      "『Automatic』- 宇多田ヒカル",
-      "『SAKURA』- いきものがかり",
-      "『楓』- スピッツ",
-      "『残酷な夜に輝け』- LiSA",
-      "『Bunny Girl』- AKASAKI"
+      //"『踊』- Ado",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/YnSW8ian29w?si=vyUcISxIYgKeV4-f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Automatic』- 宇多田ヒカル",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/-9DxpPiE458?si=Wmd2nImj6BGoNGb_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『SAKURA』- いきものがかり",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/61z-cqg28R8?si=0aiMBoAubaYL9QJk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『残酷な夜に輝け』- LiSA",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/ysdtX8kRTuQ?si=QhN8wrARf97gneVm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Bunny Girl』- AKASAKI"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/RCltAg_iK0E?si=4oBkyv8Gw8KerNat" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "F♯": [
-      "『ミックスナッツ』- Official髭男dism",
-      "『愛♡スクリ～ム！』- AiScReam",
-      "『シュガーソングとビターステップ』- UNISON SQUARE GARDEN",
-      "『なんでもないや』- RADWIMPS",
-      "『おにごっこ』- 優里"
+      //"『ミックスナッツ』- Official髭男dism",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/CbH2F0kXgTY?si=X8l798LumCPiNDoW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『愛♡スクリ～ム！』- AiScReam",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/L1mFVp9IM9c?si=rtX0ySY2cEKmtplw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『シュガーソングとビターステップ』- UNISON SQUARE GARDEN",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/ERLEeGVWYxg?si=3wjGL1teRk-_7atX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『なんでもないや』- RADWIMPS",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/U21F44aJD0E?si=My8fQi9BEN2mgn9v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『おにごっこ』- 優里"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/m3VnVRHOMZM?si=UTwhNffYsYQkvebg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "f♯m": [
-      "『一途』- King Gnu",
-      "『ブルーバード』- いきものがかり",
-      "『かくれんぼ』- 優里",
-      "『LOSER』- 米津玄師",
-      "『高嶺の花子さん』- back number"
+      //"『一途』- King Gnu",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/hm1na9R2uYA?si=OVDr10KeShmvN2US" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『ブルーバード』- いきものがかり",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/KpsJWFuVTdI?si=KdwiCpehxx7mmGAQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『かくれんぼ』- 優里",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/7W-6qJnza5w?si=k2jLi1Y5OIe5Irqv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『LOSER』- 米津玄師",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/Dx_fKPBPYUI?si=NYKxOjtPI6Svf5hF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『高嶺の花子さん』- back number"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/SII-S-zCg-c?si=JmTeRZ5DEkLugDkg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "G": [
-      "『新時代』- Ado",
-      "『君はロックを聴かない』- あいみょん",
-      "『Magic』- Mrs. GREEN APPLE",
-      "『First Love』- 宇多田ヒカル",
-      "『ボーイフレンド』- aiko",
-      "『Family Song』- 星野源",
-      "『Chessboard』- Official髭男dism"
+      //"『新時代』- Ado",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/1FliVTcX8bQ?si=hRmQ7nFldCBmYdOR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『君はロックを聴かない』- あいみょん",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/ARwVe1MYAUA?si=ZpKKEeRwrQxEUmDK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Magic』- Mrs. GREEN APPLE",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/CN-Ja6jCweA?si=JyOv9EZfr1eR8MRZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『First Love』- 宇多田ヒカル",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/o1sUaVJUeB0?si=LNBq6HLQVM-JYGEp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『ボーイフレンド』- aiko",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/9Jh-FBYGaU4?si=acxczA8ddJSqZj7K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Family Song』- 星野源",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/Ucbp-Ej5RpI?si=w-DFyKSd_HrgByPA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Chessboard』- Official髭男dism"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/qo55wGLXcOQ?si=v5Q-qg-QLh-HYlWD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "gm": [
-      "『廻廻奇譚』- Eve",
-      "『シャルル』- バルーン",
-      "『勇者』- YOASOBI",
-      "『神っぽいな』- ピノキオピー",
-      "『ルパン三世のテーマ』- 大野雄二"
+      //"『廻廻奇譚』- Eve",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/1tk1pqwrOys?si=5dDd_RIXptXz_sQ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『シャルル』- バルーン",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/TA5OFS_xX0c?si=4Lr-_2jXe6rfzFkl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『勇者』- YOASOBI",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/OIBODIPC_8Y?si=oYzVAfa0d8pF0yPI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『神っぽいな』- ピノキオピー",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/EHBFKhLUVig?si=VrCpRCYGLbvTUEI7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "A♭": [
-      "『Pretender』- Official髭男dism",
-      "『三原色』- YOASOBI",
-      "『Mela!』- 緑黄色社会",
-      "『楓』- スピッツ",
-      "『366日』- HY",
-      "『キラキラ』- aiko"
+      //"『Pretender』- Official髭男dism",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/TQ8WlA2GXbk?si=E7xKQRpBKfHwEk37" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『三原色』- YOASOBI",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/nhOhFOoURnE?si=QBmSohjg-Du3d4IR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Mela!』- 緑黄色社会",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/aRDURmIYBZ4?si=fOb3FebFj72RPaJo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『366日』- HY",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/glsH4Mgxz-g?si=FZPHS-bjyy7O3aGa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『キラキラ』- aiko"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/S0bXDRY1DGM?si=l0chNXtC3JT_0sqa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "g♯m": [
-      "『残響散歌』- Aimer",
-      "『怪物』- YOASOBI",
-      "『怪獣』- サカナクション",
-      "『ちゅ、多様性。』- ano",
-      "『ルル』- Ado",
-      "『Lemon』- 米津玄師"
+      //"『残響散歌』- Aimer",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/tLQLa6lM3Us?si=xt2IdVihEytbn4hf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『怪物』- YOASOBI",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/dy90tA3TT1c?si=EForXqjuiIO9df_h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『怪獣』- サカナクション",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/a8dgNdJVluc?si=BW6o8k1hlXd1V0Zg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『ちゅ、多様性。』- ano",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/-lec--FlSJ4?si=SOoJjXxDVzTOs4ME" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『ルル』- Ado",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/0Z_YqhYHhpg?si=gO337VpQvWir5GPx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Lemon』- 米津玄師"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/SX_ViT4Ra7k?si=kyLC4iPRZY11hAeu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "A": [
-      "『恋』- 星野源",
-      "『I Love…』- Official髭男dism",
-      "『ロビンソン』- スピッツ",
-      "『会いに行くのに』- あいみょん",
-      "『愛にできることはまだあるかい』- RADWIMPS",
-      "『世界に一つだけの花』- SMAP",
-      "『シンデレラボーイ』- SaucyDog"
+      //"『恋』- 星野源",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/jhOVibLEDhA?si=qRn08rL46aF7e12S" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『I Love…』- Official髭男dism",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/bt8wNQJaKAk?si=GZDo7XN8Lpi-L90i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『ロビンソン』- スピッツ",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/51CH3dPaWXc?si=0O0E8LGAUNcVHyQV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『会いに行くのに』- あいみょん",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/iqSspWjCA6s?si=qKdGl7Y7iDZhj_bU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『愛にできることはまだあるかい』- RADWIMPS",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/EQ94zflNqn4?si=S-CGT3FYGSNRcT52" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『シンデレラボーイ』- SaucyDog"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/IVbY5edMfCA?si=A54L64nPwP-5-4MU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "am": [
-      "『Bling-Bang-Bang-Born』- Creepy Nuts",
-      "『Plazma』- 米津玄師",
-      "『The Beginning』- ONE OK ROCK",
-      "『太陽が昇らない世界』- Aimer",
-      "『TWILIGHT!!!』- King Gnu",
-      "『ROSE』- HANA",
-      "『けっかおーらい』- こっちのけんと"
+      //"『Bling-Bang-Bang-Born』- Creepy Nuts",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/mLW35YMzELE?si=T_wGYCt6Ct5iHiOw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Plazma』- 米津玄師",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/fp3F6TqBsAU?si=aCEsT8DXiBOaexCF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『The Beginning』- ONE OK ROCK",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/Hh9yZWeTmVM?si=16BbPq-7IHvzebuU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『太陽が昇らない世界』- Aimer",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/DJOf0XtVpkI?si=JCxioE3OjaEaAFJU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『TWILIGHT!!!』- King Gnu",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/qIcIpSyHcyM?si=G06aBDRCX1IVEsN3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『ROSE』- HANA",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/rGPd0FyjQ9w?si=-mA1dfnyDV2B3xdl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『けっかおーらい』- こっちのけんと"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/Ug0N4qGRp_w?si=it53feVbZKBLE1LK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "B♭": [
-      "『ライラック』- Mrs. GREEN APPLE",
-      "『ひまわりの約束』- 秦基博",
-      "『新宝島』- サカナクション",
-      "『群青』- YOASOBI",
-      "『水平線』- back number",
-      "『愛の花』- あいみょん"
+      //"『ライラック』- Mrs. GREEN APPLE",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/QjrkrVmC-8M?si=jtCsq_PGXl0BzACA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
+      //"『ひまわりの約束』- 秦基博",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/rKsQ-3N-Bks?si=qajclDEUOYqD1ed2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『新宝島』- サカナクション",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/LIlZCmETvsY?si=-1F9SU-yfxaBp2re" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『群青』- YOASOBI",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/Y4nEEZwckuU?si=0jhF4KRg0T7cUVST" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『水平線』- back number",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/iqEr3P78fz8?si=bVVKYFUOlTwh-WVd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『愛の花』- あいみょん"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/JuyQQUqD64c?si=uIsn1_0XA093zhwd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "b♭m": [
-      "『KICK BACK』- 米津玄師",
-      "『Habit』- SEKAI NO OWARI",
-      "『青のすみか』- キタニタツヤ",
-      "『花になって』- 緑黄色社会",
-      "『Vinyl』- King Gnu",
-      "『さよならエレジー』- 菅田将暉"
+      //"『KICK BACK』- 米津玄師",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/M2cckDmNLMI?si=APlAprwItps_cHNg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Habit』- SEKAI NO OWARI",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/8OZDgBmehbA?si=MQU9nv1Bbo5z6zxx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『青のすみか』- キタニタツヤ",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/zuoVd2QNxJo?si=NZYBJ3mtjAGIhC75" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『花になって』- 緑黄色社会",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/v-WcMQbXbKY?si=4wu_MtnceMbpnPwx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『Vinyl』- King Gnu",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/RLAw8Ct9k48?si=vXCfK9n-2EY31QdK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『さよならエレジー』- 菅田将暉"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/XSkpuDseenY?si=Xnvu7e2Qbl4ukfmu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "B": [
-      "『前前前世』- RADWIMPS",
-      "『ソラニン』- ASIAN KUNG-FU GENERATION",
-      "『小さな恋のうた』- MONGOL800",
-      "『雪の華』- 中島美嘉",
-      "『恋風』- 幾田りら"
+      //"『前前前世』- RADWIMPS",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/PDSkFeMVNFs?si=2vjCcDgQwr6D7j0C" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『ソラニン』- ASIAN KUNG-FU GENERATION",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/XNURRmk8YrQ?si=qTLjjDiPz0kDdbxD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『雪の華』- 中島美嘉",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/mF5Qq2YheTg?si=-0x0j_L8XXiKbsFE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『恋風』- 幾田りら"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/bWlknrhWjVw?si=6rdrtq_b3-G0TXxh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "bm": [
-      "『うっせぇわ』- Ado",
-      "『創世のアクエリオン』- AKINO",
-      "『炎』- LiSA",
-      "『はいよろこんで』- こっちのけんと",
-      "『アポリア』- ヨルシカ",
-      "『BOW AND ARROW』- 米津玄師"
+      //"『うっせぇわ』- Ado",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/Qp3b-RXtz4w?si=4HYLljom1lpyVXPF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『炎』- LiSA",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/4DxL6IKmXx4?si=DSC8UJ2PjEQC8z2G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『はいよろこんで』- こっちのけんと",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/jzi6RNVEOtA?si=JnFiSrFnPL-vc0Op" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『アポリア』- ヨルシカ",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/fhTFysCtF6g?si=nLYH7Z0iO-Zb5Nfz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+      //"『BOW AND ARROW』- 米津玄師"
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/M-Eyhjkepy0?si=djAn2jqfPv_FyMkD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ]
 }; 
 
