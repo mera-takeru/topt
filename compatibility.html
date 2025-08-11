@@ -25,7 +25,7 @@
       align-items: center;
       gap: 12px;
       margin: 24px 0;
-      flex-wrap: wrap; /* スマホ表示のために折り返しを許可 */
+      flex-wrap: wrap;
     }
 
     .pertonal-select {
@@ -34,8 +34,8 @@
       border: 1px solid #ddd;
       font-size: 1rem;
       background-color: #fff;
-      flex-grow: 1; /* 伸びるように */
-      min-width: 120px; /* 最小幅 */
+      flex-grow: 1;
+      min-width: 120px;
     }
     
     .selector-area > span {
@@ -62,6 +62,25 @@
       text-align: center;
       margin-bottom: 16px;
     }
+    
+    /* ▼▼▼【追加】画像表示用のコンテナと画像のスタイル ▼▼▼ */
+    #share-images-container {
+      display: flex;
+      justify-content: center;
+      gap: 16px; /* 画像間のスペース */
+      margin-bottom: 24px;
+      flex-wrap: wrap; /* スマホで折り返すように */
+    }
+
+    .compatibility-image {
+      width: 45%; /* コンテナに対して45%の幅 */
+      max-width: 200px; /* PCでの最大幅を指定 */
+      height: auto;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border: 2px solid #fff;
+    }
+    /* ▲▲▲【追加】ここまで ▲▲▲ */
 
     #compatibility-text {
       font-size: 1rem;
@@ -134,6 +153,9 @@
 
       <div id="result-area" style="display: none;">
         <div id="compatibility-percentage"></div>
+        
+        <div id="share-images-container"></div>
+
         <div id="compatibility-text"></div>
       </div>
     </div>
@@ -144,17 +166,17 @@
 
   <footer>
     <nav class="footer-nav">
-      <a href="./terms.html">利用規約</a>
-      <span class="divider">|</span>
-      <a href="./privacy.html">プライバシーポリシー</a>
-      <span class="divider">|</span>
+      <a href="./terms.html">利用規約</a><span class="divider">|</span>
+      <a href="./privacy.html">プライバシーポリシー</a><span class="divider">|</span>
       <a href="./operator.html">運営者情報</a>
     </nav>
     <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
   </footer>
 
   <script src="data.js"></script>
-  <script src="compatibility-data.js"></script> <script>
+  <script src="compatibility-data.js"></script>
+
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
       const select1 = document.getElementById('pertonal1');
       const select2 = document.getElementById('pertonal2');
@@ -162,20 +184,19 @@
       const resultArea = document.getElementById('result-area');
       const percentageDiv = document.getElementById('compatibility-percentage');
       const textDiv = document.getElementById('compatibility-text');
+      
+      // ▼▼▼【追加】画像コンテナの要素を取得 ▼▼▼
+      const imagesContainer = document.getElementById('share-images-container');
 
-      // data.js の characterDescriptions からパートナル名を取得
       const pertonalTypes = Object.keys(characterDescriptions);
 
-      // 結果ページのタイトルを取得するヘルパー関数
       function getCharacterTitle(key) {
         const description = characterDescriptions[key];
         if (!description) return `【${key}型】`;
-        // 正規表現で【】に囲まれた型名と称号を取得
         const match = description.match(/<span class="title"[^>]*>(.*?)<\/span>/);
         return match ? match[1] : `【${key}型】`;
       }
 
-      // 2つのプルダウンメニューに選択肢を生成
       pertonalTypes.forEach(key => {
         const option1 = document.createElement('option');
         option1.value = key;
@@ -188,29 +209,42 @@
         select2.appendChild(option2);
       });
       
-      // 初期状態で異なるパートナルが選択されるように設定
       if(select2.options.length > 1) {
         select2.selectedIndex = 1;
       }
 
-      // 「相性を診断する」ボタンがクリックされたときの処理
       checkBtn.addEventListener('click', () => {
         const key1 = select1.value;
         const key2 = select2.value;
 
-        // compatibility-data.js からデータを取得
-        // key1 -> key2 の組み合わせと、key2 -> key1 の両方を試す
         let result = compatibilityData[key1]?.[key2] || compatibilityData[key2]?.[key1];
         
         if (result) {
-          // 結果を表示
           percentageDiv.textContent = `相性 ${result.percentage}%`;
-          // "commentary"キーからテキストを取得し、改行を<br>タグに変換
           textDiv.innerHTML = result.commentary.replace(/\n/g, '<br>'); 
+          
+          // ▼▼▼【追加】画像表示の処理 ▼▼▼
+          // 1. まずコンテナを空にする
+          imagesContainer.innerHTML = ''; 
+
+          // 2. data.js の shareImageUrls からURLを取得
+          const imageUrl1 = shareImageUrls[key1];
+          const imageUrl2 = shareImageUrls[key2];
+
+          // 3. 2つの画像要素を作成してコンテナに追加
+          if (imageUrl1 && imageUrl2) {
+            imagesContainer.innerHTML = `
+              <img src="${imageUrl1}" alt="${getCharacterTitle(key1)}のシェア画像" class="compatibility-image">
+              <img src="${imageUrl2}" alt="${getCharacterTitle(key2)}のシェア画像" class="compatibility-image">
+            `;
+          }
+          // ▲▲▲【追加】ここまで ▲▲▲
+
           resultArea.style.display = 'block';
+
         } else {
-          // データが見つからない場合のフォールバック
           percentageDiv.textContent = '';
+          imagesContainer.innerHTML = ''; // データがない場合も画像コンテナを空にする
           textDiv.textContent = '相性データが見つかりませんでした。';
           resultArea.style.display = 'block';
         }
