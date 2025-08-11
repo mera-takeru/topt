@@ -71,21 +71,10 @@ function renderResultContent(resultKey) {
   }).join('');
 
   const songList = famousSongs[resultKey] || [];
-  const selectedSongs = [...songList].sort(() => 0.5 - Math.random()).slice(0, 4);
-  const songsHTML = selectedSongs.length > 0 ? selectedSongs.map(song => {
-    const parts = song.split('-');
-    const title = parts[0];
-    const artist = parts.slice(1).join('-');
-    return `
-      <div class="playlist-track">
-        <span class="track-icon">🎵</span>
-        <div class="track-info">
-          <span class="track-title">${title}</span>
-          <span class="track-artist">${artist}</span>
-        </div>
-      </div>
-    `;
-  }).join('') : '<p>情報が見つかりませんでした。</p>';
+  const selectedSongs = [...songList].sort(() => 0.5 - Math.random()).slice(0, 3);
+  const songsHTML = selectedSongs.length > 0 
+    ? selectedSongs.join('') 
+    : '<p>情報が見つかりませんでした。</p>';
 
   resultImageDiv.innerHTML = `<img src="${displayImageUrl}" alt="${resultKey}の画像">`;
   
