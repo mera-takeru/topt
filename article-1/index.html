@@ -93,9 +93,6 @@
     .article-image { width: 100%; border-radius: var(--radius); margin: 24px 0; aspect-ratio: 4/3; overflow: hidden; }
     .article-image img { width: 100%; height: 100%; object-fit: cover; }
     .divider-line { border: 0; border-top: 1px solid #ddd; margin: 32px 0; }
-    .shine-effect { position: relative; overflow: hidden; display: inline-block; }
-    .shine-effect::after { content: ''; position: absolute; top: 0; left: -150%; width: 40%; height: 100%; background: linear-gradient( to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100% ); transform: skewX(-25deg); animation: shine 3s infinite; }
-    @keyframes shine { 0% { left: -150%; } 20% { left: 150%; } 100% { left: 150%; } }
 
     /* ======================================= */
     /* 6. タグとボタン
@@ -156,6 +153,49 @@
       .sidebar { width: 100%; }
       .article-title { font-size: 1.5rem; }
       .article-body h2 { font-size: 1.3rem; }
+    }
+
+    /* ======================================= */
+    /* 10. レスポンシブテーブル (スマホ用)
+    /* ======================================= */
+    @media (max-width: 600px) {
+      .article-body table {
+        border: 0;
+      }
+      .article-body table thead {
+        /* PC用のヘッダー(項目, 内容)は非表示に */
+        display: none;
+      }
+      .article-body table tr {
+        display: block;
+        margin-bottom: 16px;
+        border: 1px solid #ddd;
+        border-radius: var(--radius);
+        padding: 0 16px 16px;
+      }
+      .article-body table td {
+        display: block;
+        border: none;
+        padding: 8px 0;
+      }
+      .article-body table td:first-child {
+        /* 元の「項目」列は非表示に */
+        display: none;
+      }
+      .article-body table td:last-child {
+        /* 「内容」のセルをメインに表示 */
+        font-size: 1rem;
+      }
+      .article-body table td:last-child::before {
+        /* data-labelのテキストを内容の上に表示 */
+        content: attr(data-label);
+        display: block;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--secondary);
+        margin-top: 16px;
+        margin-bottom: 4px;
+      }
     }
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7664351285167114" crossorigin="anonymous"></script>
@@ -242,38 +282,42 @@
 
             <h2>🎧 サービス概要</h2>
             <table>
+              <thead>
                 <tr>
-                    <th>項目</th>
-                    <th>内容</th>
+                  <th>項目</th>
+                  <th>内容</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>サービス名</td>
+                  <td data-label="サービス名">pertonal -パートナル-</td>
                 </tr>
                 <tr>
-                    <td>サービス名</td>
-                    <td>pertonal -パートナル-</td>
+                  <td>提供形式</td>
+                  <td data-label="提供形式">Webブラウザ（スマホ／PC対応）</td>
                 </tr>
                 <tr>
-                    <td>提供形式</td>
-                    <td>Webブラウザ（スマホ／PC対応）</td>
+                  <td>利用料金</td>
+                  <td data-label="利用料金">無料</td>
                 </tr>
                 <tr>
-                    <td>利用料金</td>
-                    <td>無料</td>
+                  <td>診断内容</td>
+                  <td data-label="診断内容">全12問の4択式（SNSやアニメ、ゲームに関する親しみやすい内容）</td>
                 </tr>
                 <tr>
-                    <td>診断内容</td>
-                    <td>全12問の4択式（SNSやアニメ、ゲームに関する親しみやすい内容）</td>
+                  <td>タイプ数</td>
+                  <td data-label="タイプ数">24種類（西洋音楽における長調と短調から着想）</td>
                 </tr>
                 <tr>
-                    <td>タイプ数</td>
-                    <td>24種類（西洋音楽における長調と短調から着想）</td>
+                  <td>特徴</td>
+                  <td data-label="特徴">音と色と印象の融合／感覚的な自己・他者理解／SNSシェア対応</td>
                 </tr>
                 <tr>
-                    <td>特徴</td>
-                    <td>音と色と印象の融合／感覚的な自己・他者理解／SNSシェア対応</td>
+                  <td>URL</td>
+                  <td data-label="URL"><a href="https://pertonal.jp/" target="_blank" rel="noopener noreferrer" style="color: var(--primary) !important; text-decoration: underline;">https://pertonal.jp/</a></td>
                 </tr>
-                <tr>
-                    <td>URL</td>
-                    <td><a href="https://pertonal.jp/" target="_blank" rel="noopener noreferrer" style="color: var(--primary) !important; text-decoration: underline;">https://pertonal.jp/</a></td>
-                </tr>
+              </tbody>
             </table>
 
             <h2>🍚 メラ タケルについて</h2>
