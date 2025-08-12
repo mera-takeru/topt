@@ -67,7 +67,7 @@ function renderResultContent(resultKey) {
     const title = getCharacterTitle(key);
     const colorCode = personalityColors[key].code;
     const fileName = key.replace('♯', 's').replace('♭', 'b');
-    return `<a href="./${fileName}.html" target="_blank" rel="noopener noreferrer"><span class="compatible-tag" style="background-color: ${colorCode};">${title}</span></a>`;
+    return `<a href="/${fileName}/" target="_blank" rel="noopener noreferrer"><span class="compatible-tag" style="background-color: ${colorCode};">${title}</span></a>`;
   }).join('');
 
   const songList = famousSongs[resultKey] || [];
