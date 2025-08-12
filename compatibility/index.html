@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>パートナル相性診断 | pertonal -パートナル-</title>
+  <link rel="canonical" href="https://pertonal.jp/compatibility">
+  <meta property="og:url" content="https://pertonal.jp/compatibility">
+  <meta name="description" content="あなたと気になるあの人との相性をパーセンテージと解説文で診断！音楽理論に基づいた本格的な相性診断で、二人の関係性やうまく付き合うためのアドバイスがわかります。">
+  <link rel="icon" href="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafkreigaj4jljhdjkoavf2tdarmpyzfalutwxnnmmhrb437soizt2peewe" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  
+  <style>
+    /* このページ専用のスタイル */
+    .start-image {
+      aspect-ratio: 3/1;
+    }
+    .simulator-container {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+
+    .selector-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .pertonal-select {
+      width: 100%;
+      max-width: 400px;
+      padding: 12px;
+      border-radius: var(--radius);
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      background-color: #fff;
+    }
+    
+    .selector-area > span {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    #check-compatibility {
+      width: 100%;
+      padding: 12px;
+    }
+
+    #result-area {
+      margin-top: 24px;
+      padding: 24px 0 16px;
+      text-align: left;
+      border-radius: var(--radius);
+      transition: background 0.8s ease-out;
+    }
+
+    #compatibility-visual {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .heart-meter {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+    }
+    
+    .heart-meter::before {
+      content: "❤️";
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 120px;
+      line-height: 1;
+      background-image: linear-gradient(45deg, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .heart-fill {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      height: 0%;
+      transition: height 1s ease-out;
+    }
+
+    .heart-fill::before {
+      content: "❤️";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      font-size: 120px;
+      line-height: 1;
+      color: red;
+    }
+
+    .heart-percent {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 0 4px rgba(0,0,0,0.5);
+    }
+
+    .compatibility-rank {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 12px;
+    }
+    
+    #share-images-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .image-wrapper {
+      width: 80%;
+      max-width: 300px;
+      border-radius: var(--radius);
+    }
+
+    .compatibility-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    #compatibility-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      background-color: #f9f9f9;
+      padding: 16px;
+      border-radius: var(--radius);
+      margin: 0 16px;
+    }
+    
+  </style>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7664351285167114" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M1HFSG9FVD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M1HFSG9FVD');
+  </script>
+</head>
+
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="/about">パートナルとは</a><span class="divider">|</span>
+      <a href="/faq">よくある質問</a><span class="divider">|</span>
+      <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>
+      <span class="title-topt">
+        <span class="title-english">pertonal</span>
+        <span class="title-japanese"> -パートナル-</span>
+      </span>
+      <span class="title-sub">「音」×「色」＝ New「性格診断」</span>
+    </h1>
+    <div class="start-image">
+        <picture>
+          <source media="(max-width: 600px)" srcset="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafkreienjyfhmuw4u6nqkpdcmzdqallih3oo6x7grfc5niib26zdhphl4e">
+          <source media="(min-width: 601px)" srcset="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafkreienjyfhmuw4u6nqkpdcmzdqallih3oo6x7grfc5niib26zdhphl4e">
+          <img src="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafkreienjyfhmuw4u6nqkpdcmzdqallih3oo6x7grfc5niib26zdhphl4e" alt="パートナル相性診断のイメージ" loading="lazy">
+        </picture>
+    </div>
+
+    <div class="simulator-container">
+      <p>２つのパートナルを選択して気になる相性を今すぐチェック！</p>
+      
+      <div class="selector-area">
+        <select id="pertonal1" class="pertonal-select"></select>
+        <span>と</span>
+        <select id="pertonal2" class="pertonal-select"></select>
+      </div>
+
+      <button id="check-compatibility">相性を診断する</button>
+
+      <div id="result-area" style="display: none;">
+        <div id="compatibility-visual">
+          <div class="heart-meter">
+            <div class="heart-fill"></div>
+            <span class="heart-percent"></span>
+          </div>
+          <div class="compatibility-rank"></div>
+        </div>
+        <div id="share-images-container"></div>
+        <div id="compatibility-text"></div>
+      </div>
+    </div>
+    
+  </div>
+
+  <script src="/data.js"></script>
+  <script src="/compatibility-data.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const select1 = document.getElementById('pertonal1');
+      const select2 = document.getElementById('pertonal2');
+      const checkBtn = document.getElementById('check-compatibility');
+      const resultArea = document.getElementById('result-area');
+      const textDiv = document.getElementById('compatibility-text');
+      const imagesContainer = document.getElementById('share-images-container');
+
+      const pertonalTypes = Object.keys(characterDescriptions);
+
+      function getCharacterTitle(key) {
+        const description = characterDescriptions[key];
+        if (!description) return `【${key}型】`;
+        const match = description.match(/<span class="title"[^>]*>(.*?)<\/span>/);
+        return match ? match[1] : `【${key}型】`;
+      }
+
+      pertonalTypes.forEach(key => {
+        const option1 = document.createElement('option');
+        option1.value = key;
+        option1.textContent = getCharacterTitle(key);
+        select1.appendChild(option1);
+
+        const option2 = document.createElement('option');
+        option2.value = key;
+        option2.textContent = getCharacterTitle(key);
+        select2.appendChild(option2);
+      });
+      
+      if(select2.options.length > 1) {
+        select2.selectedIndex = 1;
+      }
+
+      checkBtn.addEventListener('click', () => {
+        const key1 = select1.value;
+        const key2 = select2.value;
+        let result = compatibilityData[key1]?.[key2] || compatibilityData[key2]?.[key1];
+        
+        if (result) {
+          const percentage = parseInt(result.percentage, 10);
+          const heartFill = document.querySelector('.heart-fill');
+          const heartPercent = document.querySelector('.heart-percent');
+          const rankDiv = document.querySelector('.compatibility-rank');
+          const color1 = personalityColors[key1].code;
+          const color2 = personalityColors[key2].code;
+          
+          let rank = '';
+          if (percentage >= 90) rank = '最高のパートナー✨';
+          else if (percentage >= 70) rank = '相性ピッタリ🎵';
+          else if (percentage >= 50) rank = '仲良くなれそう💡';
+          else if (percentage >= 30) rank = '未知の可能性❓';
+          else rank = '努力が必要かも💦';
+
+          rankDiv.textContent = rank;
+          heartPercent.textContent = `${percentage}%`;
+          textDiv.innerHTML = result.commentary.replace(/\n/g, '<br>');
+          
+          heartFill.style.height = '0%';
+          setTimeout(() => {
+              heartFill.style.height = `${percentage}%`;
+          }, 100);
+
+          resultArea.style.background = `linear-gradient(135deg, ${color1}20, ${color2}20)`;
+
+          imagesContainer.innerHTML = ''; 
+          const imageUrl1 = displayImageUrls[key1];
+          const imageUrl2 = displayImageUrls[key2];
+
+          if (imageUrl1 && imageUrl2) {
+            imagesContainer.innerHTML = `
+              <div class="image-wrapper shine-effect">
+                <img src="${imageUrl1}" alt="${getCharacterTitle(key1)}の画像" class="compatibility-image">
+              </div>
+              <div class="image-wrapper shine-effect">
+                <img src="${imageUrl2}" alt="${getCharacterTitle(key2)}の画像" class="compatibility-image">
+              </div>
+            `;
+          }
+
+          resultArea.style.display = 'block';
+
+        } else {
+          resultArea.style.background = 'none';
+          document.getElementById('compatibility-visual').style.display = 'none';
+          imagesContainer.innerHTML = '';
+          textDiv.textContent = '相性データが見つかりませんでした。';
+          resultArea.style.display = 'block';
+        }
+      });
+    });
+  </script>
+  <script src="/footer.js"></script>
+</body>
+</html>

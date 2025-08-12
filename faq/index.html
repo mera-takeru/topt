@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>よくある質問 | pertonal -パートナル-</title>
+  <link rel="canonical" href="https://pertonal.jp/faq">
+  <meta property="og:url" content="https://pertonal.jp/faq">
+  <meta name="description" content="パートナル性格診断に関するよくある質問（FAQ）をまとめました。診断時間の目安、他の性格診断との違い、結果のシェア方法など、あなたの疑問はここで解決します。">
+  <link rel="icon" href="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafkreigaj4jljhdjkoavf2tdarmpyzfalutwxnnmmhrb437soizt2peewe" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6C63FF;
+      --secondary: #FF6584;
+      --bg: #F9FAFB;
+      --text: #333;
+      --radius: 12px;
+      --transition: .3s;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: inherit !important;
+      text-decoration: none;
+    }
+    a:visited, a:link, a:active {
+      color: inherit !important;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(
+        45deg,
+        rgba(255, 99, 71, 0.2),
+        rgba(255, 165, 0, 0.2),
+        rgba(255, 255, 0, 0.2),
+        rgba(50, 205, 50, 0.2),
+        rgba(0, 191, 255, 0.2),
+        rgba(75, 0, 130, 0.2),
+        rgba(238, 130, 238, 0.2)
+      );
+      background-size: 400%;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 16px;
+      animation: rainbow 8s ease infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+      margin: 16px auto;
+    }
+
+    h1 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 24px; /* ← この数値を24pxに統一します */
+  color: var(--primary);
+　　 }
+
+    .title-topt {
+      text-align: center;
+      display: block;
+      margin-bottom: 8px;
+      color: var(--secondary);
+      text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.3),
+        0 0 4px rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.5px;
+    }
+
+    .title-english {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .title-japanese {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .title-sub {
+      font-size: 1rem;
+      display: block;
+    }
+
+    .start-image {
+      width: 100%;
+      background: #ecebff;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 3/1;
+    }
+
+    .start-image picture, .start-image img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .content h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+      margin-top: 8px;
+      cursor: pointer;
+      padding: 12px;
+      border-radius: var(--radius);
+      transition: background var(--transition);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .content h2:hover {
+      background: rgba(108, 99, 255, 0.1);
+    }
+
+    .content h2::after {
+      content: '▼';
+      font-size: 0.75rem;
+      transition: transform var(--transition);
+    }
+
+    .content h2.active::after {
+      transform: rotate(180deg);
+    }
+
+    .content .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition) ease-out;
+      margin-bottom: 8px;
+    }
+
+    .content .accordion-content.open {
+      max-height: 500px;
+    }
+
+    .content p {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .content .answer-label {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    .content p a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .content p a:hover {
+      color: var(--secondary);
+    }
+
+    button.back-btn {
+      font: inherit;
+      font-size: 1rem;
+      padding: 12px 20px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    button.back-btn:hover {
+      background: var(--secondary);
+      transform: scale(1.02);
+    }
+
+    /* ======================================= */
+/* ヘッダーとフッターの共通スタイル
+/* ======================================= */
+
+header, footer {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+header {
+  border-bottom: 1px solid #ddd;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+header .header-nav a {
+  text-decoration: none;
+  color: #000000 !important;
+  font-weight: 400;
+  font-size: 0.75rem;
+  padding: 0 6px;
+  transition: color var(--transition);
+}
+
+header .header-nav a:hover {
+  color: var(--secondary);
+}
+
+header .header-nav a.active {
+  color: var(--secondary);
+}
+
+header .header-nav .divider {
+  color: #000000 !important;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+footer {
+  background: #f8f9fa;
+  color: #6c757d;
+  padding: 40px 16px;
+  border-top: 1px solid #dee2e6;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.footer-about, .footer-sitemap {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-about h4 {
+  font-size: 1.25rem;
+  color: var(--secondary);
+  margin-bottom: 12px;
+  text-shadow: 
+    1px 1px 2px rgba(0, 0, 0, 0.3),
+    0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+.footer-about p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footer-sitemap h4 {
+  font-size: 1.0rem;
+  color: var(--primary);
+  margin-bottom: 12px;
+  text-shadow: 
+    1px 1px 2px rgba(0, 0, 0, 0.3),
+    0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+.footer-sitemap ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-sitemap li {
+  margin-bottom: 8px;
+}
+
+.footer-sitemap a {
+  font-size: 0.9rem;
+  color: #6c757d !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.footer-sitemap a:hover {
+  color: var(--secondary) !important;
+}
+
+.footer-secondary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+  gap: 16px;
+}
+
+.footer-secondary .footer-nav {
+  display: flex; /* 追加 */
+  justify-content: center; /* 追加 */
+  align-items: center; /* 追加 */
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.footer-secondary .footer-nav a {
+  color: #6c757d !important;
+  font-weight: 400; /* 追加 */
+  font-size: 0.75rem; /* 追加 */
+  padding: 0 6px; /* 追加 */
+  transition: color var(--transition); /* 追加 */
+}
+
+.footer-secondary .footer-nav a:hover {
+    color: var(--secondary) !important; /* 追加 */
+}
+
+.footer-secondary .footer-nav .divider {
+    color: #6c757d !important; /* 追加 */
+    font-size: 0.75rem; /* 追加 */
+}
+
+.footer-secondary .copyright {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #6c757d;
+    margin-top: 0; /* 修正 */
+}
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 16px;
+      }
+      .start-image {
+        max-width: 100%;
+        margin-bottom: 12px;
+      }
+      .content h2 {
+        font-size: 1rem;
+      }
+      .content p {
+        font-size: 1rem;
+      }
+      button.back-btn {
+        font-size: 1rem;
+        padding: 10px 16px;
+      }
+      header .header-nav a {
+        font-size: 0.75rem;
+      }
+      header .header-nav .divider {
+        font-size: 0.75rem;
+      }
+      .title-english {
+        font-size: 2rem; 
+      }
+      .title-japanese {
+        font-size: 1.25rem; 
+      }
+    }
+
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7664351285167114"
+     crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M1HFSG9FVD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M1HFSG9FVD');
+</script>
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="/about">パートナルとは</a>
+      <span class="divider">|</span>
+      <a href="/faq" class="active">よくある質問</a>
+      <span class="divider">|</span>
+      <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>
+      <span class="title-topt">
+        <span class="title-english">pertonal</span>
+        <span class="title-japanese"> -パートナル-</span>
+      </span>
+      <span class="title-sub">「音」×「色」＝ New「性格診断」</span>
+    </h1>
+    <div class="content">
+      <div class="start-image">
+        <picture>
+          <source media="(max-width: 600px)" srcset="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeifrzrf57hnrj3ohjlpv6qkndheynmpxu6gygjkdzaaiwuty25fmne/2.webp">
+          <source media="(min-width: 601px)" srcset="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeifrzrf57hnrj3ohjlpv6qkndheynmpxu6gygjkdzaaiwuty25fmne/2.webp">
+          <img src="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeifrzrf57hnrj3ohjlpv6qkndheynmpxu6gygjkdzaaiwuty25fmne/2.webp" alt="よくある質問：パートナルのQ&A" loading="lazy">
+        </picture>
+      </div>
+      <div class="accordion-item">
+        <h2>Q1. 「パートナル」って何？</h2>
+        <div class="accordion-content">
+          <p><br><span class="answer-label">A.</span> 音楽理論と色彩心理学を組み合わせた新感覚のWeb性格診断です。<br><br>質問に対する回答を選んでいくだけで、あなたの性格を音と色で表現した全24種類の「調性格（パートナル）」がわかります。<br><br>詳しくは<a href="/about">こちら</a>をご覧ください。</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2>Q2. 他の性格診断との違いは？</h2>
+        <div class="accordion-content">
+          <p><br><span class="answer-label">A.</span> MBTIやエニアグラムなどは論理的・数値的な性格分析が中心ですが、パートナルでは感受性や芸術性を重視しています。<br><br>「人の性格を音や色で表したらどうなるだろう」という視点から、直感的に自分や他人を理解できるのが特長です。</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2>Q3. なんでパートナルは24種類？</h2>
+        <div class="accordion-content">
+          <p><br><span class="answer-label">A.</span> 西洋音楽に基づく調性（12種類の長調と12種類の短調）をベースに設計しているからです。<br><br>調性には、古来よりそれぞれ独特の雰囲気や心理的な響きがあるとされていて、パートナルにはその仕組みが応用されています。</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2>Q4. 診断にかかる時間は？</h2>
+        <div class="accordion-content">
+          <p><br><span class="answer-label">A.</span> ２〜３分あれば、すべて回答できるかと思います。<br><br>全12問の４択式なので、スキマ時間にサクッと気軽に楽しむことができます。</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2>Q5. 結果をSNSでシェアできる？</h2>
+        <div class="accordion-content">
+          <p><br><span class="answer-label">A.</span> はい、できます！<br><br>診断結果の画面にXのシェアボタンがあるのでご活用ください。<br><br>シェアしていただいた方には何か良いことがあるかもしれません。</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2>Q6. 公式グッズはある？</h2>
+        <div class="accordion-content">
+          <p><br><span class="answer-label">A.</span> あります！<br><br>全24タイプのキャラクターを使ったグッズなどを<a href="https://suzuri.jp/pertonal">こちら</a>で販売しています。<br><br>キーホルダーやTシャツなどの日常使いできるアイテムを順次追加予定です。</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2>Q7. 相性診断はある？</h2>
+        <div class="accordion-content">
+          <p><br><span class="answer-label">A.</span> はい、診断結果の画面にあなたのパートナルと相性の良い他のパートナルの一覧が表示されます。<br><br>これは音楽理論の「近親調」に基づいた設計で、仲良くなりやすい関係性がわかるようになっています。</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2>Q8. 診断結果の根拠は？</h2>
+        <div class="accordion-content">
+          <p><br><span class="answer-label">A.</span> それぞれのパートナルは、音楽理論と色彩心理学を用いて緻密に設計されています。<br><br>音楽の「五度圏」と美術の「色相環」との対応関係を持たせており、聴覚と視覚のイメージが自然に重なります。<br><br>ただし、医学的な診断や専門的な助言を提供するものではありませんので、あらかじめご了承ください。</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2>Q9. 会員登録は必要？</h2>
+        <div class="accordion-content">
+          <p><br><span class="answer-label">A.</span> いいえ、診断にあたってお名前やメールアドレスを入力する必要は一切ございません。<br><br>完全無料・匿名で楽しめますので、ご安心ください。</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2>Q10. 年齢制限はある？</h2>
+        <div class="accordion-content">
+          <p><br><span class="answer-label">A.</span> 基本的には、どなたでも楽しめますが、中学生以上であれば答えやすいような質問になっています。<br><br>ご家族で一緒に診断していただけましたら幸いです。</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2>Q11. 何回でも診断できる？</h2>
+        <div class="accordion-content">
+          <p><br><span class="answer-label">A.</span> もちろん、OKです。<br><br>気分が変わった時に再チャレンジしてみても良いですし、他の結果を見て比較するのも楽しいです。</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2>Q12. 取材やコラボはできる？</h2>
+        <div class="accordion-content">
+          <p><br><span class="answer-label">A.</span> はい、大歓迎です！<br><br>インタビューやイベント出演、学校や企業での導入、出版、IP展開、Web3活用など、様々な可能性があると思っています。<br><br>まずは<a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせフォーム</a>または公式X（<a href="https://x.com/pertonal_jp">@pertonal_jp</a>）までお気軽にご連絡ください。</p>
+        </div>
+      </div>
+      <button class="back-btn" onclick="location.href='/'">トップページに戻る</button>
+    </div>
+  </div>
+ 
+  <script>
+    document.querySelectorAll('.content h2').forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        const isOpen = content.classList.contains('open');
+
+        // Close all other open accordion items
+        document.querySelectorAll('.accordion-content.open').forEach(openContent => {
+          openContent.classList.remove('open');
+          openContent.previousElementSibling.classList.remove('active');
+        });
+
+        // Toggle the clicked item
+        if (!isOpen) {
+          content.classList.add('open');
+          header.classList.add('active');
+        }
+      });
+    });
+  </script>
+  <script src="/footer.js"></script>
+</body>
+</html>
