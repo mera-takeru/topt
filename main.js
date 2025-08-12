@@ -15,8 +15,8 @@ function renderPageLayout(resultKey) {
   container.innerHTML = `
     <header>
       <nav class="header-nav">
-        <a href="/about">パートナルとは</a><span class="divider">|</span>
-        <a href="/faq">よくある質問</a><span class="divider">|</span>
+        <a href="/about/">パートナルとは</a><span class="divider">|</span>
+        <a href="/faq/">よくある質問</a><span class="divider">|</span>
         <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
       </nav>
     </header>
