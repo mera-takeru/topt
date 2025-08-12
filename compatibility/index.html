@@ -213,6 +213,7 @@
         </div>
         <div id="share-images-container"></div>
         <div id="compatibility-text"></div>
+        <button id="shareXBtn" style="display: none; margin-top: 24px; width: 100%; background-color: #1DA1F2;">Xでシェアする</button>
       </div>
     </div>
     
@@ -260,6 +261,9 @@
         const key2 = select2.value;
         let result = compatibilityData[key1]?.[key2] || compatibilityData[key2]?.[key1];
         
+        // シェアボタンの要素を取得
+        const shareBtn = document.getElementById('shareXBtn');
+
         if (result) {
           const percentage = parseInt(result.percentage, 10);
           const heartFill = document.querySelector('.heart-fill');
@@ -303,12 +307,31 @@
 
           resultArea.style.display = 'block';
 
+          // シェアボタンを表示する
+          shareBtn.style.display = 'block';
+
+          // シェアボタンがクリックされた時の処理
+          shareBtn.onclick = () => {
+            const type1Title = getCharacterTitle(key1);
+            const type2Title = getCharacterTitle(key2);
+
+            // シェアするテキストを作成
+            const shareText = `私とあなたの相性診断結果は…\n\n「${type1Title}」と「${type2Title}」\n\n『${rank}』でした！\n【相性度：${percentage}%】\n\n音と色でわかる新感覚の性格診断 #パートナル\nみんなも試してみてね！`;
+            
+            // Xの投稿画面を開く
+            const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(location.href)}`;
+            window.open(shareUrl, '_blank');
+          };
+
         } else {
           resultArea.style.background = 'none';
           document.getElementById('compatibility-visual').style.display = 'none';
           imagesContainer.innerHTML = '';
           textDiv.textContent = '相性データが見つかりませんでした。';
           resultArea.style.display = 'block';
+          
+          // エラー時はシェアボタンを非表示にする
+          shareBtn.style.display = 'none';
         }
       });
     });
