@@ -316,7 +316,7 @@
             const type2Title = getCharacterTitle(key2);
 
             // シェアするテキストを作成
-            const shareText = `私とあなたの相性診断結果は…\n\n「${type1Title}」と「${type2Title}」\n\n『${rank}』でした！\n【相性度：${percentage}%】\n\n音と色でわかる新感覚の性格診断 #パートナル\nみんなも試してみてね！`;
+            const shareText = `「${type1Title}」と「${type2Title}」の関係は・・・\n\n『${rank}』でした！\n【相性：${percentage}%】\n\n音と色でわかる新感覚の性格診断 #パートナル\n@pertonal_jp`;
             
             // Xの投稿画面を開く
             const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(location.href)}`;
