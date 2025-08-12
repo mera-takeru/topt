@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>公式ブログ | pertonal -パートナル-</title>
-  <link rel="canonical" href="https://pertonal.jp/blog/">
-  <meta property="og:url" content="https://pertonal.jp/blog/">
   <meta name="description" content="音と色でわかる新感覚の性格診断「パートナル」の公式ブログページです。パートナルの開発秘話や各パートナルの詳細解説、相性診断などの様々なコンテンツを定期的に発信しています。">
   <link rel="icon" href="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafkreigaj4jljhdjkoavf2tdarmpyzfalutwxnnmmhrb437soizt2peewe" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -70,40 +68,31 @@
       100% { background-position: 0% 50%; }
     }
     
-    header, footer {
+    header {
       background: rgba(255, 255, 255, 0.9);
       padding: 12px;
       width: 100%;
       text-align: center;
       box-sizing: border-box;
-    }
-    
-    .header-container, .footer-container {
-        width: 100%;
-        max-width: 600px;
-        margin: 0 auto;
+      border-bottom: 1px solid #ddd;
     }
 
-    header { border-bottom: 1px solid #ddd; }
-    footer { border-top: 1px solid #ddd; }
-
-    .header-nav, .footer-nav {
+    .header-nav {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 12px;
     }
 
-    .header-nav a, .footer-nav a {
+    .header-nav a {
       font-weight: 400;
       font-size: 0.75rem;
       padding: 0 6px;
       transition: color var(--transition);
     }
 
-    .header-nav a:hover, .footer-nav a:hover { color: var(--secondary); }
-    .header-nav .divider, .footer-nav .divider { font-size: 0.75rem; font-weight: 400; }
-    .copyright { font-size: 0.75rem; font-weight: 400; text-align: center; margin-top: 8px; }
+    .header-nav a:hover { color: var(--secondary); }
+    .header-nav .divider { font-size: 0.75rem; font-weight: 400; }
 
     /* メインコンテンツエリア */
     .main-layout {
@@ -227,7 +216,7 @@
     .popular-posts-list .rank-icon {
         font-size: 1.1rem;
         margin-right: 8px;
-        width: 24px; /* アイコンの幅を固定してレイアウトを揃える */
+        width: 24px;
         text-align: center;
     }
     .popular-posts-list a {
@@ -281,6 +270,62 @@
     button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
 
     /* ======================================= */
+    /* 13. リッチフッター (★ここから追加・修正★)
+    /* ======================================= */
+    footer {
+      background: #f8f9fa;
+      color: #6c757d;
+      padding: 40px 16px;
+      border-top: 1px solid #dee2e6;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: auto;
+    }
+    .footer-container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .footer-main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .footer-about, .footer-sitemap {
+      flex: 1;
+      min-width: 250px;
+    }
+    .footer-about h4 {
+      font-size: 1.25rem;
+      color: var(--secondary);
+      margin-bottom: 12px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 4px rgba(255, 255, 255, 0.5);
+    }
+    .footer-about p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .footer-sitemap h4 {
+      font-size: 1.0rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 4px rgba(255, 255, 255, 0.5);
+    }
+    .footer-sitemap ul { list-style: none; padding: 0; margin: 0; }
+    .footer-sitemap li { margin-bottom: 8px; }
+    .footer-sitemap a { font-size: 0.9rem; color: #6c757d !important; text-decoration: none !important; transition: color 0.2s ease; }
+    .footer-sitemap a:hover { color: var(--secondary) !important; }
+    .footer-secondary { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; font-size: 0.75rem; gap: 16px; }
+    .footer-secondary .footer-nav { display: flex; align-items: center; gap: 12px; margin-bottom: 0; }
+    .footer-secondary .footer-nav a { color: #6c757d !important; }
+    .footer-secondary .copyright { text-align: center; }
+
+    /* ======================================= */
     /* 7. レスポンシブ対応
     /* ======================================= */
     @media (max-width: 768px) {
@@ -298,18 +343,17 @@
   gtag('js', new Date());
   gtag('config', 'G-M1HFSG9FVD');
 </script>
+<link rel="canonical" href="https://pertonal.jp/blog.html">
 </head>
 <body>
   <header>
-    <div class="header-container">
-        <nav class="header-nav">
-          <a href="/about/">パートナルとは</a>
-          <span class="divider">|</span>
-          <a href="/faq/" class="active">よくある質問</a>
-          <span class="divider">|</span>
-          <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
-        </nav>
-    </div>
+    <nav class="header-nav">
+      <a href="./about.html">パートナルとは</a>
+      <span class="divider">|</span>
+      <a href="./faq.html">よくある質問</a>
+      <span class="divider">|</span>
+      <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
+    </nav>
   </header>
 
   <div class="main-layout">
@@ -318,9 +362,9 @@
         <div id="blog-list">
 
           　 <div class="blog-entry" data-tags='["開発秘話", "コンセプト"]'>
-              <a href="/article-1/" class="blog-thumbnail"><img src="https://picsum.photos/seed/c/600/400" alt="記事サムネイル"></a>
+              <a href="./article-1.html" class="blog-thumbnail"><img src="https://picsum.photos/seed/c/600/400" alt="記事サムネイル"></a>
               <div class="blog-content">
-                  <h2 class="blog-title"><a href="/article-1">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
+                  <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
                   <p class="blog-date">2025.08.15</p>
                   <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
                   <div class="blog-tags">
@@ -330,9 +374,9 @@
             </div>
           
             <div class="blog-entry" data-tags='["開発秘話", "コンセプト"]'>
-                <a href="/article-1/" class="blog-thumbnail"><img src="https://picsum.photos/seed/a/600/400" alt="記事サムネイル"></a>
+                <a href="./article-1.html" class="blog-thumbnail"><img src="https://picsum.photos/seed/a/600/400" alt="記事サムネイル"></a>
                 <div class="blog-content">
-                    <h2 class="blog-title"><a href="/article-1">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
+                    <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
                     <p class="blog-date">2025.08.15</p>
                     <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
                     <div class="blog-tags">
@@ -343,9 +387,9 @@
             </div>
           
             <div class="blog-entry" data-tags='["C型", "MBTI比較", "性格解説"]'>
-                <a href="/article-2/" class="blog-thumbnail"><img src="https://picsum.photos/seed/b/600/400" alt="記事サムネイル"></a>
+                <a href="./article-2.html" class="blog-thumbnail"><img src="https://picsum.photos/seed/b/600/400" alt="記事サムネイル"></a>
                 <div class="blog-content">
-                    <h2 class="blog-title"><a href="/article-2">【C型】騎士を徹底解説！MBTI"管理者"との違いとは？</a></h2>
+                    <h2 class="blog-title"><a href="./article-2.html">【C型】騎士を徹底解説！MBTI"管理者"との違いとは？</a></h2>
                     <p class="blog-date">2025.08.20</p>
                     <p class="blog-snippet">最も実直なタイプである【C型】騎士。その真面目さの根源はどこにあるのか。似ていると言われるMBTIのISTJタイプとの共通点と、決定的な違いを解説します…</p>
                     <div class="blog-tags">
@@ -357,9 +401,9 @@
             </div>
           
             <div class="blog-entry" data-tags='["開発秘話", "コンセプト"]'>
-                <a href="/article-1/" class="blog-thumbnail"><img src="https://picsum.photos/seed/c/600/400" alt="記事サムネイル"></a>
+                <a href="./article-1.html" class="blog-thumbnail"><img src="https://picsum.photos/seed/c/600/400" alt="記事サムネイル"></a>
                 <div class="blog-content">
-                    <h2 class="blog-title"><a href="/article-1/">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
+                    <h2 class="blog-title"><a href="./article-1.html">パートナル開発秘話：着想からローンチまでの道のり</a></h2>
                     <p class="blog-date">2025.08.15</p>
                     <p class="blog-snippet">なぜ音楽と性格診断だったのか？「パートナル」が生まれるきっかけとなった開発者の想いや、診断ロジックの裏側にある秘密を少しだけお話しします…</p>
                     <div class="blog-tags">
@@ -370,15 +414,15 @@
           
         </div>
         <div class="pagination-container"></div>
-        <button class="back-btn" onclick="location.href='/'">トップページに戻る</button>
+        <button class="back-btn" onclick="location.href='./index.html'">トップページに戻る</button>
       </div>
     </main>
     <aside class="sidebar">
         <div class="sidebar-widget">
             <h3 class="widget-title">👑 人気の記事</h3>
             <ul class="popular-posts-list">
-                <li><span class="rank-icon">🥇</span><a href="/article-2/"><strong>【C型】騎士を徹底解説！MBTIとの違い</strong></a></li>
-                <li><span class="rank-icon">🥈</span><a href="/article-1/"><strong>パートナル開発秘話：着想からローンチまで</strong></a></li>
+                <li><span class="rank-icon">🥇</span><a href="./article-2.html"><strong>【C型】騎士を徹底解説！MBTIとの違い</strong></a></li>
+                <li><span class="rank-icon">🥈</span><a href="./article-1.html"><strong>パートナル開発秘話：着想からローンチまで</strong></a></li>
                 <li><span class="rank-icon">🥉</span><a href="#"><strong>あなたの「ラッキーパートナル」は？</strong></a></li>
             </ul>
         </div>
@@ -512,6 +556,6 @@
       filterByTag('all');
     });
   </script>
-  <script src="/footer.js"></script>
+  <script src="footer.js"></script>
 </body>
 </html>
