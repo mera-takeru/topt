@@ -585,7 +585,9 @@ const famousSongs = {
         `<iframe width="100%" height="150" src="https://www.youtube.com/embed/61z-cqg28R8?si=0aiMBoAubaYL9QJk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
       //"『残酷な夜に輝け』- LiSA",
         `<iframe width="100%" height="150" src="https://www.youtube.com/embed/ysdtX8kRTuQ?si=QhN8wrARf97gneVm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-      //"『Bunny Girl』- AKASAKI"
+      //"『三原色』- YOASOBI",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/nhOhFOoURnE?si=QBmSohjg-Du3d4IR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+    　//"『Bunny Girl』- AKASAKI"
         `<iframe width="100%" height="150" src="https://www.youtube.com/embed/RCltAg_iK0E?si=4oBkyv8Gw8KerNat" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
     ],
     "F♯": [
@@ -641,8 +643,6 @@ const famousSongs = {
     "A♭": [
       //"『Pretender』- Official髭男dism",
         `<iframe width="100%" height="150" src="https://www.youtube.com/embed/TQ8WlA2GXbk?si=E7xKQRpBKfHwEk37" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-      //"『三原色』- YOASOBI",
-        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/nhOhFOoURnE?si=QBmSohjg-Du3d4IR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
       //"『Mela!』- 緑黄色社会",
         `<iframe width="100%" height="150" src="https://www.youtube.com/embed/aRDURmIYBZ4?si=fOb3FebFj72RPaJo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
       //"『366日』- HY",
