@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>【MBTIとの違い】「パートナル」はここが新しい！ | pertonal -パートナル-</title>
+  <link rel="canonical" href="https://pertonal.jp/article-2/">
+  <meta property="og:url" content="https://pertonal.jp/article-2/">
+  <meta name="description" content="MBTIなどの従来の性格診断と、新感覚の診断「パートナル」は何が違うの？その答えは「感性」へのアプローチにありました。音楽と色彩であなたの“トーン”を知る、新しい自己分析のかたち。">
+  <meta name="twitter:image" content="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeih3cctlhnvhbbyquagajpymxaalobhrmjwd5nhzzb7rkruez2tujy/2.webp">
+  <meta property="og:image" content="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeih3cctlhnvhbbyquagajpymxaalobhrmjwd5nhzzb7rkruez2tujy/2.webp">
+  
+  <link rel="icon" href="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafkreigaj4jljhdjkoavf2tdarmpyzfalutwxnnmmhrb437soizt2peewe" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* NOTE: head内のstyleは他の記事ページからコピーしてください */
+    :root {
+      --primary: #6C63FF;
+      --secondary: #FF6584;
+      --text: #333;
+      --radius: 12px;
+      --transition: .3s;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    a { color: inherit !important; text-decoration: none; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient( 45deg, rgba(255,99,71,0.2), rgba(255,165,0,0.2), rgba(255,255,0,0.2), rgba(50,205,50,0.2), rgba(0,191,255,0.2), rgba(75,0,130,0.2), rgba(238,130,238,0.2) );
+      background-size: 400%;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 16px;
+      animation: rainbow 8s ease infinite;
+    }
+    @keyframes rainbow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .main-layout { display: flex; gap: 24px; width: 100%; max-width: 960px; margin: 16px 0; }
+    .main-content { flex: 1; }
+    .sidebar { width: 280px; flex-shrink: 0; }
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .header-nav { display: flex; justify-content: center; align-items: center; gap: 12px; }
+    header .header-nav a { text-decoration: none; color: #000000 !important; font-weight: 400; font-size: 0.75rem; padding: 0 6px; transition: color var(--transition); }
+    header .header-nav a:hover { color: var(--secondary); }
+    header .header-nav .divider { color: #000000 !important; font-size: 0.75rem; font-weight: 400; }
+    .article-container { background: rgba(255,255,255,0.9); border-radius: var(--radius); box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 24px; }
+    .article-header { text-align: center; margin-bottom: 24px; }
+    .article-title { font-size: 1.8rem; margin-bottom: 8px; color: var(--primary); line-height: 1.4; }
+    .article-date { font-size: 0.9rem; color: #888; }
+    .article-thumbnail { width: 100%; border-radius: var(--radius); margin-bottom: 24px; aspect-ratio: 16/9; overflow: hidden;}
+    .article-thumbnail img { width: 100%; height: 100%; object-fit: cover; }
+    .article-body { line-height: 1.8; font-size: 1rem; }
+    .article-body h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin: 32px 0 16px; border-bottom: 2px solid var(--secondary); padding-bottom: 8px; }
+    .article-body h3 { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin: 24px 0 12px; border-left: 5px solid var(--secondary); padding-left: 8px;}
+    .article-body p { margin-bottom: 16px; }
+    .article-body strong { color: var(--text); font-weight: 700; }
+    .article-body ul { list-style: disc; margin-left: 20px; margin-bottom: 16px; }
+    .article-body li { margin-bottom: 8px; padding-left: 8px; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .article-body th, .article-body td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+    .article-body th { background-color: #f2f2f2; font-weight: 600; }
+    .article-body .annotation { font-size: 0.8rem; color: #666; }
+    .article-image { width: 100%; border-radius: var(--radius); margin: 24px 0; aspect-ratio: 4/3; overflow: hidden; }
+    .article-image img { width: 100%; height: 100%; object-fit: cover; }
+    .divider-line { border: 0; border-top: 1px solid #ddd; margin: 32px 0; }
+    .article-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .article-tags a { background: #eee; color: #555 !important; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; transition: background .2s, color .2s; }
+    .article-tags a:hover { background: var(--primary); color: #fff !important; }
+    button.back-btn { font: inherit; font-size: 1rem; padding: 12px 20px; border: none; border-radius: var(--radius); background: var(--primary); color: #fff; cursor: pointer; transition: background .3s, transform .3s; width: 100%; margin-top: 24px; }
+    button.back-btn:hover { background: var(--secondary); transform: scale(1.02); }
+    .sidebar-widget { background: rgba(255,255,255,0.9); border-radius: var(--radius); padding: 20px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .widget-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--primary); }
+    .popular-posts-list li { list-style: none; margin-bottom: 12px; display: flex; align-items: center; }
+    .popular-posts-list .rank-icon { font-size: 1.1rem; margin-right: 8px; width: 24px; text-align: center; }
+    .popular-posts-list a { font-size: 0.9rem; transition: color .2s ease; }
+    .popular-posts-list a:hover { color: var(--secondary) !important; }
+    .tags-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tags-list a { background: #eee; color: #555 !important; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; transition: background .2s, color .2s; }
+    .tags-list a:hover { background: var(--primary); color: #fff !important; }
+    footer {
+      background: #f8f9fa;
+      color: #6c757d;
+      padding: 40px 16px;
+      border-top: 1px solid #dee2e6;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: auto;
+    }
+    .footer-container { width: 100%; max-width: 960px; margin: 0 auto; text-align: left; }
+    .footer-main { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid #dee2e6; }
+    .footer-about, .footer-sitemap { flex: 1; min-width: 250px; }
+    .footer-about h4 { font-size: 1.25rem; color: var(--secondary); margin-bottom: 12px; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 4px rgba(255, 255, 255, 0.5); }
+    .footer-about p { font-size: 0.9rem; line-height: 1.6; }
+    .footer-sitemap h4 { font-size: 1.0rem; color: var(--primary); margin-bottom: 12px; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 4px rgba(255, 255, 255, 0.5); }
+    .footer-sitemap ul { list-style: none; padding: 0; margin: 0; }
+    .footer-sitemap li { margin-bottom: 8px; }
+    .footer-sitemap a { font-size: 0.9rem; color: #6c757d !important; text-decoration: none !important; transition: color 0.2s ease; }
+    .footer-sitemap a:hover { color: var(--secondary) !important; }
+    .footer-secondary { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; font-size: 0.75rem; gap: 16px; }
+    .footer-secondary .footer-nav { display: flex; align-items: center; gap: 12px; margin-bottom: 0; }
+    .footer-secondary .footer-nav a { color: #6c757d !important; }
+    .footer-secondary .copyright { text-align: center; }
+    @media (max-width: 768px) {
+      body { padding: 0; }
+      header, footer { border-radius: 0; }
+      .main-layout { flex-direction: column; margin: 16px 0; padding: 0 16px; }
+      .sidebar { width: 100%; }
+      .article-title { font-size: 1.5rem; }
+      .article-body h2 { font-size: 1.3rem; }
+    }
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7664351285167114" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M1HFSG9FVD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M1HFSG9FVD');
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="../about/">パートナルとは</a><span class="divider">|</span>
+      <a href="../faq/">よくある質問</a><span class="divider">|</span>
+      <a href="https://forms.gle/PstFm54KustR4zKs6">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <div class="main-layout">
+    <main class="main-content">
+      <div class="article-container">
+        
+        <div class="article-header">
+            <h1 class="article-title">【MBTIとの違い】「パートナル」はここが新しい！</h1>
+            <p class="article-date">2025.08.13</p>
+        </div>
+        <div class="article-thumbnail">
+            <img src="https://gray-magnificent-deer-836.mypinata.cloud/ipfs/bafybeih3cctlhnvhbbyquagajpymxaalobhrmjwd5nhzzb7rkruez2tujy/2.webp" alt="五度圏と色相環が重なったパートナルのコンセプトアート">
+        </div>
+
+        <div class="article-body">
+
+           <p>「MBTI診断は何度もやったけど、イマイチしっくりこない…」<br>「もっと自分の感覚に寄り添ってくれる診断はないかなあ？」</p>
+           <p>そんなふうに感じたことがあるあなたへ。 今回は、新感覚の性格診断「パートナル」が、MBTIなどの従来型診断と一体何が違うのか、その魅力の秘密をわかりやすくご紹介します。</p>
+            
+            <h2>🧠 MBTIは「思考の脳」、パートナルは「感覚の心」を診断する</h2>
+            <p>MBTI（16タイプ性格診断）は、あなたが**「どのように情報を受け取り、判断するか」**という思考のプロセスを分析する、非常に優れたツールです。あなたの頭脳の働きに近い部分を明らかにし、自己理解の第一歩として広く利用されてきました。</p>
+            <p>一方、パートナルが診断するのは、あなたの**「感性のトーン」**です。あなたがまとっている雰囲気や、言葉にしづらい心の響きを、音楽と色彩という直感的なものさしで表現します。</p>
+            <p>例えば、同じ「外向的」な人でも、その雰囲気が明るく澄んだ響きなのか、それとも落ち着いて深みのある響きなのか──。パートナルは、そんな微妙なニュアンスの違いまで映し出します。</p>
+
+            <h3>📊 比較表で見る！MBTIとパートナルの違い</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>項目</th>
+                  <th><strong>パートナル (pertonal)</strong></th>
+                  <th><strong>MBTI (16タイプ性格診断)</strong></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>診断の目的</strong></td>
+                  <td>感性や印象の「トーン」を発見する</td>
+                  <td>思考や判断の「プロセス」を分析する</td>
+                </tr>
+                <tr>
+                  <td><strong>診断の根拠</strong></td>
+                  <td>音楽理論・色彩心理学</td>
+                  <td>心理学的類型論</td>
+                </tr>
+                <tr>
+                  <td><strong>タイプ数</strong></td>
+                  <td>24種類（12長調＋12短調）</td>
+                  <td>16種類</td>
+                </tr>
+                <tr>
+                  <td><strong>結果の表現</strong></td>
+                  <td>キャラクター、色、音楽で直感的に表現</td>
+                  <td>4つのアルファベットで論理的に表現</td>
+                </tr>
+                 <tr>
+                  <td><strong>相性診断</strong></td>
+                  <td>音楽理論の「近親調」を応用、パーセンテージで表示</td>
+                  <td>タイプ間の力学に基づく傾向比較</td>
+                </tr>
+                <tr>
+                  <td><strong>使い方の主軸</strong></td>
+                  <td>自分らしさや雰囲気の再発見</td>
+                  <td>行動パターンの分析と適性把握</td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <h2>🎼 パートナル独自の3つの魅力</h2>
+            
+            <h3>1. 音楽理論から生まれた「24の調性格」</h3>
+            <p>パートナルの性格タイプは、西洋音楽で使われる24種類の「調性（キー）」がベースになっています。音楽が持つ固有の印象を、そのまま性格像として再構築しているのです。</p>
+            <ul>
+              <li><strong>Cメジャー（ハ長調）</strong> → まっすぐで純粋な響き → <strong>【C型】騎士</strong></li>
+              <li><strong>Eマイナー（ホ短調）</strong> → 切なくも自由な響き → <strong>【em型】遊牧民</strong></li>
+            </ul>
+            <p>これにより、単なるラベル付けではなく、音の持つエネルギーや雰囲気まで含めた、豊かな性格表現が可能になりました。</p>
+
+            <div class="article-image">
+              <img src="https://ipfs.io/ipfs/bafybeiegttglm3l26eckpxi6nchnctut3kj6heo3uo5nxpfed7baopavgq/3.jpg" alt="パートナルのキャラクター全員集合">
+            </div>
+
+            <h3>2. “近親調”でわかる、新しい相性診断</h3>
+            <p>音楽の世界には、響きが似ていて自然に移行できる**「近親調」**という関係があります。パートナルは、この音楽理論を相性に応用。「一緒にいると自然に響き合う相手」をパーセンテージで導き出します。</p>
+            <p>恋愛、友情、ビジネス──さまざまな人間関係の参考になる、新感覚の相性診断です。</p>
+
+            <h3>3. 五感で感じる診断結果</h3>
+            <p>パートナルの最大の魅力は、診断結果を**視覚（色）**と**聴覚（音楽）**で体験できること。</p>
+            <p>キャラクターのイラストやパーソナルカラーはもちろん、あなたの調性格に対応した人気曲まで楽しめます。MBTIのような文字や数値だけの結果ではなく、「見て・聴いて・感じる」ことで、自分の「雰囲気」をリアルにイメージできます。</p>
+
+            <hr class="divider-line">
+            
+            <h2>💡 MBTIとの使い分けもおすすめ</h2>
+            <p>MBTIとパートナルは、どちらが優れているというものではなく、得意分野が異なります。両方を組み合わせることで、より立体的で奥行きのある自己理解が可能です。</p>
+            <ul>
+                <li><strong>MBTI</strong> → 仕事の適性、役割分担、プロジェクトチームの編成</li>
+                <li><strong>パートナル</strong> → 人間関係の心地よい距離感、第一印象、感情的な相性</li>
+            </ul>
+
+            <h2>🎯 実際に診断した人の声</h2>
+            <blockquote>
+              <p>「MBTIは何度やっても結果が変わらなかったけど、パートナルは“色”や“音”で表現されるのが新鮮！」<br>
+              「相性診断が音楽理論に基づいていて、とても納得感がある」<br>
+              「数字だけじゃなく感覚でも理解できるから、友達や家族と話しても盛り上がる」</p>
+            </blockquote>
+
+            <h2>🎁 あなたも自分の“響き”を探してみませんか？</h2>
+            <p>パートナルは、音楽と色彩という誰にでも馴染みのある要素を使って、あなたの中の**「見えない魅力」**を形にします。</p>
+            <p>MBTIでは見つからなかった「自分らしさ」が、ここにあるかもしれません。ぜひ一度、あなたの音と色の「調性格」を診断してみてください。</p>
+            
+            <button class="back-btn" onclick="location.href='../'">今すぐ無料診断</button>
+        </div>
+
+        <hr class="divider-line">
+        
+        <div class="article-tags">
+            <a href="../blog/">#MBTI比較</a>
+            <a href="../blog/">#性格解説</a>
+        </div>
+
+        <button class="back-btn" onclick="location.href='../blog/'">ブログ一覧に戻る</button>
+      </div>
+    </main>
+
+    <aside class="sidebar">
+        <div class="sidebar-widget">
+            <h3 class="widget-title">👑 人気の記事</h3>
+            <ul class="popular-posts-list">
+                <li><span class="rank-icon">🥇</span><a href="../article-1/"><strong>【本日公開】音と色でわかる世界初の性格診断</strong></a></li>
+                <li><span class="rank-icon">🥈</span><a href="../article-2/"><strong>【MBTIとの違い】パートナルはここが新しい！</strong></a></li>
+                <li><span class="rank-icon">🥉</span><a href="#"><strong>COMING SOON...</strong></a></li>
+            </ul>
+        </div>
+        <div class="sidebar-widget">
+            <h3 class="widget-title">🏷️ タグ一覧</h3>
+            <div class="tags-list">
+              <a class="tag-link" data-tag="all">#すべて表示</a>
+                <a class="tag-link" data-tag="相性診断">#相性診断</a>
+                <a class="tag-link" data-tag="MBTI比較">#MBTI比較</a>
+                <a class="tag-link" data-tag="お知らせ">#お知らせ</a>
+                <a class="tag-link" data-tag="開発秘話">#開発秘話</a>
+                <a class="tag-link" data-tag="仕事・キャリア">#仕事・キャリア</a>
+                <a class="tag-link" data-tag="性格解説">#性格解説</a>
+                <a class="tag-link" data-tag="人間関係">#人間関係</a>
+                <a class="tag-link" data-tag="ランキング">#ランキング</a>
+                <a class="tag-link" data-tag="恋愛">#恋愛</a>
+                <a class="tag-link" data-tag="その他">#その他</a>
+                <a class="tag-link" data-tag="【C型】騎士">#【C型】騎士</a>
+                <a class="tag-link" data-tag="【cm型】鍛冶屋">#【cm型】鍛冶屋</a>
+                <a class="tag-link" data-tag="【D♭型】思想家">#【D♭型】思想家</a>
+                <a class="tag-link" data-tag="【c♯m型】創造主">#【c♯m型】創造主</a>
+                <a class="tag-link" data-tag="【D型】探検家">#【D型】探検家</a>
+                <a class="tag-link" data-tag="【dm型】司書">#【dm型】司書</a>
+                <a class="tag-link" data-tag="【E♭型】賢者">#【E♭型】賢者</a>
+                <a class="tag-link" data-tag="【e♭m型】画家">#【e♭m型】画家</a>
+                <a class="tag-link" data-tag="【E型】演奏家">#【E型】演奏家</a>
+                <a class="tag-link" data-tag="【em型】遊牧民">#【em型】遊牧民</a>
+                <a class="tag-link" data-tag="【F型】発明家">#【F型】発明家</a>
+                <a class="tag-link" data-tag="【fm型】小説家">#【fm型】小説家</a>
+                <a class="tag-link" data-tag="【F♯型】建築士">#【F♯型】建築士</a>
+                <a class="tag-link" data-tag="【f♯m型】錬金術師">#【f♯m型】錬金術師</a>
+                <a class="tag-link" data-tag="【G型】狙撃手">#【G型】狙撃手</a>
+                <a class="tag-link" data-tag="【gm型】探偵">#【gm型】探偵</a>
+                <a class="tag-link" data-tag="【A♭型】舞踏家">#【A♭型】舞踏家</a>
+                <a class="tag-link" data-tag="【g♯m型】収集家">#【g♯m型】収集家</a>
+                <a class="tag-link" data-tag="【A型】参謀長">#【A型】参謀長</a>
+                <a class="tag-link" data-tag="【B♭型】案内人">#【B♭型】案内人</a>
+                <a class="tag-link" data-tag="【b♭m型】看護師">#【b♭m型】看護師</a>
+                <a class="tag-link" data-tag="【B型】剣闘士">#【B型】剣闘士</a>
+                <a class="tag-link" data-tag="【bm型】魔術師">#【bm型】魔術師</a>
+                </div>
+        </div>
+    </aside>
+  </div>
+  
+  <footer>
+  <div class="footer-container">
+    <div class="footer-main">
+      <div class="footer-about">
+        <h4>pertonal -パートナル-</h4>
+        <p>「音」と「色」でわかる新感覚の性格診断。<br>24タイプのパートナルの中から本当のあなたを見つけてみませんか？</p>
+      </div>
+      <div class="footer-sitemap">
+        <h4>サイトマップ</h4>
+        <ul>
+          <li><a href="../">トップページ</a></li>
+          <li><a href="../about/">パートナルとは</a></li>
+          <li><a href="../faq/">よくある質問</a></li>
+          <li><a href="../compatibility/">パートナル相性診断</a></li>
+          <li><a href="https://forms.gle/nmsCdZtsjdprxSwY9">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-secondary">
+      <nav class="footer-nav">
+        <a href="../terms/">利用規約</a>
+        <span class="divider">|</span>
+        <a href="../privacy/">プライバシーポリシー</a>
+        <span class="divider">|</span>
+        <a href="../operator/">運営者情報</a>
+      </nav>
+      <p class="copyright">&copy; 2025 pertonal by mera takeru. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
