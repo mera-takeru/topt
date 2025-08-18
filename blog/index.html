@@ -136,8 +136,7 @@
     }
     .blog-thumbnail img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
     }
     .blog-content {
@@ -329,9 +328,21 @@
     <main class="main-content">
       <div class="blog-container">
         <div id="blog-list">
+
+          <div class="blog-entry" data-tags='["開発秘話"]'>
+              <a href="/article-4/" class="blog-thumbnail"><img src="../images/blog/article-4/thumbnail-interview.webp" alt="記事4のサムネイル"></a>
+              <div class="blog-content">
+                  <h2 class="blog-title"><a href="/article-4/">【独占インタビュー】「パートナル」誕生秘話</a></h2>
+                  <p class="blog-date">2025.08.18</p>
+                  <p class="blog-snippet">音と色でわかる世界初の性格診断「パートナル」が一体どのようにして生まれたのか、今後どこへ向かうのかをインタビュー形式でお届けいたします。</p>
+                  <div class="blog-tags">
+                      <a class="tag-link" data-tag="開発秘話">#開発秘話</a>
+                  </div>
+              </div>
+          </div>
           
           <div class="blog-entry" data-tags='["性格解説"]'>
-              <a href="/article-2/" class="blog-thumbnail"><img src="../images/blog/article-3/thumbnail-24-type-pertonal.webp" alt="記事3のサムネイル"></a>
+              <a href="/article-3/" class="blog-thumbnail"><img src="../images/blog/article-3/thumbnail-24-type-pertonal.webp" alt="記事3のサムネイル"></a>
               <div class="blog-content">
                   <h2 class="blog-title"><a href="/article-3/">【完全保存版】パートナル全24タイプまとめ</a></h2>
                   <p class="blog-date">2025.08.15</p>
@@ -356,7 +367,7 @@
           </div>
 
           <div class="blog-entry" data-tags='["お知らせ"]'>
-              <a href="#" class="blog-thumbnail"><img src="../images/blog/article-1/thumbnail-gather-everyone.webp" alt="記事1のサムネイル"></a>
+              <a href="/article-1/" class="blog-thumbnail"><img src="../images/blog/article-1/thumbnail-gather-everyone.webp" alt="記事1のサムネイル"></a>
               <div class="blog-content">
                   <h2 class="blog-title"><a href="/article-1/">【本日公開】音と色でわかる世界初の性格診断</a></h2>
                   <p class="blog-date">2025.08.13</p>

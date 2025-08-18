@@ -559,7 +559,9 @@ const famousSongs = {
         `<iframe width="100%" height="150" src="https://www.youtube.com/embed/-wb2PAx6aEs?si=IhhgO35m8TnJEaYp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
       //"『三文小説』- King Gnu",
         `<iframe width="100%" height="150" src="https://www.youtube.com/embed/Y8HeOA95UzQ?si=T9gULX2t3-wtfixi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-      //"『サウダージ』- ポルノグラフィティ",
+      //"『カーマイン』- ELLEGARDEN",
+        `<iframe width="100%" height="150" src="https://www.youtube.com/embed/Qp8SwP3Ggl8?si=4E2K0S0_CRTf-XqZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+        //"『サウダージ』- ポルノグラフィティ",
         `<iframe width="100%" height="150" src="https://www.youtube.com/embed/lzsB4eKPdJI?si=Y6VU6NsTfgKj6rlQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
       //"『テレパシ』- DECO*27"
         `<iframe width="100%" height="150" src="https://www.youtube.com/embed/c56TpxfO9q0?si=ZTjLE0WxxAw1XTSH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
